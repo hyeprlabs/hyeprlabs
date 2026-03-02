@@ -1,2 +1,0 @@
-# hyeprlabs
-Hyepr Labs
