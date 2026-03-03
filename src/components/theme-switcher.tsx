@@ -79,7 +79,7 @@ function ThemeSwitcher() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="inline-flex items-center overflow-hidden rounded-full ring-1 ring-zinc-200 ring-inset bg-background dark:ring-zinc-700"
+      className="inline-flex items-center overflow-hidden rounded-full ring-1 ring-zinc-200 ring-inset dark:ring-zinc-700"
       role="radiogroup"
     >
       {THEME_OPTIONS.map((option) => (
