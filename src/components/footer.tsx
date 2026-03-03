@@ -34,8 +34,8 @@ export function Footer() {
                   asChild
                   key={`social-${item.link}-${index}`}
                   size="icon-sm"
-                  variant="outline"
-                  className="rounded-full bg-linear-to-br from-muted to-background"
+                  variant="ghost"
+                  className="rounded-full border"
                 >
                   <a href={item.link} target="_blank">
                     {item.icon}
