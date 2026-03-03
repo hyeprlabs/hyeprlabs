@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
+import { ArrowRight } from "lucide-react"
 
 export const navLinks = [
   {
@@ -11,12 +12,12 @@ export const navLinks = [
     href: "/projects",
   },
   {
-    label: "About Us",
+    label: "About",
     href: "/about",
   },
   {
-    label: "Contact",
-    href: "/contact",
+    label: "Templates",
+    href: "/templates",
   },
   {
     label: "Blog",
@@ -59,10 +60,19 @@ export function Header() {
               </Button>
             ))}
           </div>
+          <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background">
+            Contact
+          </Button>
+          <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
+            Projects
+            <ArrowRight />
+          </Button>
           <Button size="sm" variant="outline" className="hidden">
             Sign In
           </Button>
-          <Button size="sm" className="hidden">Get Started</Button>
+          <Button size="sm" className="hidden">
+            Get Started
+          </Button>
         </div>
         <MobileNav />
       </nav>

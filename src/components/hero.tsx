@@ -2,7 +2,8 @@ import { cn } from "@/lib/utils";
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon, PhoneCallIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge"
+import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -27,26 +28,26 @@ export function HeroSection() {
         </div>
         <a
           className={cn(
-            "group mx-auto flex w-fit items-center gap-3 rounded-sm border bg-card p-1 shadow",
+            "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
           href="#link"
         >
-          <div className="rounded-xs border bg-card px-1.5 py-0.5 shadow-sm">
-            <p className="font-mono text-xs">NOW</p>
-          </div>
+          <Badge variant="outline">
+            Blog
+          </Badge>
 
-          <span className="text-xs">accepting new client projects</span>
+          <span className="text-xs">Think Fast. Build Fast.</span>
           <span className="block h-5 border-l" />
 
           <div className="pr-1">
-            <ArrowRightIcon className="size-3 -translate-x-0.5 duration-150 ease-out group-hover:translate-x-0.5" />
+            <ArrowRight className="size-3 -translate-x-0.5 duration-150 ease-out group-hover:translate-x-0.5" />
           </div>
         </a>
 
         <h1
           className={cn(
-            "max-w-2xl text-balance text-center text-3xl text-foreground md:text-5xl lg:text-6xl font-serif",
+            "max-w-2xl text-balance text-center text-3xl md:text-5xl lg:text-6xl font-serif",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-100 duration-500 ease-out",
           )}
         >
@@ -55,20 +56,21 @@ export function HeroSection() {
 
         <p
           className={cn(
-            "text-center text-muted-foreground text-sm tracking-wider sm:text-lg",
+            "text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
-          We help brands scale faster through design, <br /> development and
+          We scale online companies faster through smart design, <br /> development and
           strategic execution.
         </p>
 
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
-          <Button variant="outline">
-            <PhoneCallIcon data-icon="inline-start" /> Book a Call
+          <Button variant="outline" className="rounded-full bg-linear-to-br from-muted to-background">
+            Contact
           </Button>
-          <Button>
-            Get started <ArrowRightIcon data-icon="inline-end" />
+          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
+            Projects 
+            <ArrowRight />
           </Button>
         </div>
       </div>

@@ -33,6 +33,7 @@ export function Footer() {
                   key={`social-${item.link}-${index}`}
                   size="icon-sm"
                   variant="outline"
+                  className="rounded-full bg-linear-to-br from-muted to-background"
                 >
                   <a href={item.link} target="_blank">
                     {item.icon}
@@ -125,8 +126,8 @@ const resources = [
     href: "/changelog",
   },
   {
-    title: "Security",
-    href: "/security",
+    title: "Team",
+    href: "/team",
   },
 ];
 
