@@ -33,8 +33,8 @@ export function HeroSection() {
           )}
           href="/blog/think-fast-build-fast"
         >
-          <Badge variant="outline">
-            Blog
+          <Badge variant="outline" className="text-xs font-mono">
+            BLOG
           </Badge>
 
           <span className="text-xs">Think Fast. Build Fast.</span>

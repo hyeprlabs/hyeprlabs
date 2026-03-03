@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
@@ -21,9 +22,9 @@ export function Footer() {
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="grid max-w-5xl grid-cols-6 gap-6 p-4">
           <div className="col-span-6 flex flex-col gap-4 pt-5 md:col-span-3">
-            <a className="w-max" href="/">
+            <Link className="w-max" href="/">
               <HyeprLabsWordmark className="h-5 w-auto" />
-            </a>
+            </Link>
             <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
               Think Fast. Build Fast.
             </p>

@@ -48,12 +48,9 @@ export function Header() {
           },
         )}
       >
-        <a
-          className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
-          href="/"
-        >
+        <Link href="/">
           <HyeprLabsWordmark className="h-5 w-auto" />
-        </a>
+        </Link>
         <div className="hidden items-center gap-2 md:flex">
           <div>
             {navLinks.map((link) => (
