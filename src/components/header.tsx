@@ -6,6 +6,7 @@ import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
 import { ArrowRight } from "lucide-react"
+import { HyeprLabsWordmark } from "@/components/brand/logos";
 
 export const navLinks = [
   {
@@ -51,18 +52,18 @@ export function Header() {
           className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
           href="/"
         >
-          <span className="text-xl font-medium">HYEPR LABS</span>
+          <HyeprLabsWordmark className="h-5 w-auto" />
         </a>
         <div className="hidden items-center gap-2 md:flex">
           <div>
             {navLinks.map((link) => (
-              <Button asChild key={link.label} size="sm" variant="ghost">
+              <Button asChild key={link.label} size="sm" variant="ghost" className="font-normal">
                 <a href={link.href}>{link.label}</a>
               </Button>
             ))}
           </div>
           <Link href="/contact">
-            <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background">
+            <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background font-normal">
               Contact
             </Button>
           </Link>

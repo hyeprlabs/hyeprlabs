@@ -13,7 +13,7 @@ export function CallToAction() {
 
       <div className="absolute top-0 left-1/2 -z-10 h-full border-l border-dashed" />
 
-      <h2 className="text-center text-xl md:text-3xl font-serif">
+      <h2 className="text-center text-2xl md:text-3xl font-serif">
         Start for Free Today!
       </h2>
       <p className="text-balance text-center font-mono text-muted-foreground text-sm md:text-base">

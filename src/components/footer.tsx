@@ -7,6 +7,7 @@ import {
   LinkedinIcon,
   YoutubeIcon,
 } from "lucide-react";
+import { HyeprLabsWordmark } from "@/components/brand/logos";
 
 export function Footer() {
   return (
@@ -21,9 +22,9 @@ export function Footer() {
         <div className="grid max-w-5xl grid-cols-6 gap-6 p-4">
           <div className="col-span-6 flex flex-col gap-4 pt-5 md:col-span-3">
             <a className="w-max" href="/">
-              <span className="text-xl font-medium">HYEPR LABS</span>
+              <HyeprLabsWordmark className="h-5 w-auto" />
             </a>
-            <p className="max-w-sm text-balance text-muted-foreground text-sm">
+            <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
               Think Fast. Build Fast.
             </p>
             <div className="flex gap-2">
@@ -90,7 +91,7 @@ export function Footer() {
         </div>
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="flex max-w-4xl flex-col justify-between gap-2 py-4">
-          <p className="text-center font-mono text-muted-foreground text-sm">
+          <p className="text-center font-mono text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Hyepr Labs, All rights reserved
           </p>
         </div>
