@@ -1,6 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
@@ -48,7 +49,7 @@ export function Header() {
       >
         <a
           className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
-          href="#"
+          href="/"
         >
           <span className="text-xl font-medium">HYEPR LABS</span>
         </a>
@@ -60,13 +61,17 @@ export function Header() {
               </Button>
             ))}
           </div>
-          <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background">
-            Contact
-          </Button>
-          <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
-            Projects
-            <ArrowRight />
-          </Button>
+          <Link href="/contact">
+            <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background">
+              Contact
+            </Button>
+          </Link>
+          <Link href="/projects">
+            <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
+              Projects
+              <ArrowRight />
+            </Button>
+          </Link>
           <Button size="sm" variant="outline" className="hidden">
             Sign In
           </Button>
