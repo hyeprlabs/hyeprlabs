@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
 };
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden px-4 supports-[overflow:clip]:overflow-clip">
       <Header />
