@@ -19,7 +19,7 @@ export function Footer() {
       >
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="grid max-w-5xl grid-cols-6 gap-6 p-4">
-          <div className="col-span-6 flex flex-col gap-4 pt-5 md:col-span-4">
+          <div className="col-span-6 flex flex-col gap-4 pt-5 md:col-span-3">
             <a className="w-max" href="/">
               <span className="text-xl font-medium">HYEPR LABS</span>
             </a>
@@ -27,7 +27,7 @@ export function Footer() {
               Think Fast. Build Fast.
             </p>
             <div className="flex gap-2">
-              {socialLinks.map((item, index) => (
+              {links.map((item, index) => (
                 <Button
                   asChild
                   key={`social-${item.link}-${index}`}
@@ -73,6 +73,20 @@ export function Footer() {
               ))}
             </div>
           </div>
+          <div className="col-span-3 w-full md:col-span-1">
+            <span className="text-muted-foreground text-xs">Legal</span>
+            <div className="mt-2 flex flex-col gap-2">
+              {legal.map(({ href, title }) => (
+                <a
+                  className="w-max text-sm hover:underline"
+                  href={href}
+                  key={title}
+                >
+                  {title}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="flex max-w-4xl flex-col justify-between gap-2 py-4">
@@ -84,29 +98,6 @@ export function Footer() {
     </footer>
   );
 }
-
-const company = [
-  {
-    title: "About Us",
-    href: "/about",
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-  },
-  {
-    title: "Brand assets",
-    href: "/brand",
-  },
-  {
-    title: "Privacy Policy",
-    href: "/privacy-policy",
-  },
-  {
-    title: "Terms of Service",
-    href: "/terms-of-service",
-  },
-];
 
 const resources = [
   {
@@ -131,7 +122,37 @@ const resources = [
   },
 ];
 
-const socialLinks = [
+const company = [
+  {
+    title: "About Us",
+    href: "/about",
+  },
+  {
+    title: "Projects",
+    href: "/projects",
+  },
+  {
+    title: "Brand assets",
+    href: "/brand",
+  },
+];
+
+const legal = [
+  {
+    title: "Imprint",
+    href: "/imprint",
+  },
+  {
+    title: "Privacy Policy",
+    href: "/privacy-policy",
+  },
+  {
+    title: "Terms of Service",
+    href: "/terms-of-service",
+  },
+];
+
+const links = [
   {
     icon: <GithubIcon />,
     link: "https://github.com/hyeprlabs",

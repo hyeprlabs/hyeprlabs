@@ -1,6 +1,7 @@
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function CallToAction() {
   return (
@@ -15,16 +16,23 @@ export function CallToAction() {
       <h2 className="text-center text-xl md:text-3xl font-serif">
         Start for Free Today!
       </h2>
-      <p className="text-balance text-center font-medium text-muted-foreground text-sm md:text-base">
+      <p className="text-balance text-center font-mono text-muted-foreground text-sm md:text-base">
         Begin your 6-day free trial today to fully explore and experience all
         the features and benefits we offer.
       </p>
 
       <div className="flex items-center justify-center gap-2">
-        <Button variant="outline">Contact Sales</Button>
-        <Button>
-          Get Started <ArrowRightIcon data-icon="inline-end" />
-        </Button>
+        <Link href="/contact">
+          <Button variant="outline" className="rounded-full bg-linear-to-br from-muted to-background">
+            Contact
+          </Button>
+        </Link>
+        <Link href="/projects">
+          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
+            Projects
+            <ArrowRight />
+          </Button>
+        </Link>
       </div>
     </div>
   );
