@@ -1,0 +1,80 @@
+import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
+import { Header } from "@/components/header";
+import { TemplatesHero } from "@/components/templates/templates-hero";
+import { TemplatesList } from "@/components/templates/templates-list";
+import { CallToAction } from "@/components/cta";
+import { Footer } from "@/components/footer";
+
+export const metadata: Metadata = {
+  title: "Templates",
+  description: "A collection of production-ready Next.js templates to jumpstart your next project.",
+};
+
+export default function Page() {
+  return (
+    <div className="relative flex min-h-screen flex-col overflow-hidden px-4 supports-[overflow:clip]:overflow-clip">
+      <Header />
+      <main
+        className={cn(
+          "relative mx-auto max-w-4xl grow",
+          // X Borders
+          "before:absolute before:-inset-y-14 before:-left-px before:w-px before:bg-border",
+          "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
+        )}
+      >
+        <TemplatesHero />
+        <TemplatesList />
+        <Article />
+        <CallToAction />
+        <Footer />
+      </main>
+    </div>
+  );
+}
+
+function Article() {
+  return (
+    <article className="mx-auto max-w-2xl px-4 py-12 text-sm tracking-wider sm:text-lg font-mono text-muted-foreground">
+      <header className="mb-10 text-center">
+        <h2 className="text-xl sm:text-2xl font-medium text-foreground mb-4">
+          Accelerate Your Development
+        </h2>
+        <p className="leading-relaxed">
+          We believe in the power of{" "}
+          <span className="text-foreground">open source</span>. By sharing our
+          internal tools and starting points, we aim to help developers and
+          businesses ship better products, faster.
+        </p>
+      </header>
+
+      <div className="space-y-8 text-left">
+        <p className="leading-relaxed">
+          Each template is a distillation of our best practices, refined over
+          years of building production-grade applications. They come
+          pre-configured with the tools we trust:{" "}
+          <span className="text-foreground">
+            Next.js, TypeScript, Tailwind CSS, and Shadcn UI
+          </span>
+          .
+        </p>
+
+        <p className="leading-relaxed">
+          Our goal is to eliminate the repetitive setup phase. Instead of
+          configuring linters or setting up authentication from scratch, you can
+          dive straight into building the{" "}
+          <span className="text-foreground">unique features</span> that matter
+          to your users.
+        </p>
+
+        <p className="leading-relaxed">
+          These blueprints are fully customizable and opinionated where it
+          counts. They are designed to be{" "}
+          <span className="text-foreground">scalable foundations</span>, not
+          rigid constraints. Fork them, learn from them, and build something
+          amazing.
+        </p>
+      </div>
+    </article>
+  );
+}
