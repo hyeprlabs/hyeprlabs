@@ -1,23 +1,26 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { Logo } from "@/components/logo";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
 
 export const navLinks = [
   {
-    label: "Features",
-    href: "#",
+    label: "Projects",
+    href: "/projects",
   },
   {
-    label: "Pricing",
-    href: "#",
+    label: "About Us",
+    href: "/about",
   },
   {
-    label: "About",
-    href: "#",
+    label: "Contact",
+    href: "/contact",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
   },
 ];
 
@@ -46,7 +49,7 @@ export function Header() {
           className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
           href="#"
         >
-          <Logo className="h-4" />
+          <span className="text-xl font-medium">HYEPR LABS</span>
         </a>
         <div className="hidden items-center gap-2 md:flex">
           <div>
@@ -56,10 +59,10 @@ export function Header() {
               </Button>
             ))}
           </div>
-          <Button size="sm" variant="outline">
+          <Button size="sm" variant="outline" className="hidden">
             Sign In
           </Button>
-          <Button size="sm">Get Started</Button>
+          <Button size="sm" className="hidden">Get Started</Button>
         </div>
         <MobileNav />
       </nav>

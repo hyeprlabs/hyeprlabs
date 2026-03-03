@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero";
 import { LogosSection } from "@/components/logos-section";
+import { CallToAction } from "@/components/cta";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
       >
         <HeroSection />
         <LogosSection />
+        <CallToAction />
+        <Footer />
       </main>
     </div>
   );
