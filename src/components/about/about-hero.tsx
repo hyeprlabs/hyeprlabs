@@ -53,8 +53,6 @@ export function AboutHero() {
       <div className="relative">
         <DecorIcon className="size-4" position="top-left" />
         <DecorIcon className="size-4" position="top-right" />
-        <DecorIcon className="size-4" position="bottom-left" />
-        <DecorIcon className="size-4" position="bottom-right" />
       </div>
     </section>
   );
