@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { Badge } from "@/components/ui/badge";
 
-export function AboutHero() {
+export function ProjectsHero() {
   return (
     <section>
       <div className="relative flex flex-col items-center justify-center gap-5 px-4 py-12 md:px-4 md:py-24 lg:py-28">
@@ -27,7 +27,7 @@ export function AboutHero() {
           variant="outline"
           className="bg-linear-to-br from-muted to-background"
         >
-          ABOUT
+          PROJECTS
         </Badge>
 
         <h1
@@ -36,7 +36,7 @@ export function AboutHero() {
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-100 duration-500 ease-out",
           )}
         >
-          Who are we?
+          Our Featured Work
         </h1>
 
         <p
@@ -45,8 +45,8 @@ export function AboutHero() {
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
-          Accelerating growth for ambitious brands through data-driven
-          <br /> design, scalable engineering, and strategic innovation.
+          A selection of projects that showcase our expertise in <br /> design,
+          development, and strategic execution.
         </p>
       </div>
       <div className="relative">
