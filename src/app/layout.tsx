@@ -20,7 +20,10 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Hyepr Labs",
+  title: {
+    default: "Hyepr Labs",
+    template: "%s • Hyepr Labs",
+  },
   description: "Think Fast. Build Fast.",
 };
 
