@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
-import { Header } from "@/components/header";
-import { HeroSection } from "@/components/hero";
-import { LogosSection } from "@/components/logos-section";
-import { CallToAction } from "@/components/cta";
-import { Footer } from "@/components/footer";
+import { Header } from "@/components/marketing/header";
+import { HeroSection } from "@/components/marketing/hero";
+import { LogosSection } from "@/components/marketing/logos-section";
+import { CallToAction } from "@/components/marketing/cta";
+import { Footer } from "@/components/marketing/footer";
 
 export default function Home() {
   return (

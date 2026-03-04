@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
-import { Header } from "@/components/header";
-import { MarketingHero } from "@/components/marketing-hero";
+import { Header } from "@/components/marketing/header";
+import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { ContactSection } from "@/components/contact/contact-section";
-import { CallToAction } from "@/components/cta";
-import { Footer } from "@/components/footer";
+import { CallToAction } from "@/components/marketing/cta";
+import { Footer } from "@/components/marketing/footer";
 
 export const metadata: Metadata = {
   title: "Contact",
