@@ -14,11 +14,11 @@ export function CallToAction() {
       <div className="absolute top-0 left-1/2 -z-10 h-full border-l border-dashed" />
 
       <h2 className="text-center text-2xl md:text-3xl font-serif">
-        Start for Free Today!
+        Ready to Build Something Great?
       </h2>
       <p className="text-balance text-center font-mono text-muted-foreground text-sm md:text-base">
-        Begin your 6-day free trial today to fully explore and experience all
-        the features and benefits we offer.
+        Let&apos;s turn your vision into a high-performance digital product.
+        Get in touch to start your next project.
       </p>
 
       <div className="flex items-center justify-center gap-2">
