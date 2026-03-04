@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Portal, PortalBackdrop } from "@/components/ui/portal";
 import { Button } from "@/components/ui/button";
-import { navLinks } from "@/components/header";
+import { navLinks } from "@/components/marketing/header";
 import { X, Menu, ArrowRight } from "lucide-react";
 
 export function MobileNav() {

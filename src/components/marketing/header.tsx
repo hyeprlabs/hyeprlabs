@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
-import { MobileNav } from "@/components/mobile-nav";
+import { MobileNav } from "@/components/marketing/mobile-nav";
 import { ArrowRight } from "lucide-react"
 import { HyeprLabsWordmark } from "@/components/brand/logos";
 
