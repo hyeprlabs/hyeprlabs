@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { cn } from "@/lib/utils";
-import { Header } from "@/components/marketing/header";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/marketing/cta";
@@ -13,26 +11,16 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden px-4 supports-[overflow:clip]:overflow-clip">
-      <Header />
-      <main
-        className={cn(
-          "relative mx-auto max-w-4xl grow",
-          // X Borders
-          "before:absolute before:-inset-y-14 before:-left-px before:w-px before:bg-border",
-          "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
-        )}
-      >
-        <MarketingHero
-          badge="TERMS"
-          title="Terms of Service"
-          description="Read our terms carefully to understand your rights, responsibilities, and our operational guidelines."
-        />
-        <Article />
-        <CallToAction />
-        <Footer />
-      </main>
-    </div>
+    <>
+      <MarketingHero
+        badge="TERMS"
+        title="Terms of Service"
+        description="Read our terms carefully to understand your rights, responsibilities, and our operational guidelines."
+      />
+      <Article />
+      <CallToAction />
+      <Footer />
+    </>
   );
 }
 
