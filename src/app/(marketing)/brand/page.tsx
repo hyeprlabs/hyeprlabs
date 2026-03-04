@@ -15,7 +15,7 @@ export default function Page() {
     <>
       <MarketingHero
         badge="BRAND"
-        title="Brand Guidelines"
+        title="Brand assets"
         description="Access our brand guidelines and download our brand kit. Coming soon."
       />
       <Article />

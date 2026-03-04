@@ -126,12 +126,16 @@ const resources = [
 
 const company = [
   {
-    title: "About Us",
+    title: "About",
     href: "/about",
   },
   {
     title: "Projects",
     href: "/projects",
+  },
+    {
+    title: "Templates",
+    href: "/templates",
   },
   {
     title: "Brand assets",
