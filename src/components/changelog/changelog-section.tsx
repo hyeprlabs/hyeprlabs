@@ -43,11 +43,11 @@ function ChangelogCard({
       {...props}
     >
       <div className="relative z-10 flex flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <Badge
               variant="outline"
-              className="font-mono text-xs bg-linear-to-br from-muted to-background"
+              className="w-fit font-mono text-xs bg-linear-to-br from-muted to-background"
             >
               {changelog.version}
             </Badge>
