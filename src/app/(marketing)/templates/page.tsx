@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
+import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { TemplatesList } from "@/components/marketing/templates/templates-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
@@ -24,6 +25,7 @@ export default function Page() {
         title="Open Source Blueprints"
         description="A collection of production-ready Next.js templates to jumpstart your next project."
       />
+      <DataDisclaimer description="These templates are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real working boilerplates just yet. Check back later for the real deal!" />
       <TemplatesList />
       <Article />
       <CallToAction />

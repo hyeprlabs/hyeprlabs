@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
+import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { ProjectsList } from "@/components/marketing/projects/projects-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
@@ -24,6 +25,7 @@ export default function Page() {
         title="Our Featured Work"
         description="A selection of projects that showcase our expertise in design, development, and strategic execution."
       />
+      <DataDisclaimer description="These projects are just dummies for now. They're here for demonstration purposes to show what the layout will look like. Real case studies and work will be added soon!" />
       <ProjectsList />
       <CallToAction />
       <Footer />
