@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
+import { LegalDisclaimer } from "@/components/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 
@@ -35,6 +36,7 @@ function Article() {
     <div className="relative border-b border-border">
       <FullWidthDivider position="top" />
       <article className="mx-auto max-w-2xl px-4 py-16 md:py-24 text-sm sm:text-base font-mono text-muted-foreground pb-24 text-left">
+        <LegalDisclaimer />
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
             1. Scope of Application
