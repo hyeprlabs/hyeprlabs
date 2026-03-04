@@ -142,15 +142,15 @@ const company = [
 const legal = [
   {
     title: "Imprint",
-    href: "/imprint",
+    href: "/legal/imprint",
   },
   {
     title: "Privacy Policy",
-    href: "/privacy-policy",
+    href: "/legal/privacy-policy",
   },
   {
     title: "Terms of Service",
-    href: "/terms-of-service",
+    href: "/legal/terms-of-service",
   },
 ];
 
