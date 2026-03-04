@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { ContactHero } from "@/components/contact/contact-hero";
-import { ContactSection } from "@/components/contact/contact-section";
+import { BlogHero } from "@/components/blog/blog-hero";
+import { BlogSection } from "@/components/blog/blog-section";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Have a project in mind or want to say hello? We'd love to hear from you.",
+  title: "Blog",
+  description: "Thoughts on design, development, and building digital products for the modern web.",
 };
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden px-4 supports-[overflow:clip]:overflow-clip">
       <Header />
@@ -23,8 +23,8 @@ export default function Home() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <ContactHero />
-        <ContactSection />
+        <BlogHero />
+        <BlogSection />
         <CallToAction />
         <Footer />
       </main>

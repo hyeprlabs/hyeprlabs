@@ -4,10 +4,10 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 const APP_EMAIL = "contact@hyeprlabs.com";
-const APP_PHONE = "+92 300 1234567";
-const APP_PHONE_2 = "+92 321 9876543";
+const APP_PHONE = "-";
+const APP_PHONE_2 = "-";
 
-export function Contact() {
+export function ContactSection() {
   const socialLinks = [
     {
       icon: GithubIcon,
@@ -22,15 +22,9 @@ export function Contact() {
   ];
 
   return (
-    <div className="relative mx-auto min-h-screen max-w-5xl">
-      <div className="flex grow flex-col justify-center px-4 py-18 md:items-center">
-        <h1 className="font-serif text-4xl md:text-5xl">Contact Us</h1>
-        <p className="mb-5 text-base text-muted-foreground font-mono">
-          Contact the support team at efferd.
-        </p>
-      </div>
-      <FullWidthDivider />
-      <div className="grid md:grid-cols-3">
+    <div className="mx-auto w-full max-w-5xl">
+      <div className="relative grid md:grid-cols-3">
+        <FullWidthDivider position="top" />
         <Box
           description="We respond within 24 hours."
           icon={<Mail />}
@@ -49,7 +43,7 @@ export function Contact() {
           title="Office"
         >
           <span className="font-medium font-mono text-sm tracking-wide">
-            Am Einlaß 4, 80469, Munich, Germany
+            Coming Soon.
           </span>
         </Box>
         <Box
@@ -73,9 +67,10 @@ export function Contact() {
             </a>
           </div>
         </Box>
+        <FullWidthDivider position="bottom" />
       </div>
-      <FullWidthDivider />
-      <div className="z-1 flex h-full flex-col items-center justify-center gap-4 py-24">
+
+      <div className="flex flex-col items-center justify-center gap-4 py-12 md:py-24">
         <h2 className="text-center font-mono text-md md:text-lg text-muted-foreground tracking-tight">
           Find us online:
         </h2>
