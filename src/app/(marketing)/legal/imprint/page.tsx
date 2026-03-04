@@ -1,8 +1,35 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
+import { LegalDisclaimer } from "@/components/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+
+const data = {
+  name: "Hyepr Labs",
+  address: {
+    street: "[Street Address]",
+    zipCity: "[ZIP Code and City]",
+    country: "Germany",
+  },
+  director: "[Managing Director(s) / Name of Authorized Representative]",
+  contact: {
+    email: "contact@hyeprlabs.com",
+    phone: "+49 123 4567890",
+    websiteUrl: "https://hyeprlabs.com",
+    websiteDisplay: "hyeprlabs.com",
+  },
+  registration: {
+    court: "[Name of the court, e.g., Amtsgericht Hamburg]",
+    number: "[Registration number, e.g., HRB 123456]",
+  },
+  vatId: "[Your VAT ID, e.g., DE 123456789]",
+  contentResponsible: {
+    name: "[Name of responsible person]",
+    street: "[Street Address]",
+    zipCity: "[ZIP Code and City]",
+  },
+};
 
 export const metadata: Metadata = {
   title: "Imprint",
@@ -35,18 +62,27 @@ function Article() {
     <div className="relative border-b border-border">
       <FullWidthDivider position="top" />
       <article className="mx-auto max-w-2xl px-4 py-16 md:py-24 text-sm sm:text-base font-mono text-muted-foreground pb-24 text-left">
+        <LegalDisclaimer />
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
             Information pursuant to § 5 TMG
           </h2>
           <address className="leading-relaxed mb-6 not-italic">
-            <strong>Oskar Seeberger</strong>
+            <strong>{data.name}</strong>
             <br />
-            Am Einlass 4<br />
-            80469 Munich
+            {data.address.street}
             <br />
-            Germany
+            {data.address.zipCity}
+            <br />
+            {data.address.country}
           </address>
+        </section>
+
+        <section>
+          <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
+            Represented by
+          </h2>
+          <p className="leading-relaxed mb-6">{data.director}</p>
         </section>
 
         <section>
@@ -57,32 +93,37 @@ function Article() {
             className="leading-relaxed mb-6 not-italic"
             suppressHydrationWarning
           >
-            Phone:{" "}
-            <a
-              href="#"
-              className="hover:underline text-foreground transition-colors"
-            >
-              Coming Soon.
-            </a>
+            Phone: {data.contact.phone}
             <br />
             Email:{" "}
             <a
-              href="mailto:o.seeberger@hyeprlabs.com"
+              href={`mailto:${data.contact.email}`}
               className="hover:underline text-foreground transition-colors"
             >
-              o.seeberger@hyeprlabs.com
+              {data.contact.email}
             </a>
             <br />
             Website:{" "}
             <a
-              href="https://hyeprlabs.com"
+              href={data.contact.websiteUrl}
               className="hover:underline text-foreground transition-colors"
               target="_blank"
               rel="noreferrer"
             >
-              hyeprlabs.com
+              {data.contact.websiteDisplay}
             </a>
           </address>
+        </section>
+
+        <section>
+          <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
+            Commercial Register
+          </h2>
+          <p className="leading-relaxed mb-6">
+            Registration court: {data.registration.court}
+            <br />
+            Registration number: {data.registration.number}
+          </p>
         </section>
 
         <section>
@@ -93,7 +134,7 @@ function Article() {
             Value added tax identification number pursuant to § 27 a
             Umsatzsteuergesetz:
             <br />
-            DE 123456789
+            {data.vatId}
           </p>
         </section>
 
@@ -102,10 +143,11 @@ function Article() {
             Responsible for Content acc. to § 18 para. 2 MStV
           </h2>
           <address className="leading-relaxed mb-6 not-italic">
-            Oskar Seeberger
+            {data.contentResponsible.name}
             <br />
-            Am Einlass 4<br />
-            80469 Munich
+            {data.contentResponsible.street}
+            <br />
+            {data.contentResponsible.zipCity}
           </address>
         </section>
 
