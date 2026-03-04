@@ -11,7 +11,7 @@ export function HeroImage() {
   return (
     <a
       href="https://clypai.com"
-      className="relative block overflow-hidden cursor-pointer"
+      className="relative block overflow-hidden pointer-events-none md:pointer-events-auto md:cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
