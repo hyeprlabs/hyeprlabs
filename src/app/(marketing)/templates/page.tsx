@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Templates",
   description:
     "A collection of production-ready Next.js templates to jumpstart your next project.",
+  keywords: ["Next.js Templates", "React Templates", "Tailwind CSS Templates", "Open Source Boilerplates", "SaaS Starter Kit", "Hyepr Labs Templates"],
+  openGraph: {
+    title: "Templates | Hyepr Labs | Think Fast. Build Fast.",
+    description: "A collection of production-ready Next.js templates to jumpstart your next project.",
+    url: "https://hyeprlabs.com/templates",
+  }
 };
 
 export default function Page() {

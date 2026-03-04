@@ -7,6 +7,12 @@ import { Footer } from "@/components/marketing/footer";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Rules and guidelines for accessing and using our platforms.",
+  keywords: ["Terms of Service", "Terms of Use", "TOS", "Legal Terms", "Platform Guidelines"],
+  openGraph: {
+    title: "Terms of Service | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Rules and guidelines for accessing and using our platforms.",
+    url: "https://hyeprlabs.com/legal/terms-of-service",
+  }
 };
 
 export default function Page() {

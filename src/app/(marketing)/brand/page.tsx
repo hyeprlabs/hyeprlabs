@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Brand",
   description:
     "Access our brand guidelines and download our brand kit. Coming soon.",
+  keywords: ["Brand Assets", "Brand Guidelines", "Hyepr Labs Logos", "Media Kit", "Press Kit"],
+  openGraph: {
+    title: "Brand | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Access our brand guidelines and download our brand kit. Coming soon.",
+    url: "https://hyeprlabs.com/brand",
+  }
 };
 
 export default function Page() {

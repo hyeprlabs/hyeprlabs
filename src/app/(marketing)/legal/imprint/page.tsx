@@ -7,6 +7,12 @@ import { Footer } from "@/components/marketing/footer";
 export const metadata: Metadata = {
   title: "Imprint",
   description: "Legal information and imprint for Hyepr Labs.",
+  keywords: ["Imprint", "Legal Notice", "Impressum", "Business Disclosure", "Hyepr Labs Legal"],
+  openGraph: {
+    title: "Imprint | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Legal information and imprint for Hyepr Labs.",
+    url: "https://hyeprlabs.com/legal/imprint",
+  }
 };
 
 export default function Page() {

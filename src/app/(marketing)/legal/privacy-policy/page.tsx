@@ -7,6 +7,12 @@ import { Footer } from "@/components/marketing/footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How we handle, protect, and process your personal data.",
+  keywords: ["Privacy Policy", "Data Protection", "GDPR", "User Privacy", "Hyepr Labs Privacy"],
+  openGraph: {
+    title: "Privacy Policy | Hyepr Labs | Think Fast. Build Fast.",
+    description: "How we handle, protect, and process your personal data.",
+    url: "https://hyeprlabs.com/legal/privacy-policy",
+  }
 };
 
 export default function Page() {

@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Support",
   description:
     "Get help and support for your projects. Our dedicated support center. Coming soon.",
+  keywords: ["Customer Support", "Help Center", "Client Support", "Technical Support", "Hyepr Labs Help"],
+  openGraph: {
+    title: "Support | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Get help and support for your projects. Our dedicated support center. Coming soon.",
+    url: "https://hyeprlabs.com/support",
+  }
 };
 
 export default function Page() {

@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "A selection of projects that showcase our expertise in design, development, and strategic execution.",
+  keywords: ["Next.js Projects", "Web App Case Studies", "Fintech Dashboards", "Headless E-Commerce", "Hyepr Labs Portfolio"],
+  openGraph: {
+    title: "Projects | Hyepr Labs | Think Fast. Build Fast.",
+    description: "A selection of projects that showcase our expertise in design, development, and strategic execution.",
+    url: "https://hyeprlabs.com/projects",
+  }
 };
 
 export default function Page() {

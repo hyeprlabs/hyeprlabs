@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+  keywords: ["About Hyepr Labs", "Top Digital Agency", "Next.js Experts", "UI/UX Designers", "Software Engineers"],
+  openGraph: {
+    title: "About | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+    url: "https://hyeprlabs.com/about",
+  }
 };
 
 export default function Page() {

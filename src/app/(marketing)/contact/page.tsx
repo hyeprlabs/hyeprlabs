@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Have a project in mind or want to say hello? We'd love to hear from you.",
+  keywords: ["Contact Hyepr Labs", "Hire a Web Agency", "Consulting", "Next.js Developers", "App Development Services"],
+  openGraph: {
+    title: "Contact | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Have a project in mind or want to say hello? We'd love to hear from you.",
+    url: "https://hyeprlabs.com/contact",
+  }
 };
 
 export default function Page() {

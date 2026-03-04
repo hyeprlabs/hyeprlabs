@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Changelog",
   description:
     "New features, improvements, and bug fixes for our complete suite of products.",
+  keywords: ["Changelog", "Product Updates", "Release Notes", "New Features", "Hyepr Labs Updates"],
+  openGraph: {
+    title: "Changelog | Hyepr Labs | Think Fast. Build Fast.",
+    description: "New features, improvements, and bug fixes for our complete suite of products.",
+    url: "https://hyeprlabs.com/changelog",
+  }
 };
 
 export default function Page() {
