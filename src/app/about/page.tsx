@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { AboutHero } from "@/components/about/about-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { AboutItems } from "@/components/about/about-items";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <AboutHero />
+        <MarketingHero
+          badge="ABOUT"
+          title="Who are we?"
+          description="Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation."
+        />
         <AboutItems />
         <Article />
         <CallToAction />

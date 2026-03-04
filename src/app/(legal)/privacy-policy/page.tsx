@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { LegalHero } from "@/components/legal/legal-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,8 +23,8 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <LegalHero
-          label="Privacy"
+        <MarketingHero
+          badge="PRIVACY"
           title="Privacy Policy"
           description="Your privacy is important to us. Learn how we collect, use, and protect your data."
         />

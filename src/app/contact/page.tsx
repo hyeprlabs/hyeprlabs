@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { ContactHero } from "@/components/contact/contact-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { ContactSection } from "@/components/contact/contact-section";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Home() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <ContactHero />
+        <MarketingHero
+          badge="CONTACT"
+          title="Get in Touch"
+          description="Have a project in mind or want to say hello? We'd love to hear from you."
+        />
         <ContactSection />
         <CallToAction />
         <Footer />

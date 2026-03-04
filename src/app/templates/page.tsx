@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { TemplatesHero } from "@/components/templates/templates-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { TemplatesList } from "@/components/templates/templates-list";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <TemplatesHero />
+        <MarketingHero
+          badge="TEMPLATES"
+          title="Open Source Blueprints"
+          description="A collection of production-ready Next.js templates to jumpstart your next project."
+        />
         <TemplatesList />
         <Article />
         <CallToAction />

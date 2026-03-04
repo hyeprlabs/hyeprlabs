@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { LegalHero } from "@/components/legal/legal-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,8 +23,8 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <LegalHero
-          label="Terms"
+        <MarketingHero
+          badge="TERMS"
           title="Terms of Service"
           description="Read our terms carefully to understand your rights, responsibilities, and our operational guidelines."
         />

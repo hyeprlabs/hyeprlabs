@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { ProjectsHero } from "@/components/projects/projects-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { ProjectsList } from "@/components/projects/projects-list";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <ProjectsHero />
+        <MarketingHero
+          badge="PROJECTS"
+          title="Our Featured Work"
+          description="A selection of projects that showcase our expertise in design, development, and strategic execution."
+        />
         <ProjectsList />
         <CallToAction />
         <Footer />

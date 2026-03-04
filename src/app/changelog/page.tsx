@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { ChangelogHero } from "@/components/changelog/changelog-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { ChangelogSection } from "@/components/changelog/changelog-section";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <ChangelogHero />
+        <MarketingHero
+          badge="CHANGELOG"
+          title="Product Updates"
+          description="New features, improvements, and bug fixes for our complete suite of products."
+        />
         <ChangelogSection />
         <CallToAction />
         <Footer />

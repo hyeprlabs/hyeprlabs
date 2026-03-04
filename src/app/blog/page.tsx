@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
-import { BlogHero } from "@/components/blog/blog-hero";
+import { MarketingHero } from "@/components/marketing-hero";
 import { BlogSection } from "@/components/blog/blog-section";
 import { CallToAction } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -23,7 +23,11 @@ export default function Page() {
           "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
         )}
       >
-        <BlogHero />
+        <MarketingHero
+          badge="BLOG"
+          title="Insights & News"
+          description="Thoughts on design, development, and building digital products for the modern web."
+        />
         <BlogSection />
         <CallToAction />
         <Footer />
