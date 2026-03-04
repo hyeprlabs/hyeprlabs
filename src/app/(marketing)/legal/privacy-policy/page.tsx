@@ -63,7 +63,7 @@ function Article() {
             <br />
             The data processing on this website is carried out by the website
             operator. Their contact details can be found in the section
-            "Information about the responsible party" in this privacy policy.
+            &quot;Information about the responsible party&quot; in this privacy policy.
           </p>
           <p className="leading-relaxed mb-6">
             <strong>How do we collect your data?</strong>
@@ -103,26 +103,26 @@ function Article() {
             The responsible party for data processing on this website is:
             <br />
             <br />
-            <strong>Oskar Seeberger</strong>
+            <strong>[Company Name]</strong>
             <br />
-            Musterstraße 123
+            [Company Address]
             <br />
-            10115 Berlin
+            [City, Zip]
             <br />
             Phone:{" "}
             <a
-              href="tel:+493012345678"
+              href="tel:+1234567890"
               className="hover:underline text-foreground transition-colors"
             >
-              +49 (0) 30 12345678
+              [Phone Number]
             </a>
             <br />
             Email:{" "}
             <a
-              href="mailto:o.seeberger@hyeprlabs.com"
+              href="mailto:contact@hyeprlabs.com"
               className="hover:underline text-foreground transition-colors"
             >
-              o.seeberger@hyeprlabs.com
+              contact@hyeprlabs.com
             </a>
           </address>
 
@@ -156,7 +156,7 @@ function Article() {
             Cookies
           </h3>
           <p className="leading-relaxed mb-6">
-            Our websites and pages use what the industry refers to as "cookies."
+            Our websites and pages use what the industry refers to as &quot;cookies.&quot;
             Cookies are small text files that do not cause any damage to your
             device. They are either stored temporarily for the duration of a
             session (session cookies) or permanently (permanent cookies) on your
@@ -196,9 +196,9 @@ function Article() {
             This site uses SSL or TLS encryption for security reasons and for
             the protection of the transmission of confidential content, such as
             the inquiries you send to us as the site operator. You can recognize
-            an encrypted connection in your browser's address line when it
-            changes from "http://" to "https://" and the lock icon is displayed
-            in your browser's address bar. If SSL or TLS encryption is
+            an encrypted connection in your browser&apos;s address line when it
+            changes from &quot;http://&quot; to &quot;https://&quot; and the lock icon is displayed
+            in your browser&apos;s address bar. If SSL or TLS encryption is
             activated, the data you transfer to us cannot be read by third
             parties.
           </p>

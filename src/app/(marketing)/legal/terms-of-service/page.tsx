@@ -43,9 +43,9 @@ function Article() {
           </h2>
           <p className="leading-relaxed mb-6">
             These General Terms and Conditions (GTC) apply to all contracts
-            concluded between Oskar Seeberger (hereinafter "Provider" or "we")
-            and our clients (hereinafter "Client" or "you") via our services and
-            products offered at www.hyeprlabs.com. Deviating conditions of the
+            concluded between Hyepr Labs (hereinafter &quot;Provider&quot; or &quot;we&quot;)
+            and our clients (hereinafter &quot;Client&quot; or &quot;you&quot;) via our services and
+            products offered at hyeprlabs.com. Deviating conditions of the
             Client shall not be recognized unless the Provider expressly agrees
             to their validity in writing.
           </p>
