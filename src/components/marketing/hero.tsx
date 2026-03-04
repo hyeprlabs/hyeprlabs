@@ -2,8 +2,9 @@ import { cn } from "@/lib/utils";
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { HeroImage } from "@/components/marketing/hero-image";
 
 export function HeroSection() {
   return (
@@ -60,16 +61,19 @@ export function HeroSection() {
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
-          We scale online companies faster through smart design, <br /> development and
-          strategic execution.
+          We scale online companies faster through smart design, <br />{" "}
+          development and strategic execution.
         </p>
 
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
-          <Button variant="outline" className="rounded-full bg-linear-to-br from-muted to-background">
+          <Button
+            variant="outline"
+            className="rounded-full bg-linear-to-br from-muted to-background"
+          >
             Contact
           </Button>
           <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
-            Projects 
+            Projects
             <ArrowRight />
           </Button>
         </div>
@@ -81,22 +85,7 @@ export function HeroSection() {
         <DecorIcon className="size-4" position="bottom-right" />
 
         <FullWidthDivider className="-top-px" />
-        <div className="overflow-hidden *:pointer-events-none *:aspect-video *:select-none">
-          <img
-            alt="light app screen"
-            className="dark:hidden"
-            height="auto"
-            src="https://storage.efferd.com/screen/dashboard-light.webp"
-            width="auto"
-          />
-          <img
-            alt="dark app screen"
-            className="hidden dark:block"
-            height="auto"
-            src="https://storage.efferd.com/screen/dashboard-dark.webp"
-            width="auto"
-          />
-        </div>
+        <HeroImage />
         <FullWidthDivider className="-bottom-px" />
       </div>
     </section>
