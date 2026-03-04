@@ -8,7 +8,7 @@ import {
   LinkedinIcon,
   YoutubeIcon,
 } from "lucide-react";
-import { HyeprLabsWordmark } from "@/components/brand/logos";
+import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
 
 export function Footer() {
   return (

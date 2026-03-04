@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
-import { TeamList } from "@/components/team/team-list";
+import { TeamList } from "@/components/marketing/team/team-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
-import { LegalDisclaimer } from "@/components/legal/legal-disclaimer";
+import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 
