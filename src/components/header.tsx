@@ -10,10 +10,6 @@ import { HyeprLabsWordmark } from "@/components/brand/logos";
 
 export const navLinks = [
   {
-    label: "Projects",
-    href: "/projects",
-  },
-  {
     label: "About",
     href: "/about",
   },
