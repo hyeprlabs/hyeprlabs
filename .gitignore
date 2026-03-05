@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# fumadocs-mdx (auto-generated, do not edit)
+/.source
+package-lock.json
