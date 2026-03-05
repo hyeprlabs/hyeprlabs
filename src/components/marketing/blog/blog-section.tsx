@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { getTranslations } from "next-intl/server";
+import { blogCollection, getSlug } from "@/lib/source";
+import { Link } from "@/i18n/navigation";
 
-type BlogType = {
+type BlogPost = {
   title: string;
   date: string;
   description: string;
@@ -11,14 +13,17 @@ type BlogType = {
   href: string;
 };
 
-const blogHrefs = ["#", "#", "#", "#", "#", "#", "#", "#"];
-
 export async function BlogSection() {
   const t = await getTranslations("BlogSection");
-  const rawPosts = t.raw("posts") as Array<Omit<BlogType, "href">>;
-  const blogs: BlogType[] = rawPosts.map((post, i) => ({
-    ...post,
-    href: blogHrefs[i] ?? "#",
+  const posts = await blogCollection;
+
+  const blogs: BlogPost[] = posts.map((post) => ({
+    title: post.title,
+    date: post.date,
+    description: post.description,
+    category: post.category,
+    author: post.author,
+    href: `/blog/${getSlug(post.info.path)}`,
   }));
 
   return (
@@ -50,11 +55,13 @@ function BlogCard({
   category,
   author,
   by,
+  href,
   className,
   ...props
-}: React.ComponentProps<"a"> & BlogType & { by: string }) {
+}: React.ComponentProps<typeof Link> & BlogPost & { by: string }) {
   return (
-    <a
+    <Link
+      href={href}
       className={cn(
         "group w-full bg-background px-6 py-12 text-muted-foreground hover:cursor-pointer hover:text-foreground active:bg-accent md:px-8 active:dark:bg-accent/50",
         className,
@@ -82,6 +89,6 @@ function BlogCard({
           {author}
         </span>
       </div>
-    </a>
+    </Link>
   );
 }

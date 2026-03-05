@@ -1,0 +1,53 @@
+---
+title: Why Web Performance Matters For Your Business Growth
+description: We discuss techniques for improving web performance, from lazy loading to code splitting, ensuring your application runs smoothly.
+date: Jan 18 2026
+author: Chris Martin
+category: Engineering
+---
+
+A one-second delay in page load time can cost you 7% of conversions. That's not a hypothetical — it's a finding from multiple large-scale studies. Yet most businesses treat performance as a nice-to-have rather than a core product metric.
+
+## The Performance-Revenue Connection
+
+Performance isn't just a technical concern. Every 100ms of latency has measurable impact on user behavior:
+
+- **Bounce rate increases** — users leave before the page loads.
+- **Conversion rate decreases** — slow checkout flows abandon.
+- **SEO ranking drops** — Google uses Core Web Vitals as a ranking signal.
+
+The math is straightforward: faster sites make more money.
+
+## Core Web Vitals
+
+Google's Core Web Vitals give us a useful framework:
+
+| Metric | What It Measures | Good |
+|--------|-----------------|------|
+| LCP | Loading performance | < 2.5s |
+| FID/INP | Interactivity | < 100ms |
+| CLS | Visual stability | < 0.1 |
+
+## High-Impact Optimizations
+
+### 1. Eliminate Render-Blocking Resources
+
+Scripts and stylesheets that block rendering are your biggest enemy. Defer non-critical JavaScript, inline critical CSS, and load fonts asynchronously.
+
+### 2. Optimize Images
+
+Images account for the majority of page weight on most sites. Use modern formats (WebP, AVIF), properly size images for their display dimensions, and lazy-load below-the-fold images.
+
+### 3. Code Splitting
+
+Ship only the JavaScript your users need. Next.js handles this automatically for routes, but you should also split large components with `React.lazy()`.
+
+### 4. Cache Aggressively
+
+A CDN for static assets, proper cache headers, and a service worker for repeat visitors can dramatically reduce load times for returning users.
+
+## Start With Measurement
+
+You can't optimize what you don't measure. Set up real user monitoring (RUM) to understand how your actual users experience your site. Tools like Vercel Analytics, SpeedCurve, or even Google Search Console's Core Web Vitals report give you the data you need.
+
+Performance work is never done — but every improvement compounds. Start today.
