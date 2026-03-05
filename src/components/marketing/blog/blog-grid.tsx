@@ -63,9 +63,9 @@ export function BlogGrid({ posts, categories }: Props) {
             setCategory(v === "all" ? null : v);
           }}
           orientation={isSmall ? "vertical" : "horizontal"}
-          className="w-full sm:w-auto"
+          className="w-auto"
         >
-          <TabsList className="w-full sm:w-auto">
+          <TabsList>
             <TabsTrigger value="all">
               {t("all")}
             </TabsTrigger>
