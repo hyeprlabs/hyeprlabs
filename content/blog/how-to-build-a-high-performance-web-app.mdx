@@ -1,0 +1,88 @@
+---
+title: "How to Build a High-Performance Web App: A Step-by-Step Guide"
+description: "Learn the engineering fundamentals behind high-performance web applications—architecture decisions, rendering strategies, caching, and optimization techniques used by top teams."
+date: "2025-01-20"
+author: "Hyepr Labs"
+category: "Engineering"
+---
+
+Performance is not a feature you add at the end. It's a discipline you build from the start. This guide walks through the key decisions that separate fast web applications from slow ones.
+
+## Step 1: Choose the Right Rendering Strategy
+
+Every page in your application has different performance requirements. Map your pages to rendering strategies early:
+
+| Page Type | Recommended Strategy | Why |
+|---|---|---|
+| Marketing pages | Static (SSG) | Fast, CDN-cacheable, SEO-friendly |
+| Blog posts | ISR | Static with periodic refresh |
+| User dashboard | SSR or Client | Fresh, personalized data |
+| Realtime features | Client | WebSockets or polling |
+
+Mixing strategies in a single Next.js app is natural—and intentional.
+
+## Step 2: Optimize Your Images
+
+Images are typically the largest assets on any page. Unoptimized images are the single most common cause of poor Lighthouse scores.
+
+- Always use `next/image` with explicit `width` and `height`
+- Set `priority` on above-the-fold images to prevent LCP delays
+- Use modern formats (WebP, AVIF) for all non-SVG images
+- Implement lazy loading for below-the-fold images
+
+## Step 3: Minimize JavaScript Payload
+
+JavaScript is expensive—browsers must download, parse, and execute it before rendering. Reduce the cost:
+
+- Use **dynamic imports** (`next/dynamic`) to defer non-critical components
+- Audit your bundle with `@next/bundle-analyzer`
+- Prefer server-rendered components over heavy client-side libraries
+- Replace large utility libraries with smaller alternatives (e.g., `date-fns` over `moment`)
+
+## Step 4: Implement Aggressive Caching
+
+Cache everything that can be cached:
+
+```ts
+// ISR: revalidate every 60 seconds
+export const revalidate = 60;
+
+// Cache-Control on API responses
+res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
+```
+
+For data fetching, use React's `cache()` function to deduplicate server-side requests within a single render pass.
+
+## Step 5: Optimize Fonts and Critical CSS
+
+Font loading is a silent performance killer. With `next/font`:
+
+```ts
+import { Geist } from 'next/font/google';
+
+const geistSans = Geist({
+  subsets: ['latin'],
+  display: 'swap', // prevent invisible text during font load
+});
+```
+
+Critical CSS is automatically inlined by Next.js when using Tailwind CSS—no additional configuration needed.
+
+## Step 6: Measure, Then Optimize
+
+Don't guess. Measure:
+
+- **Lighthouse** (built into Chrome DevTools) for a complete performance audit
+- **WebPageTest** for real-world testing from global locations
+- **Vercel Speed Insights** for continuous monitoring in production
+- **Core Web Vitals** in Google Search Console for field data from real users
+
+Set performance budgets and enforce them in CI. A page that regresses from 90 to 70 is a bug.
+
+## The Compound Effect
+
+Each optimization compounds. A fast image load reduces LCP. A smaller JS bundle reduces TBT. Better caching reduces TTFB. Together, they create an experience that feels instant—and ranks higher.
+
+---
+
+At Hyepr Labs, we build every application to these standards by default. If you'd like an expert team to handle your next project, [reach out to us](/contact).

@@ -1,0 +1,137 @@
+---
+title: "Core Web Vitals in 2025: A Developer's Action Plan for Better Rankings"
+description: "A practical, developer-focused guide to improving your Core Web Vitals scores—covering LCP, INP, and CLS with specific techniques, code examples, and measurement strategies."
+date: "2025-06-02"
+author: "Hyepr Labs"
+category: "Engineering"
+---
+
+Google's Core Web Vitals are real signals that affect real rankings. More importantly, they measure experiences that affect real users. If your scores are poor, your users are suffering—and your organic traffic is paying the price.
+
+Here's a developer-focused action plan to fix them.
+
+## The Three Metrics That Matter
+
+### LCP — Largest Contentful Paint
+
+LCP measures how long it takes for the **largest visible element** to render. This is usually a hero image, a large heading, or a banner.
+
+**Target: under 2.5 seconds**
+
+The most common LCP killers:
+
+1. **Render-blocking resources** — CSS or scripts in `<head>` that delay rendering
+2. **Slow server response** — TTFB above 600ms
+3. **Unoptimized images** — large, uncompressed images without `priority`
+
+**Fix it:**
+
+```tsx
+// Always set priority on your LCP image
+<Image
+  src="/hero.webp"
+  alt="Hero image"
+  width={1200}
+  height={600}
+  priority // ← tells Next.js to preload this image
+/>
+```
+
+For text-based LCP elements, ensure your font is preloaded:
+
+```tsx
+const geistSans = Geist({
+  subsets: ['latin'],
+  display: 'swap', // show text immediately while font loads
+  preload: true,
+});
+```
+
+### INP — Interaction to Next Paint
+
+INP replaced FID in 2024. It measures the **responsiveness of every interaction** on the page—click, tap, keyboard input.
+
+**Target: under 200ms**
+
+Common causes of poor INP:
+
+- Heavy JavaScript execution on the main thread
+- Synchronous third-party scripts (analytics, chat widgets, ad SDKs)
+- Long tasks triggered by user interactions
+
+**Fix it:**
+
+```tsx
+// Break long tasks with scheduler.yield() (where available)
+async function handleClick() {
+  processFirstPart();
+  await scheduler.yield(); // yield to browser between chunks
+  processSecondPart();
+}
+```
+
+For React specifically:
+- Use `useTransition` to mark non-urgent state updates
+- Avoid expensive renders during user interaction
+- Lazy-load third-party scripts with `next/script` using `strategy="lazyOnload"`
+
+### CLS — Cumulative Layout Shift
+
+CLS measures unexpected visual shifts—content jumping around as the page loads.
+
+**Target: under 0.1**
+
+The most common causes:
+
+1. **Images without dimensions** — always specify `width` and `height`
+2. **Late-loading ads or embeds** — reserve space before they load
+3. **Font swap causing text reflow** — use `next/font` to prevent FOUT
+4. **Dynamically injected content** — banners and cookie notices that push content down
+
+**Fix it:**
+
+```tsx
+// Always provide aspect ratio for media
+<div style={{ aspectRatio: '16/9', position: 'relative' }}>
+  <Image src="/video-thumbnail.jpg" fill alt="..." />
+</div>
+```
+
+## Measuring Your Real-World Performance
+
+Lab data (Lighthouse) tells you what *could* happen. Field data tells you what *does* happen.
+
+1. **Google Search Console → Core Web Vitals report**: see your actual URLs grouped by status
+2. **CrUX Dashboard**: historical field data from Chrome users
+3. **Vercel Speed Insights**: continuous monitoring with per-page breakdown
+4. **web-vitals JS library**: collect real user data in your analytics
+
+```ts
+import { onLCP, onINP, onCLS } from 'web-vitals';
+
+onLCP(metric => analytics.track('LCP', { value: metric.value }));
+onINP(metric => analytics.track('INP', { value: metric.value }));
+onCLS(metric => analytics.track('CLS', { value: metric.value }));
+```
+
+## A Prioritized Checklist
+
+Work through these in order—most impactful first:
+
+- [ ] Add `priority` to all above-the-fold images
+- [ ] Switch to `next/font` for all typefaces
+- [ ] Set explicit `width` and `height` on all `<img>` and `<Image>` elements
+- [ ] Defer third-party scripts with `strategy="lazyOnload"`
+- [ ] Audit your TTFB with WebPageTest and optimize server response if needed
+- [ ] Run `@next/bundle-analyzer` and eliminate large dependencies
+- [ ] Check for layout shifts with the CLS debugger in Chrome DevTools
+
+## The Business Case
+
+A 0.1s improvement in load time improves conversion rates by approximately 8% according to Google's research. For an e-commerce site generating $100k/month, that's an $8,000/month improvement—from a single optimization.
+
+Core Web Vitals are not a DevOps concern. They're a business concern.
+
+---
+
+If you need a performance audit or want your application rebuilt to these standards from the ground up, [Hyepr Labs can help](/contact).

@@ -1,0 +1,121 @@
+---
+title: "Design Systems Explained: How to Build One That Scales with Your Product"
+description: "A practical guide to building a design system that grows with your product—covering component architecture, tokens, documentation, and the process for keeping it consistent across teams."
+date: "2025-04-28"
+author: "Hyepr Labs"
+category: "Design"
+---
+
+A design system is the single source of truth for how your product looks and behaves. Without one, every new feature spawns new button styles, new spacing decisions, and new shades of blue that don't quite match. With one, your team ships faster and your product feels coherent.
+
+Here's how to build a design system that actually scales.
+
+## What a Design System Is (and Isn't)
+
+A design system is not just a component library. It's a combination of:
+
+- **Design tokens**: the visual constants (colors, spacing, typography, shadows, radii)
+- **Component library**: reusable UI components built on those tokens
+- **Documentation**: usage guidelines, do's and don'ts, accessibility notes
+- **Process**: how teams propose, review, and merge changes
+
+Miss any of these and you have a component library that slowly diverges from the real product.
+
+## Start with Design Tokens
+
+Tokens are the foundation. Define them before writing a single component.
+
+### Color Tokens
+
+Don't name colors by value—name them by role:
+
+```css
+:root {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0 0 0);
+  --color-primary: oklch(0.205 0 0);
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.97 0 0);
+  --color-muted-foreground: oklch(0.556 0 0);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-border: oklch(0.922 0 0);
+}
+```
+
+Semantic names (`--color-primary`) are stable even when the brand palette changes. Literal names (`--color-blue-600`) are not.
+
+### Spacing Tokens
+
+Constrain your spacing to a scale:
+
+```css
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+```
+
+With Tailwind CSS v4, your CSS variables become Tailwind utilities automatically—no extra configuration needed.
+
+## Build Components in the Right Order
+
+Start with the most primitive and work upward:
+
+1. **Primitives**: Button, Input, Label, Badge, Avatar
+2. **Compositions**: Form fields, Card, Modal, Dropdown
+3. **Patterns**: Empty states, Error boundaries, Skeletons, Data tables
+4. **Page templates**: Layout shells, Navigation structures
+
+Each level builds on the previous. Resist the urge to build complex patterns before primitives are stable.
+
+## Component API Design
+
+Every component decision is a commitment. Think carefully about:
+
+- **Props vs. composition**: prefer `<Button variant="destructive">` over `<DestructiveButton>`
+- **Size variants**: define a consistent scale (xs, sm, default, lg)
+- **State management**: define all interactive states (hover, focus, active, disabled, loading, error)
+- **Accessibility**: keyboard navigation, ARIA attributes, and focus management should be built in, not bolted on
+
+Using Radix UI primitives under the hood (via Shadcn UI) gives you accessibility and keyboard behavior for free.
+
+## Documentation That Gets Used
+
+Documentation is only valuable if people read it. Make it:
+
+- **Discoverable**: live next to the code (Storybook, or a `/design` route in your app)
+- **Interactive**: show the component, not just a screenshot
+- **Opinionated**: tell people *when* to use it, not just *how*
+- **Maintained**: broken docs are worse than no docs
+
+A simple rule: if you add a component, you write the docs. No exceptions.
+
+## Governance: How Changes Get Made
+
+Design systems fail when they have no process for change. Define upfront:
+
+- Who can propose new components? (Everyone, via a proposal template)
+- Who reviews and merges? (A designated design system team or rotation)
+- What's the criteria for inclusion? (Used in 3+ places, or solving a clearly recurring need)
+- How do breaking changes get communicated? (Changelog, migration guides)
+
+A design system without governance becomes a graveyard of inconsistent components.
+
+## The Living System
+
+A great design system is never finished. Schedule a regular cadence—quarterly, monthly—to:
+
+- Review component usage and remove what's unused
+- Audit accessibility and fix regressions
+- Update documentation to reflect how components are actually used
+- Align the system with product direction
+
+---
+
+Design systems are an investment that pays compound returns. Every hour you spend making components reusable saves 10 hours of future inconsistency. If you need help building or scaling your design system, [our team is here](/contact).

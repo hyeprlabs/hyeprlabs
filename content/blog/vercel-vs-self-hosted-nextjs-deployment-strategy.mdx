@@ -1,0 +1,99 @@
+---
+title: "Vercel vs. Self-Hosted: How to Choose the Right Deployment Strategy for Your Next.js App"
+description: "Compare Vercel, AWS, Fly.io, and self-hosted deployments for Next.js—covering cost, performance, control, and operational overhead at different scales."
+date: "2025-05-12"
+author: "Hyepr Labs"
+category: "Engineering"
+---
+
+Deployment is a strategic decision that affects your cost structure, your operational burden, and your team's velocity. There's no universal right answer—but there are clear patterns for when each option makes sense.
+
+## Option 1: Vercel (Managed Platform)
+
+Vercel is the company behind Next.js, and it's designed specifically for the Next.js deployment model. Every Next.js feature—Server Actions, ISR, Edge Middleware, Image Optimization—works out of the box with zero configuration.
+
+**Best for:**
+- Teams that want to ship, not operate infrastructure
+- Projects where preview deployments per pull request provide clear value
+- Applications with global users who benefit from edge caching
+
+**Costs to know:**
+- The Pro plan starts at $20/month per team member
+- Serverless function execution and bandwidth are billed on usage
+- At high scale, costs can become significant—benchmark before committing
+
+**When it doesn't fit:**
+- Strict data residency requirements that Vercel's region options don't satisfy
+- Very high traffic applications where serverless execution costs exceed a dedicated server
+
+## Option 2: AWS (Maximum Control)
+
+AWS gives you the most control and the most operational complexity. The canonical Next.js setup on AWS uses:
+
+- **AWS Lambda + API Gateway** for serverless functions (via `@sls-next/serverless-component` or OpenNext)
+- **CloudFront** as the CDN
+- **S3** for static asset storage
+- **ECS/Fargate** for a containerized server-rendered deployment
+
+**Best for:**
+- Organizations with existing AWS infrastructure
+- Teams with dedicated DevOps capacity
+- Applications with specific compliance, VPC, or data residency requirements
+
+**What to watch out for:**
+- Cold starts on Lambda can hurt TTFB for low-traffic routes
+- Maintaining the deployment pipeline adds ongoing overhead
+- The App Router's full feature set requires OpenNext or Coolify for proper support
+
+## Option 3: Fly.io or Railway (Managed Containers)
+
+These platforms sit between Vercel and AWS—you deploy a Docker container, and the platform handles global distribution, scaling, and networking.
+
+```dockerfile
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY . .
+RUN npm install && npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+COPY --from=builder /app/.next/standalone ./
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
+
+**Best for:**
+- Full-stack applications that need persistent connections (WebSockets)
+- Teams comfortable with Docker but not with AWS complexity
+- Cost-conscious projects at moderate scale
+
+## Option 4: Self-Hosted VPS (Lowest Cost, Highest Overhead)
+
+A single VPS (DigitalOcean Droplet, Hetzner Cloud, Linode) running your Next.js server as a standalone Node.js process behind Nginx. Simple, predictable costs, full control.
+
+**Best for:**
+- Personal projects or early-stage startups with tight budgets
+- Applications with predictable, steady traffic
+- Teams that prefer operational simplicity over elastic scale
+
+**What you give up:**
+- Automatic scaling
+- Preview deployments (without additional tooling)
+- Global edge distribution (unless you add a CDN)
+
+## Decision Framework
+
+| Factor | Vercel | AWS | Fly.io/Railway | VPS |
+|---|---|---|---|---|
+| Setup time | Minutes | Days | Hours | Hours |
+| Operational overhead | Minimal | High | Low | Medium |
+| Cost at low scale | Low | Low | Low | Lowest |
+| Cost at high scale | High | Medium | Medium | Low |
+| Next.js feature support | Full | Complex | Full | Full |
+| Preview environments | Built-in | Manual | Manual | Manual |
+
+For most Hyepr Labs projects, we start with **Vercel** and migrate to a container-based setup if costs become a concern at scale. The productivity gain from Vercel's DX is hard to replace early.
+
+---
+
+Deployment strategy matters as much as architecture. If you want help choosing the right deployment setup for your application, [our engineering team is happy to advise](/contact).

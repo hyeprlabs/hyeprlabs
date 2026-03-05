@@ -1,0 +1,87 @@
+---
+title: "Tailwind CSS vs. CSS Modules: Which Should You Choose in 2025?"
+description: "A side-by-side comparison of Tailwind CSS and CSS Modules for modern React applications—covering developer experience, scalability, performance, and team collaboration."
+date: "2025-03-03"
+author: "Hyepr Labs"
+category: "Engineering"
+---
+
+The styling debate continues. And for good reason—how you write CSS determines how fast your team ships, how maintainable your codebase is, and how your design system evolves. Here's a clear-eyed comparison.
+
+## The Core Philosophy
+
+**Tailwind CSS** is a utility-first framework. You compose styles by applying low-level utility classes directly in your markup:
+
+```tsx
+<button className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+  Submit
+</button>
+```
+
+**CSS Modules** generate locally-scoped class names from a `.module.css` file:
+
+```tsx
+import styles from './Button.module.css';
+
+<button className={styles.button}>Submit</button>
+```
+
+```css
+/* Button.module.css */
+.button {
+  background: #2563eb;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: white;
+}
+.button:hover {
+  background: #1d4ed8;
+}
+```
+
+Both work. The question is which scales better for *your team*.
+
+## Developer Experience
+
+| | Tailwind CSS | CSS Modules |
+|---|---|---|
+| Learning curve | Medium (large class vocabulary) | Low (standard CSS) |
+| Context switching | Minimal (styles are colocated) | Some (switch between files) |
+| IntelliSense support | Excellent (Tailwind plugin) | Good (native CSS) |
+| Debugging | Classes visible in DevTools | Class names are hashed |
+
+Tailwind wins on colocation. CSS Modules wins on readability when class names are long.
+
+## Scalability and Maintainability
+
+CSS Modules scale beautifully for large component libraries where the visual language is complex and custom. The explicit naming makes it clear what each style does.
+
+Tailwind scales beautifully when you have a **design system** (which Tailwind v4 enforces through CSS variables). The constraint of working with predefined tokens prevents the design entropy that plagues hand-written CSS.
+
+The real scalability killer with plain CSS is **dead code**. Unused CSS Modules accumulate over time. Tailwind's just-in-time compiler only outputs classes that are actually used—your production bundle stays lean automatically.
+
+## Performance
+
+Both approaches can produce excellent performance. The key difference:
+
+- **Tailwind CSS**: generates a single, deduplicated utility stylesheet. The same `bg-blue-600` class is never output twice, regardless of how many components use it.
+- **CSS Modules**: each component can independently add to the stylesheet, including duplicate declarations.
+
+In practice, Tailwind consistently produces smaller CSS bundles in large applications.
+
+## Team Collaboration
+
+Tailwind reduces styling conflicts by design. Since classes are applied directly in markup, two developers can't accidentally write conflicting styles for the same element. CSS Modules has the same benefit through scope—but requires discipline to maintain.
+
+For **design-to-code workflows**, Tailwind has a significant advantage. Figma plugins like [Builder.io](https://builder.io) and [Locofy](https://locofy.ai) export directly to Tailwind classes, cutting the translation cost between design and implementation.
+
+## Our Recommendation
+
+We use **Tailwind CSS** on every Hyepr Labs project. With a well-configured `tailwind.config` (or CSS variables in v4), it becomes a living implementation of your design system—not just a collection of utility classes.
+
+If you're maintaining a large legacy codebase with established CSS Modules conventions, migrating everything to Tailwind is probably not worth the disruption. But for new projects? Tailwind is the clear choice.
+
+---
+
+The best styling solution is the one your team uses consistently. If you want guidance on setting up a scalable design system for your project, [we'd love to help](/contact).

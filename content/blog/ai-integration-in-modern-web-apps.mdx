@@ -1,0 +1,102 @@
+---
+title: "AI Integration in Modern Web Apps: What Your Product Needs to Know"
+description: "A practical guide to integrating AI into your web application—from choosing the right LLM provider to building streaming UI and managing costs at scale."
+date: "2025-02-03"
+author: "Hyepr Labs"
+category: "AI"
+---
+
+AI has moved from buzzword to infrastructure. In 2025, the question isn't *whether* your product should use AI—it's *how* to integrate it without sacrificing performance, reliability, or your budget.
+
+## Choosing the Right LLM Provider
+
+Different providers have different strengths. Here's a practical breakdown:
+
+| Provider | Best For | Notes |
+|---|---|---|
+| OpenAI GPT-4o | Complex reasoning, multimodal | High quality, higher cost |
+| Anthropic Claude | Long context, document analysis | Excellent instruction-following |
+| Google Gemini | Search grounding, fast inference | Strong Google ecosystem integration |
+| Meta Llama (self-hosted) | Cost-sensitive, private data | Infrastructure overhead |
+
+For most production applications, start with OpenAI or Anthropic and optimize later. Premature cost optimization here usually backfires.
+
+## Streaming Responses with the Vercel AI SDK
+
+Users hate waiting for a full AI response to appear. Streaming makes the interaction feel instant:
+
+```tsx
+import { useChat } from 'ai/react';
+
+export function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+
+  return (
+    <div>
+      {messages.map(m => (
+        <div key={m.id}>
+          <strong>{m.role}:</strong> {m.content}
+        </div>
+      ))}
+      <form onSubmit={handleSubmit}>
+        <input value={input} onChange={handleInputChange} />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+}
+```
+
+The Vercel AI SDK (`ai`) abstracts streaming across providers, so switching from OpenAI to Anthropic is a one-line change.
+
+## Retrieval-Augmented Generation (RAG)
+
+For applications that need to answer questions about *your* data (documentation, customer records, product catalog), RAG is the standard approach:
+
+1. **Embed** your documents into a vector database (Pinecone, pgvector, Qdrant)
+2. **Retrieve** relevant chunks based on the user's query
+3. **Generate** a response using the retrieved context as the prompt
+
+This keeps AI responses grounded in facts rather than hallucinations.
+
+## Rate Limiting and Cost Control
+
+AI API calls are expensive. Without guardrails, a single viral moment can generate a four-figure bill:
+
+- Implement **per-user rate limits** with Redis or Upstash
+- Cache deterministic responses (e.g., document summaries) aggressively
+- Set **hard spending limits** in your provider dashboard
+- Use **prompt compression** to reduce token usage on long conversations
+
+## Structuring AI Responses
+
+For AI outputs that need to drive UI logic, use structured JSON outputs instead of free text:
+
+```ts
+import { generateObject } from 'ai';
+import { z } from 'zod';
+
+const { object } = await generateObject({
+  model: openai('gpt-4o'),
+  schema: z.object({
+    sentiment: z.enum(['positive', 'negative', 'neutral']),
+    summary: z.string(),
+    actionItems: z.array(z.string()),
+  }),
+  prompt: 'Analyze this customer feedback: ...',
+});
+```
+
+Structured outputs eliminate the fragile parsing logic that breaks in production.
+
+## Evaluating Your AI Features
+
+AI features can degrade silently. Build evaluations:
+
+- **LLM-as-judge**: use a second AI call to score response quality
+- **Human feedback loops**: thumbs up/down buttons feed back into your dataset
+- **Regression tests**: test against a golden dataset on every deployment
+
+---
+
+AI integration is one of the highest-leverage capabilities you can add to a digital product today. If you're ready to build AI features that actually work in production, [talk to our team](/contact).

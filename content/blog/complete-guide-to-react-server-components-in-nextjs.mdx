@@ -1,0 +1,134 @@
+---
+title: "The Complete Guide to React Server Components in Next.js"
+description: "Master React Server Components in the Next.js App Router—understand when to use them, how they differ from Client Components, and the patterns that keep your application fast."
+date: "2025-04-07"
+author: "Hyepr Labs"
+category: "Engineering"
+---
+
+React Server Components (RSC) are the most significant shift in React architecture since hooks. They fundamentally change *where* components render and *how* data reaches the UI. If you're building with the Next.js App Router, understanding RSC is not optional.
+
+## What Are React Server Components?
+
+Server Components are React components that render **exclusively on the server**. They:
+
+- Have access to the filesystem, databases, and secrets directly
+- Never ship their JavaScript to the client (zero bundle impact)
+- Cannot use browser APIs, event handlers, or React hooks like `useState`
+
+This is in contrast to **Client Components**, which are the React components you've always known—they render in the browser and can use the full React API.
+
+In the App Router, **all components are Server Components by default**. You opt into client rendering with the `"use client"` directive.
+
+## The Mental Model: A Server-First Tree
+
+Think of your component tree in two layers:
+
+```
+Page (Server)
+├── Header (Server)
+│   └── Navigation (Client) ← "use client"
+├── ArticleBody (Server)
+│   └── InteractiveWidget (Client) ← "use client"
+└── Footer (Server)
+```
+
+Server Components render on the server and can render Client Components as children. Client Components cannot render Server Components directly (though they can accept them as `children` props).
+
+## Fetching Data in Server Components
+
+Server Components make data fetching straightforward:
+
+```tsx
+// app/blog/[slug]/page.tsx
+// No useState, no useEffect, no loading state needed
+
+export default async function BlogPage({ params }: { params: { slug: string } }) {
+  const post = await getPost(params.slug); // direct DB or API call
+
+  if (!post) notFound();
+
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+    </article>
+  );
+}
+```
+
+The data is fetched *before* the HTML is sent to the browser. No loading spinners, no layout shift from late-arriving data.
+
+## When to Use `"use client"`
+
+A component needs to be a Client Component when it uses:
+
+- `useState`, `useReducer`, `useEffect`, or any lifecycle hook
+- Browser APIs (`window`, `document`, `localStorage`)
+- Event handlers (`onClick`, `onChange`, `onSubmit`)
+- Third-party libraries that depend on browser APIs
+
+Keep Client Components **as far down the tree as possible**. The smaller the client boundary, the less JavaScript ships to the browser.
+
+## Common Patterns
+
+### Pattern 1: Passing Server Data to Client Components
+
+```tsx
+// Parent: Server Component
+async function Page() {
+  const data = await fetchSomething();
+  return <ClientChart data={data} />; // Client Component receives serializable props
+}
+```
+
+Props passed across the server/client boundary must be serializable (strings, numbers, plain objects, arrays—not functions or class instances).
+
+### Pattern 2: Interleaving with Children
+
+```tsx
+// Server Component
+async function Layout({ children }) {
+  const user = await getCurrentUser();
+  return (
+    <div>
+      <ServerSidebar user={user} />
+      {children} {/* Can contain Client Components */}
+    </div>
+  );
+}
+```
+
+### Pattern 3: Streaming with Suspense
+
+```tsx
+import { Suspense } from 'react';
+
+export default function Page() {
+  return (
+    <>
+      <ImportantContent /> {/* renders immediately */}
+      <Suspense fallback={<Skeleton />}>
+        <SlowDataComponent /> {/* streams in when ready */}
+      </Suspense>
+    </>
+  );
+}
+```
+
+Suspense lets you stream parts of the page independently—critical content appears first, while slow data loads in the background.
+
+## Performance Impact
+
+The shift to Server Components has measurable performance benefits:
+
+- **Smaller JavaScript bundles**: server-only code never reaches the client
+- **Faster Time to First Byte**: data is colocated with rendering
+- **No waterfall round-trips**: server has direct database access
+- **Better Core Web Vitals**: less JavaScript means less parsing and execution
+
+A typical migration from the Pages Router to the App Router with RSC reduces client-side JavaScript by **30–50%**.
+
+---
+
+React Server Components represent the direction React is heading. Understanding them now puts you ahead of the curve. If you're migrating to the App Router or starting a new project, [our team can help](/contact).
