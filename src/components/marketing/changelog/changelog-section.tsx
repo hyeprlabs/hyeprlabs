@@ -65,10 +65,10 @@ function ChangelogCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-3">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-3">
             {changelog.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed">
+          <p className="line-clamp-3 font-mono text-muted-foreground text-sm leading-relaxed">
             {changelog.description}
           </p>
         </div>
@@ -77,9 +77,9 @@ function ChangelogCard({
           {changelog.changes.map((change, i) => (
             <li
               key={i}
-              className="flex items-center gap-2 text-sm font-mono text-muted-foreground"
+              className="flex items-start gap-2 text-sm font-mono text-muted-foreground"
             >
-              <Check className="size-4 shrink-0 text-green-500" />
+              <Check className="size-4 shrink-0 mt-0.5 text-green-500" />
               {change}
             </li>
           ))}

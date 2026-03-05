@@ -28,7 +28,7 @@ export async function BlogSection() {
         <h1 className="font-medium text-2xl tracking-wide md:text-4xl">
           {t("heading")}
         </h1>
-        <p className="text-muted-foreground text-sm font-mono">
+        <p className="max-w-xl text-balance text-muted-foreground text-sm font-mono">
           {t("subheading")}
         </p>
       </div>
@@ -64,21 +64,21 @@ function BlogCard({
       <h3 className="mb-3 line-clamp-2 font-medium text-foreground text-lg md:text-xl">
         {title}
       </h3>
-      <div className="mb-3 flex items-center gap-2">
-        <span className="text-muted-foreground text-xs group-hover:text-foreground">
+      <div className="mb-3 flex items-center gap-2 min-w-0">
+        <span className="truncate max-w-[6rem] text-muted-foreground text-xs group-hover:text-foreground">
           {category}
         </span>
-        <div className="inline-flex size-1 rounded-full bg-muted-foreground" />
-        <span className="text-muted-foreground text-xs group-hover:text-foreground">
+        <div className="inline-flex size-1 shrink-0 rounded-full bg-muted-foreground" />
+        <span className="truncate text-muted-foreground text-xs group-hover:text-foreground">
           {date}
         </span>
       </div>
       <p className="mb-8 line-clamp-3 text-muted-foreground text-sm tracking-wide group-hover:text-foreground font-mono">
         {description}
       </p>
-      <div className="flex items-center gap-1.5">
-        {by}
-        <span className="font-medium font-mono text-foreground/80 text-xs group-hover:text-foreground md:text-sm">
+      <div className="flex items-center gap-1.5 min-w-0">
+        <span className="shrink-0">{by}</span>
+        <span className="truncate font-medium font-mono text-foreground/80 text-xs group-hover:text-foreground md:text-sm">
           {author}
         </span>
       </div>

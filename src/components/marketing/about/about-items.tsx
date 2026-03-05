@@ -65,7 +65,7 @@ export function ItemCard({
 
       <div className="relative z-10 space-y-2">
         <h3 className="font-medium text-foreground text-lg">{item.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="line-clamp-3 text-muted-foreground text-sm leading-relaxed">
           {item.description}
         </p>
       </div>

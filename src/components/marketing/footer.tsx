@@ -78,7 +78,7 @@ export async function Footer() {
             <div className="mt-2 flex flex-col gap-2">
               {resources.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
@@ -92,7 +92,7 @@ export async function Footer() {
             <div className="mt-2 flex flex-col gap-2">
               {company.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
@@ -106,7 +106,7 @@ export async function Footer() {
             <div className="mt-2 flex flex-col gap-2">
               {legal.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >

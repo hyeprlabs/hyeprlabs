@@ -32,19 +32,19 @@ export async function HeroSection() {
         </div>
         <a
           className={cn(
-            "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
+            "group mx-auto flex w-fit max-w-full flex-wrap items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
           href="/blog/think-fast-build-fast"
         >
-          <Badge variant="outline" className="text-xs font-mono">
+          <Badge variant="outline" className="text-xs font-mono shrink-0">
             {t("badgeLabel")}
           </Badge>
 
-          <span className="text-xs">{t("badgeText")}</span>
-          <span className="block h-5 border-l" />
+          <span className="text-xs line-clamp-1">{t("badgeText")}</span>
+          <span className="block h-5 border-l shrink-0" />
 
-          <div className="pr-1">
+          <div className="pr-1 shrink-0">
             <ArrowRight className="size-3 -translate-x-0.5 duration-150 ease-out group-hover:translate-x-0.5" />
           </div>
         </a>
@@ -60,7 +60,7 @@ export async function HeroSection() {
 
         <p
           className={cn(
-            "text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
+            "max-w-lg text-balance text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >

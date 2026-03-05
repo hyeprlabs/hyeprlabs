@@ -89,10 +89,10 @@ export function ProjectCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-2">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-2">
             {project.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="line-clamp-4 font-mono text-muted-foreground text-sm leading-relaxed mb-6">
             {project.description}
           </p>
         </div>

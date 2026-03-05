@@ -100,13 +100,13 @@ export function TeamMemberCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-1">
+          <h3 className="font-medium text-xl md:text-2xl mb-1 line-clamp-2">
             {member.name}
           </h3>
-          <p className="font-mono text-xs text-muted-foreground uppercase mb-4">
+          <p className="font-mono text-xs text-muted-foreground uppercase mb-4 truncate">
             {member.role}
           </p>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed">
+          <p className="font-mono text-muted-foreground text-sm leading-relaxed line-clamp-4">
             {member.bio}
           </p>
         </div>

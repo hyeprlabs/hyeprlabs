@@ -105,10 +105,10 @@ export function TemplateCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-2">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-2">
             {template.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="line-clamp-3 font-mono text-muted-foreground text-sm leading-relaxed mb-6">
             {template.description}
           </p>
         </div>
@@ -117,9 +117,9 @@ export function TemplateCard({
           {template.features.map((feature) => (
             <li
               key={feature}
-              className="text-sm font-mono text-muted-foreground flex items-center gap-2"
+              className="text-sm font-mono text-muted-foreground flex items-start gap-2"
             >
-              <Check className="size-4 text-green-500" />
+              <Check className="size-4 shrink-0 mt-0.5 text-green-500" />
               {feature}
             </li>
           ))}
