@@ -20,7 +20,7 @@ function getInitials(name: string): string {
 export function AuthorInfo({ author, image }: AuthorInfoProps) {
   return (
     <div className="flex items-center gap-2">
-      <Avatar size="sm">
+      <Avatar size="default">
         {image && <AvatarImage src={image} alt={author} />}
         <AvatarFallback>{getInitials(author)}</AvatarFallback>
       </Avatar>

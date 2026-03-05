@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogCollection, getSlug } from "@/lib/source";
 import { formatDate, cn } from "@/lib/utils";
-import { getCategoryAccentColor, getCategoryBadgeClass } from "@/lib/blog";
+import { getCategoryBadgeClass } from "@/lib/blog";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
@@ -73,13 +73,8 @@ export default async function BlogPostPage({ params }: Props) {
         </Button>
       </div>
 
-      <article className="relative mx-auto w-full max-w-5xl overflow-x-hidden">
+      <article className="relative mx-auto w-full max-w-5xl">
         <FullWidthDivider position="top" />
-
-        {/* Category accent strip */}
-        <div
-          className={cn("h-1 w-full", getCategoryAccentColor(post.category))}
-        />
 
         {/* Post header */}
         <header className="space-y-4 px-4 py-8 md:py-12">

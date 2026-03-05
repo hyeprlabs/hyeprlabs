@@ -45,7 +45,7 @@ export function BlogGrid({ posts, categories }: Props) {
             setCategory(v === "all" ? null : v);
           }}
         >
-          <TabsList className="flex h-auto flex-wrap gap-1">
+          <TabsList>
             <TabsTrigger value="all">{t("all")}</TabsTrigger>
             {categories.map((cat) => (
               <TabsTrigger key={cat} value={cat}>
