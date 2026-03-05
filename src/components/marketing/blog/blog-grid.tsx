@@ -62,7 +62,7 @@ export function BlogGrid({ posts, categories }: Props) {
           }}
           className="w-full sm:w-auto"
         >
-          <TabsList className="max-w-xs overflow-x-auto sm:max-w-none">
+          <TabsList className="w-full overflow-x-auto sm:overflow-x-visible">
             <TabsTrigger value="all">
               {t("all")}
             </TabsTrigger>
