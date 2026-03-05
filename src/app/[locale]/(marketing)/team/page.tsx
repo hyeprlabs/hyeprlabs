@@ -4,6 +4,7 @@ import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { TeamList } from "@/components/marketing/team/team-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Team",
@@ -17,15 +18,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("TeamPage");
+
   return (
     <>
       <MarketingHero
-        badge="TEAM"
-        title="Meet Our Team"
-        description="The talented individuals behind our success. Dedicated, creative, and passionate about what we do."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
-      <DataDisclaimer description="These team members are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real people just yet. Check back later for the real team!" />
+      <DataDisclaimer description={t("disclaimer")} />
       <TeamList />
       <CallToAction />
       <Footer />

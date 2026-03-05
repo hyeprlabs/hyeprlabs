@@ -4,6 +4,7 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 const data = {
   name: "Hyepr Labs",
@@ -42,13 +43,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("ImprintPage");
+
   return (
     <>
       <MarketingHero
-        badge="IMPRINT"
-        title="Legal Notice"
-        description="Mandatory legal information and statutory disclosures for our business operations."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <Article />
       <CallToAction />
@@ -57,7 +60,9 @@ export default function Page() {
   );
 }
 
-function Article() {
+async function Article() {
+  const t = await getTranslations("ImprintPage");
+
   return (
     <div className="relative border-b border-border">
       <FullWidthDivider position="top" />
@@ -65,7 +70,7 @@ function Article() {
         <LegalDisclaimer />
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Information pursuant to § 5 TMG
+            {t("tmgSection")}
           </h2>
           <address className="leading-relaxed mb-6 not-italic">
             <strong>{data.name}</strong>
@@ -80,22 +85,22 @@ function Article() {
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Represented by
+            {t("representedBy")}
           </h2>
           <p className="leading-relaxed mb-6">{data.director}</p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Contact
+            {t("contact")}
           </h2>
           <address
             className="leading-relaxed mb-6 not-italic"
             suppressHydrationWarning
           >
-            Phone: {data.contact.phone}
+            {t("contactPhone")} {data.contact.phone}
             <br />
-            Email:{" "}
+            {t("contactEmail")}{" "}
             <a
               href={`mailto:${data.contact.email}`}
               className="hover:underline text-foreground transition-colors"
@@ -103,7 +108,7 @@ function Article() {
               {data.contact.email}
             </a>
             <br />
-            Website:{" "}
+            {t("contactWebsite")}{" "}
             <a
               href={data.contact.websiteUrl}
               className="hover:underline text-foreground transition-colors"
@@ -117,22 +122,21 @@ function Article() {
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Commercial Register
+            {t("commercialRegister")}
           </h2>
           <p className="leading-relaxed mb-6">
-            Registration court: {data.registration.court}
+            {t("registrationCourt")} {data.registration.court}
             <br />
-            Registration number: {data.registration.number}
+            {t("registrationNumber")} {data.registration.number}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            VAT ID
+            {t("vatId")}
           </h2>
           <p className="leading-relaxed mb-6">
-            Value added tax identification number pursuant to § 27 a
-            Umsatzsteuergesetz:
+            {t("vatText")}
             <br />
             {data.vatId}
           </p>
@@ -140,7 +144,7 @@ function Article() {
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Responsible for Content acc. to § 18 para. 2 MStV
+            {t("contentResponsible")}
           </h2>
           <address className="leading-relaxed mb-6 not-italic">
             {data.contentResponsible.name}
@@ -153,11 +157,10 @@ function Article() {
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            EU Dispute Resolution
+            {t("euDispute")}
           </h2>
           <p className="leading-relaxed mb-6">
-            The European Commission provides a platform for online dispute
-            resolution (OS):{" "}
+            {t("euDisputeText1")}{" "}
             <a
               href="https://ec.europa.eu/consumers/odr/"
               className="hover:underline text-foreground transition-colors"
@@ -167,55 +170,34 @@ function Article() {
               https://ec.europa.eu/consumers/odr/
             </a>
             .<br />
-            You can find our email address in the imprint above.
+            {t("euDisputeText2")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Consumer Dispute Resolution
+            {t("consumerDispute")}
           </h2>
           <p className="leading-relaxed mb-6">
-            We are not willing or obliged to participate in dispute resolution
-            proceedings before a consumer arbitration board.
+            {t("consumerDisputeText")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Liability for Contents
+            {t("liabilityContents")}
           </h2>
           <p className="leading-relaxed mb-6">
-            As service providers, we are liable for our own content on these
-            websites according to Section 7, Paragraph 1 of the German Telemedia
-            Act (TMG). However, according to Sections 8 to 10 of the TMG,
-            service providers are not obligated to permanently monitor submitted
-            or stored information or to search for evidences that indicate
-            illegal activities. Legal obligations to removing information or to
-            blocking the use of information remain unchallenged. In this case,
-            liability is only possible at the time of knowledge about a specific
-            violation of law. Illegal contents will be removed immediately at
-            the time we get knowledge of them.
+            {t("liabilityContentsText")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            Copyright
+            {t("copyright")}
           </h2>
           <p className="leading-relaxed mb-6">
-            Contents and compilations published on these websites by the
-            providers are subject to German copyright laws. Reproduction,
-            editing, distribution as well as the use of any kind outside the
-            scope of the copyright law require a written permission of the
-            author or originator. Downloads and copies of these websites are
-            permitted for private use only. The commercial use of our contents
-            without permission of the originator is prohibited. Copyright laws
-            of third parties are respected as long as the contents on these
-            websites do not originate from the provider. Contributions of third
-            parties on this site are indicated as such. However, if you notice
-            any violations of copyright law, please inform us. Such contents
-            will be removed immediately.
+            {t("copyrightText")}
           </p>
         </section>
       </article>

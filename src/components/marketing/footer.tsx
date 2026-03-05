@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
@@ -9,8 +8,35 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-export function Footer() {
+const currentYear = new Date().getFullYear();
+
+export async function Footer() {
+  const t = await getTranslations("Footer");
+
+  const resources = [
+    { title: t("nav.blog"), href: "/blog" },
+    { title: t("nav.support"), href: "/support" },
+    { title: t("nav.contact"), href: "/contact" },
+    { title: t("nav.changelog"), href: "/changelog" },
+    { title: t("nav.team"), href: "/team" },
+  ];
+
+  const company = [
+    { title: t("nav.about"), href: "/about" },
+    { title: t("nav.projects"), href: "/projects" },
+    { title: t("nav.templates"), href: "/templates" },
+    { title: t("nav.brandAssets"), href: "/brand" },
+  ];
+
+  const legal = [
+    { title: t("nav.imprint"), href: "/legal/imprint" },
+    { title: t("nav.privacyPolicy"), href: "/legal/privacy-policy" },
+    { title: t("nav.termsOfService"), href: "/legal/terms-of-service" },
+  ];
+
   return (
     <footer className="relative">
       <div
@@ -26,7 +52,7 @@ export function Footer() {
               <HyeprLabsWordmark className="h-5 w-auto" />
             </Link>
             <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
-              Think Fast. Build Fast.
+              {t("tagline")}
             </p>
             <div className="flex gap-2">
               {links.map((item, index) => (
@@ -48,11 +74,11 @@ export function Footer() {
 			</div>
           </div>
           <div className="col-span-3 w-full md:col-span-1">
-            <span className="text-muted-foreground text-xs">Resources</span>
+            <span className="text-muted-foreground text-xs">{t("resources")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {resources.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
@@ -62,11 +88,11 @@ export function Footer() {
             </div>
           </div>
           <div className="col-span-3 w-full md:col-span-1">
-            <span className="text-muted-foreground text-xs">Company</span>
+            <span className="text-muted-foreground text-xs">{t("company")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {company.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
@@ -76,11 +102,11 @@ export function Footer() {
             </div>
           </div>
           <div className="col-span-3 w-full md:col-span-1">
-            <span className="text-muted-foreground text-xs">Legal</span>
+            <span className="text-muted-foreground text-xs">{t("legal")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {legal.map(({ href, title }) => (
                 <a
-                  className="w-max text-sm hover:underline"
+                  className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
@@ -93,70 +119,13 @@ export function Footer() {
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="flex max-w-4xl flex-col justify-between gap-2 py-4">
           <p className="text-center font-mono text-muted-foreground text-xs">
-            &copy; {new Date().getFullYear()} Hyepr Labs, All rights reserved
+            {t("copyright", { year: currentYear })}
           </p>
         </div>
       </div>
     </footer>
   );
 }
-
-const resources = [
-  {
-    title: "Blog",
-    href: "/blog",
-  },
-  {
-    title: "Support",
-    href: "/support",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    title: "Changelog",
-    href: "/changelog",
-  },
-  {
-    title: "Team",
-    href: "/team",
-  },
-];
-
-const company = [
-  {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-  },
-    {
-    title: "Templates",
-    href: "/templates",
-  },
-  {
-    title: "Brand assets",
-    href: "/brand",
-  },
-];
-
-const legal = [
-  {
-    title: "Imprint",
-    href: "/legal/imprint",
-  },
-  {
-    title: "Privacy Policy",
-    href: "/legal/privacy-policy",
-  },
-  {
-    title: "Terms of Service",
-    href: "/legal/terms-of-service",
-  },
-];
 
 const links = [
   {

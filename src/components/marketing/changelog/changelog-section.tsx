@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 type ChangelogType = {
   version: string;
@@ -12,7 +13,10 @@ type ChangelogType = {
   changes: string[];
 };
 
-export function ChangelogSection() {
+export async function ChangelogSection() {
+  const t = await getTranslations("ChangelogSection");
+  const changelogs = t.raw("entries") as ChangelogType[];
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12 mb-12 md:mb-36">
       <div className="relative grid grid-cols-1 gap-px bg-border">
@@ -61,10 +65,10 @@ function ChangelogCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-3">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-3">
             {changelog.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed">
+          <p className="line-clamp-3 font-mono text-muted-foreground text-sm leading-relaxed">
             {changelog.description}
           </p>
         </div>
@@ -73,9 +77,9 @@ function ChangelogCard({
           {changelog.changes.map((change, i) => (
             <li
               key={i}
-              className="flex items-center gap-2 text-sm font-mono text-muted-foreground"
+              className="flex items-start gap-2 text-sm font-mono text-muted-foreground"
             >
-              <Check className="size-4 shrink-0 text-green-500" />
+              <Check className="size-4 shrink-0 mt-0.5 text-green-500" />
               {change}
             </li>
           ))}
@@ -84,71 +88,3 @@ function ChangelogCard({
     </div>
   );
 }
-
-const changelogs: ChangelogType[] = [
-  {
-    version: "v2.0.0",
-    date: "March 4, 2026",
-    project: "Hyepr Labs",
-    title: "Marketing Layout Architecture & Performance",
-    description:
-      "Major architectural overhaul introducing a centralized marketing layout system, significantly reducing code duplication and improving maintainability across all pages.",
-    changes: [
-      "Implemented unified marketing layout with shared header and navigation.",
-      "Refactored all marketing pages to use fragment-based composition.",
-      "Optimized responsive breakpoints for mobile-first design approach.",
-    ],
-  },
-  {
-    version: "v1.3.0",
-    date: "February 20, 2026",
-    project: "Hyepr Labs",
-    title: "Enhanced Theme System & UI Polish",
-    description:
-      "Introducing an animated theme switcher with system preference detection, along with refined UI components for a premium user experience.",
-    changes: [
-      "Added animated light, dark, and system theme toggle with smooth transitions.",
-      "Refined DecorIcon and FullWidthDivider components for visual consistency.",
-      "Improved gradient backgrounds and hover states across all card components.",
-    ],
-  },
-  {
-    version: "v1.2.0",
-    date: "February 5, 2026",
-    project: "Hyepr Labs",
-    title: "Open Source Templates & Blog Section",
-    description:
-      "Launched our open source templates showcase featuring production-ready Next.js starter kits, alongside a redesigned blog section with category filtering.",
-    changes: [
-      "Built templates showcase with feature lists, pricing, and GitHub integration.",
-      "Redesigned blog section with responsive 4-column grid layout.",
-      "Added template preview images with hover zoom animations.",
-    ],
-  },
-  {
-    version: "v1.1.0",
-    date: "January 15, 2026",
-    project: "Hyepr Labs",
-    title: "Team Profiles & Project Portfolio",
-    description:
-      "Introducing comprehensive team member profiles with social integrations and a curated project portfolio showcasing our design and development expertise.",
-    changes: [
-      "Added team section with avatars, roles, skills, and social links.",
-      "Built project cards featuring logos, tags, and external links.",
-      "Implemented consistent card hover effects with gradient overlays.",
-    ],
-  },
-  {
-    version: "v1.0.0",
-    date: "January 1, 2026",
-    project: "Hyepr Labs",
-    title: "Initial Website Launch",
-    description:
-      "The official launch of Hyepr Labs website featuring a modern, responsive design built with Next.js, Tailwind CSS, and a custom component library.",
-    changes: [
-      "Launched animated hero section with call-to-action buttons.",
-      "Built contact section with email, office, and phone information.",
-      "Added legal pages including imprint, privacy policy, and terms of service.",
-    ],
-  },
-];

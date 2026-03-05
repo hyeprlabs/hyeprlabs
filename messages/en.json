@@ -1,0 +1,500 @@
+{
+  "Header": {
+    "about": "About",
+    "templates": "Templates",
+    "blog": "Blog",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "MobileNav": {
+    "toggleMenu": "Toggle menu"
+  },
+  "HeroSection": {
+    "badgeLabel": "BLOG",
+    "badgeText": "Think Fast. Build Fast.",
+    "title": "Building Digital Experiences That Drive Growth",
+    "description": "We scale online companies faster through smart design, development and strategic execution.",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "LogosSection": {
+    "heading": "Our latest",
+    "headingHighlight": "projects"
+  },
+  "CallToAction": {
+    "title": "Ready to Build Something Great?",
+    "description": "Let's turn your vision into a high-performance digital product. Get in touch to start your next project.",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "Footer": {
+    "tagline": "Think Fast. Build Fast.",
+    "copyright": "© {year} Hyepr Labs, All rights reserved",
+    "resources": "Resources",
+    "company": "Company",
+    "legal": "Legal",
+    "nav": {
+      "blog": "Blog",
+      "support": "Support",
+      "contact": "Contact",
+      "changelog": "Changelog",
+      "team": "Team",
+      "about": "About",
+      "projects": "Projects",
+      "templates": "Templates",
+      "brandAssets": "Brand assets",
+      "imprint": "Imprint",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
+  },
+  "AboutPage": {
+    "badge": "ABOUT",
+    "title": "Who are we?",
+    "description": "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+    "articleHeading": "Forging Digital Excellence",
+    "para1": "At <highlight>Hyepr Labs</highlight>, we bridge the gap between creative vision and technical reality. As a premier <highlight>digital product agency</highlight>, our mission is to engineer solutions that drive meaningful growth.",
+    "para2": "We are a collective of <highlight>elite designers and systems engineers</highlight> dedicated to refining the web. We don't just build websites; we architect comprehensive <highlight>digital ecosystems</highlight> that empower modern businesses to scale securely.",
+    "para3": "Collaboration is the heartbeat of our process. We function as an extension of your team, ensuring transparency at every stage. We deliver solutions that are <highlight>scalable, secure, and tailored</highlight> to your specific market needs.",
+    "para4": "Innovation is our baseline. We rigorously test and adopt emerging technologies to ensure our clients receive <highlight>future-proof strategies</highlight>. From edge computing to reactive UIs, we keep you ahead of the curve.",
+    "para5": "We listen, we care, and we deliver. Measuring success by your growth, we build enduring partnerships rooted in <highlight>trust and integrity</highlight>."
+  },
+  "AboutItems": {
+    "items": [
+      {
+        "title": "Strategic Design",
+        "description": "Systems thinking meets visual excellence."
+      },
+      {
+        "title": "Partnerships",
+        "description": "Your team extended, with complete visibility."
+      },
+      {
+        "title": "Modern Innovation",
+        "description": "Cutting-edge tech, rigorously tested for you."
+      },
+      {
+        "title": "Results-Driven",
+        "description": "Measured by growth, built for impact."
+      }
+    ]
+  },
+  "BlogPage": {
+    "badge": "BLOG",
+    "title": "Insights & News",
+    "description": "Thoughts on design, development, and building digital products for the modern web.",
+    "disclaimer": "These blog posts are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real published articles just yet. Check back later for real technical content!"
+  },
+  "BlogSection": {
+    "heading": "Latest Posts",
+    "subheading": "Discover the latest trends and insights in the world of design and technology.",
+    "by": "by",
+    "posts": [
+      {
+        "title": "The New Design Principles for Modern Web Apps",
+        "date": "May 20 2025",
+        "category": "Design",
+        "author": "Sarah Chen",
+        "description": "We dive deep into modern UI/UX fundamentals and explore how small changes can make a massive impact on user retention."
+      },
+      {
+        "title": "Letter Club: An Ode to the Slow Web",
+        "date": "Aug 14 2025",
+        "category": "Design",
+        "author": "Mike Allyn",
+        "description": "In a world of instant gratification, we explore the beauty of thoughtful, long-form content and meaningful connections over time."
+      },
+      {
+        "title": "Carve Out Space for Opportunity and Coffee",
+        "date": "Sep 19 2025",
+        "category": "Productivity",
+        "author": "Jessica Doi",
+        "description": "Taking a break is work. Learn how simple rituals like a morning coffee can boost your creativity and productivity."
+      },
+      {
+        "title": "Building Modern Applications with Shadcn UI Components",
+        "date": "Oct 12 2025",
+        "category": "Design",
+        "author": "Tom Cook",
+        "description": "A comprehensive guide to leveraging Shadcn UI to build accessible, customizable, and beautiful user interfaces with incredible speed."
+      },
+      {
+        "title": "Fesgin: Bridging The Gap Between Design and Code",
+        "date": "Nov 23 2025",
+        "category": "Design",
+        "author": "David Park",
+        "description": "How designers and developers can collaborate more effectively to bridge the gap between creative vision and technical implementation."
+      },
+      {
+        "title": "The Art of Simplicity in User Interface Design",
+        "date": "Dec 05 2025",
+        "category": "Minimalism",
+        "author": "Emma Wilson",
+        "description": "Discover how minimalism in design leads to clearer communication and a more intuitive user experience, focusing on what matters."
+      },
+      {
+        "title": "Why Web Performance Matters For Your Business Growth",
+        "date": "Jan 18 2026",
+        "category": "Engineering",
+        "author": "Chris Martin",
+        "description": "We discuss techniques for improving web performance, from lazy loading to code splitting, ensuring your application runs smoothly."
+      },
+      {
+        "title": "Practicing Digital Well-being in an Always-On World",
+        "date": "Feb 02 2026",
+        "category": "Lifestyle",
+        "author": "Olivia Kim",
+        "description": "Strategies for maintaining a healthy relationship with digital tools, setting boundaries, and ensuring technology serves us rather than consumes us."
+      }
+    ]
+  },
+  "BrandPage": {
+    "badge": "BRAND",
+    "title": "Brand assets",
+    "description": "Access our brand guidelines and download our brand kit. Coming soon.",
+    "comingSoon": "Coming Soon",
+    "para1": "We're preparing comprehensive <highlight>brand guidelines</highlight> and a complete brand kit for partners and collaborators.",
+    "para2": "Our upcoming brand page will include <highlight>downloadable assets</highlight> such as logos, icons, color palettes, and typography guidelines to ensure consistent representation of Hyepr Labs across all platforms.",
+    "para3": "You'll find detailed guidance on <highlight>logo usage</highlight>, spacing requirements, approved color combinations, and best practices for co-branding opportunities.",
+    "para4": "In the meantime, for any brand-related inquiries or asset requests, please reach out through our <highlight>contact page</highlight> and we'll be happy to assist."
+  },
+  "ChangelogPage": {
+    "badge": "CHANGELOG",
+    "title": "Product Updates",
+    "description": "New features, improvements, and bug fixes for our complete suite of products."
+  },
+  "ChangelogSection": {
+    "entries": [
+      {
+        "version": "v2.0.0",
+        "date": "March 4, 2026",
+        "project": "Hyepr Labs",
+        "title": "Marketing Layout Architecture & Performance",
+        "description": "Major architectural overhaul introducing a centralized marketing layout system, significantly reducing code duplication and improving maintainability across all pages.",
+        "changes": [
+          "Implemented unified marketing layout with shared header and navigation.",
+          "Refactored all marketing pages to use fragment-based composition.",
+          "Optimized responsive breakpoints for mobile-first design approach."
+        ]
+      },
+      {
+        "version": "v1.3.0",
+        "date": "February 20, 2026",
+        "project": "Hyepr Labs",
+        "title": "Enhanced Theme System & UI Polish",
+        "description": "Introducing an animated theme switcher with system preference detection, along with refined UI components for a premium user experience.",
+        "changes": [
+          "Added animated light, dark, and system theme toggle with smooth transitions.",
+          "Refined DecorIcon and FullWidthDivider components for visual consistency.",
+          "Improved gradient backgrounds and hover states across all card components."
+        ]
+      },
+      {
+        "version": "v1.2.0",
+        "date": "February 5, 2026",
+        "project": "Hyepr Labs",
+        "title": "Open Source Templates & Blog Section",
+        "description": "Launched our open source templates showcase featuring production-ready Next.js starter kits, alongside a redesigned blog section with category filtering.",
+        "changes": [
+          "Built templates showcase with feature lists, pricing, and GitHub integration.",
+          "Redesigned blog section with responsive 4-column grid layout.",
+          "Added template preview images with hover zoom animations."
+        ]
+      },
+      {
+        "version": "v1.1.0",
+        "date": "January 15, 2026",
+        "project": "Hyepr Labs",
+        "title": "Team Profiles & Project Portfolio",
+        "description": "Introducing comprehensive team member profiles with social integrations and a curated project portfolio showcasing our design and development expertise.",
+        "changes": [
+          "Added team section with avatars, roles, skills, and social links.",
+          "Built project cards featuring logos, tags, and external links.",
+          "Implemented consistent card hover effects with gradient overlays."
+        ]
+      },
+      {
+        "version": "v1.0.0",
+        "date": "January 1, 2026",
+        "project": "Hyepr Labs",
+        "title": "Initial Website Launch",
+        "description": "The official launch of Hyepr Labs website featuring a modern, responsive design built with Next.js, Tailwind CSS, and a custom component library.",
+        "changes": [
+          "Launched animated hero section with call-to-action buttons.",
+          "Built contact section with email, office, and phone information.",
+          "Added legal pages including imprint, privacy policy, and terms of service."
+        ]
+      }
+    ]
+  },
+  "ContactPage": {
+    "badge": "CONTACT",
+    "title": "Get in Touch",
+    "description": "Have a project in mind or want to say hello? We'd love to hear from you."
+  },
+  "ContactSection": {
+    "emailTitle": "Email",
+    "emailDescription": "We respond within 24 hours.",
+    "officeTitle": "Office",
+    "officeDescription": "Drop by our office for a chat.",
+    "officeComingSoon": "Coming Soon.",
+    "phoneTitle": "Phone",
+    "phoneDescription": "We're available Mon-Fri, 8am-10pm.",
+    "findUsOnline": "Find us online:"
+  },
+  "DataDisclaimer": {
+    "title": "Heads up!"
+  },
+  "ImprintPage": {
+    "badge": "IMPRINT",
+    "title": "Legal Notice",
+    "description": "Mandatory legal information and statutory disclosures for our business operations.",
+    "tmgSection": "Information pursuant to § 5 TMG",
+    "representedBy": "Represented by",
+    "contact": "Contact",
+    "contactPhone": "Phone:",
+    "contactEmail": "Email:",
+    "contactWebsite": "Website:",
+    "commercialRegister": "Commercial Register",
+    "registrationCourt": "Registration court:",
+    "registrationNumber": "Registration number:",
+    "vatId": "VAT ID",
+    "vatText": "Value added tax identification number pursuant to § 27 a Umsatzsteuergesetz:",
+    "contentResponsible": "Responsible for Content acc. to § 18 para. 2 MStV",
+    "euDispute": "EU Dispute Resolution",
+    "euDisputeText1": "The European Commission provides a platform for online dispute resolution (OS):",
+    "euDisputeText2": "You can find our email address in the imprint above.",
+    "consumerDispute": "Consumer Dispute Resolution",
+    "consumerDisputeText": "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+    "liabilityContents": "Liability for Contents",
+    "liabilityContentsText": "As service providers, we are liable for our own content on these websites according to Section 7, Paragraph 1 of the German Telemedia Act (TMG). However, according to Sections 8 to 10 of the TMG, service providers are not obligated to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities. Legal obligations to removing information or to blocking the use of information remain unchallenged. In this case, liability is only possible at the time of knowledge about a specific violation of law. Illegal contents will be removed immediately at the time we get knowledge of them.",
+    "copyright": "Copyright",
+    "copyrightText": "Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator. Downloads and copies of these websites are permitted for private use only. The commercial use of our contents without permission of the originator is prohibited. Copyright laws of third parties are respected as long as the contents on these websites do not originate from the provider. Contributions of third parties on this site are indicated as such. However, if you notice any violations of copyright law, please inform us. Such contents will be removed immediately."
+  },
+  "LegalDisclaimer": {
+    "title": "Legal Disclaimer: Under Construction",
+    "description": "This page is currently under construction and the information provided is not yet legally binding. The contents herein are for demonstration purposes only. We assume no liability for the accuracy, completeness, or timeliness of this information at this stage. Please consult a legal professional for official guidance."
+  },
+  "PrivacyPage": {
+    "badge": "PRIVACY",
+    "title": "Privacy Policy",
+    "description": "Your privacy is important to us. Learn how we collect, use, and protect your data.",
+    "section1": "1. An Overview of Data Protection",
+    "section1sub1": "General Information",
+    "section1sub1Text": "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.",
+    "section1sub2": "Data Collection on this Website",
+    "section1sub2q1": "Who is responsible for the data collection on this website?",
+    "section1sub2p1": "The data processing on this website is carried out by the website operator. Their contact details can be found in the section “Information about the responsible party” in this privacy policy.",
+    "section1sub2q2": "How do we collect your data?",
+    "section1sub2p2": "Some data are collected when you provide it to us. This could, for example, be data you enter into a contact form. Other data are collected automatically by our IT systems when you visit the website. These data are primarily technical data (e.g. the browser and operating system you are using or when you accessed the page).",
+    "section2": "2. General Information and Mandatory Information",
+    "section2sub1": "Data Protection",
+    "section2sub1Text": "The operators of this website take the protection of your personal data very seriously. We treat your personal data as confidential and in accordance with the statutory data protection regulations and this privacy policy. When you use this website, various personal data are collected. Personal data is data with which you can be personally identified.",
+    "section2sub2": "Information about the responsible party",
+    "section2sub2Intro": "The responsible party for data processing on this website is:",
+    "section2sub3": "Revocation of your consent to data processing",
+    "section2sub3Text": "Many data processing operations are only possible with your express consent. You can revoke this consent at any time. The legality of the data processing carried out before the revocation remains unaffected by the revocation.",
+    "section2sub4": "Right to lodge a complaint with the competent supervisory authority",
+    "section2sub4Text": "In the event of violations of the GDPR, data subjects are entitled to log a complaint with a supervisory authority, in particular in the member state of their habitual residence, their place of work or the place of the alleged violation.",
+    "section3": "3. Data Collection on this Website",
+    "section3sub1": "Cookies",
+    "section3sub1Text": "Our websites and pages use what the industry refers to as “cookies.” Cookies are small text files that do not cause any damage to your device. They are either stored temporarily for the duration of a session (session cookies) or permanently (permanent cookies) on your device. Session cookies are automatically deleted after your visit.",
+    "section3sub2": "Server Log Files",
+    "section3sub2Text": "The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are: browser type and browser version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address. These data are not merged with other data sources.",
+    "section3sub3": "Contact Form / Email Contact",
+    "section3sub3Text": "If you send us inquiries via the contact form or email, your details from the inquiry form, including the contact details you provided there, will be stored by us for the purpose of processing the inquiry and in the event of follow-up questions. We do not pass on this data without your consent. The processing of this data is based on Art. 6 (1) lit. b GDPR.",
+    "section4": "4. SSL/TLS Encryption",
+    "section4Text": "This site uses SSL or TLS encryption for security reasons and for the protection of the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection in your browser’s address line when it changes from “http://” to “https://” and the lock icon is displayed in your browser’s address bar. If SSL or TLS encryption is activated, the data you transfer to us cannot be read by third parties.",
+    "contactPhone": "Phone:",
+    "contactEmail": "Email:"
+  },
+  "ProjectsPage": {
+    "badge": "PROJECTS",
+    "title": "Our Featured Work",
+    "description": "A selection of projects that showcase our expertise in design, development, and strategic execution.",
+    "disclaimer": "These projects are just dummies for now. They're here for demonstration purposes to show what the layout will look like. Real case studies and work will be added soon!"
+  },
+  "ProjectsList": {
+    "projects": [
+      {
+        "title": "E-Commerce Rebrand",
+        "description": "A complete overhaul of a legacy e-commerce platform, resulting in a 40% increase in conversion rates. We implemented a headless architecture for maximum flexibility.",
+        "tags": [
+          "Next.js",
+          "Shopify",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "title": "Fintech Dashboard",
+        "description": "Designed and developed a real-time analytics dashboard for a fintech startup. Features include live data visualization, secure user authentication, and report generation.",
+        "tags": [
+          "React",
+          "D3.js",
+          "Node.js"
+        ]
+      },
+      {
+        "title": "Health & Wellness App",
+        "description": "A cross-platform mobile application for tracking fitness and nutrition. Integrated with wearable devices to provide personalized health insights.",
+        "tags": [
+          "React Native",
+          "Firebase",
+          "GraphQL"
+        ]
+      },
+      {
+        "title": "Corporate Portfolio",
+        "description": "A minimalist portfolio site for an award-winning architecture firm. Focused on high-quality imagery and smooth micro-interactions to showcase their work.",
+        "tags": [
+          "Astro",
+          "Framer Motion",
+          "Sanity CMS"
+        ]
+      }
+    ]
+  },
+  "SupportPage": {
+    "badge": "SUPPORT",
+    "title": "Support Center",
+    "description": "Get help and support for your projects. Our dedicated support center. Coming soon.",
+    "comingSoon": "Coming Soon",
+    "intro": "We're building a comprehensive <highlight>support center</highlight> to help you get the most out of working with us.",
+    "para1": "Our upcoming support hub will include <highlight>detailed documentation</highlight>, step-by-step guides, and answers to frequently asked questions to help you navigate every aspect of our services.",
+    "para2": "Need assistance in the meantime? Reach out directly through our <highlight>contact page</highlight> and our team will respond within 24 hours.",
+    "para3": "Stay tuned for updates as we continue to expand our resources and create a <highlight>seamless support experience</highlight> for all our clients and partners."
+  },
+  "TeamPage": {
+    "badge": "TEAM",
+    "title": "Meet Our Team",
+    "description": "The talented individuals behind our success. Dedicated, creative, and passionate about what we do.",
+    "disclaimer": "These team members are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real people just yet. Check back later for the real team!"
+  },
+  "TeamList": {
+    "members": [
+      {
+        "name": "Alex Doe",
+        "role": "Founder & CEO",
+        "bio": "Alex brings over 15 years of industry experience, leading our vision and strategic direction with a focus on innovation and user-centric design.",
+        "skills": [
+          "Leadership",
+          "Strategy",
+          "Product"
+        ]
+      },
+      {
+        "name": "Sarah Smith",
+        "role": "Lead Designer",
+        "bio": "Sarah is passionate about creating intuitive and visually stunning interfaces. She oversees our design language and user experience.",
+        "skills": [
+          "UI/UX",
+          "Figma",
+          "Design Systems"
+        ]
+      },
+      {
+        "name": "John Connor",
+        "role": "Senior Engineer",
+        "bio": "John specializes in modern frontend architectures and scalable backends. He ensures our technical solutions are robust and performant.",
+        "skills": [
+          "React",
+          "Node.js",
+          "TypeScript"
+        ]
+      },
+      {
+        "name": "Emily Chen",
+        "role": "Marketing Director",
+        "bio": "Emily crafts compelling narratives that connect our brand with the audience, driving growth and engagement across all channels.",
+        "skills": [
+          "Marketing",
+          "Content",
+          "Growth"
+        ]
+      }
+    ]
+  },
+  "TemplatesPage": {
+    "badge": "TEMPLATES",
+    "title": "Open Source Blueprints",
+    "description": "A collection of production-ready Next.js templates to jumpstart your next project.",
+    "disclaimer": "These templates are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real working boilerplates just yet. Check back later for the real deal!",
+    "articleHeading": "Accelerate Your Development",
+    "articleIntro": "We believe in the power of <highlight>open source</highlight>. By sharing our internal tools and starting points, we aim to help developers and businesses ship better products, faster.",
+    "articlePara1": "Each template is a distillation of our best practices, refined over years of building production-grade applications. They come pre-configured with the tools we trust: <highlight>Next.js, TypeScript, Tailwind CSS, and Shadcn UI</highlight>.",
+    "articlePara2": "Our goal is to eliminate the repetitive setup phase. Instead of configuring linters or setting up authentication from scratch, you can dive straight into building the <highlight>unique features</highlight> that matter to your users.",
+    "articlePara3": "These blueprints are fully customizable and opinionated where it counts. They are designed to be <highlight>scalable foundations</highlight>, not rigid constraints. Fork them, learn from them, and build something amazing."
+  },
+  "TemplatesList": {
+    "livePreview": "Live Preview",
+    "noPreview": "NO PREVIEW",
+    "templates": [
+      {
+        "title": "Next.js SaaS Foundation",
+        "description": "The ultimate starting point for your next SaaS product. Built with scalability and performance in mind.",
+        "price": "FREE",
+        "features": [
+          "Auth.js (NextAuth) Integration",
+          "Prisma ORM with PostgreSQL",
+          "Stripe Subscription & Webhooks",
+          "Shadcn UI Components"
+        ]
+      },
+      {
+        "title": "Minimalist Blog",
+        "description": "A content-focused blog template designed for optimal reading experience and high SEO performance.",
+        "price": "FREE",
+        "features": [
+          "MDX Content Management",
+          "Syntax Highlighting",
+          "Dynamic OG Images",
+          "RSS Feed Generation"
+        ]
+      },
+      {
+        "title": "Modern E-Commerce",
+        "description": "A high-conversion e-commerce storefront template tailored for Shopify stores using the Storefront API.",
+        "price": "FREE",
+        "features": [
+          "Shopify Storefront API",
+          "Cart & Checkout Logic",
+          "Product Variants & Search",
+          "Framer Motion Animations"
+        ]
+      },
+      {
+        "title": "Creative Portfolio",
+        "description": "Showcase your work with style. A portfolio template featuring smooth page transitions and interactive elements.",
+        "price": "FREE",
+        "features": [
+          "Page Transitions",
+          "Case Study Layouts",
+          "Dark/Light Mode",
+          "Contact Form Integration"
+        ]
+      }
+    ]
+  },
+  "TermsPage": {
+    "badge": "TERMS",
+    "title": "Terms of Service",
+    "description": "Read our terms carefully to understand your rights, responsibilities, and our operational guidelines.",
+    "section1": "1. Scope of Application",
+    "section1Text": "These General Terms and Conditions (GTC) apply to all contracts concluded between Hyepr Labs (hereinafter “Provider” or “we”) and our clients (hereinafter “Client” or “you”) via our services and products offered at hyeprlabs.com. Deviating conditions of the Client shall not be recognized unless the Provider expressly agrees to their validity in writing.",
+    "section2": "2. Conclusion of Contract",
+    "section2Text": "The presentation of services on our website does not represent a legally binding offer, but rather a non-binding online catalog. The contract is concluded when we accept your offer (e.g., your inquiry or order) by email confirmation or by performing the service.",
+    "section3": "3. Services and Obligations to Cooperate",
+    "section3Text": "The scope of contractual services results from the service description of the offer or contract. The Client undertakes to provide all cooperative acts necessary for the provision of the service in full and in good time. Delays attributable to a lack of cooperation from the Client do not fall within our area of responsibility.",
+    "section4": "4. Remuneration and Terms of Payment",
+    "section4Text": "Unless otherwise agreed, all prices are quoted net plus the applicable statutory value-added tax. Invoices are due without deduction within 14 days of invoicing. If the Client defaults on payment, we reserve the right to retain our services until payment has been made in full.",
+    "section5": "5. Rights of Use and Copyright",
+    "section5Text": "We grant the Client the rights of use to our work results required for the contractually intended purpose (essentially a simple and non-transferable right). The granting of rights is always subject to the condition precedent of full payment of the agreed remuneration. Source codes and working files remain with us unless expressly agreed otherwise.",
+    "section6": "6. Limitation of Liability",
+    "section6Text": "We bear unlimited liability for intent and gross negligence as well as in the event of injury to life, body and health. In the case of slight negligence, we are only liable for the breach of an essential contractual obligation (cardinal duty), the fulfillment of which is essential for the proper execution of the contract. Liability for slight negligence is limited to typical, foreseeable damage. Any further liability for damages – irrespective of the legal nature of the asserted claim – is excluded.",
+    "section7": "7. Confidentiality",
+    "section7Text": "Both parties undertake to treat strictly confidentially all confidential information of the other party obtained within the framework of the cooperation, even after termination of the contract, and not to disclose it to third parties.",
+    "section8": "8. Final Provisions",
+    "section8Text1": "The laws of the Federal Republic of Germany shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). The exclusive place of jurisdiction for all disputes arising from or in connection with this contract is our registered office (Berlin), provided the Client is a merchant, a legal entity under public law, or a special fund under public law.",
+    "section8Text2": "Should individual provisions of these GTC be or become invalid, the validity of the remaining provisions shall remain unaffected."
+  }
+}

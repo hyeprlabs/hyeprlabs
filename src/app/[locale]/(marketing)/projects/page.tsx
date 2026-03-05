@@ -4,6 +4,7 @@ import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { ProjectsList } from "@/components/marketing/projects/projects-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -17,15 +18,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("ProjectsPage");
+
   return (
     <>
       <MarketingHero
-        badge="PROJECTS"
-        title="Our Featured Work"
-        description="A selection of projects that showcase our expertise in design, development, and strategic execution."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
-      <DataDisclaimer description="These projects are just dummies for now. They're here for demonstration purposes to show what the layout will look like. Real case studies and work will be added soon!" />
+      <DataDisclaimer description={t("disclaimer")} />
       <ProjectsList />
       <CallToAction />
       <Footer />

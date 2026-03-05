@@ -48,7 +48,7 @@ export function MarketingHero({
 
         <p
           className={cn(
-            "max-w-sm text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
+            "max-w-lg text-balance text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
