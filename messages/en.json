@@ -147,10 +147,10 @@
         "description": "Strategies for maintaining a healthy relationship with digital tools, setting boundaries, and ensuring technology serves us rather than consumes us."
       }
     ],
-    "all": "All"
+    "all": "All",
+    "searchPlaceholder": "Search posts..."
   },
   "BrandPage": {
-    "badge": "BRAND",
     "title": "Brand assets",
     "description": "Access our brand guidelines and download our brand kit. Coming soon.",
     "comingSoon": "Coming Soon",

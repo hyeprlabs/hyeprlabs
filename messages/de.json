@@ -147,10 +147,10 @@
         "description": "Strategien für eine gesunde Beziehung zu digitalen Werkzeugen, das Setzen von Grenzen und die Sicherstellung, dass Technologie uns dient statt uns zu konsumieren."
       }
     ],
-    "all": "Alle"
+    "all": "Alle",
+    "searchPlaceholder": "Beiträge suchen..."
   },
   "BrandPage": {
-    "badge": "MARKE",
     "title": "Marken-Assets",
     "description": "Greifen Sie auf unsere Markenrichtlinien zu und laden Sie unser Marken-Kit herunter. Demnächst verfügbar.",
     "comingSoon": "Demnächst",

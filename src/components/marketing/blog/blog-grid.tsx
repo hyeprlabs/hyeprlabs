@@ -2,6 +2,7 @@
 
 import { useQueryState, parseAsString } from "nuqs";
 import { useTranslations } from "next-intl";
+import { Search } from "lucide-react";
 import { cn, formatDate } from "@/lib/utils";
 import { getCategoryTextClass } from "@/lib/blog";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
@@ -30,16 +31,30 @@ export function BlogGrid({ posts, categories }: Props) {
     "category",
     parseAsString.withDefault("all"),
   );
+  const [query, setQuery] = useQueryState(
+    "q",
+    parseAsString.withDefault(""),
+  );
 
-  const filtered =
-    category === "all"
-      ? posts
-      : posts.filter((p) => p.category === category);
+  const searchTerm = query.trim().toLowerCase();
+
+  const filtered = posts
+    .filter((p) => category === "all" || p.category === category)
+    .filter((p) => {
+      if (!searchTerm) return true;
+      return (
+        p.title.toLowerCase().includes(searchTerm) ||
+        p.description.toLowerCase().includes(searchTerm) ||
+        p.author.toLowerCase().includes(searchTerm) ||
+        p.category.toLowerCase().includes(searchTerm) ||
+        p.tags.some((tag) => tag.toLowerCase().includes(searchTerm))
+      );
+    });
 
   return (
     <div className="relative">
-      {/* Category filter tabs */}
-      <div className="px-4 pb-4 pt-2">
+      {/* Category filter tabs + search bar */}
+      <div className="flex flex-col gap-3 px-4 pb-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <Tabs
           value={category}
           onValueChange={(v) => {
@@ -55,6 +70,21 @@ export function BlogGrid({ posts, categories }: Props) {
             ))}
           </TabsList>
         </Tabs>
+
+        <div className="relative w-full sm:w-64">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            size={14}
+            aria-hidden={true}
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value || null)}
+            placeholder={t("searchPlaceholder")}
+            className="h-9 w-full rounded-full border border-border bg-background pl-8 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          />
+        </div>
       </div>
 
       {/* Blog post grid — border-l + [&>*]:border-r + [&>*]:border-b creates
