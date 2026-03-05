@@ -62,6 +62,7 @@ export function BlogGrid({ posts, categories }: Props) {
             onValueChange={(v) => {
               setCategory(v === "all" ? null : v);
             }}
+            className="w-max"
           >
             <TabsList className="w-max">
               <TabsTrigger
