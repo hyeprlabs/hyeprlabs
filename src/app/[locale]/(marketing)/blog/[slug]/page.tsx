@@ -1,0 +1,149 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { blogCollection, getSlug } from "@/lib/source";
+import { formatDate, cn } from "@/lib/utils";
+import { getCategoryBadgeClass } from "@/lib/blog";
+import { CallToAction } from "@/components/marketing/cta";
+import { Footer } from "@/components/marketing/footer";
+import { FullWidthDivider } from "@/components/ui/full-width-divider";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { AuthorInfo } from "@/components/marketing/blog/author-info";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { ArrowLeft } from "lucide-react";
+
+type Props = {
+  params: Promise<{ locale: string; slug: string }>;
+};
+
+export async function generateStaticParams() {
+  const posts = await blogCollection;
+  return posts.map((post) => ({
+    slug: getSlug(post.info.path),
+  }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const posts = await blogCollection;
+  const post = posts.find((p) => getSlug(p.info.path) === slug);
+
+  if (!post) return {};
+
+  const postUrl = `https://hyeprlabs.com/blog/${slug}`;
+  const tags = post.tags ?? [];
+  const keywords = [post.category, ...tags].filter(Boolean);
+
+  return {
+    title: post.title,
+    description: post.description,
+    keywords,
+    authors: [{ name: post.author }],
+    alternates: {
+      canonical: postUrl,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      url: postUrl,
+      siteName: "Hyepr Labs",
+      publishedTime: post.date,
+      authors: [post.author],
+      section: post.category,
+      tags,
+      ...(post.image ? { images: [{ url: post.image }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      creator: "@hyeprlabs",
+      ...(post.image ? { images: [post.image] } : {}),
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const posts = await blogCollection;
+  const post = posts.find((p) => getSlug(p.info.path) === slug);
+
+  if (!post) notFound();
+
+  const t = await getTranslations("BlogPage");
+  const MDXContent = post.body;
+  const tags = post.tags ?? [];
+
+  return (
+    <>
+      <article className="relative mx-auto w-full max-w-5xl">
+        <FullWidthDivider position="top" />
+
+        {/* Post header */}
+        <header className="space-y-4 px-4 py-8 md:py-12">
+          {/* Back button – below the full-width divider, styled like hero outline button */}
+          <div>
+            <Button
+              variant="outline"
+              size="sm"
+              asChild
+              className="rounded-full bg-linear-to-br from-muted to-background"
+            >
+              <Link href="/blog">
+                <ArrowLeft />
+                {t("allPosts")}
+              </Link>
+            </Button>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
+            <Badge
+              variant="outline"
+              className={cn(getCategoryBadgeClass(post.category))}
+            >
+              {post.category}
+            </Badge>
+            <span aria-hidden="true">·</span>
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+          </div>
+
+          <h1 className="max-w-2xl text-2xl font-serif md:text-4xl lg:text-5xl">
+            {post.title}
+          </h1>
+
+          <p className="max-w-xl text-muted-foreground text-sm font-mono tracking-wide">
+            {post.description}
+          </p>
+
+          <AuthorInfo author={post.author} />
+
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs font-mono text-muted-foreground"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <FullWidthDivider />
+
+        {/* MDX body */}
+        <div className="prose prose-neutral dark:prose-invert max-w-none px-4 py-8 md:py-12 [&_h2]:font-serif [&_h3]:font-serif [&_blockquote]:font-mono [&_code]:font-mono [&_table]:text-sm [&_pre]:overflow-x-auto [&_pre]:max-w-full [&_table]:block [&_table]:w-full [&_table]:overflow-x-auto md:[&_table]:table [&_img]:max-w-full [&_img]:h-auto">
+          <MDXContent />
+        </div>
+
+        <FullWidthDivider position="bottom" />
+      </article>
+
+      <CallToAction />
+      <Footer />
+    </>
+  );
+}

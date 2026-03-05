@@ -83,7 +83,7 @@
     "badge": "BLOG",
     "title": "Einblicke & Neuigkeiten",
     "description": "Gedanken zu Design, Entwicklung und dem Aufbau digitaler Produkte für das moderne Web.",
-    "disclaimer": "Diese Blogbeiträge sind derzeit nur Platzhalter. Sie dienen zu Demonstrationszwecken, um das Layout zu zeigen, sind aber noch keine echten veröffentlichten Artikel. Schauen Sie später für echte technische Inhalte vorbei!"
+    "allPosts": "Alle Beiträge"
   },
   "BlogSection": {
     "heading": "Neueste Beiträge",
@@ -146,10 +146,11 @@
         "author": "Olivia Kim",
         "description": "Strategien für eine gesunde Beziehung zu digitalen Werkzeugen, das Setzen von Grenzen und die Sicherstellung, dass Technologie uns dient statt uns zu konsumieren."
       }
-    ]
+    ],
+    "all": "Alle",
+    "searchPlaceholder": "Beiträge suchen..."
   },
   "BrandPage": {
-    "badge": "MARKE",
     "title": "Marken-Assets",
     "description": "Greifen Sie auf unsere Markenrichtlinien zu und laden Sie unser Marken-Kit herunter. Demnächst verfügbar.",
     "comingSoon": "Demnächst",

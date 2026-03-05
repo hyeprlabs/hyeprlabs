@@ -1,0 +1,116 @@
+---
+title: "From Prototype to Product: A Modern Launch Checklist"
+description: The decisions and processes that separate teams who ship confidently from teams who ship and hope — a practical pre-launch guide for modern web products.
+date: "2025-11-10"
+author: Mike Allyn
+category: Product
+tags: [product, launch, startup, checklist, engineering]
+---
+
+Launching a product is an exercise in managed uncertainty. You can't eliminate risk, but you can decide which risks you're willing to take and which ones you've already resolved.
+
+The teams that launch confidently aren't the ones who tested everything — it's physically impossible to test everything. They're the ones who know exactly what they've tested, what they haven't, and what they'd do if something breaks.
+
+This is the checklist we use. It's not exhaustive, but every item on it has saved us from a real problem at least once.
+
+## Before You Write a Line of Code
+
+### Define "Done" Before You Start
+
+The most common reason products take longer than expected is that scope expands as the work makes the abstract concrete. Something you thought was a checkbox becomes a modal, becomes a multi-step flow, becomes a dependency on a service that doesn't exist yet.
+
+Write a product spec before you start. It doesn't need to be long. It needs to answer: what does this do, who is it for, and what is explicitly out of scope?
+
+"Out of scope" is the most important section.
+
+### Set Your Performance Budget
+
+Performance is much easier to maintain than it is to recover. Before you start building, set targets for your Core Web Vitals: LCP under 2.5 seconds, INP under 100ms, CLS under 0.1. Measure against them throughout development, not just before launch.
+
+If you're building on Next.js, Vercel Analytics gives you real user monitoring out of the box. Use it.
+
+> **Key Takeaway:** Performance regressions compound. A 200ms regression on week one, left unaddressed, becomes a 1.5-second regression by launch. Set a budget early and defend it continuously.
+
+## Building the Product
+
+### Component Architecture First
+
+Before you build features, build your component system. Every feature you add before establishing a consistent component vocabulary creates debt that compounds. Decide on your spacing scale, typography system, and state management patterns before you're three weeks into building.
+
+See our guide on [Building Design Systems That Scale](/blog/building-design-systems-that-scale) for the details of this process.
+
+### Test at the Boundary
+
+Unit tests are valuable, but the bugs that take down products usually live at the boundary between systems. Your frontend and your API. Your API and your database. Your authentication layer and your data access layer.
+
+Write integration tests for every critical path. The paths where if they fail, your users can't do the thing they came to do.
+
+### Error States Are Features
+
+Every empty state, every error message, every loading indicator is a user interface that needs design and implementation. Products that treat error states as afterthoughts ship with experiences that feel broken even when the happy path works perfectly.
+
+Design error states in Figma. Write copy for every error message. Test failure modes intentionally.
+
+## Pre-Launch Week
+
+### The Smoke Test Protocol
+
+Define a smoke test: a fixed list of critical flows that you run manually before every deploy. It should take no more than fifteen minutes. If it takes longer, it won't get run consistently.
+
+Our smoke test covers:
+1. New user registration and first login
+2. The core value-delivery action (the thing users came to do)
+3. Billing and subscription changes
+4. Account deletion and data export (for GDPR compliance)
+
+### Security Basics
+
+Before launch, make sure you've addressed:
+
+- **HTTPS everywhere.** No exceptions, no mixed content.
+- **Environment variable hygiene.** No secrets in source code, no production credentials in development environments.
+- **Dependency audit.** `npm audit` or `pnpm audit`. Fix critical vulnerabilities before launch.
+- **Authentication review.** How are sessions managed? What happens when a session expires? Is the logout flow actually secure?
+
+### Analytics and Observability
+
+You can't improve what you don't measure. Before launch, have answers to: How do I know when something is broken? How do I know if users are achieving their goals?
+
+At minimum:
+- Error tracking (Sentry or equivalent)
+- Real user monitoring (Vercel Analytics, PostHog, or equivalent)
+- Server-side error logging with alerting
+
+> **Key Takeaway:** The goal of observability isn't to catch every error. It's to be confident that if something significant breaks, you'll know about it before a user has to tell you.
+
+## Launch Day
+
+### Feature Flags Are Your Safety Net
+
+If you're not using feature flags, launch day is riskier than it needs to be. Feature flags let you:
+
+- Release code to production without releasing features to users
+- Roll out to a percentage of users and monitor before going to 100%
+- Kill a feature instantly if something goes wrong without a deploy
+
+The overhead of implementing basic feature flagging is small. The value when something goes wrong is enormous.
+
+### The Rollback Plan
+
+Before you launch, know exactly how you'd roll back if the launch goes badly. Which systems need to be reverted? How long will it take? Who is on call?
+
+Writing down the rollback plan before you need it forces you to think about the ways things could go wrong — which often surfaces things you want to fix before launch rather than after.
+
+## Post-Launch
+
+### The First 48 Hours
+
+The first 48 hours after launch are when your observability investment pays off. Watch your error rates, your conversion metrics, and your Core Web Vitals. Most serious launch problems surface within the first day.
+
+Have someone designated to watch the dashboards. Not as their only job, but as a specific responsibility they know they own.
+
+### Close the Loop
+
+Every significant bug that reaches production is worth a brief post-mortem — not to assign blame, but to understand what process change would have caught it. Over time, these retrospectives make your launch process tighter with every cycle.
+
+For more on how web performance factors into launch readiness, see [Why Web Performance Matters For Your Business Growth](/blog/why-web-performance-matters). For design system preparation, read [Building Design Systems That Scale](/blog/building-design-systems-that-scale).

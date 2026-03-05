@@ -1,87 +1,40 @@
-import { cn } from "@/lib/utils";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { getTranslations } from "next-intl/server";
-
-type BlogType = {
-  title: string;
-  date: string;
-  description: string;
-  category: string;
-  author: string;
-  href: string;
-};
-
-const blogHrefs = ["#", "#", "#", "#", "#", "#", "#", "#"];
+import { blogCollection, getSlug } from "@/lib/source";
+import { BlogGrid } from "./blog-grid";
 
 export async function BlogSection() {
   const t = await getTranslations("BlogSection");
-  const rawPosts = t.raw("posts") as Array<Omit<BlogType, "href">>;
-  const blogs: BlogType[] = rawPosts.map((post, i) => ({
-    ...post,
-    href: blogHrefs[i] ?? "#",
-  }));
+  const posts = await blogCollection;
+
+  const blogs = posts
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((post) => ({
+      title: post.title,
+      date: post.date,
+      description: post.description,
+      category: post.category,
+      author: post.author,
+      tags: post.tags ?? [],
+      href: `/blog/${getSlug(post.info.path)}`,
+    }));
+
+  const categories = Array.from(
+    new Set(blogs.map((b) => b.category)),
+  ).sort();
 
   return (
     <div className="relative mx-auto w-full max-w-5xl mb-12 md:mb-36">
       <FullWidthDivider position="top" />
       <div className="space-y-2 px-4 py-8 md:py-12">
-        <h1 className="font-medium text-2xl tracking-wide md:text-4xl">
+        <h2 className="font-medium text-2xl tracking-wide md:text-4xl">
           {t("heading")}
-        </h1>
+        </h2>
         <p className="max-w-xl text-balance text-muted-foreground text-sm font-mono">
           {t("subheading")}
         </p>
       </div>
-      <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-        <FullWidthDivider position="top" />
-        {blogs.map((blog) => (
-          <BlogCard {...blog} key={blog.title} by={t("by")} />
-        ))}
-        <FullWidthDivider position="bottom" />
-      </div>
+      <BlogGrid posts={blogs} categories={categories} />
     </div>
-  );
-}
-
-function BlogCard({
-  title,
-  date,
-  description,
-  category,
-  author,
-  by,
-  className,
-  ...props
-}: React.ComponentProps<"a"> & BlogType & { by: string }) {
-  return (
-    <a
-      className={cn(
-        "group w-full bg-background px-6 py-12 text-muted-foreground hover:cursor-pointer hover:text-foreground active:bg-accent md:px-8 active:dark:bg-accent/50",
-        className,
-      )}
-      {...props}
-    >
-      <h3 className="mb-3 line-clamp-2 font-medium text-foreground text-lg md:text-xl">
-        {title}
-      </h3>
-      <div className="mb-3 flex items-center gap-2 min-w-0">
-        <span className="truncate max-w-[6rem] text-muted-foreground text-xs group-hover:text-foreground">
-          {category}
-        </span>
-        <div className="inline-flex size-1 shrink-0 rounded-full bg-muted-foreground" />
-        <span className="truncate text-muted-foreground text-xs group-hover:text-foreground">
-          {date}
-        </span>
-      </div>
-      <p className="mb-8 line-clamp-3 text-muted-foreground text-sm tracking-wide group-hover:text-foreground font-mono">
-        {description}
-      </p>
-      <div className="flex items-center gap-1.5 min-w-0">
-        <span className="shrink-0">{by}</span>
-        <span className="truncate font-medium font-mono text-foreground/80 text-xs group-hover:text-foreground md:text-sm">
-          {author}
-        </span>
-      </div>
-    </a>
   );
 }
