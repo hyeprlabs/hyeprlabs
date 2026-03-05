@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { metadata } from "@/app/metadata";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -20,41 +20,7 @@ const instrumentSerif = Instrument_Serif({
   weight: ["400"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://hyeprlabs.com"),
-  title: {
-    default: "Hyepr Labs | Think Fast. Build Fast.",
-    template: "%s | Hyepr Labs",
-  },
-  description:
-    "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
-  keywords: [
-    "Digital Product Agency",
-    "Next.js Development",
-    "AI Integration",
-    "High-Performance Web Apps",
-    "UI/UX Design",
-    "Tailwind CSS",
-    "Hyepr Labs",
-    "Custom Software Development",
-  ],
-  creator: "Hyepr Labs",
-  openGraph: {
-    type: "website",
-    url: "https://hyeprlabs.com",
-    title: "Hyepr Labs | Think Fast. Build Fast.",
-    description:
-      "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
-    siteName: "Hyepr Labs",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Hyepr Labs | Think Fast. Build Fast.",
-    description:
-      "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
-    creator: "@hyeprlabs",
-  },
-};
+export { metadata };
 
 export default function RootLayout({
   children,
