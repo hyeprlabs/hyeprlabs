@@ -2,12 +2,15 @@ import { cn } from "@/lib/utils";
 import type React from "react";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 const APP_EMAIL = "contact@hyeprlabs.com";
 const APP_PHONE = "-";
 const APP_PHONE_2 = "-";
 
-export function ContactSection() {
+export async function ContactSection() {
+  const t = await getTranslations("ContactSection");
+
   const socialLinks = [
     {
       icon: GithubIcon,
@@ -26,9 +29,9 @@ export function ContactSection() {
       <div className="relative grid md:grid-cols-3">
         <FullWidthDivider position="top" />
         <Box
-          description="We respond within 24 hours."
+          description={t("emailDescription")}
           icon={<Mail />}
-          title="Email"
+          title={t("emailTitle")}
         >
           <a
             className="font-medium font-mono text-sm tracking-wide hover:underline"
@@ -38,19 +41,19 @@ export function ContactSection() {
           </a>
         </Box>
         <Box
-          description="Drop by our office for a chat."
+          description={t("officeDescription")}
           icon={<MapPin />}
-          title="Office"
+          title={t("officeTitle")}
         >
           <span className="font-medium font-mono text-sm tracking-wide">
-            Coming Soon.
+            {t("officeComingSoon")}
           </span>
         </Box>
         <Box
           className="border-b-0 md:border-r-0"
-          description="We're available Mon-Fri, 8am-10pm."
+          description={t("phoneDescription")}
           icon={<Phone />}
-          title="Phone"
+          title={t("phoneTitle")}
         >
           <div>
             <a
@@ -72,7 +75,7 @@ export function ContactSection() {
 
       <div className="flex flex-col items-center justify-center gap-4 py-12 md:py-24">
         <h2 className="text-center font-mono text-md md:text-lg text-muted-foreground tracking-tight">
-          Find us online:
+          {t("findUsOnline")}
         </h2>
         <div className="flex flex-wrap items-center gap-2">
           {socialLinks.map((link) => (

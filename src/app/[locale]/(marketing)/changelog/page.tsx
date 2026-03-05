@@ -3,6 +3,7 @@ import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { ChangelogSection } from "@/components/marketing/changelog/changelog-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Changelog",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("ChangelogPage");
+
   return (
     <>
       <MarketingHero
-        badge="CHANGELOG"
-        title="Product Updates"
-        description="New features, improvements, and bug fixes for our complete suite of products."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <ChangelogSection />
       <CallToAction />

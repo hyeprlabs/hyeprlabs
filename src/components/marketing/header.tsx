@@ -1,30 +1,23 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/marketing/mobile-nav";
 import { ArrowRight } from "lucide-react"
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
-
-export const navLinks = [
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Templates",
-    href: "/templates",
-  },
-  {
-    label: "Blog",
-    href: "/blog",
-  },
-];
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export function Header() {
   const scrolled = useScroll(10);
+  const t = useTranslations("Header");
+
+  const navLinks = [
+    { label: t("about"), href: "/about" as const },
+    { label: t("templates"), href: "/templates" as const },
+    { label: t("blog"), href: "/blog" as const },
+  ];
 
   return (
     <header
@@ -51,18 +44,18 @@ export function Header() {
           <div>
             {navLinks.map((link) => (
               <Button asChild key={link.label} size="sm" variant="ghost" className="font-normal">
-                <a href={link.href}>{link.label}</a>
+                <Link href={link.href}>{link.label}</Link>
               </Button>
             ))}
           </div>
           <Link href="/contact">
             <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background font-normal">
-              Contact
+              {t("contact")}
             </Button>
           </Link>
           <Link href="/projects">
             <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
-              Projects
+              {t("projects")}
               <ArrowRight />
             </Button>
           </Link>
@@ -73,7 +66,7 @@ export function Header() {
             Get Started
           </Button>
         </div>
-        <MobileNav />
+        <MobileNav navLinks={navLinks} />
       </nav>
     </header>
   );

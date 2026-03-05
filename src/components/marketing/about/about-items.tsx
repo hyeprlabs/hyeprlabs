@@ -7,6 +7,7 @@ import {
   TrendingUpIcon,
   LayoutIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 type ItemType = {
   title: string;
@@ -14,11 +15,20 @@ type ItemType = {
   description: string;
 };
 
-export function AboutItems() {
+const icons = [<LayoutIcon key="layout" />, <UsersIcon key="users" />, <CpuIcon key="cpu" />, <TrendingUpIcon key="trending" />];
+
+export async function AboutItems() {
+  const t = await getTranslations("AboutItems");
+  const rawItems = t.raw("items") as Array<{ title: string; description: string }>;
+  const items: ItemType[] = rawItems.map((item, i) => ({
+    ...item,
+    icon: icons[i],
+  }));
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-		<FullWidthDivider position="top" />
+        <FullWidthDivider position="top" />
         {items.map((item) => (
           <ItemCard item={item} key={item.title} />
         ))}
@@ -55,33 +65,10 @@ export function ItemCard({
 
       <div className="relative z-10 space-y-2">
         <h3 className="font-medium text-foreground text-lg">{item.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="line-clamp-3 text-muted-foreground text-sm leading-relaxed">
           {item.description}
         </p>
       </div>
     </div>
   );
 }
-
-const items: ItemType[] = [
-  {
-    title: "Strategic Design",
-    icon: <LayoutIcon />,
-    description: "Systems thinking meets visual excellence.",
-  },
-  {
-    title: "Partnerships",
-    icon: <UsersIcon />,
-    description: "Your team extended, with complete visibility.",
-  },
-  {
-    title: "Modern Innovation",
-    icon: <CpuIcon />,
-    description: "Cutting-edge tech, rigorously tested for you.",
-  },
-  {
-    title: "Results-Driven",
-    icon: <TrendingUpIcon />,
-    description: "Measured by growth, built for impact.",
-  },
-];
