@@ -31,20 +31,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) return {};
 
+  const postUrl = `https://hyeprlabs.com/blog/${slug}`;
+  const tags = post.tags ?? [];
+  const keywords = [post.category, ...tags].filter(Boolean);
+
   return {
     title: post.title,
     description: post.description,
+    keywords,
+    authors: [{ name: post.author }],
+    alternates: {
+      canonical: postUrl,
+    },
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.description,
-      type: "article",
+      url: postUrl,
+      siteName: "Hyepr Labs",
       publishedTime: post.date,
+      authors: [post.author],
+      section: post.category,
+      tags,
       ...(post.image ? { images: [{ url: post.image }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      creator: "@hyeprlabs",
       ...(post.image ? { images: [post.image] } : {}),
     },
   };

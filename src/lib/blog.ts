@@ -2,6 +2,7 @@ const CATEGORY_ACCENT: Record<string, string> = {
   Engineering: "bg-blue-500",
   Design: "bg-violet-500",
   Product: "bg-emerald-500",
+  "AI News": "bg-sky-500",
 };
 
 const CATEGORY_BADGE: Record<string, string> = {
@@ -11,12 +12,15 @@ const CATEGORY_BADGE: Record<string, string> = {
     "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-300",
   Product:
     "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300",
+  "AI News":
+    "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-800 dark:bg-sky-950/40 dark:text-sky-300",
 };
 
 const CATEGORY_TEXT: Record<string, string> = {
   Engineering: "text-blue-600 dark:text-blue-400",
   Design: "text-violet-600 dark:text-violet-400",
   Product: "text-emerald-600 dark:text-emerald-400",
+  "AI News": "text-sky-600 dark:text-sky-400",
 };
 
 export function getCategoryAccentColor(category: string): string {

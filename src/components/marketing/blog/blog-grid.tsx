@@ -39,7 +39,7 @@ export function BlogGrid({ posts, categories }: Props) {
   return (
     <div className="relative">
       {/* Category filter tabs */}
-      <div className="px-4 pb-4 pt-2 sm:px-6">
+      <div className="px-4 pb-4 pt-2">
         <Tabs
           value={category}
           onValueChange={(v) => {
