@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
-import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { BlogSection } from "@/components/marketing/blog/blog-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
@@ -51,7 +50,6 @@ export default async function Page() {
         title={t("title")}
         description={t("description")}
       />
-      <DataDisclaimer description={t("disclaimer")} />
       <BlogSection />
       <CallToAction />
       <Footer />
