@@ -63,21 +63,25 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      {/* Back button */}
-      <div className="mx-auto w-full max-w-5xl px-4 pt-6">
-        <Button variant="outline" size="sm" asChild>
-          <Link href="/blog">
-            <ArrowLeft />
-            {t("allPosts")}
-          </Link>
-        </Button>
-      </div>
-
       <article className="relative mx-auto w-full max-w-5xl">
         <FullWidthDivider position="top" />
 
         {/* Post header */}
         <header className="space-y-4 px-4 py-8 md:py-12">
+          {/* Back button – below the full-width divider, styled like hero outline button */}
+          <div>
+            <Button
+              variant="outline"
+              size="sm"
+              asChild
+              className="rounded-full bg-linear-to-br from-muted to-background"
+            >
+              <Link href="/blog">
+                <ArrowLeft />
+                {t("allPosts")}
+              </Link>
+            </Button>
+          </div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
             <Badge
               variant="outline"

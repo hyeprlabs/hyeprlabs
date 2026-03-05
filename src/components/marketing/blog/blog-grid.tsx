@@ -38,6 +38,7 @@ export function BlogGrid({ posts, categories }: Props) {
 
   return (
     <div className="relative">
+      {/* Category filter tabs */}
       <div className="px-4 pb-4 pt-2 sm:px-6">
         <Tabs
           value={category}
@@ -56,11 +57,16 @@ export function BlogGrid({ posts, categories }: Props) {
         </Tabs>
       </div>
 
-      <div className="relative grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+      {/* Blog post grid — border-l + [&>*]:border-r + [&>*]:border-b creates
+          a clean grid-line look without using bg-border on the container,
+          so sparse grids (e.g. only 2 posts) show the normal page background. */}
+      <div className="relative">
         <FullWidthDivider position="top" />
-        {filtered.map((blog) => (
-          <BlogCard {...blog} key={blog.href} />
-        ))}
+        <div className="grid grid-cols-1 border-l sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-r">
+          {filtered.map((blog) => (
+            <BlogCard {...blog} key={blog.href} />
+          ))}
+        </div>
         <FullWidthDivider position="bottom" />
       </div>
     </div>
@@ -82,7 +88,7 @@ function BlogCard({
     <Link
       href={href}
       className={cn(
-        "group flex w-full flex-col bg-background px-4 py-8 text-muted-foreground hover:cursor-pointer hover:text-foreground active:bg-accent sm:px-6 md:py-12 lg:px-8 active:dark:bg-accent/50",
+        "group flex min-h-[320px] w-full flex-col bg-background px-4 py-8 text-muted-foreground hover:bg-muted/30 transition-colors sm:px-6 md:py-10 lg:px-8",
         className,
       )}
       {...props}
@@ -95,13 +101,13 @@ function BlogCard({
       >
         {category}
       </span>
-      <h3 className="mb-3 line-clamp-2 font-medium text-foreground text-lg md:text-xl">
+      <h3 className="mb-2 line-clamp-2 font-medium text-foreground text-lg md:text-xl">
         {title}
       </h3>
-      <span className="mb-3 truncate text-muted-foreground text-xs group-hover:text-foreground">
+      <span className="mb-3 text-muted-foreground text-xs">
         {formatDate(date)}
       </span>
-      <p className="mb-4 line-clamp-3 flex-1 text-muted-foreground text-sm tracking-wide group-hover:text-foreground font-mono">
+      <p className="mb-4 line-clamp-3 flex-1 text-muted-foreground text-sm tracking-wide font-mono">
         {description}
       </p>
       {tags.length > 0 && (

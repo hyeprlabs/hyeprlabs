@@ -27,9 +27,9 @@ export async function BlogSection() {
     <div className="relative mx-auto w-full max-w-5xl mb-12 md:mb-36">
       <FullWidthDivider position="top" />
       <div className="space-y-2 px-4 py-8 md:py-12">
-        <h1 className="font-medium text-2xl tracking-wide md:text-4xl">
+        <h2 className="font-medium text-2xl tracking-wide md:text-4xl">
           {t("heading")}
-        </h1>
+        </h2>
         <p className="max-w-xl text-balance text-muted-foreground text-sm font-mono">
           {t("subheading")}
         </p>
