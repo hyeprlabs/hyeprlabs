@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogCollection, getSlug } from "@/lib/source";
-import { formatDate } from "@/lib/utils";
+import { formatDate, cn } from "@/lib/utils";
+import { getCategoryAccentColor, getCategoryBadgeClass } from "@/lib/blog";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { AuthorInfo } from "@/components/marketing/blog/author-info";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { ArrowLeft } from "lucide-react";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -51,18 +57,39 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const t = await getTranslations("BlogPage");
   const MDXContent = post.body;
   const tags = post.tags ?? [];
 
   return (
     <>
+      {/* Back button */}
+      <div className="mx-auto w-full max-w-5xl px-4 pt-6">
+        <Button variant="outline" size="sm" asChild>
+          <Link href="/blog">
+            <ArrowLeft />
+            {t("allPosts")}
+          </Link>
+        </Button>
+      </div>
+
       <article className="relative mx-auto w-full max-w-5xl overflow-x-hidden">
         <FullWidthDivider position="top" />
+
+        {/* Category accent strip */}
+        <div
+          className={cn("h-1 w-full", getCategoryAccentColor(post.category))}
+        />
 
         {/* Post header */}
         <header className="space-y-4 px-4 py-8 md:py-12">
           <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
-            <Badge variant="outline">{post.category}</Badge>
+            <Badge
+              variant="outline"
+              className={cn(getCategoryBadgeClass(post.category))}
+            >
+              {post.category}
+            </Badge>
             <span aria-hidden="true">·</span>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
           </div>
@@ -75,10 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.description}
           </p>
 
-          <p className="text-xs text-muted-foreground font-mono">
-            by{" "}
-            <span className="font-medium text-foreground/80">{post.author}</span>
-          </p>
+          <AuthorInfo author={post.author} />
 
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-1">

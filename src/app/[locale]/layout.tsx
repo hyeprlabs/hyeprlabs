@@ -8,6 +8,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +61,9 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <NuqsAdapter>
+              {children}
+            </NuqsAdapter>
             <Analytics />
           </ThemeProvider>
         </NextIntlClientProvider>

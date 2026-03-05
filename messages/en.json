@@ -83,7 +83,8 @@
     "badge": "BLOG",
     "title": "Insights & News",
     "description": "Thoughts on design, development, and building digital products for the modern web.",
-    "disclaimer": "These blog posts are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real published articles just yet. Check back later for real technical content!"
+    "disclaimer": "These blog posts are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real published articles just yet. Check back later for real technical content!",
+    "allPosts": "All Posts"
   },
   "BlogSection": {
     "heading": "Latest Posts",
@@ -146,7 +147,8 @@
         "author": "Olivia Kim",
         "description": "Strategies for maintaining a healthy relationship with digital tools, setting boundaries, and ensuring technology serves us rather than consumes us."
       }
-    ]
+    ],
+    "all": "All"
   },
   "BrandPage": {
     "badge": "BRAND",
