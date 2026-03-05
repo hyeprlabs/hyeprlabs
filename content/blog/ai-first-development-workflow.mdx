@@ -1,0 +1,79 @@
+---
+title: "The AI-First Development Workflow: How We Build Products in 2025"
+description: How AI tools have fundamentally changed the way modern development teams write code, review PRs, and ship products — and what to watch out for.
+date: 2025-10-20
+author: Chris Martin
+category: Engineering
+tags: [AI, development, productivity, workflow, engineering]
+---
+
+Two years ago, AI-assisted coding was a novelty. A clever autocomplete that finished your function signatures and occasionally hallucinated a library that didn't exist.
+
+Today, it's a workflow. The teams shipping the fastest aren't the ones with the most senior engineers — they're the ones who've figured out how to orchestrate human judgment and AI capability into a coherent process.
+
+Here's what that process looks like on the ground.
+
+## The Shift From Autocomplete to Agent
+
+The first generation of AI coding tools was essentially a smarter autocomplete. You wrote code, the AI suggested the next line or the next block. Useful, but fundamentally reactive.
+
+The current generation is different. Modern AI agents can:
+
+- **Scaffold entire features** from a natural language description, producing working components with tests.
+- **Refactor across files**, understanding the call graph and updating callers automatically.
+- **Explain unfamiliar code** in terms your team uses, not generic documentation language.
+- **Generate tests** from implementation, or — more powerfully — generate implementation from tests.
+
+The mental model has shifted from "AI helps me type" to "AI handles the mechanical work while I make the decisions."
+
+> **Key Takeaway:** The most productive AI-first teams have learned to separate decision-making (human) from implementation (human + AI). The key skill is knowing which is which.
+
+## What We've Changed in Our Workflow
+
+Our team uses AI across three distinct phases of development.
+
+### 1. Feature Scoping
+
+Before writing a line of code, we prompt an AI with the product spec and ask it to generate a technical breakdown: the components involved, the data models that need to change, the edge cases worth thinking about.
+
+This isn't about the AI making architectural decisions — it's about surfacing the questions we need to answer before we start. A good AI-generated breakdown will identify three or four things we hadn't thought about, which is worth every minute of the conversation.
+
+### 2. Implementation
+
+During implementation, AI handles the repetitive structural work: form validation logic, API route boilerplate, test fixtures, type definitions from JSON schemas. For any code that follows a clear pattern in the codebase, AI can produce a first draft in seconds.
+
+The engineer's job shifts to reviewing, not writing. That's a fundamentally different cognitive mode — more like code review than coding — and it catches more bugs because attention is focused on correctness rather than production.
+
+### 3. Review and Refactor
+
+Post-implementation, AI is useful for two things: finding edge cases in the diff, and identifying refactor opportunities. "Given this implementation, what would break if the API returned null here?" is a powerful prompt that catches real bugs before they reach production.
+
+## The Risks Worth Taking Seriously
+
+AI-first development has real risks that teams often underestimate.
+
+**Confident incorrectness.** AI tools produce wrong code with the same tone as correct code. Junior engineers — and sometimes senior ones — accept AI output without sufficient scrutiny. The solution isn't to use AI less, it's to make code review more rigorous, not less, when AI is generating drafts.
+
+**Accumulated debt.** AI is optimized to produce code that passes tests and satisfies the immediate spec. It is not optimized for long-term maintainability. Teams that let AI write without architectural guidance accumulate technical debt faster than teams that write everything by hand, because AI can produce more code per hour than any engineer.
+
+**Skill atrophy.** There's a real risk that engineers who start their careers in an AI-first workflow never develop the deep debugging and architecture skills that come from writing code from scratch. This is a long-term industry problem that teams should be thinking about now.
+
+> **Key Takeaway:** AI makes bad habits faster, not just good ones. The teams that benefit most from AI are the ones with the strongest engineering cultures — not the ones using AI to compensate for weak ones.
+
+## Integrating AI With Your Quality Gates
+
+The good news is that AI integrates cleanly with the quality infrastructure you already have.
+
+- **CI/CD pipelines** catch AI-generated code that breaks tests or type checks, same as human-written code.
+- **Code review** remains the human checkpoint for architectural decisions and edge cases. If anything, review quality matters more in an AI-first workflow.
+- **Static analysis and linting** enforce style and correctness constraints that AI occasionally ignores.
+
+The mistake is treating AI output as "already reviewed" because the AI generated it confidently. Treat AI output like a junior engineer's first draft: probably good, worth checking carefully.
+
+## What's Coming Next
+
+The next frontier is AI agents that operate across longer time horizons — not just a feature, but a sprint. Agents that can manage a set of tickets, coordinate between tasks, and surface blockers before they become delays.
+
+This will require rethinking how we structure tasks, write specs, and define "done." The teams preparing for this now — by writing clearer specs, investing in better test coverage, and building tighter CI pipelines — will have a significant advantage when these tools mature.
+
+For context on how web performance fits into your engineering stack, read [Why Web Performance Matters For Your Business Growth](/blog/why-web-performance-matters). If you're thinking about how AI affects your component architecture, [Component Architecture: Building UIs That Stand the Test of Time](/blog/component-architecture-building-uis-that-last) covers the structural questions worth asking.

@@ -1,0 +1,122 @@
+---
+title: "Component Architecture: Building UIs That Stand the Test of Time"
+description: The structural decisions behind React component design that determine whether your codebase scales gracefully or collapses under its own weight.
+date: 2025-12-05
+author: Sarah Chen
+category: Engineering
+tags: [architecture, react, components, engineering, UI]
+---
+
+Every React application starts clean. The first dozen components are easy to reason about, easy to change, and easy to test. Then the product grows, the team grows, and somewhere around component number fifty, the architecture you didn't think you needed starts to matter a great deal.
+
+This post is about making the right structural decisions early — the ones that make component fifty just as easy to reason about as component five.
+
+## The Two Problems of Component Design
+
+Component architecture solves two distinct problems that are easy to conflate: **coupling** and **cohesion**.
+
+**Coupling** is about how much your components know about each other. Highly coupled components are hard to change in isolation. Touch one, and you need to understand — and often change — the others.
+
+**Cohesion** is about how well the things inside a component belong together. Low-cohesion components do too many things. They're hard to name, hard to test, and hard to reuse.
+
+Good component architecture maximizes cohesion (each component does one thing well) while minimizing coupling (components interact through stable interfaces, not internal implementation details).
+
+## The Container/Presentation Split
+
+The most durable pattern in React component design is the separation of presentation from behavior. Presentation components receive props and render UI. Container components handle data fetching, state management, and business logic, then pass the results down to presentation components.
+
+This separation has a practical benefit beyond code organization: presentation components are pure functions of their props, which makes them trivially easy to test and to build in isolation in Storybook.
+
+### What This Looks Like in Practice
+
+A presentation component:
+
+```tsx
+function UserCard({ name, role, avatarUrl }: UserCardProps) {
+  return (
+    <div className="flex items-center gap-3">
+      <img src={avatarUrl} alt={name} className="size-10 rounded-full" />
+      <div>
+        <p className="font-medium">{name}</p>
+        <p className="text-sm text-muted-foreground">{role}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+A container component:
+
+```tsx
+async function CurrentUserCard() {
+  const user = await fetchCurrentUser();
+  return <UserCard name={user.name} role={user.role} avatarUrl={user.avatarUrl} />;
+}
+```
+
+The presentation component doesn't know how the user data is fetched. The container component doesn't know how the user data is displayed. Each can change independently.
+
+> **Key Takeaway:** The container/presentation split is not about folder structure. It's about separating the "what to show" from the "how to get it." If a component both fetches data and renders JSX, ask whether it should.
+
+## Composition Patterns That Scale
+
+### Compound Components
+
+Compound components let related pieces share implicit state through React context, without exposing that state to the outside world.
+
+The classic example is a `Select` component: the `Select.Root`, `Select.Trigger`, `Select.Options`, and `Select.Item` all share the "is open" state and the "selected value" state, but the consumer doesn't need to manage any of it.
+
+This pattern is more complex to implement than a single component with many props, but it's far more flexible. Compound components are the architecture behind every good headless UI library.
+
+### Render Props and Slot Patterns
+
+When a component needs to accept arbitrary UI at a specific point in its structure, render props or slot patterns are cleaner than passing JSX as a string or a prop.
+
+The Radix UI `Slot` primitive (which this codebase uses) is the production-grade version of this pattern: it merges the consumer's component with the library component, allowing full styling control without sacrificing behavior.
+
+### The Polymorphic Component
+
+Sometimes you want a component that renders different HTML elements depending on context — a `Button` that renders as an `<a>` when given an `href`, or a `Text` component that renders as `<p>`, `<span>`, or `<h1>` depending on the `as` prop.
+
+Polymorphic components should be used deliberately and sparingly. The flexibility is real, but so is the complexity in the type definitions. Reach for them when the alternative is duplicating a component with different HTML semantics.
+
+## State Architecture
+
+### Colocate State With Consumers
+
+State should live as close as possible to the components that use it. State that lives higher than it needs to causes unnecessary re-renders and makes components harder to reason about in isolation.
+
+Before you reach for a global state store, ask: could this state live in the component that uses it? Could it be derived from props or from a server-side data fetch rather than stored in client state at all?
+
+React Server Components, which Next.js uses by default, make this question more tractable: server-side data fetching reduces the amount of state that needs to live in the client entirely.
+
+### When to Use Global State
+
+Global state is appropriate for data that is:
+- Shared across many components that are far apart in the component tree
+- Long-lived relative to the components that consume it
+- Too expensive to re-derive from a server fetch on every navigation
+
+User authentication, theme preferences, and cross-component coordination are the canonical cases.
+
+> **Key Takeaway:** Most React state management problems are architecture problems in disguise. Before adding a global store, ask whether a better component structure would eliminate the need.
+
+## Naming and Abstraction
+
+The most underrated part of component architecture is naming. A component that is hard to name is usually a component that is doing too many things, or a component that doesn't have a clear conceptual identity.
+
+Good component names:
+- Describe what the component **is** (a `UserCard`, not a `TopRightUserThing`)
+- Are consistent with the design system vocabulary
+- Match the mental model of your product team, not just your engineering team
+
+When a designer and engineer both reach for the same name for the same concept, you've gotten the abstraction right.
+
+## Testing Your Architecture
+
+Component architecture decisions have long-term consequences that are hard to see in the short term. Two tests that help:
+
+1. **The Storybook test.** Can you build this component in isolation, with props, without mocking the rest of your application? If not, it's probably too coupled.
+2. **The refactor test.** If you need to change how data is fetched for this feature, how many components need to change? The answer should be one.
+
+For more on building the design layer that sits on top of this architecture, see [Building Design Systems That Scale](/blog/building-design-systems-that-scale). If you're thinking about how AI tools affect your component authoring workflow, read [The AI-First Development Workflow](/blog/ai-first-development-workflow).
