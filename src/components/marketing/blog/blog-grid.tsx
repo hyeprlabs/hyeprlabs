@@ -55,34 +55,24 @@ export function BlogGrid({ posts, categories }: Props) {
     <div className="relative">
       {/* Category filter tabs + search bar */}
       <div className="flex flex-col gap-3 px-4 pb-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        {/* Scrollable on mobile so tabs never overflow the viewport */}
-        <div className="w-full overflow-x-auto sm:w-auto sm:overflow-visible">
-          <Tabs
-            value={category}
-            onValueChange={(v) => {
-              setCategory(v === "all" ? null : v);
-            }}
-            className="w-max"
-          >
-            <TabsList className="w-max">
-              <TabsTrigger
-                value="all"
-                className="px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
-              >
-                {t("all")}
+        <Tabs
+          value={category}
+          onValueChange={(v) => {
+            setCategory(v === "all" ? null : v);
+          }}
+          className="w-full sm:w-auto"
+        >
+          <TabsList className="w-full overflow-x-auto sm:w-auto">
+            <TabsTrigger value="all">
+              {t("all")}
+            </TabsTrigger>
+            {categories.map((cat) => (
+              <TabsTrigger key={cat} value={cat}>
+                {cat}
               </TabsTrigger>
-              {categories.map((cat) => (
-                <TabsTrigger
-                  key={cat}
-                  value={cat}
-                  className="px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
-                >
-                  {cat}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-        </div>
+            ))}
+          </TabsList>
+        </Tabs>
 
         <div className="relative w-full sm:w-64">
           <Search
