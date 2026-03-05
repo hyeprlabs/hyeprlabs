@@ -41,7 +41,7 @@ export async function BlogSection() {
           {t("subheading")}
         </p>
       </div>
-      <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
         <FullWidthDivider position="top" />
         {blogs.map((blog) => (
           <BlogCard {...blog} key={blog.title} by={t("by")} />
@@ -68,7 +68,7 @@ function BlogCard({
     <Link
       href={href}
       className={cn(
-        "group w-full bg-background px-6 py-12 text-muted-foreground hover:cursor-pointer hover:text-foreground active:bg-accent md:px-8 active:dark:bg-accent/50",
+        "group w-full bg-background px-4 py-8 text-muted-foreground hover:cursor-pointer hover:text-foreground active:bg-accent sm:px-6 md:py-12 lg:px-8 active:dark:bg-accent/50",
         className,
       )}
       {...props}

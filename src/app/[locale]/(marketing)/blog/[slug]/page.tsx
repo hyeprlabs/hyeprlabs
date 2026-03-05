@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <article className="relative mx-auto w-full max-w-5xl">
+      <article className="relative mx-auto w-full max-w-5xl overflow-x-hidden">
         <FullWidthDivider position="top" />
 
         {/* Post header */}
@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
             <time dateTime={post.date}>{formatDate(post.date)}</time>
           </div>
 
-          <h1 className="max-w-2xl text-3xl font-serif md:text-4xl lg:text-5xl">
+          <h1 className="max-w-2xl text-2xl font-serif md:text-4xl lg:text-5xl">
             {post.title}
           </h1>
 
@@ -97,7 +97,7 @@ export default async function BlogPostPage({ params }: Props) {
         <FullWidthDivider />
 
         {/* MDX body */}
-        <div className="prose prose-neutral dark:prose-invert max-w-none px-4 py-8 md:py-12 [&_h2]:font-serif [&_h3]:font-serif [&_blockquote]:font-mono [&_code]:font-mono [&_table]:text-sm">
+        <div className="prose prose-neutral dark:prose-invert max-w-none px-4 py-8 md:py-12 [&_h2]:font-serif [&_h3]:font-serif [&_blockquote]:font-mono [&_code]:font-mono [&_table]:text-sm [&_pre]:overflow-x-auto [&_pre]:max-w-full [&_table]:block [&_table]:w-full [&_table]:overflow-x-auto md:[&_table]:table [&_img]:max-w-full [&_img]:h-auto">
           <MDXContent />
         </div>
 
