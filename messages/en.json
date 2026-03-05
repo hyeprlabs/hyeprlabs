@@ -1,0 +1,51 @@
+{
+  "Header": {
+    "about": "About",
+    "templates": "Templates",
+    "blog": "Blog",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "MobileNav": {
+    "toggleMenu": "Toggle menu"
+  },
+  "HeroSection": {
+    "badgeLabel": "BLOG",
+    "badgeText": "Think Fast. Build Fast.",
+    "title": "Building Digital Experiences That Drive Growth",
+    "description": "We scale online companies faster through smart design, development and strategic execution.",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "LogosSection": {
+    "heading": "Our latest",
+    "headingHighlight": "projects"
+  },
+  "CallToAction": {
+    "title": "Ready to Build Something Great?",
+    "description": "Let's turn your vision into a high-performance digital product. Get in touch to start your next project.",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "Footer": {
+    "tagline": "Think Fast. Build Fast.",
+    "copyright": "© {year} Hyepr Labs, All rights reserved",
+    "resources": "Resources",
+    "company": "Company",
+    "legal": "Legal",
+    "nav": {
+      "blog": "Blog",
+      "support": "Support",
+      "contact": "Contact",
+      "changelog": "Changelog",
+      "team": "Team",
+      "about": "About",
+      "projects": "Projects",
+      "templates": "Templates",
+      "brandAssets": "Brand assets",
+      "imprint": "Imprint",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
+  }
+}

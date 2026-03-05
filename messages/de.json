@@ -1,0 +1,51 @@
+{
+  "Header": {
+    "about": "Über uns",
+    "templates": "Vorlagen",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "projects": "Projekte"
+  },
+  "MobileNav": {
+    "toggleMenu": "Menü umschalten"
+  },
+  "HeroSection": {
+    "badgeLabel": "BLOG",
+    "badgeText": "Schnell denken. Schnell bauen.",
+    "title": "Digitale Erlebnisse schaffen, die Wachstum fördern",
+    "description": "Wir skalieren Online-Unternehmen schneller durch smartes Design, Entwicklung und strategische Umsetzung.",
+    "contact": "Kontakt",
+    "projects": "Projekte"
+  },
+  "LogosSection": {
+    "heading": "Unsere neuesten",
+    "headingHighlight": "Projekte"
+  },
+  "CallToAction": {
+    "title": "Bereit, etwas Großartiges zu bauen?",
+    "description": "Lassen Sie uns Ihre Vision in ein hochleistungsfähiges digitales Produkt verwandeln. Nehmen Sie Kontakt auf, um Ihr nächstes Projekt zu starten.",
+    "contact": "Kontakt",
+    "projects": "Projekte"
+  },
+  "Footer": {
+    "tagline": "Schnell denken. Schnell bauen.",
+    "copyright": "© {year} Hyepr Labs, Alle Rechte vorbehalten",
+    "resources": "Ressourcen",
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "nav": {
+      "blog": "Blog",
+      "support": "Support",
+      "contact": "Kontakt",
+      "changelog": "Änderungsprotokoll",
+      "team": "Team",
+      "about": "Über uns",
+      "projects": "Projekte",
+      "templates": "Vorlagen",
+      "brandAssets": "Marken-Assets",
+      "imprint": "Impressum",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen"
+    }
+  }
+}
