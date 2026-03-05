@@ -4,6 +4,7 @@ import { DataDisclaimer } from "@/components/marketing/data-disclaimer";
 import { BlogSection } from "@/components/marketing/blog/blog-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -17,15 +18,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("BlogPage");
+
   return (
     <>
       <MarketingHero
-        badge="BLOG"
-        title="Insights & News"
-        description="Thoughts on design, development, and building digital products for the modern web."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
-      <DataDisclaimer description="These blog posts are just dummies for now. They're here for demonstration purposes to show what the layout will look like, but they aren't real published articles just yet. Check back later for real technical content!" />
+      <DataDisclaimer description={t("disclaimer")} />
       <BlogSection />
       <CallToAction />
       <Footer />

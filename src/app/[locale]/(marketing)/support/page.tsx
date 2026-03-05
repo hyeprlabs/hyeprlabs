@@ -3,6 +3,7 @@ import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("SupportPage");
+
   return (
     <>
       <MarketingHero
-        badge="SUPPORT"
-        title="Support Center"
-        description="Get help and support for your projects. Our dedicated support center. Coming soon."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <Article />
       <CallToAction />
@@ -31,41 +34,34 @@ export default function Page() {
   );
 }
 
-function Article() {
+async function Article() {
+  const t = await getTranslations("SupportPage");
+  const hl = (chunks: React.ReactNode) => <span className="text-foreground">{chunks}</span>;
+
   return (
     <div className="relative">
       <FullWidthDivider position="top" />
       <article className="mx-auto max-w-2xl px-4 py-12 text-sm tracking-wider sm:text-lg font-mono text-muted-foreground">
         <header className="mb-10 text-center">
           <h2 className="text-xl sm:text-2xl font-medium text-foreground mb-4">
-            Coming Soon
+            {t("comingSoon")}
           </h2>
           <p className="leading-relaxed">
-            We&apos;re building a comprehensive{" "}
-            <span className="text-foreground">support center</span> to help you
-            get the most out of working with us.
+            {t.rich("intro", { highlight: hl })}
           </p>
         </header>
 
         <div className="space-y-8 text-left">
           <p className="leading-relaxed">
-            Our upcoming support hub will include{" "}
-            <span className="text-foreground">detailed documentation</span>,
-            step-by-step guides, and answers to frequently asked questions to
-            help you navigate every aspect of our services.
+            {t.rich("para1", { highlight: hl })}
           </p>
 
           <p className="leading-relaxed">
-            Need assistance in the meantime? Reach out directly through our{" "}
-            <span className="text-foreground">contact page</span> and our team
-            will respond within 24 hours.
+            {t.rich("para2", { highlight: hl })}
           </p>
 
           <p className="leading-relaxed">
-            Stay tuned for updates as we continue to expand our resources and
-            create a{" "}
-            <span className="text-foreground">seamless support experience</span>{" "}
-            for all our clients and partners.
+            {t.rich("para3", { highlight: hl })}
           </p>
         </div>
       </article>

@@ -4,6 +4,7 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("PrivacyPage");
+
   return (
     <>
       <MarketingHero
-        badge="PRIVACY"
-        title="Privacy Policy"
-        description="Your privacy is important to us. Learn how we collect, use, and protect your data."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <Article />
       <CallToAction />
@@ -31,7 +34,9 @@ export default function Page() {
   );
 }
 
-function Article() {
+async function Article() {
+  const t = await getTranslations("PrivacyPage");
+
   return (
     <div className="relative border-b border-border">
       <FullWidthDivider position="top" />
@@ -39,68 +44,51 @@ function Article() {
         <LegalDisclaimer />
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            1. An Overview of Data Protection
+            {t("section1")}
           </h2>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            General Information
+            {t("section1sub1")}
           </h3>
           <p className="leading-relaxed mb-6">
-            The following information provides a simple overview of what happens
-            to your personal data when you visit this website. Personal data is
-            any data with which you could be personally identified. Detailed
-            information on the subject of data protection can be found in our
-            privacy policy found below.
+            {t("section1sub1Text")}
           </p>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Data Collection on this Website
+            {t("section1sub2")}
           </h3>
           <p className="leading-relaxed mb-6">
-            <strong>
-              Who is responsible for the data collection on this website?
-            </strong>
+            <strong>{t("section1sub2q1")}</strong>
             <br />
-            The data processing on this website is carried out by the website
-            operator. Their contact details can be found in the section
-            &quot;Information about the responsible party&quot; in this privacy policy.
+            {t("section1sub2p1")}
           </p>
           <p className="leading-relaxed mb-6">
-            <strong>How do we collect your data?</strong>
+            <strong>{t("section1sub2q2")}</strong>
             <br />
-            Some data are collected when you provide it to us. This could, for
-            example, be data you enter into a contact form. Other data are
-            collected automatically by our IT systems when you visit the
-            website. These data are primarily technical data (e.g. the browser
-            and operating system you are using or when you accessed the page).
+            {t("section1sub2p2")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            2. General Information and Mandatory Information
+            {t("section2")}
           </h2>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Data Protection
+            {t("section2sub1")}
           </h3>
           <p className="leading-relaxed mb-6">
-            The operators of this website take the protection of your personal
-            data very seriously. We treat your personal data as confidential and
-            in accordance with the statutory data protection regulations and
-            this privacy policy. When you use this website, various personal
-            data are collected. Personal data is data with which you can be
-            personally identified.
+            {t("section2sub1Text")}
           </p>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Information about the responsible party
+            {t("section2sub2")}
           </h3>
           <address
             className="leading-relaxed mb-6 not-italic"
             suppressHydrationWarning
           >
-            The responsible party for data processing on this website is:
+            {t("section2sub2Intro")}
             <br />
             <br />
             <strong>[Company Name]</strong>
@@ -109,7 +97,7 @@ function Article() {
             <br />
             [City, Zip]
             <br />
-            Phone:{" "}
+            {t("contactPhone")}{" "}
             <a
               href="tel:+1234567890"
               className="hover:underline text-foreground transition-colors"
@@ -117,7 +105,7 @@ function Article() {
               [Phone Number]
             </a>
             <br />
-            Email:{" "}
+            {t("contactEmail")}{" "}
             <a
               href="mailto:contact@hyeprlabs.com"
               className="hover:underline text-foreground transition-colors"
@@ -127,80 +115,53 @@ function Article() {
           </address>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Revocation of your consent to data processing
+            {t("section2sub3")}
           </h3>
           <p className="leading-relaxed mb-6">
-            Many data processing operations are only possible with your express
-            consent. You can revoke this consent at any time. The legality of
-            the data processing carried out before the revocation remains
-            unaffected by the revocation.
+            {t("section2sub3Text")}
           </p>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Right to lodge a complaint with the competent supervisory authority
+            {t("section2sub4")}
           </h3>
           <p className="leading-relaxed mb-6">
-            In the event of violations of the GDPR, data subjects are entitled
-            to log a complaint with a supervisory authority, in particular in
-            the member state of their habitual residence, their place of work or
-            the place of the alleged violation.
+            {t("section2sub4Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            3. Data Collection on this Website
+            {t("section3")}
           </h2>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Cookies
+            {t("section3sub1")}
           </h3>
           <p className="leading-relaxed mb-6">
-            Our websites and pages use what the industry refers to as &quot;cookies.&quot;
-            Cookies are small text files that do not cause any damage to your
-            device. They are either stored temporarily for the duration of a
-            session (session cookies) or permanently (permanent cookies) on your
-            device. Session cookies are automatically deleted after your visit.
+            {t("section3sub1Text")}
           </p>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Server Log Files
+            {t("section3sub2")}
           </h3>
           <p className="leading-relaxed mb-6">
-            The provider of the pages automatically collects and stores
-            information in so-called server log files, which your browser
-            automatically transmits to us. These are: browser type and browser
-            version, operating system used, referrer URL, host name of the
-            accessing computer, time of the server request, and IP address.
-            These data are not merged with other data sources.
+            {t("section3sub2Text")}
           </p>
 
           <h3 className="text-sm font-medium text-foreground font-sans uppercase tracking-wider mt-0">
-            Contact Form / Email Contact
+            {t("section3sub3")}
           </h3>
           <p className="leading-relaxed mb-6">
-            If you send us inquiries via the contact form or email, your details
-            from the inquiry form, including the contact details you provided
-            there, will be stored by us for the purpose of processing the
-            inquiry and in the event of follow-up questions. We do not pass on
-            this data without your consent. The processing of this data is based
-            on Art. 6 (1) lit. b GDPR.
+            {t("section3sub3Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            4. SSL/TLS Encryption
+            {t("section4")}
           </h2>
           <p className="leading-relaxed mb-6">
-            This site uses SSL or TLS encryption for security reasons and for
-            the protection of the transmission of confidential content, such as
-            the inquiries you send to us as the site operator. You can recognize
-            an encrypted connection in your browser&apos;s address line when it
-            changes from &quot;http://&quot; to &quot;https://&quot; and the lock icon is displayed
-            in your browser&apos;s address bar. If SSL or TLS encryption is
-            activated, the data you transfer to us cannot be read by third
-            parties.
+            {t("section4Text")}
           </p>
         </section>
       </article>

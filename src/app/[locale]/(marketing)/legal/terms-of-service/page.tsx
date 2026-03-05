@@ -4,6 +4,7 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("TermsPage");
+
   return (
     <>
       <MarketingHero
-        badge="TERMS"
-        title="Terms of Service"
-        description="Read our terms carefully to understand your rights, responsibilities, and our operational guidelines."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <Article />
       <CallToAction />
@@ -31,7 +34,9 @@ export default function Page() {
   );
 }
 
-function Article() {
+async function Article() {
+  const t = await getTranslations("TermsPage");
+
   return (
     <div className="relative border-b border-border">
       <FullWidthDivider position="top" />
@@ -39,114 +44,76 @@ function Article() {
         <LegalDisclaimer />
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            1. Scope of Application
+            {t("section1")}
           </h2>
           <p className="leading-relaxed mb-6">
-            These General Terms and Conditions (GTC) apply to all contracts
-            concluded between Hyepr Labs (hereinafter &quot;Provider&quot; or &quot;we&quot;)
-            and our clients (hereinafter &quot;Client&quot; or &quot;you&quot;) via our services and
-            products offered at hyeprlabs.com. Deviating conditions of the
-            Client shall not be recognized unless the Provider expressly agrees
-            to their validity in writing.
+            {t("section1Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            2. Conclusion of Contract
+            {t("section2")}
           </h2>
           <p className="leading-relaxed mb-6">
-            The presentation of services on our website does not represent a
-            legally binding offer, but rather a non-binding online catalog. The
-            contract is concluded when we accept your offer (e.g., your inquiry
-            or order) by email confirmation or by performing the service.
+            {t("section2Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            3. Services and Obligations to Cooperate
+            {t("section3")}
           </h2>
           <p className="leading-relaxed mb-6">
-            The scope of contractual services results from the service
-            description of the offer or contract. The Client undertakes to
-            provide all cooperative acts necessary for the provision of the
-            service in full and in good time. Delays attributable to a lack of
-            cooperation from the Client do not fall within our area of
-            responsibility.
+            {t("section3Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            4. Remuneration and Terms of Payment
+            {t("section4")}
           </h2>
           <p className="leading-relaxed mb-6">
-            Unless otherwise agreed, all prices are quoted net plus the
-            applicable statutory value-added tax. Invoices are due without
-            deduction within 14 days of invoicing. If the Client defaults on
-            payment, we reserve the right to retain our services until payment
-            has been made in full.
+            {t("section4Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            5. Rights of Use and Copyright
+            {t("section5")}
           </h2>
           <p className="leading-relaxed mb-6">
-            We grant the Client the rights of use to our work results required
-            for the contractually intended purpose (essentially a simple and
-            non-transferable right). The granting of rights is always subject to
-            the condition precedent of full payment of the agreed remuneration.
-            Source codes and working files remain with us unless expressly
-            agreed otherwise.
+            {t("section5Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            6. Limitation of Liability
+            {t("section6")}
           </h2>
           <p className="leading-relaxed mb-6">
-            We bear unlimited liability for intent and gross negligence as well
-            as in the event of injury to life, body and health. In the case of
-            slight negligence, we are only liable for the breach of an essential
-            contractual obligation (cardinal duty), the fulfillment of which is
-            essential for the proper execution of the contract. Liability for
-            slight negligence is limited to typical, foreseeable damage. Any
-            further liability for damages – irrespective of the legal nature of
-            the asserted claim – is excluded.
+            {t("section6Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            7. Confidentiality
+            {t("section7")}
           </h2>
           <p className="leading-relaxed mb-6">
-            Both parties undertake to treat strictly confidentially all
-            confidential information of the other party obtained within the
-            framework of the cooperation, even after termination of the
-            contract, and not to disclose it to third parties.
+            {t("section7Text")}
           </p>
         </section>
 
         <section>
           <h2 className="text-sm sm:text-base font-semibold text-foreground font-sans uppercase tracking-widest">
-            8. Final Provisions
+            {t("section8")}
           </h2>
           <p className="leading-relaxed mb-6">
-            The laws of the Federal Republic of Germany shall apply, excluding
-            the UN Convention on Contracts for the International Sale of Goods
-            (CISG). The exclusive place of jurisdiction for all disputes arising
-            from or in connection with this contract is our registered office
-            (Berlin), provided the Client is a merchant, a legal entity under
-            public law, or a special fund under public law.
+            {t("section8Text1")}
           </p>
           <p className="leading-relaxed mb-6">
-            Should individual provisions of these GTC be or become invalid, the
-            validity of the remaining provisions shall remain unaffected.
+            {t("section8Text2")}
           </p>
         </section>
       </article>

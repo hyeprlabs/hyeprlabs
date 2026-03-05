@@ -3,6 +3,7 @@ import { MarketingHero } from "@/components/marketing/marketing-hero";
 import { ContactSection } from "@/components/marketing/contact/contact-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("ContactPage");
+
   return (
     <>
       <MarketingHero
-        badge="CONTACT"
-        title="Get in Touch"
-        description="Have a project in mind or want to say hello? We'd love to hear from you."
+        badge={t("badge")}
+        title={t("title")}
+        description={t("description")}
       />
       <ContactSection />
       <CallToAction />
