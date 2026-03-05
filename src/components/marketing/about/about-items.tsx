@@ -28,7 +28,7 @@ export async function AboutItems() {
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-<FullWidthDivider position="top" />
+        <FullWidthDivider position="top" />
         {items.map((item) => (
           <ItemCard item={item} key={item.title} />
         ))}
