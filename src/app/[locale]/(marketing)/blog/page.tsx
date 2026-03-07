@@ -4,6 +4,7 @@ import { BlogSection } from "@/components/marketing/blog/blog-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     description:
       "Insights on design, engineering, AI, and building high-performance digital products. Expert articles from the Hyepr Labs team.",
     creator: "@hyeprlabs",
+    site: "@hyeprlabs",
   },
 };
 
@@ -45,6 +47,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Blog", href: "/blog" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

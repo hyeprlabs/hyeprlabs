@@ -75,48 +75,48 @@ export async function Footer() {
 			  <LanguageSwitcher />
 			</div>
           </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          <nav aria-label="Resources" className="col-span-3 w-full md:col-span-1">
             <span className="text-muted-foreground text-xs">{t("resources")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {resources.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          </nav>
+          <nav aria-label="Company" className="col-span-3 w-full md:col-span-1">
             <span className="text-muted-foreground text-xs">{t("company")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {company.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          </nav>
+          <nav aria-label="Legal" className="col-span-3 w-full md:col-span-1">
             <span className="text-muted-foreground text-xs">{t("legal")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {legal.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
                   href={href}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
+          </nav>
         </div>
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="flex max-w-4xl flex-col justify-between gap-2 py-4">

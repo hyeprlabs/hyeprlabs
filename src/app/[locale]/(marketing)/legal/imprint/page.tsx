@@ -5,6 +5,7 @@ import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 const data = {
   name: "Hyepr Labs",
@@ -34,13 +35,25 @@ const data = {
 
 export const metadata: Metadata = {
   title: "Imprint",
-  description: "Legal information and imprint for Hyepr Labs.",
+  description: "Legal information and imprint (Impressum) for Hyepr Labs — required legal disclosure for our German-based digital agency.",
   keywords: ["Imprint", "Legal Notice", "Impressum", "Business Disclosure", "Hyepr Labs Legal"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/legal/imprint",
+  },
   openGraph: {
+    type: "website",
     title: "Imprint | Hyepr Labs | Think Fast. Build Fast.",
     description: "Legal information and imprint for Hyepr Labs.",
     url: "https://hyeprlabs.com/legal/imprint",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary",
+    title: "Imprint | Hyepr Labs",
+    description: "Legal information and imprint for Hyepr Labs.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -48,6 +61,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Imprint", href: "/legal/imprint" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

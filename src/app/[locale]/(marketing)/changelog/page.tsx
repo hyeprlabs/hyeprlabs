@@ -4,17 +4,30 @@ import { ChangelogSection } from "@/components/marketing/changelog/changelog-sec
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Changelog",
   description:
-    "New features, improvements, and bug fixes for our complete suite of products.",
+    "Track all new features, improvements, and bug fixes across Hyepr Labs products. Stay up to date with our latest releases.",
   keywords: ["Changelog", "Product Updates", "Release Notes", "New Features", "Hyepr Labs Updates"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/changelog",
+  },
   openGraph: {
+    type: "website",
     title: "Changelog | Hyepr Labs | Think Fast. Build Fast.",
-    description: "New features, improvements, and bug fixes for our complete suite of products.",
+    description: "Track all new features, improvements, and bug fixes across Hyepr Labs products.",
     url: "https://hyeprlabs.com/changelog",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Changelog | Hyepr Labs",
+    description: "Track all new features, improvements, and bug fixes across Hyepr Labs products.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +35,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Changelog", href: "/changelog" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

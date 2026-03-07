@@ -4,17 +4,31 @@ import { AboutItems } from "@/components/marketing/about/about-items";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+    "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation. Learn who we are and how we work.",
   keywords: ["About Hyepr Labs", "Top Digital Agency", "Next.js Experts", "UI/UX Designers", "Software Engineers"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/about",
+  },
   openGraph: {
+    type: "website",
     title: "About | Hyepr Labs | Think Fast. Build Fast.",
     description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
     url: "https://hyeprlabs.com/about",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Hyepr Labs",
+    description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +36,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "About", href: "/about" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}
@@ -29,9 +49,35 @@ export default async function Page() {
       />
       <AboutItems />
       <Article />
+      <InternalLinks />
       <CallToAction />
       <Footer />
     </>
+  );
+}
+
+function InternalLinks() {
+  return (
+    <nav
+      aria-label="Related pages"
+      className="mx-auto max-w-2xl px-4 pb-8 font-mono text-sm text-muted-foreground"
+    >
+      <p>
+        Explore our{" "}
+        <Link href="/projects" className="underline hover:text-foreground">
+          projects
+        </Link>
+        , meet the{" "}
+        <Link href="/team" className="underline hover:text-foreground">
+          team
+        </Link>
+        , or{" "}
+        <Link href="/contact" className="underline hover:text-foreground">
+          get in touch
+        </Link>
+        .
+      </p>
+    </nav>
   );
 }
 

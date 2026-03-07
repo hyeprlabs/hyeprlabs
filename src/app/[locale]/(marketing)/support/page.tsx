@@ -4,17 +4,30 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Get help and support for your projects. Our dedicated support center. Coming soon.",
+    "Get help and support for your Hyepr Labs projects. Access our dedicated support center, documentation, and technical assistance.",
   keywords: ["Customer Support", "Help Center", "Client Support", "Technical Support", "Hyepr Labs Help"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/support",
+  },
   openGraph: {
+    type: "website",
     title: "Support | Hyepr Labs | Think Fast. Build Fast.",
-    description: "Get help and support for your projects. Our dedicated support center. Coming soon.",
+    description: "Get help and support for your Hyepr Labs projects.",
     url: "https://hyeprlabs.com/support",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support | Hyepr Labs",
+    description: "Get help and support for your Hyepr Labs projects.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +35,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Support", href: "/support" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

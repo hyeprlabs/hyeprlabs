@@ -4,17 +4,30 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Brand",
   description:
-    "Access our brand guidelines and download our brand kit. Coming soon.",
+    "Access Hyepr Labs brand guidelines, download logos, and get our complete media kit for press and partner use.",
   keywords: ["Brand Assets", "Brand Guidelines", "Hyepr Labs Logos", "Media Kit", "Press Kit"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/brand",
+  },
   openGraph: {
+    type: "website",
     title: "Brand | Hyepr Labs | Think Fast. Build Fast.",
-    description: "Access our brand guidelines and download our brand kit. Coming soon.",
+    description: "Access Hyepr Labs brand guidelines, logos, and media kit.",
     url: "https://hyeprlabs.com/brand",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brand | Hyepr Labs",
+    description: "Access Hyepr Labs brand guidelines, logos, and media kit.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +35,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Brand", href: "/brand" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

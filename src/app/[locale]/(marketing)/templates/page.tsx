@@ -5,17 +5,30 @@ import { TemplatesList } from "@/components/marketing/templates/templates-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Templates",
   description:
-    "A collection of production-ready Next.js templates to jumpstart your next project.",
+    "Production-ready Next.js templates and React boilerplates by Hyepr Labs. Jumpstart your SaaS, e-commerce, or marketing site with modern, open-source starters.",
   keywords: ["Next.js Templates", "React Templates", "Tailwind CSS Templates", "Open Source Boilerplates", "SaaS Starter Kit", "Hyepr Labs Templates"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/templates",
+  },
   openGraph: {
+    type: "website",
     title: "Templates | Hyepr Labs | Think Fast. Build Fast.",
-    description: "A collection of production-ready Next.js templates to jumpstart your next project.",
+    description: "Production-ready Next.js templates and React boilerplates. Jumpstart your next project.",
     url: "https://hyeprlabs.com/templates",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Templates | Hyepr Labs",
+    description: "Production-ready Next.js templates and React boilerplates. Jumpstart your next project.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -23,6 +36,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Templates", href: "/templates" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

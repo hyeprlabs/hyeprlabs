@@ -5,16 +5,29 @@ import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Rules and guidelines for accessing and using our platforms.",
+  description: "Rules and guidelines for accessing and using Hyepr Labs platforms and services. Read our full Terms of Service.",
   keywords: ["Terms of Service", "Terms of Use", "TOS", "Legal Terms", "Platform Guidelines"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/legal/terms-of-service",
+  },
   openGraph: {
+    type: "website",
     title: "Terms of Service | Hyepr Labs | Think Fast. Build Fast.",
-    description: "Rules and guidelines for accessing and using our platforms.",
+    description: "Rules and guidelines for accessing and using Hyepr Labs platforms and services.",
     url: "https://hyeprlabs.com/legal/terms-of-service",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service | Hyepr Labs",
+    description: "Rules and guidelines for accessing and using Hyepr Labs platforms and services.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +35,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Terms of Service", href: "/legal/terms-of-service" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

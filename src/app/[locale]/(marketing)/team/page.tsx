@@ -5,17 +5,30 @@ import { TeamList } from "@/components/marketing/team/team-list";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Team",
   description:
-    "The talented individuals behind our success. Dedicated, creative, and passionate about what we do.",
-  keywords: ["Hyepr Labs Team", "Expert Developers", "Top UI Designers", "Digital Innovators"],
+    "Meet the talented designers, engineers, and strategists behind Hyepr Labs. Dedicated, creative, and passionate about building world-class digital products.",
+  keywords: ["Hyepr Labs Team", "Expert Developers", "Top UI Designers", "Digital Innovators", "Next.js Engineers"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/team",
+  },
   openGraph: {
+    type: "website",
     title: "Team | Hyepr Labs | Think Fast. Build Fast.",
-    description: "The talented individuals behind our success. Dedicated, creative, and passionate about what we do.",
+    description: "Meet the talented designers, engineers, and strategists behind Hyepr Labs.",
     url: "https://hyeprlabs.com/team",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Team | Hyepr Labs",
+    description: "Meet the talented designers, engineers, and strategists behind Hyepr Labs.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -23,6 +36,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Team", href: "/team" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

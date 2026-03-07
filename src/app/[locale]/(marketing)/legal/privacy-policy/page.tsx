@@ -5,16 +5,29 @@ import { LegalDisclaimer } from "@/components/marketing/legal/legal-disclaimer";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { getTranslations } from "next-intl/server";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How we handle, protect, and process your personal data.",
+  description: "How Hyepr Labs handles, protects, and processes your personal data. Read our full GDPR-compliant privacy policy.",
   keywords: ["Privacy Policy", "Data Protection", "GDPR", "User Privacy", "Hyepr Labs Privacy"],
+  alternates: {
+    canonical: "https://hyeprlabs.com/legal/privacy-policy",
+  },
   openGraph: {
+    type: "website",
     title: "Privacy Policy | Hyepr Labs | Think Fast. Build Fast.",
-    description: "How we handle, protect, and process your personal data.",
+    description: "How Hyepr Labs handles, protects, and processes your personal data.",
     url: "https://hyeprlabs.com/legal/privacy-policy",
-  }
+    siteName: "Hyepr Labs",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | Hyepr Labs",
+    description: "How Hyepr Labs handles, protects, and processes your personal data.",
+    creator: "@hyeprlabs",
+    site: "@hyeprlabs",
+  },
 };
 
 export default async function Page() {
@@ -22,6 +35,12 @@ export default async function Page() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Privacy Policy", href: "/legal/privacy-policy" },
+        ]}
+      />
       <MarketingHero
         badge={t("badge")}
         title={t("title")}

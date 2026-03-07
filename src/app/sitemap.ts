@@ -1,7 +1,16 @@
 import type { MetadataRoute } from "next";
+import { blogCollection, getSlug } from "@/lib/source";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const hl = "https://hyeprlabs.com";
+
+  const posts = await blogCollection;
+  const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${hl}/blog/${getSlug(post.info.path)}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   return [
     {
@@ -41,13 +50,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${hl}/imprint`,
+      url: `${hl}/legal/imprint`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: `${hl}/privacy-policy`,
+      url: `${hl}/legal/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${hl}/legal/terms-of-service`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
@@ -76,11 +91,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    {
-      url: `${hl}/terms-of-service`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
+    ...blogEntries,
   ];
 }

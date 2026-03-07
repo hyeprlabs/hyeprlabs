@@ -12,6 +12,7 @@ import { AuthorInfo } from "@/components/marketing/blog/author-info";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
+import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -60,6 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       creator: "@hyeprlabs",
+      site: "@hyeprlabs",
       ...(post.image ? { images: [post.image] } : {}),
     },
   };
@@ -78,6 +80,22 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <BlogPostingJsonLd
+        title={post.title}
+        description={post.description}
+        slug={slug}
+        date={post.date}
+        author={post.author}
+        category={post.category}
+        image={post.image}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Blog", href: "/blog" },
+          { name: post.title, href: `/blog/${slug}` },
+        ]}
+      />
       <article className="relative mx-auto w-full max-w-5xl">
         <FullWidthDivider position="top" />
 
