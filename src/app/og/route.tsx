@@ -34,6 +34,7 @@ export async function GET(request: NextRequest) {
   const description =
     searchParams.get("description") ?? "Think Fast. Build Fast.";
   const type = searchParams.get("type") ?? "";
+  const cta = searchParams.get("cta") ?? "";
 
   const [interRegular, interBold] = await Promise.all([
     loadGoogleFont("Inter", 400),
@@ -224,6 +225,32 @@ export async function GET(request: NextRequest) {
             >
               {description}
             </p>
+          ) : null}
+
+          {cta ? (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: "16px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  fontFamily,
+                  letterSpacing: "0.02em",
+                  padding: "10px 24px",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  borderRadius: "8px",
+                  background: "rgba(255,255,255,0.08)",
+                }}
+              >
+                {cta}
+              </span>
+            </div>
           ) : null}
         </div>
 
