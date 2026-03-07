@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { unstable_noStore as noStore } from "next/cache";
 import { blogCollection, getSlug } from "@/lib/source";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Button } from "@/components/ui/button";
@@ -11,11 +12,18 @@ import { AuthorInfo } from "./author-info";
 const PREVIEW_COUNT = 3;
 
 export async function BlogCta() {
+  noStore(); // opt out of static rendering so posts shuffle on every request
   const t = await getTranslations("BlogCta");
   const posts = await blogCollection;
 
-  const blogs = posts
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  // Shuffle so a different set of posts appears on every page load
+  const shuffled = [...posts];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  const blogs = shuffled
     .slice(0, PREVIEW_COUNT)
     .map((post) => ({
       title: post.title,
@@ -52,7 +60,7 @@ export async function BlogCta() {
 
       <div className="relative">
         <FullWidthDivider position="top" />
-        <div className="grid grid-cols-1 border-l sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-r">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-r">
           {blogs.map((blog) => (
             <BlogPreviewCard key={blog.href} {...blog} />
           ))}
