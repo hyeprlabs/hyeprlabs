@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import {
   GithubIcon,
   InstagramIcon,
@@ -69,8 +70,9 @@ export async function Footer() {
                 </Button>
               ))}
             </div>
-			<div>
+			<div className="flex items-center gap-2">
 			  <ThemeSwitcher />
+			  <LanguageSwitcher />
 			</div>
           </div>
           <div className="col-span-3 w-full md:col-span-1">

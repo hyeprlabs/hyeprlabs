@@ -150,6 +150,11 @@
     "all": "Alle",
     "searchPlaceholder": "Beiträge suchen..."
   },
+  "BlogCta": {
+    "heading": "Aus dem Blog",
+    "subheading": "Einige unserer neuesten Gedanken zu Design, Engineering und Produktentwicklung.",
+    "viewAll": "Alle Beiträge ansehen"
+  },
   "BrandPage": {
     "title": "Marken-Assets",
     "description": "Greifen Sie auf unsere Markenrichtlinien zu und laden Sie unser Marken-Kit herunter. Demnächst verfügbar.",
@@ -497,5 +502,10 @@
     "section8": "8. Schlussbestimmungen",
     "section8Text1": "Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts (CISG). Ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist unser Firmensitz (Berlin), sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.",
     "section8Text2": "Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt."
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache wechseln",
+    "en": "Englisch",
+    "de": "Deutsch"
   }
 }

@@ -150,6 +150,11 @@
     "all": "All",
     "searchPlaceholder": "Search posts..."
   },
+  "BlogCta": {
+    "heading": "From the Blog",
+    "subheading": "A few of our latest thoughts on design, engineering, and building products.",
+    "viewAll": "View all posts"
+  },
   "BrandPage": {
     "title": "Brand assets",
     "description": "Access our brand guidelines and download our brand kit. Coming soon.",
@@ -497,5 +502,10 @@
     "section8": "8. Final Provisions",
     "section8Text1": "The laws of the Federal Republic of Germany shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). The exclusive place of jurisdiction for all disputes arising from or in connection with this contract is our registered office (Berlin), provided the Client is a merchant, a legal entity under public law, or a special fund under public law.",
     "section8Text2": "Should individual provisions of these GTC be or become invalid, the validity of the remaining provisions shall remain unaffected."
+  },
+  "LanguageSwitcher": {
+    "label": "Switch language",
+    "en": "English",
+    "de": "German"
   }
 }

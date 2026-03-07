@@ -7,6 +7,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { getCategoryTextClass } from "@/lib/blog";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { AuthorInfo } from "./author-info";
 import { Link } from "@/i18n/navigation";
 
@@ -35,6 +36,7 @@ export function BlogGrid({ posts, categories }: Props) {
     "q",
     parseAsString.withDefault(""),
   );
+  const isSmall = !useMediaQuery("(min-width: 640px)");
 
   const searchTerm = query.trim().toLowerCase();
 
@@ -60,9 +62,10 @@ export function BlogGrid({ posts, categories }: Props) {
           onValueChange={(v) => {
             setCategory(v === "all" ? null : v);
           }}
-          className="w-full sm:w-auto"
+          orientation={isSmall ? "vertical" : "horizontal"}
+          className="w-auto"
         >
-          <TabsList className="w-full overflow-x-auto sm:overflow-x-visible">
+          <TabsList>
             <TabsTrigger value="all">
               {t("all")}
             </TabsTrigger>
