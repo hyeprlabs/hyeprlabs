@@ -515,40 +515,48 @@
   "FaqSection": {
     "badge": "FAQ",
     "heading": "Häufig gestellte Fragen",
-    "description": "Alles, was Sie über Hyepr Labs und unsere Arbeitsweise wissen müssen. Keine passende Antwort gefunden? Nehmen Sie direkt Kontakt auf.",
-    "cta": "Kontakt aufnehmen",
+    "description": "Alles, was Sie über die Zusammenarbeit mit Hyepr Labs wissen möchten. Keine passende Antwort gefunden? Fragen Sie uns direkt.",
+    "cta": "Stellen Sie uns eine Frage",
     "faqs": [
       {
         "question": "Was macht Hyepr Labs genau?",
-        "answer": "Hyepr Labs ist eine Digital-Produkt-Agentur. Wir entwerfen und bauen hochleistungsfähige Webanwendungen, SaaS-Plattformen und digitale Erlebnisse mit Next.js, React, Tailwind CSS und modernen KI-Tools. Wir arbeiten mit Start-ups und Wachstumsunternehmen, die schnell vorankommen möchten, ohne Qualität zu opfern."
+        "answer": "Hyepr Labs ist eine Digital-Produkt-Agentur. Wir entwerfen und entwickeln hochleistungsfähige Webanwendungen, SaaS-Plattformen und digitale Produkte — hauptsächlich mit Next.js, React, Tailwind CSS und modernen KI-Tools. Wir arbeiten mit Start-ups und wachstumsstarken Unternehmen zusammen, die schnell liefern möchten, ohne bei der Qualität Kompromisse einzugehen."
       },
       {
         "question": "Welche Leistungen bietet Hyepr Labs an?",
-        "answer": "Wir bieten ganzheitliche Digitalprodukt-Entwicklung: Next.js- und React-Engineering, UI/UX-Design und Design-Systeme, KI- und LLM-Integrationen, Headless E-Commerce, SaaS-Dashboard-Entwicklung, Performance-Audits und laufende Produktstrategie. Betrachten Sie uns als Ihren vollständigen technischen Mitgründer auf Abruf."
+        "answer": "Wir begleiten den gesamten Produktlebenszyklus: UI/UX-Design und Design-Systeme, Next.js- und React-Engineering, KI- und LLM-Integrationen, Headless E-Commerce, SaaS-Dashboards, Performance-Audits und laufende Produktstrategie. Betrachten Sie uns als ein vollständiges technisches Team, das in Ihr Unternehmen eingebettet ist — ohne den Aufwand einer eigenen Stellenbesetzung."
+      },
+      {
+        "question": "Mit welchen Kunden arbeiten Sie typischerweise zusammen?",
+        "answer": "Unsere Kunden reichen von frühen Gründern, die ein MVP validieren, bis hin zu Scale-ups, die neue Produktlinien auf den Markt bringen. Gemeinsam haben sie: eine ambitionierte Vision, einen hohen Qualitätsanspruch und die Präferenz, mit einem fokussierten Team statt mit einer aufgeblähten Agentur zu arbeiten."
       },
       {
         "question": "Wie starte ich ein Projekt mit Hyepr Labs?",
-        "answer": "Nehmen Sie einfach über unsere Kontaktseite Kontakt auf. Schildern Sie kurz Ihr Projekt, Ihren Zeitplan und Ihre Ziele. Wir antworten in der Regel innerhalb eines Werktages, um einen Discovery-Call zu vereinbaren."
+        "answer": "Besuchen Sie hyeprlabs.com/contact, schildern Sie Ihr Projekt kurz, und wir melden uns innerhalb eines Werktages für ein Discovery-Gespräch. Kein ausführliches Briefing erforderlich — eine kurze Zusammenfassung dessen, was Sie bauen möchten, und welches Ergebnis Sie benötigen, reicht für den Einstieg."
       },
       {
         "question": "Wie lange dauert ein typisches Projekt?",
-        "answer": "Die Projektdauer hängt vom Umfang ab. Eine fokussierte Landingpage oder ein MVP kann in 2–4 Wochen geliefert werden. Eine voll ausgestattete SaaS-Anwendung dauert in der Regel 6–12 Wochen. Wir unterteilen jedes Projekt in klare Meilensteine mit regelmäßigen Check-ins, damit Sie immer wissen, wo die Dinge stehen."
+        "answer": "Die Dauer hängt vom Umfang ab. Eine fokussierte Landingpage oder ein MVP wird in 2–4 Wochen geliefert. Eine produktionsreife SaaS-Anwendung dauert in der Regel 6–12 Wochen. Wir arbeiten mit klaren Meilensteinen und wöchentlichen Check-ins, damit Sie stets Einblick in den Fortschritt haben und frühzeitig korrigieren können."
       },
       {
-        "question": "Bieten Sie laufende Wartung und Support an?",
-        "answer": "Ja. Wir bieten retainerbasierte Wartungspakete an, die Performance-Monitoring, Dependency-Updates, Sicherheitspatches und iterative Feature-Entwicklung umfassen. Wir werden ein langfristiger technischer Partner, nicht nur ein einmaliger Dienstleister."
+        "question": "Wie gestalten Sie Ihre Preise?",
+        "answer": "Die meisten Projekte werden nach einem Discovery-Gespräch als Festpreisangebote kalkuliert. Für laufende Arbeiten oder sich weiterentwickelnde Produkte bieten wir monatliche Retainer-Pakete an. Wir liefern eine detaillierte Aufschlüsselung, bevor etwas unterzeichnet wird — keine versteckten Gebühren, keine überraschenden Rechnungen."
       },
       {
-        "question": "Auf welche Technologien sind Sie spezialisiert?",
-        "answer": "Unser Kernstack ist Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Prisma und Vercel. Für KI-Features integrieren wir OpenAI, Anthropic und Open-Source-LLMs. Wir arbeiten auch mit Headless-CMS-Plattformen (Contentful, Sanity) und modernen E-Commerce-Lösungen (Shopify, Medusa)."
+        "question": "Was ist Ihr Kerntechnologie-Stack?",
+        "answer": "Unser primärer Stack ist Next.js (App Router), React 19, TypeScript, Tailwind CSS v4 und Vercel für das Deployment. Für Datenbanken und APIs nutzen wir häufig Prisma, Supabase oder Neon. Für KI-Features integrieren wir OpenAI, Anthropic und Open-Source-LLMs. Wir arbeiten auch mit Headless-CMS-Plattformen (Contentful, Sanity) und modernen Commerce-Tools (Shopify, Medusa)."
       },
       {
         "question": "Können Sie mit unserem bestehenden Code arbeiten?",
-        "answer": "Absolut. Wir steigen häufig in bestehende Projekte für Code-Audits, Performance-Optimierungen, Feature-Ergänzungen oder vollständige Redesigns ein. Wir analysieren Ihren Stack, passen uns Ihren Konventionen an und nehmen gezielte Verbesserungen vor – ohne unnötige Neuentwicklungen."
+        "answer": "Ja, und das tun wir häufig. Wir steigen in bestehende Projekte für Code-Audits, Performance-Optimierungen, Feature-Ergänzungen oder vollständige Redesigns ein. Wir beginnen mit einer gründlichen Analyse Ihres Stacks und Ihrer Konventionen und nehmen dann gezielte Verbesserungen vor — keine unnötigen Neu-Entwicklungen, keine Big-Bang-Refaktorierungen, es sei denn, sie sind wirklich der beste Weg."
       },
       {
-        "question": "Wo hat Hyepr Labs seinen Sitz und arbeiten Sie mit internationalen Kunden?",
-        "answer": "Hyepr Labs hat seinen Sitz in Deutschland und arbeitet mit Kunden weltweit. Wir kommunizieren fließend auf Englisch und Deutsch und sind erfahren in asynchroner Zusammenarbeit über Zeitzonen hinweg."
+        "question": "Bieten Sie Support und Wartung nach dem Launch an?",
+        "answer": "Absolut. Wir bieten strukturierte Retainer-Pläne an, die Performance-Monitoring, Dependency- und Sicherheits-Updates, Fehlerbehebungen und iterative Feature-Entwicklung umfassen. Unser Ziel ist es, ein langfristiger technischer Partner zu sein, kein projektbezogener Dienstleister."
+      },
+      {
+        "question": "Wo hat Hyepr Labs seinen Sitz und arbeiten Sie international?",
+        "answer": "Wir sind in Deutschland ansässig und arbeiten mit Kunden weltweit. Wir sind fließend in Englisch und Deutsch und erfahren in der asynchronen Zusammenarbeit über Zeitzonen hinweg. Distanz war für uns nie ein Hindernis."
       }
     ]
   }

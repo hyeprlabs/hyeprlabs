@@ -515,40 +515,48 @@
   "FaqSection": {
     "badge": "FAQ",
     "heading": "Frequently Asked Questions",
-    "description": "Everything you need to know about Hyepr Labs and how we work. Can't find the answer you're looking for? Reach out directly.",
-    "cta": "Contact Us",
+    "description": "Everything you need to know about working with Hyepr Labs. Can't find your answer? Just ask us directly.",
+    "cta": "Ask us anything",
     "faqs": [
       {
         "question": "What exactly does Hyepr Labs do?",
-        "answer": "Hyepr Labs is a digital product agency. We design and build high-performance web applications, SaaS platforms, and digital experiences using Next.js, React, Tailwind CSS, and modern AI tools. We work with startups and scale-ups who need to move fast without sacrificing quality."
+        "answer": "Hyepr Labs is a digital product agency. We design and build high-performance web applications, SaaS platforms, and digital experiences — primarily with Next.js, React, Tailwind CSS, and modern AI tools. We partner with startups and growth-stage companies who need to ship fast without cutting corners on quality."
       },
       {
         "question": "What services does Hyepr Labs offer?",
-        "answer": "We offer end-to-end digital product development: Next.js and React engineering, UI/UX design and design systems, AI and LLM integrations, headless e-commerce, SaaS dashboard development, performance audits, and ongoing product strategy. Think of us as your complete technical co-founder on demand."
+        "answer": "We cover the full product lifecycle: UI/UX design and design systems, Next.js and React engineering, AI and LLM integrations, headless e-commerce, SaaS dashboards, performance audits, and ongoing product strategy. Think of us as a complete technical team embedded in your business — minus the hiring overhead."
+      },
+      {
+        "question": "Who do you typically work with?",
+        "answer": "Our clients range from early-stage founders validating an MVP to scale-ups launching new product lines. What they have in common: an ambitious vision, a respect for quality, and a preference for working with a focused team rather than a bloated agency."
       },
       {
         "question": "How do I start a project with Hyepr Labs?",
-        "answer": "Simply reach out via our contact page at hyeprlabs.com/contact. Share a brief description of your project, your timeline, and your goals. We typically respond within one business day to schedule a discovery call."
+        "answer": "Head to hyeprlabs.com/contact, describe your project briefly, and we'll schedule a discovery call within one business day. No lengthy brief required — a short summary of what you're building and what outcome you need is enough to get started."
       },
       {
         "question": "How long does a typical project take?",
-        "answer": "Project timelines vary by scope. A focused landing page or MVP can be delivered in 2–4 weeks. A full-featured SaaS application typically takes 6–12 weeks. We break every project into clear milestones with regular check-ins so you always know where things stand."
+        "answer": "Timelines depend on scope. A focused landing page or MVP ships in 2–4 weeks. A production-ready SaaS application typically takes 6–12 weeks. We work in clear milestones with weekly check-ins so you always have visibility into progress and can course-correct early."
       },
       {
-        "question": "Do you offer ongoing maintenance and support?",
-        "answer": "Yes. We offer retainer-based maintenance packages covering performance monitoring, dependency updates, security patches, and iterative feature development. We become a long-term technical partner, not just a one-off vendor."
+        "question": "How do you price your work?",
+        "answer": "Most projects are scoped and quoted as fixed-price engagements after our discovery call. For ongoing work or evolving products, we offer monthly retainer packages. We provide a detailed breakdown before anything is signed — no hidden fees, no surprise invoices."
       },
       {
-        "question": "What technologies do you specialise in?",
-        "answer": "Our core stack is Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Prisma, and Vercel. For AI features, we integrate OpenAI, Anthropic, and open-source LLMs. We also work with headless CMS platforms (Contentful, Sanity) and modern e-commerce solutions (Shopify, Medusa)."
+        "question": "What is your core technology stack?",
+        "answer": "Our primary stack is Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, and Vercel for deployment. For databases and APIs we commonly use Prisma, Supabase, or Neon. For AI features we integrate OpenAI, Anthropic, and open-source LLMs. We also work with headless CMS platforms (Contentful, Sanity) and modern commerce tools (Shopify, Medusa)."
       },
       {
         "question": "Can you work with our existing codebase?",
-        "answer": "Absolutely. We frequently step into existing projects for code audits, performance optimisations, feature additions, or full redesigns. We review your stack, align with your conventions, and make targeted improvements without unnecessary rewrites."
+        "answer": "Yes, and we do it often. We step into existing projects for code audits, performance optimisations, feature additions, or full redesigns. We start with a thorough review of your stack and conventions, then make targeted improvements — no unnecessary rewrites, no big-bang refactors unless they're truly the best path forward."
       },
       {
-        "question": "Where is Hyepr Labs based and do you work with international clients?",
-        "answer": "Hyepr Labs is based in Germany and works with clients worldwide. We communicate fluently in English and German and are experienced in async-first collaboration across time zones."
+        "question": "Do you offer support and maintenance after launch?",
+        "answer": "Absolutely. We offer structured retainer plans covering performance monitoring, dependency and security updates, bug fixes, and iterative feature development. We aim to be a long-term technical partner, not a project-by-project vendor."
+      },
+      {
+        "question": "Where is Hyepr Labs based, and do you work internationally?",
+        "answer": "We are based in Germany and work with clients worldwide. We are fluent in English and German and experienced in async-first collaboration across time zones. Distance has never been a barrier for us."
       }
     ]
   }

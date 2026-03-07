@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/marketing/hero";
 import { LogosSection } from "@/components/marketing/logos-section";
 import { BlogCta } from "@/components/marketing/blog/blog-cta";
-import { FaqSection } from "@/components/marketing/faq/faq-section";
+import { Faqs } from "@/components/marketing/faqs";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
@@ -50,7 +50,7 @@ export default function Home() {
       <HeroSection />
       <LogosSection />
       <BlogCta />
-      <FaqSection />
+      <Faqs />
       <CallToAction />
       <Footer />
     </>
