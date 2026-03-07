@@ -150,6 +150,11 @@
     "all": "All",
     "searchPlaceholder": "Search posts..."
   },
+  "BlogCta": {
+    "heading": "From the Blog",
+    "subheading": "A few of our latest thoughts on design, engineering, and building products.",
+    "viewAll": "View all posts"
+  },
   "BrandPage": {
     "title": "Brand assets",
     "description": "Access our brand guidelines and download our brand kit. Coming soon.",

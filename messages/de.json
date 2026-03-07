@@ -150,6 +150,11 @@
     "all": "Alle",
     "searchPlaceholder": "Beiträge suchen..."
   },
+  "BlogCta": {
+    "heading": "Aus dem Blog",
+    "subheading": "Einige unserer neuesten Gedanken zu Design, Engineering und Produktentwicklung.",
+    "viewAll": "Alle Beiträge ansehen"
+  },
   "BrandPage": {
     "title": "Marken-Assets",
     "description": "Greifen Sie auf unsere Markenrichtlinien zu und laden Sie unser Marken-Kit herunter. Demnächst verfügbar.",
