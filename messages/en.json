@@ -4,10 +4,13 @@
     "templates": "Templates",
     "blog": "Blog",
     "contact": "Contact",
-    "projects": "Projects"
+    "projects": "Projects",
+    "ariaLabel": "Main navigation",
+    "logoAriaLabel": "Hyepr Labs – Go to homepage"
   },
   "MobileNav": {
-    "toggleMenu": "Toggle menu"
+    "toggleMenu": "Toggle menu",
+    "menuLabel": "Navigation menu"
   },
   "HeroSection": {
     "badgeLabel": "BLOG",
@@ -33,6 +36,7 @@
     "resources": "Resources",
     "company": "Company",
     "legal": "Legal",
+    "logoAriaLabel": "Hyepr Labs – Go to homepage",
     "nav": {
       "blog": "Blog",
       "support": "Support",
@@ -507,5 +511,45 @@
     "label": "Switch language",
     "en": "English",
     "de": "German"
+  },
+  "FaqSection": {
+    "badge": "FAQ",
+    "heading": "Frequently Asked Questions",
+    "description": "Everything you need to know about Hyepr Labs and how we work. Can't find the answer you're looking for? Reach out directly.",
+    "cta": "Contact Us",
+    "faqs": [
+      {
+        "question": "What exactly does Hyepr Labs do?",
+        "answer": "Hyepr Labs is a digital product agency. We design and build high-performance web applications, SaaS platforms, and digital experiences using Next.js, React, Tailwind CSS, and modern AI tools. We work with startups and scale-ups who need to move fast without sacrificing quality."
+      },
+      {
+        "question": "What services does Hyepr Labs offer?",
+        "answer": "We offer end-to-end digital product development: Next.js and React engineering, UI/UX design and design systems, AI and LLM integrations, headless e-commerce, SaaS dashboard development, performance audits, and ongoing product strategy. Think of us as your complete technical co-founder on demand."
+      },
+      {
+        "question": "How do I start a project with Hyepr Labs?",
+        "answer": "Simply reach out via our contact page at hyeprlabs.com/contact. Share a brief description of your project, your timeline, and your goals. We typically respond within one business day to schedule a discovery call."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary by scope. A focused landing page or MVP can be delivered in 2–4 weeks. A full-featured SaaS application typically takes 6–12 weeks. We break every project into clear milestones with regular check-ins so you always know where things stand."
+      },
+      {
+        "question": "Do you offer ongoing maintenance and support?",
+        "answer": "Yes. We offer retainer-based maintenance packages covering performance monitoring, dependency updates, security patches, and iterative feature development. We become a long-term technical partner, not just a one-off vendor."
+      },
+      {
+        "question": "What technologies do you specialise in?",
+        "answer": "Our core stack is Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Prisma, and Vercel. For AI features, we integrate OpenAI, Anthropic, and open-source LLMs. We also work with headless CMS platforms (Contentful, Sanity) and modern e-commerce solutions (Shopify, Medusa)."
+      },
+      {
+        "question": "Can you work with our existing codebase?",
+        "answer": "Absolutely. We frequently step into existing projects for code audits, performance optimisations, feature additions, or full redesigns. We review your stack, align with your conventions, and make targeted improvements without unnecessary rewrites."
+      },
+      {
+        "question": "Where is Hyepr Labs based and do you work with international clients?",
+        "answer": "Hyepr Labs is based in Germany and works with clients worldwide. We communicate fluently in English and German and are experienced in async-first collaboration across time zones."
+      }
+    ]
   }
 }

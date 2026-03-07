@@ -78,12 +78,16 @@ export function BlogGrid({ posts, categories }: Props) {
         </Tabs>
 
         <div className="relative w-full sm:w-64">
+          <label htmlFor="blog-search" className="sr-only">
+            {t("searchPlaceholder")}
+          </label>
           <Search
             className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
             size={14}
             aria-hidden={true}
           />
           <input
+            id="blog-search"
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value || null)}

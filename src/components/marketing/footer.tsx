@@ -49,8 +49,8 @@ export async function Footer() {
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="grid max-w-5xl grid-cols-6 gap-6 p-4">
           <div className="col-span-6 flex flex-col gap-4 pt-5 md:col-span-3">
-            <Link className="w-max" href="/">
-              <HyeprLabsWordmark className="h-5 w-auto" />
+            <Link className="w-max" href="/" aria-label={t("logoAriaLabel")}>
+              <HyeprLabsWordmark className="h-5 w-auto" aria-hidden />
             </Link>
             <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
               {t("tagline")}
@@ -64,7 +64,12 @@ export async function Footer() {
                   variant="ghost"
                   className="rounded-full border"
                 >
-                  <a href={item.link} target="_blank">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                  >
                     {item.icon}
                   </a>
                 </Button>
@@ -131,24 +136,29 @@ export async function Footer() {
 
 const links = [
   {
-    icon: <GithubIcon />,
+    icon: <GithubIcon aria-hidden />,
     link: "https://github.com/hyeprlabs",
+    label: "Hyepr Labs on GitHub",
   },
   {
-    icon: <InstagramIcon />,
+    icon: <InstagramIcon aria-hidden />,
     link: "https://instagram.com/hyeprlabs",
+    label: "Hyepr Labs on Instagram",
   },
   {
-    icon: <LinkedinIcon />,
+    icon: <LinkedinIcon aria-hidden />,
     link: "https://linkedin.com/company/hyeprlabs",
+    label: "Hyepr Labs on LinkedIn",
   },
   {
-    icon: <XIcon />,
+    icon: <XIcon aria-hidden />,
     link: "https://x.com/hyeprlabs",
+    label: "Hyepr Labs on X (Twitter)",
   },
   {
-    icon: <YoutubeIcon />,
+    icon: <YoutubeIcon aria-hidden />,
     link: "https://tiktok.com/@hyeprlabs",
+    label: "Hyepr Labs on TikTok",
   },
 ];
 

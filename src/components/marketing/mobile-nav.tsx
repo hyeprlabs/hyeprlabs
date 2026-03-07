@@ -6,7 +6,7 @@ import { Portal, PortalBackdrop } from "@/components/ui/portal";
 import { Button } from "@/components/ui/button";
 import { X, Menu, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 interface NavLink {
   label: string;
@@ -17,10 +17,47 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
   const [open, setOpen] = React.useState(false);
   const tHeader = useTranslations("Header");
   const tMobileNav = useTranslations("MobileNav");
+  const pathname = usePathname();
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  // Close on route change
+  React.useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // ESC key closes menu
+  React.useEffect(() => {
+    if (!open) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Move focus into menu when opened; restore focus when closed
+  React.useEffect(() => {
+    if (open) {
+      const first = menuRef.current?.querySelector<HTMLElement>(
+        "a, button, [tabindex]",
+      );
+      first?.focus();
+    }
+  }, [open]);
+
+  function handleClose() {
+    setOpen(false);
+    triggerRef.current?.focus();
+  }
 
   return (
     <div className="md:hidden">
       <Button
+        ref={triggerRef}
         aria-controls="mobile-menu"
         aria-expanded={open}
         aria-label={tMobileNav("toggleMenu")}
@@ -30,15 +67,19 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
         variant="outline"
       >
         {open ? (
-          <X className="size-4.5" />
+          <X className="size-4.5" aria-hidden />
         ) : (
-          <Menu className="size-4.5" />
+          <Menu className="size-4.5" aria-hidden />
         )}
       </Button>
       {open && (
         <Portal className="top-14" id="mobile-menu">
-          <PortalBackdrop />
+          <PortalBackdrop onClick={handleClose} />
           <div
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={tMobileNav("menuLabel")}
             className={cn(
               "data-[slot=open]:zoom-in-97 ease-out data-[slot=open]:animate-in",
               "size-full p-4",
@@ -66,15 +107,9 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
               <Link href="/projects">
                 <Button size="sm" className="w-full bg-linear-to-br from-foreground to-muted-foreground">
                   {tHeader("projects")}
-                  <ArrowRight />
+                  <ArrowRight aria-hidden />
                 </Button>
               </Link>
-              <Button variant="outline" className="w-full hidden">
-                Sign In
-              </Button>
-              <Button className="w-full hidden">
-                Get Started
-              </Button>
             </div>
           </div>
         </Portal>

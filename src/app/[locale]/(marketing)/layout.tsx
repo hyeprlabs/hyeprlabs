@@ -10,6 +10,8 @@ export default function Layout({
     <div className="relative flex min-h-screen flex-col overflow-hidden px-4 supports-[overflow:clip]:overflow-clip">
       <Header />
       <main
+        id="main-content"
+        tabIndex={-1}
         className={cn(
           "relative mx-auto max-w-4xl grow",
           // X Borders

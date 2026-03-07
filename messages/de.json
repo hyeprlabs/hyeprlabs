@@ -4,10 +4,13 @@
     "templates": "Vorlagen",
     "blog": "Blog",
     "contact": "Kontakt",
-    "projects": "Projekte"
+    "projects": "Projekte",
+    "ariaLabel": "Hauptnavigation",
+    "logoAriaLabel": "Hyepr Labs – Zur Startseite"
   },
   "MobileNav": {
-    "toggleMenu": "Menü umschalten"
+    "toggleMenu": "Menü umschalten",
+    "menuLabel": "Navigationsmenü"
   },
   "HeroSection": {
     "badgeLabel": "BLOG",
@@ -33,6 +36,7 @@
     "resources": "Ressourcen",
     "company": "Unternehmen",
     "legal": "Rechtliches",
+    "logoAriaLabel": "Hyepr Labs – Zur Startseite",
     "nav": {
       "blog": "Blog",
       "support": "Support",
@@ -507,5 +511,45 @@
     "label": "Sprache wechseln",
     "en": "Englisch",
     "de": "Deutsch"
+  },
+  "FaqSection": {
+    "badge": "FAQ",
+    "heading": "Häufig gestellte Fragen",
+    "description": "Alles, was Sie über Hyepr Labs und unsere Arbeitsweise wissen müssen. Keine passende Antwort gefunden? Nehmen Sie direkt Kontakt auf.",
+    "cta": "Kontakt aufnehmen",
+    "faqs": [
+      {
+        "question": "Was macht Hyepr Labs genau?",
+        "answer": "Hyepr Labs ist eine Digital-Produkt-Agentur. Wir entwerfen und bauen hochleistungsfähige Webanwendungen, SaaS-Plattformen und digitale Erlebnisse mit Next.js, React, Tailwind CSS und modernen KI-Tools. Wir arbeiten mit Start-ups und Wachstumsunternehmen, die schnell vorankommen möchten, ohne Qualität zu opfern."
+      },
+      {
+        "question": "Welche Leistungen bietet Hyepr Labs an?",
+        "answer": "Wir bieten ganzheitliche Digitalprodukt-Entwicklung: Next.js- und React-Engineering, UI/UX-Design und Design-Systeme, KI- und LLM-Integrationen, Headless E-Commerce, SaaS-Dashboard-Entwicklung, Performance-Audits und laufende Produktstrategie. Betrachten Sie uns als Ihren vollständigen technischen Mitgründer auf Abruf."
+      },
+      {
+        "question": "Wie starte ich ein Projekt mit Hyepr Labs?",
+        "answer": "Nehmen Sie einfach über unsere Kontaktseite Kontakt auf. Schildern Sie kurz Ihr Projekt, Ihren Zeitplan und Ihre Ziele. Wir antworten in der Regel innerhalb eines Werktages, um einen Discovery-Call zu vereinbaren."
+      },
+      {
+        "question": "Wie lange dauert ein typisches Projekt?",
+        "answer": "Die Projektdauer hängt vom Umfang ab. Eine fokussierte Landingpage oder ein MVP kann in 2–4 Wochen geliefert werden. Eine voll ausgestattete SaaS-Anwendung dauert in der Regel 6–12 Wochen. Wir unterteilen jedes Projekt in klare Meilensteine mit regelmäßigen Check-ins, damit Sie immer wissen, wo die Dinge stehen."
+      },
+      {
+        "question": "Bieten Sie laufende Wartung und Support an?",
+        "answer": "Ja. Wir bieten retainerbasierte Wartungspakete an, die Performance-Monitoring, Dependency-Updates, Sicherheitspatches und iterative Feature-Entwicklung umfassen. Wir werden ein langfristiger technischer Partner, nicht nur ein einmaliger Dienstleister."
+      },
+      {
+        "question": "Auf welche Technologien sind Sie spezialisiert?",
+        "answer": "Unser Kernstack ist Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Prisma und Vercel. Für KI-Features integrieren wir OpenAI, Anthropic und Open-Source-LLMs. Wir arbeiten auch mit Headless-CMS-Plattformen (Contentful, Sanity) und modernen E-Commerce-Lösungen (Shopify, Medusa)."
+      },
+      {
+        "question": "Können Sie mit unserem bestehenden Code arbeiten?",
+        "answer": "Absolut. Wir steigen häufig in bestehende Projekte für Code-Audits, Performance-Optimierungen, Feature-Ergänzungen oder vollständige Redesigns ein. Wir analysieren Ihren Stack, passen uns Ihren Konventionen an und nehmen gezielte Verbesserungen vor – ohne unnötige Neuentwicklungen."
+      },
+      {
+        "question": "Wo hat Hyepr Labs seinen Sitz und arbeiten Sie mit internationalen Kunden?",
+        "answer": "Hyepr Labs hat seinen Sitz in Deutschland und arbeitet mit Kunden weltweit. Wir kommunizieren fließend auf Englisch und Deutsch und sind erfahren in asynchroner Zusammenarbeit über Zeitzonen hinweg."
+      }
+    ]
   }
 }

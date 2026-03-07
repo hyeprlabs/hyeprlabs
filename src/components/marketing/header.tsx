@@ -30,6 +30,7 @@ export function Header() {
       )}
     >
       <nav
+        aria-label={t("ariaLabel")}
         className={cn(
           "flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
           {
@@ -37,7 +38,7 @@ export function Header() {
           },
         )}
       >
-        <Link href="/">
+        <Link href="/" aria-label={t("logoAriaLabel")}>
           <HyeprLabsWordmark className="h-5 w-auto" />
         </Link>
         <div className="hidden items-center gap-2 md:flex">

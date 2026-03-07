@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { HeroImage } from "@/components/marketing/hero-image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export async function HeroSection() {
   const t = await getTranslations("HeroSection");
@@ -30,24 +31,25 @@ export async function HeroSection() {
           <div className="absolute inset-y-0 left-8 w-px bg-linear-to-b from-transparent via-border/50 to-border/50 md:left-12" />
           <div className="absolute inset-y-0 right-8 w-px bg-linear-to-b from-transparent via-border/50 to-border/50 md:right-12" />
         </div>
-        <a
+        <Link
           className={cn(
             "group mx-auto flex w-fit max-w-full flex-wrap items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
           href="/blog/think-fast-build-fast"
+          aria-label={`${t("badgeLabel")}: ${t("badgeText")}`}
         >
-          <Badge variant="outline" className="text-xs font-mono shrink-0">
+          <Badge variant="outline" className="text-xs font-mono shrink-0" aria-hidden>
             {t("badgeLabel")}
           </Badge>
 
-          <span className="text-xs line-clamp-1">{t("badgeText")}</span>
-          <span className="block h-5 border-l shrink-0" />
+          <span className="text-xs line-clamp-1" aria-hidden>{t("badgeText")}</span>
+          <span className="block h-5 border-l shrink-0" aria-hidden />
 
-          <div className="pr-1 shrink-0">
+          <div className="pr-1 shrink-0" aria-hidden>
             <ArrowRight className="size-3 -translate-x-0.5 duration-150 ease-out group-hover:translate-x-0.5" />
           </div>
-        </a>
+        </Link>
 
         <h1
           className={cn(
@@ -69,14 +71,17 @@ export async function HeroSection() {
 
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
           <Button
+            asChild
             variant="outline"
             className="rounded-full bg-linear-to-br from-muted to-background"
           >
-            {t("contact")}
+            <Link href="/contact">{t("contact")}</Link>
           </Button>
-          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
-            {t("projects")}
-            <ArrowRight />
+          <Button asChild className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
+            <Link href="/projects">
+              {t("projects")}
+              <ArrowRight aria-hidden />
+            </Link>
           </Button>
         </div>
       </div>
