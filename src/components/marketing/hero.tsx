@@ -5,8 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { HeroImage } from "@/components/marketing/hero-image";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-export function HeroSection() {
+export async function HeroSection() {
+  const t = await getTranslations("HeroSection");
+
   return (
     <section>
       <div className="relative flex flex-col items-center justify-center gap-5 px-4 py-12 md:px-4 md:py-24 lg:py-28">
@@ -27,7 +31,7 @@ export function HeroSection() {
           <div className="absolute inset-y-0 left-8 w-px bg-linear-to-b from-transparent via-border/50 to-border/50 md:left-12" />
           <div className="absolute inset-y-0 right-8 w-px bg-linear-to-b from-transparent via-border/50 to-border/50 md:right-12" />
         </div>
-        <a
+        <Link
           className={cn(
             "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
@@ -35,16 +39,16 @@ export function HeroSection() {
           href="/blog/think-fast-build-fast"
         >
           <Badge variant="outline" className="text-xs font-mono">
-            BLOG
+            {t("badgeLabel")}
           </Badge>
 
-          <span className="text-xs">Think Fast. Build Fast.</span>
+          <span className="text-xs">{t("badgeText")}</span>
           <span className="block h-5 border-l" />
 
           <div className="pr-1">
             <ArrowRight className="size-3 -translate-x-0.5 duration-150 ease-out group-hover:translate-x-0.5" />
           </div>
-        </a>
+        </Link>
 
         <h1
           className={cn(
@@ -52,17 +56,16 @@ export function HeroSection() {
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-100 duration-500 ease-out",
           )}
         >
-          Building Digital Experiences That Drive Growth
+          {t("title")}
         </h1>
 
         <p
           className={cn(
-            "text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
+            "max-w-lg text-balance text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
-          We scale online companies faster through smart design, <br />{" "}
-          development and strategic execution.
+          {t("description")}
         </p>
 
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
@@ -70,10 +73,10 @@ export function HeroSection() {
             variant="outline"
             className="rounded-full bg-linear-to-br from-muted to-background"
           >
-            Contact
+            {t("contact")}
           </Button>
           <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
-            Projects
+            {t("projects")}
             <ArrowRight />
           </Button>
         </div>

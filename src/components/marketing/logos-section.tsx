@@ -1,12 +1,16 @@
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { LogoCloud } from "@/components/marketing/logo-cloud"; // @efferd/logo-cloud-2
+import { getTranslations } from "next-intl/server";
 
-export function LogosSection() {
+export async function LogosSection() {
+  const t = await getTranslations("LogosSection");
+
   return (
     <section className="mb-12 md:mb-36">
       <h2 className="py-6 text-center font-medium text-lg text-muted-foreground tracking-tight md:text-xl">
-        Our latest <span className="text-foreground">projects</span>
+        {t("heading")}{" "}
+        <span className="text-foreground">{t("headingHighlight")}</span>
       </h2>
       <div className="relative *:border-0">
         <DecorIcon className="size-4" position="top-left" />
