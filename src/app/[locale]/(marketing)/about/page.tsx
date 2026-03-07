@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "About | Hyepr Labs | Think Fast. Build Fast.",
     description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
     url: "https://hyeprlabs.com/about",
-  }
+    images: [
+      {
+        url: "/og?title=About&description=Accelerating+growth+for+ambitious+brands+through+data%E2%80%91driven+design%2C+scalable+engineering%2C+and+strategic+innovation.&type=About",
+        width: 1200,
+        height: 630,
+        alt: "About | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Accelerating growth for ambitious brands through data-driven design, scalable engineering, and strategic innovation.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=About&description=Accelerating+growth+for+ambitious+brands+through+data%E2%80%91driven+design%2C+scalable+engineering%2C+and+strategic+innovation.&type=About",
+    ],
+  },
 };
 
 export default async function Page() {

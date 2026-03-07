@@ -40,7 +40,24 @@ export const metadata: Metadata = {
     title: "Imprint | Hyepr Labs | Think Fast. Build Fast.",
     description: "Legal information and imprint for Hyepr Labs.",
     url: "https://hyeprlabs.com/legal/imprint",
-  }
+    images: [
+      {
+        url: "/og?title=Imprint&description=Legal+information+and+imprint+for+Hyepr+Labs.&type=Legal",
+        width: 1200,
+        height: 630,
+        alt: "Imprint | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Imprint | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Legal information and imprint for Hyepr Labs.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Imprint&description=Legal+information+and+imprint+for+Hyepr+Labs.&type=Legal",
+    ],
+  },
 };
 
 export default async function Page() {

@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Hyepr Labs | Think Fast. Build Fast.",
     description: "How we handle, protect, and process your personal data.",
     url: "https://hyeprlabs.com/legal/privacy-policy",
-  }
+    images: [
+      {
+        url: "/og?title=Privacy+Policy&description=How+we+handle%2C+protect%2C+and+process+your+personal+data.&type=Legal",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Hyepr Labs | Think Fast. Build Fast.",
+    description: "How we handle, protect, and process your personal data.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Privacy+Policy&description=How+we+handle%2C+protect%2C+and+process+your+personal+data.&type=Legal",
+    ],
+  },
 };
 
 export default async function Page() {

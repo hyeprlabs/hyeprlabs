@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "Support | Hyepr Labs | Think Fast. Build Fast.",
     description: "Get help and support for your projects. Our dedicated support center. Coming soon.",
     url: "https://hyeprlabs.com/support",
-  }
+    images: [
+      {
+        url: "/og?title=Support&description=Get+help+and+support+for+your+projects.+Our+dedicated+support+center.&type=Support",
+        width: 1200,
+        height: 630,
+        alt: "Support | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Get help and support for your projects. Our dedicated support center. Coming soon.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Support&description=Get+help+and+support+for+your+projects.+Our+dedicated+support+center.&type=Support",
+    ],
+  },
 };
 
 export default async function Page() {

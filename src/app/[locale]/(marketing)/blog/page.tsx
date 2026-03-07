@@ -30,6 +30,14 @@ export const metadata: Metadata = {
       "Insights on design, engineering, AI, and building high-performance digital products. Expert articles from the Hyepr Labs team.",
     url: "https://hyeprlabs.com/blog",
     siteName: "Hyepr Labs",
+    images: [
+      {
+        url: "/og?title=Blog&description=Insights+on+design%2C+engineering%2C+AI%2C+and+building+high-performance+digital+products.&type=Blog",
+        width: 1200,
+        height: 630,
+        alt: "Blog | Hyepr Labs",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -37,6 +45,9 @@ export const metadata: Metadata = {
     description:
       "Insights on design, engineering, AI, and building high-performance digital products. Expert articles from the Hyepr Labs team.",
     creator: "@hyeprlabs",
+    images: [
+      "/og?title=Blog&description=Insights+on+design%2C+engineering%2C+AI%2C+and+building+high-performance+digital+products.&type=Blog",
+    ],
   },
 };
 

@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "Terms of Service | Hyepr Labs | Think Fast. Build Fast.",
     description: "Rules and guidelines for accessing and using our platforms.",
     url: "https://hyeprlabs.com/legal/terms-of-service",
-  }
+    images: [
+      {
+        url: "/og?title=Terms+of+Service&description=Rules+and+guidelines+for+accessing+and+using+our+platforms.&type=Legal",
+        width: 1200,
+        height: 630,
+        alt: "Terms of Service | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Rules and guidelines for accessing and using our platforms.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Terms+of+Service&description=Rules+and+guidelines+for+accessing+and+using+our+platforms.&type=Legal",
+    ],
+  },
 };
 
 export default async function Page() {
