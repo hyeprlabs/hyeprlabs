@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     description:
       "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
     siteName: "Hyepr Labs",
+    images: [
+      {
+        url: "/og?title=Think+Fast.+Build+Fast.&description=Premier+digital+product+agency+specializing+in+high%E2%80%91performance+web+apps%2C+Next.js+engineering%2C+AI+integrations%2C+and+UI%2FUX+design.",
+        width: 1200,
+        height: 630,
+        alt: "Hyepr Labs | Think Fast. Build Fast.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -33,5 +41,8 @@ export const metadata: Metadata = {
     description:
       "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
     creator: "@hyeprlabs",
+    images: [
+      "/og?title=Think+Fast.+Build+Fast.&description=Premier+digital+product+agency+specializing+in+high%E2%80%91performance+web+apps%2C+Next.js+engineering%2C+AI+integrations%2C+and+UI%2FUX+design.",
+    ],
   },
 };

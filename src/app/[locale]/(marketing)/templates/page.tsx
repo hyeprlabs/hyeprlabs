@@ -15,7 +15,24 @@ export const metadata: Metadata = {
     title: "Templates | Hyepr Labs | Think Fast. Build Fast.",
     description: "A collection of production-ready Next.js templates to jumpstart your next project.",
     url: "https://hyeprlabs.com/templates",
-  }
+    images: [
+      {
+        url: "/og?title=Templates&description=A+collection+of+production-ready+Next.js+templates+to+jumpstart+your+next+project.&type=Templates",
+        width: 1200,
+        height: 630,
+        alt: "Templates | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Templates | Hyepr Labs | Think Fast. Build Fast.",
+    description: "A collection of production-ready Next.js templates to jumpstart your next project.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Templates&description=A+collection+of+production-ready+Next.js+templates+to+jumpstart+your+next+project.&type=Templates",
+    ],
+  },
 };
 
 export default async function Page() {

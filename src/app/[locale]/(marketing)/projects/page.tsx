@@ -15,7 +15,24 @@ export const metadata: Metadata = {
     title: "Projects | Hyepr Labs | Think Fast. Build Fast.",
     description: "A selection of projects that showcase our expertise in design, development, and strategic execution.",
     url: "https://hyeprlabs.com/projects",
-  }
+    images: [
+      {
+        url: "/og?title=Projects&description=A+selection+of+projects+that+showcase+our+expertise+in+design%2C+development%2C+and+strategic+execution.&type=Projects",
+        width: 1200,
+        height: 630,
+        alt: "Projects | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects | Hyepr Labs | Think Fast. Build Fast.",
+    description: "A selection of projects that showcase our expertise in design, development, and strategic execution.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Projects&description=A+selection+of+projects+that+showcase+our+expertise+in+design%2C+development%2C+and+strategic+execution.&type=Projects",
+    ],
+  },
 };
 
 export default async function Page() {

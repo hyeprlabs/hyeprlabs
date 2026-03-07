@@ -57,14 +57,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author],
       section: post.category,
       tags,
-      ...(post.image ? { images: [{ url: post.image }] } : {}),
+      images: post.image
+        ? [{ url: post.image, width: 1200, height: 630 }]
+        : [
+            {
+              url: `/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}&type=${encodeURIComponent(post.category ?? "Article")}`,
+              width: 1200,
+              height: 630,
+              alt: post.title,
+            },
+          ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
       creator: "@hyeprlabs",
-      ...(post.image ? { images: [post.image] } : {}),
+      images: post.image
+        ? [post.image]
+        : [
+            `/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}&type=${encodeURIComponent(post.category ?? "Article")}`,
+          ],
     },
   };
 }
