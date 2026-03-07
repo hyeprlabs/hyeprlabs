@@ -1,0 +1,125 @@
+---
+title: "Measuring What Matters: Analytics for Modern Web Apps"
+description: A practical guide to setting up meaningful analytics for your web product — from Core Web Vitals to conversion funnels — without drowning in data you don't use.
+date: "2026-02-10"
+author: Chris Martin
+category: Engineering
+tags: [analytics, metrics, performance, business, measurement]
+---
+
+Analytics dashboards are easy to fill with numbers. They're much harder to fill with numbers that lead to decisions.
+
+Most web products have more data than they can use and fewer insights than they need. They know how many users visited. They don't know why users left. They can see which pages are popular. They can't see where the product is failing.
+
+This post is about building an analytics setup that answers the questions that actually matter to your product.
+
+## Start With the Questions, Not the Tools
+
+The most common analytics mistake is choosing a tool and then figuring out what to measure. The right sequence is the opposite: start with the questions you need to answer, then choose the tools that can answer them.
+
+The questions fall into three categories:
+
+**Performance questions:** Is the product fast? Where is it slow? How is performance distributed across devices and geographies?
+
+**Behavior questions:** What do users do? Where do they go? Where do they stop?
+
+**Business questions:** Are users achieving their goals? Are they coming back? Are they converting?
+
+Each category calls for different instrumentation. Conflating them — using a single analytics tool that tries to answer all three — usually means answering none of them well.
+
+> **Key Takeaway:** Define your three most important product questions before you install any analytics tool. If a tool doesn't help you answer those questions, it's complexity, not infrastructure.
+
+## Performance Measurement
+
+Web performance is the foundation of user experience. A product that loads slowly drives users away before they have the chance to experience anything else.
+
+The measurement framework Google has standardized — Core Web Vitals — gives you three numbers that correlate strongly with user experience:
+
+| Metric | Measures | Good Threshold |
+|--------|----------|----------------|
+| LCP (Largest Contentful Paint) | How fast the main content loads | Under 2.5s |
+| INP (Interaction to Next Paint) | How responsive the UI is to input | Under 100ms |
+| CLS (Cumulative Layout Shift) | How stable the layout is during load | Under 0.1 |
+
+These aren't abstract technical metrics. They correspond to concrete user experiences: did the page feel slow to load, sluggish to respond, or visually unstable?
+
+### Real User Monitoring vs Synthetic Testing
+
+Synthetic performance tests (Lighthouse, WebPageTest) run in controlled conditions with consistent hardware and network. They're useful for CI integration and catching regressions before they reach users.
+
+Real user monitoring (RUM) captures performance data from actual users on actual devices and networks. It shows you the long tail: the P75 and P95 experiences, not just the median. The users with slow devices and slow connections — who are often disproportionately likely to be your target market — only show up in RUM data.
+
+Use both. Synthetic testing in CI catches regressions before deployment. RUM data tells you what your users are actually experiencing.
+
+For a deeper look at performance optimization techniques, see [Why Web Performance Matters For Your Business Growth](/blog/why-web-performance-matters).
+
+## Behavior Analytics
+
+Behavior analytics answers the question: what do users do?
+
+### Instrumentation Principles
+
+Good behavior instrumentation follows three rules:
+
+1. **Track actions, not page views.** Page views tell you where users were. Action tracking tells you what they did. The difference between a user who viewed your pricing page and a user who clicked "Start Free Trial" on your pricing page is enormous.
+
+2. **Name events consistently.** `user_signed_up`, `subscription_created`, `feature_used` are better names than `signup`, `newSub`, `buttonClick`. Consistency in event naming makes querying and analysis dramatically easier six months from now.
+
+3. **Track the absence of actions too.** A user who created an account but never completed their profile, a user who started a checkout flow but didn't complete it — these are as interesting as the users who converted. Build your instrumentation to see the dropoff points, not just the success paths.
+
+### Session Replay
+
+Session replay tools (PostHog, FullStory, Hotjar) record anonymized video of user sessions. They're invaluable for debugging UX problems that users can't articulate. When a user reports "the checkout didn't work," session replay shows you exactly what happened.
+
+Use session replay selectively — it's resource-intensive and raises privacy considerations. Configure it to capture a sample of sessions, not every session, and respect users' privacy preferences.
+
+## Conversion and Business Metrics
+
+Behavior data tells you what users did. Business metrics tell you whether your product is working.
+
+### Define Your North Star Metric
+
+A north star metric is the single number that best represents whether your product is delivering value. Not revenue (a lagging indicator), not user count (a vanity metric), but the specific action that means a user has gotten the thing your product is for.
+
+For a project management tool, it might be "teams with at least one completed project this month." For an e-commerce product, it might be "returning customers." For a content platform, it might be "users who read at least three articles per week."
+
+Your north star metric should be:
+- Directly tied to user value, not just product engagement
+- Measurable with your current instrumentation
+- Improvable through product decisions
+
+Everything else in your analytics stack should tell you a story about whether your north star is trending in the right direction and why.
+
+> **Key Takeaway:** Vanity metrics feel good but don't drive decisions. A north star metric connected directly to user value keeps your analytics investment focused on what actually matters.
+
+### Funnel Analysis
+
+Most digital products have conversion funnels: a sequence of steps that users need to complete to reach the valuable outcome. Map the steps in your funnel explicitly, instrument each step, and measure the dropoff between each transition.
+
+Funnel analysis shows you where to invest. A 40% dropoff between step two and step three is worth far more engineering and design attention than a 5% improvement on the final conversion.
+
+## Alerting and Anomaly Detection
+
+Analytics without alerting is retrospective. You look at last week's data and discover something that broke last Tuesday. Alerting turns analytics into real-time operational awareness.
+
+At minimum, set up alerts for:
+- Error rate spikes (Sentry or equivalent)
+- Significant drops in core conversion metrics
+- Performance metric regressions beyond your defined budget
+- Sudden traffic anomalies (can indicate both marketing success and attack traffic)
+
+The goal isn't to alert on everything — alert fatigue is a real problem. The goal is to be confident that if something significant breaks, you'll know before a user has to tell you.
+
+## Putting It Together
+
+A good analytics setup for a modern web product has three layers:
+
+1. **Performance layer:** Core Web Vitals (RUM), synthetic testing in CI
+2. **Behavior layer:** Action tracking, funnel instrumentation, session replay (sampled)
+3. **Business layer:** North star metric, key conversion funnels, retention curves
+
+Each layer informs a different set of decisions. Performance data drives engineering priorities. Behavior data drives UX improvements. Business data drives product strategy.
+
+The teams that build this infrastructure early — before the data is urgent — are the ones who can make fast, confident decisions when the data starts to matter.
+
+For more on the technical foundations that make measurement possible, read [From Prototype to Product: A Modern Launch Checklist](/blog/from-prototype-to-product-launch-checklist). For the component architecture decisions that affect performance measurement, see [Component Architecture: Building UIs That Stand the Test of Time](/blog/component-architecture-building-uis-that-last).

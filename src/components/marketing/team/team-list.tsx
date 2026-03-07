@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getTranslations } from "next-intl/server";
 
 type MemberType = {
   name: string;
@@ -24,7 +25,27 @@ type MemberType = {
   };
 };
 
-export function TeamList() {
+const staticMembers: Array<Pick<MemberType, "link" | "avatar" | "socials">> = [
+  { link: "#", socials: { x: "#", github: "#", linkedin: "#" } },
+  { link: "#", socials: { x: "#", linkedin: "#" } },
+  { link: "#", socials: { github: "#", linkedin: "#" } },
+  { link: "#", socials: { x: "#", linkedin: "#" } },
+];
+
+export async function TeamList() {
+  const t = await getTranslations("TeamList");
+  const rawMembers = t.raw("members") as Array<Pick<MemberType, "name" | "role" | "bio" | "skills">>;
+  const members: MemberType[] = rawMembers.map((member, index) => {
+    const memberMetadata = staticMembers[index];
+    if (!memberMetadata) {
+      throw new Error(`Missing metadata for member at index ${index}`);
+    }
+    return {
+      ...member,
+      ...memberMetadata,
+    };
+  });
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12 mb-12 md:mb-36">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2">
@@ -85,13 +106,13 @@ export function TeamMemberCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-1">
+          <h3 className="font-medium text-xl md:text-2xl mb-1 line-clamp-2">
             {member.name}
           </h3>
-          <p className="font-mono text-xs text-muted-foreground uppercase mb-4">
+          <p className="font-mono text-xs text-muted-foreground uppercase mb-4 truncate">
             {member.role}
           </p>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed">
+          <p className="font-mono text-muted-foreground text-sm leading-relaxed line-clamp-4">
             {member.bio}
           </p>
         </div>
@@ -155,38 +176,3 @@ function XIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
-
-const members: MemberType[] = [
-  {
-    name: "Alex Doe",
-    role: "Founder & CEO",
-    bio: "Alex brings over 15 years of industry experience, leading our vision and strategic direction with a focus on innovation and user-centric design.",
-    skills: ["Leadership", "Strategy", "Product"],
-    link: "#",
-    socials: { x: "#", github: "#", linkedin: "#" },
-  },
-  {
-    name: "Sarah Smith",
-    role: "Lead Designer",
-    bio: "Sarah is passionate about creating intuitive and visually stunning interfaces. She oversees our design language and user experience.",
-    skills: ["UI/UX", "Figma", "Design Systems"],
-    link: "#",
-    socials: { x: "#", linkedin: "#" },
-  },
-  {
-    name: "John Connor",
-    role: "Senior Engineer",
-    bio: "John specializes in modern frontend architectures and scalable backends. He ensures our technical solutions are robust and performant.",
-    skills: ["React", "Node.js", "TypeScript"],
-    link: "#",
-    socials: { github: "#", linkedin: "#" },
-  },
-  {
-    name: "Emily Chen",
-    role: "Marketing Director",
-    bio: "Emily crafts compelling narratives that connect our brand with the audience, driving growth and engagement across all channels.",
-    skills: ["Marketing", "Content", "Growth"],
-    link: "#",
-    socials: { x: "#", linkedin: "#" },
-  },
-];

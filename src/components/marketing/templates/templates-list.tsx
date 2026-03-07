@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRightIcon, ExternalLink, Check } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 type TemplateType = {
   title: string;
@@ -16,13 +17,38 @@ type TemplateType = {
   image?: string;
 };
 
-export function TemplatesList() {
+const staticTemplates: Array<Pick<TemplateType, "previewLink" | "repoLink" | "image">> = [
+  { previewLink: "#", repoLink: "#" },
+  { previewLink: "#", repoLink: "#" },
+  { previewLink: "#", repoLink: "#" },
+  { previewLink: "#", repoLink: "#" },
+];
+
+export async function TemplatesList() {
+  const t = await getTranslations("TemplatesList");
+  const rawTemplates = t.raw("templates") as Array<Pick<TemplateType, "title" | "description" | "price" | "features">>;
+  const templates: TemplateType[] = rawTemplates.map((template, index) => {
+    const templateMetadata = staticTemplates[index];
+    if (!templateMetadata) {
+      throw new Error(`Missing metadata for template at index ${index}`);
+    }
+    return {
+      ...template,
+      ...templateMetadata,
+    };
+  });
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2">
         <FullWidthDivider position="top" />
         {templates.map((template) => (
-          <TemplateCard template={template} key={template.title} />
+          <TemplateCard
+            template={template}
+            key={template.title}
+            livePreview={t("livePreview")}
+            noPreview={t("noPreview")}
+          />
         ))}
         <FullWidthDivider position="bottom" />
       </div>
@@ -32,10 +58,14 @@ export function TemplatesList() {
 
 export function TemplateCard({
   template,
+  livePreview,
+  noPreview,
   className,
   ...props
 }: React.ComponentProps<"div"> & {
   template: TemplateType;
+  livePreview: string;
+  noPreview: string;
 }) {
   return (
     <div
@@ -57,7 +87,7 @@ export function TemplateCard({
             />
           ) : (
             <div className="flex size-full items-center justify-center bg-muted text-muted-foreground font-mono text-xs tracking-wider">
-              NO PREVIEW
+              {noPreview}
             </div>
           )}
         </div>
@@ -74,17 +104,17 @@ export function TemplateCard({
               href={template.repoLink}
               className="text-muted-foreground transition-colors hover:text-primary flex items-center gap-1 text-xs font-mono"
             >
-              GITHUB 
+              GITHUB
               <ArrowUpRightIcon className="size-3" />
             </Link>
           </div>
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-2">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-2">
             {template.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="line-clamp-3 font-mono text-muted-foreground text-sm leading-relaxed mb-6">
             {template.description}
           </p>
         </div>
@@ -93,9 +123,9 @@ export function TemplateCard({
           {template.features.map((feature) => (
             <li
               key={feature}
-              className="text-sm font-mono text-muted-foreground flex items-center gap-2"
+              className="text-sm font-mono text-muted-foreground flex items-start gap-2"
             >
-              <Check className="size-4 text-green-500" />
+              <Check className="size-4 shrink-0 mt-0.5 text-green-500" />
               {feature}
             </li>
           ))}
@@ -103,7 +133,7 @@ export function TemplateCard({
 
         <Link href={template.previewLink}>
           <Button variant="outline" className="w-full mt-6 cursor-pointer">
-            Live Preview
+            {livePreview}
             <ExternalLink />
           </Button>
         </Link>
@@ -111,62 +141,3 @@ export function TemplateCard({
     </div>
   );
 }
-
-const templates: TemplateType[] = [
-  {
-    title: "Next.js SaaS Foundation",
-    description:
-      "The ultimate starting point for your next SaaS product. Built with scalability and performance in mind.",
-    price: "FREE",
-    previewLink: "#",
-    repoLink: "#",
-    features: [
-      "Auth.js (NextAuth) Integration",
-      "Prisma ORM with PostgreSQL",
-      "Stripe Subscription & Webhooks",
-      "Shadcn UI Components",
-    ],
-  },
-  {
-    title: "Minimalist Blog",
-    description:
-      "A content-focused blog template designed for optimal reading experience and high SEO performance.",
-    price: "FREE",
-    previewLink: "#",
-    repoLink: "#",
-    features: [
-      "MDX Content Management",
-      "Syntax Highlighting",
-      "Dynamic OG Images",
-      "RSS Feed Generation",
-    ],
-  },
-  {
-    title: "Modern E-Commerce",
-    description:
-      "A high-conversion e-commerce storefront template tailored for Shopify stores using the Storefront API.",
-    price: "FREE",
-    previewLink: "#",
-    repoLink: "#",
-    features: [
-      "Shopify Storefront API",
-      "Cart & Checkout Logic",
-      "Product Variants & Search",
-      "Framer Motion Animations",
-    ],
-  },
-  {
-    title: "Creative Portfolio",
-    description:
-      "Showcase your work with style. A portfolio template featuring smooth page transitions and interactive elements.",
-    price: "FREE",
-    previewLink: "#",
-    repoLink: "#",
-    features: [
-      "Page Transitions",
-      "Case Study Layouts",
-      "Dark/Light Mode",
-      "Contact Form Integration",
-    ],
-  },
-];

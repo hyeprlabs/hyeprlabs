@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRightIcon, BoxIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 type ProjectType = {
   title: string;
@@ -15,7 +16,27 @@ type ProjectType = {
   logo?: string;
 };
 
-export function ProjectsList() {
+const staticProjects: Array<{ link: string; year: string; logo?: string }> = [
+  { link: "#", year: "2024" },
+  { link: "#", year: "2023" },
+  { link: "#", year: "2024" },
+  { link: "#", year: "2023" },
+];
+
+export async function ProjectsList() {
+  const t = await getTranslations("ProjectsList");
+  const rawProjects = t.raw("projects") as Array<Pick<ProjectType, "title" | "description" | "tags">>;
+  const projects: ProjectType[] = rawProjects.map((project, index) => {
+    const projectMetadata = staticProjects[index];
+    if (!projectMetadata) {
+      throw new Error(`Missing metadata for project at index ${index}`);
+    }
+    return {
+      ...project,
+      ...projectMetadata,
+    };
+  });
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12 mb-12 md:mb-36">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2">
@@ -74,10 +95,10 @@ export function ProjectCard({
         </div>
 
         <div>
-          <h3 className="font-medium text-xl md:text-2xl mb-2">
+          <h3 className="line-clamp-2 font-medium text-xl md:text-2xl mb-2">
             {project.title}
           </h3>
-          <p className="font-mono text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="line-clamp-4 font-mono text-muted-foreground text-sm leading-relaxed mb-6">
             {project.description}
           </p>
         </div>
@@ -93,38 +114,3 @@ export function ProjectCard({
     </div>
   );
 }
-
-const projects: ProjectType[] = [
-  {
-    title: "E-Commerce Rebrand",
-    description:
-      "A complete overhaul of a legacy e-commerce platform, resulting in a 40% increase in conversion rates. We implemented a headless architecture for maximum flexibility.",
-    tags: ["Next.js", "Shopify", "Tailwind CSS"],
-    link: "#",
-    year: "2024",
-  },
-  {
-    title: "Fintech Dashboard",
-    description:
-      "Designed and developed a real-time analytics dashboard for a fintech startup. Features include live data visualization, secure user authentication, and report generation.",
-    tags: ["React", "D3.js", "Node.js"],
-    link: "#",
-    year: "2023",
-  },
-  {
-    title: "Health & Wellness App",
-    description:
-      "A cross-platform mobile application for tracking fitness and nutrition. Integrated with wearable devices to provide personalized health insights.",
-    tags: ["React Native", "Firebase", "GraphQL"],
-    link: "#",
-    year: "2024",
-  },
-  {
-    title: "Corporate Portfolio",
-    description:
-      "A minimalist portfolio site for an award-winning architecture firm. Focused on high-quality imagery and smooth micro-interactions to showcase their work.",
-    tags: ["Astro", "Framer Motion", "Sanity CMS"],
-    link: "#",
-    year: "2023",
-  },
-];

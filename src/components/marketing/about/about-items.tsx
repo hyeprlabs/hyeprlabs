@@ -7,19 +7,42 @@ import {
   TrendingUpIcon,
   LayoutIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-type ItemType = {
+type AboutItemType = {
   title: string;
   icon: React.ReactNode;
   description: string;
 };
 
-export function AboutItems() {
+const staticAboutItems = [
+  { icon: <LayoutIcon /> },
+  { icon: <UsersIcon /> },
+  { icon: <CpuIcon /> },
+  { icon: <TrendingUpIcon /> },
+];
+
+export async function AboutItems() {
+  const t = await getTranslations("AboutItems");
+  const rawAboutItems = t.raw("items") as Array<Pick<AboutItemType, "title" | "description">>;
+  const aboutItems: AboutItemType[] = rawAboutItems.map((item, index) => {
+    const meta = staticAboutItems[index];
+
+    if (!meta) {
+      throw new Error(`Missing metadata for about item at index ${index}`);
+    }
+
+    return {
+      ...item,
+      ...meta,
+    };
+  });
+
   return (
     <div className="mx-auto w-full max-w-5xl place-content-center space-y-12">
       <div className="relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-		<FullWidthDivider position="top" />
-        {items.map((item) => (
+        <FullWidthDivider position="top" />
+        {aboutItems.map((item) => (
           <ItemCard item={item} key={item.title} />
         ))}
         <FullWidthDivider position="bottom" />
@@ -33,7 +56,7 @@ export function ItemCard({
   className,
   ...props
 }: React.ComponentProps<"div"> & {
-  item: ItemType;
+  item: AboutItemType;
 }) {
   return (
     <div
@@ -55,33 +78,10 @@ export function ItemCard({
 
       <div className="relative z-10 space-y-2">
         <h3 className="font-medium text-foreground text-lg">{item.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="line-clamp-3 text-muted-foreground text-sm leading-relaxed">
           {item.description}
         </p>
       </div>
     </div>
   );
 }
-
-const items: ItemType[] = [
-  {
-    title: "Strategic Design",
-    icon: <LayoutIcon />,
-    description: "Systems thinking meets visual excellence.",
-  },
-  {
-    title: "Partnerships",
-    icon: <UsersIcon />,
-    description: "Your team extended, with complete visibility.",
-  },
-  {
-    title: "Modern Innovation",
-    icon: <CpuIcon />,
-    description: "Cutting-edge tech, rigorously tested for you.",
-  },
-  {
-    title: "Results-Driven",
-    icon: <TrendingUpIcon />,
-    description: "Measured by growth, built for impact.",
-  },
-];
