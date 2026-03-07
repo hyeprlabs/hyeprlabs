@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "Brand | Hyepr Labs | Think Fast. Build Fast.",
     description: "Access our brand guidelines and download our brand kit. Coming soon.",
     url: "https://hyeprlabs.com/brand",
-  }
+    images: [
+      {
+        url: "/og?title=Brand&description=Access+our+brand+guidelines+and+download+our+brand+kit.&type=Brand",
+        width: 1200,
+        height: 630,
+        alt: "Brand | Hyepr Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brand | Hyepr Labs | Think Fast. Build Fast.",
+    description: "Access our brand guidelines and download our brand kit. Coming soon.",
+    creator: "@hyeprlabs",
+    images: [
+      "/og?title=Brand&description=Access+our+brand+guidelines+and+download+our+brand+kit.&type=Brand",
+    ],
+  },
 };
 
 export default async function Page() {
