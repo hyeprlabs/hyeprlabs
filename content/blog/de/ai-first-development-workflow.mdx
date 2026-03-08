@@ -1,0 +1,79 @@
+---
+title: "Der KI-First-Entwicklungsworkflow: Wie wir Produkte in 2025 bauen"
+description: Wie KI-Tools die Art und Weise, wie moderne Entwicklungsteams Code schreiben, PRs reviewen und Produkte ausliefern, grundlegend verändert haben – und worauf man achten sollte.
+date: "2025-10-20"
+author: Chris Martin
+category: Engineering
+tags: [KI, Entwicklung, Produktivität, Workflow, Engineering]
+---
+
+Vor zwei Jahren war KI-gestützte Programmierung noch eine Neuheit. Ein cleveres Autocomplete, das Ihre Funktionssignaturen vervollständigte und gelegentlich eine Bibliothek halluzinierte, die es gar nicht gab.
+
+Heute ist es ein Workflow. Die Teams, die am schnellsten liefern, sind nicht die mit den erfahrensten Ingenieuren – sondern jene, die gelernt haben, menschliches Urteilsvermögen und KI-Fähigkeiten zu einem kohärenten Prozess zu orchestrieren.
+
+So sieht dieser Prozess in der Praxis aus.
+
+## Der Wandel: Von Autocomplete zu Agent
+
+Die erste Generation von KI-Programmierwerkzeugen war im Wesentlichen ein intelligenteres Autocomplete. Sie schrieben Code, die KI schlug die nächste Zeile oder den nächsten Block vor. Nützlich, aber grundlegend reaktiv.
+
+Die aktuelle Generation ist anders. Moderne KI-Agenten können:
+
+- **Ganze Features scaffolden** aus einer natürlichsprachlichen Beschreibung heraus und dabei funktionierende Komponenten mit Tests erzeugen.
+- **Dateienübergreifend refaktorieren**, den Aufrufgraphen verstehen und Aufrufer automatisch aktualisieren.
+- **Unbekannten Code erklären** in den Begriffen, die Ihr Team verwendet – nicht in generischer Dokumentationssprache.
+- **Tests generieren** aus der Implementierung heraus – oder noch wirkungsvoller: Implementierungen aus Tests generieren.
+
+Das mentale Modell hat sich gewandelt: von „KI hilft mir beim Tippen" zu „KI erledigt die mechanische Arbeit, während ich die Entscheidungen treffe."
+
+> **Kernaussage:** Die produktivsten KI-First-Teams haben gelernt, Entscheidungsfindung (Mensch) von Implementierung (Mensch + KI) zu trennen. Die wichtigste Fähigkeit ist zu wissen, was was ist.
+
+## Was wir in unserem Workflow verändert haben
+
+Unser Team setzt KI in drei verschiedenen Entwicklungsphasen ein.
+
+### 1. Feature-Planung
+
+Bevor wir eine einzige Zeile Code schreiben, geben wir einer KI die Produktspezifikation und bitten sie, eine technische Aufgliederung zu erstellen: die beteiligten Komponenten, die sich ändernden Datenmodelle, die Randfälle, über die es nachzudenken gilt.
+
+Dabei geht es nicht darum, dass die KI Architekturentscheidungen trifft – sondern darum, die Fragen sichtbar zu machen, die wir beantworten müssen, bevor wir beginnen. Eine gute KI-generierte Aufgliederung identifiziert drei oder vier Dinge, an die wir noch gar nicht gedacht hatten.
+
+### 2. Implementierung
+
+Während der Implementierung übernimmt die KI die repetitive strukturelle Arbeit: Formularvalidierungslogik, API-Route-Boilerplate, Test-Fixtures, Typdefinitionen aus JSON-Schemas. Für Code, der einem klaren Muster in der Codebasis folgt, kann die KI einen ersten Entwurf in Sekunden erstellen.
+
+Die Aufgabe des Ingenieurs verlagert sich vom Schreiben zum Reviewen. Das ist ein fundamental anderer kognitiver Modus – eher wie Code Review als Coding – und er findet mehr Bugs, weil die Aufmerksamkeit auf Korrektheit gerichtet ist, nicht auf die Produktion.
+
+### 3. Review und Refactoring
+
+Nach der Implementierung ist die KI für zwei Dinge nützlich: Randfälle im Diff finden und Refactoring-Möglichkeiten identifizieren. „Was würde bei dieser Implementierung kaputtgehen, wenn die API hier null zurückgäbe?" ist ein kraftvoller Prompt, der echte Bugs abfängt, bevor sie in die Produktion gelangen.
+
+## Die ernst zu nehmenden Risiken
+
+KI-First-Entwicklung birgt echte Risiken, die Teams oft unterschätzen.
+
+**Selbstbewusste Falschheit.** KI-Tools produzieren falschen Code im gleichen Ton wie richtigen Code. Junior-Ingenieure – und manchmal auch Senior-Ingenieure – akzeptieren KI-Output ohne ausreichende Prüfung. Die Lösung ist nicht, KI weniger zu nutzen, sondern Code Reviews rigoroser zu gestalten, nicht weniger rigoros, wenn KI Entwürfe erstellt.
+
+**Angesammeltes technisches Schulden.** KI ist darauf optimiert, Code zu produzieren, der Tests besteht und die unmittelbare Spezifikation erfüllt. Sie ist nicht auf langfristige Wartbarkeit optimiert. Teams, die KI ohne Architekturanleitung schreiben lassen, häufen technische Schulden schneller an als Teams, die alles von Hand schreiben.
+
+**Kompetenzverfall.** Es besteht das echte Risiko, dass Ingenieure, die ihre Karriere in einem KI-First-Workflow beginnen, nie die tiefen Debugging- und Architekturkompetenzen entwickeln, die durch das Schreiben von Code von Grund auf entstehen.
+
+> **Kernaussage:** KI beschleunigt schlechte Gewohnheiten, nicht nur gute. Die Teams, die am meisten von KI profitieren, sind jene mit der stärksten Engineering-Kultur – nicht jene, die KI nutzen, um eine schwache Kultur zu kompensieren.
+
+## KI mit Ihren Qualitätsgates integrieren
+
+Die gute Nachricht ist, dass sich KI sauber in die bereits vorhandene Qualitätsinfrastruktur integrieren lässt.
+
+- **CI/CD-Pipelines** fangen KI-generierten Code auf, der Tests oder Typprüfungen bricht, genauso wie von Menschen geschriebenen Code.
+- **Code Review** bleibt der menschliche Kontrollpunkt für Architekturentscheidungen und Randfälle. Wenn überhaupt, zählt die Review-Qualität in einem KI-First-Workflow noch mehr.
+- **Statische Analyse und Linting** setzen Stil- und Korrektheitsbeschränkungen durch, die KI gelegentlich ignoriert.
+
+Der Fehler besteht darin, KI-Output als „bereits gereviewed" zu behandeln, weil die KI ihn selbstbewusst generiert hat. Behandeln Sie KI-Output wie den ersten Entwurf eines Junior-Ingenieurs: wahrscheinlich gut, lohnt sich sorgfältig zu prüfen.
+
+## Was als Nächstes kommt
+
+Die nächste Grenze sind KI-Agenten, die über längere Zeiträume arbeiten – nicht nur für ein Feature, sondern für einen Sprint. Agenten, die eine Reihe von Tickets verwalten, zwischen Aufgaben koordinieren und Blocker sichtbar machen, bevor sie zu Verzögerungen werden.
+
+Dies wird ein Umdenken in der Art und Weise erfordern, wie wir Aufgaben strukturieren, Spezifikationen schreiben und „fertig" definieren. Die Teams, die sich jetzt darauf vorbereiten – durch klarere Spezifikationen, bessere Testabdeckung und straffere CI-Pipelines – werden einen erheblichen Vorteil haben.
+
+Zum Kontext, wie Web-Performance in Ihren Engineering-Stack passt, lesen Sie [Warum Web-Performance für Ihr Unternehmenswachstum wichtig ist](/blog/why-web-performance-matters). Wenn Sie darüber nachdenken, wie KI Ihre Komponentenarchitektur beeinflusst, behandelt [Komponentenarchitektur: UIs, die dem Test der Zeit standhalten](/blog/component-architecture-building-uis-that-last) die strukturellen Fragen.

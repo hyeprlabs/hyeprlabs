@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blog, getSlug } from "@/lib/source";
+import { getBlogByLocale, getSlug } from "@/lib/source";
 import { formatDate, cn } from "@/lib/utils";
 import { getCategoryBadgeClass } from "@/lib/blog";
 import { CallToAction } from "@/components/marketing/cta";
@@ -17,8 +17,12 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export async function generateStaticParams() {
-  const posts = await blog;
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const posts = await getBlogByLocale(params.locale);
   return posts.map((post) => ({
     slug: getSlug(post.info.path),
   }));
@@ -26,7 +30,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params;
-  const posts = await blog;
+  const posts = await getBlogByLocale(locale);
   const post = posts.find((p) => getSlug(p.info.path) === slug);
 
   if (!post) return {};
@@ -83,8 +87,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params;
-  const posts = await blog;
+  const { slug, locale } = await params;
+  const posts = await getBlogByLocale(locale);
   const post = posts.find((p) => getSlug(p.info.path) === slug);
 
   if (!post) notFound();
@@ -122,7 +126,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.category}
             </Badge>
             <span aria-hidden="true">·</span>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
           </div>
 
           <h1 className="max-w-2xl text-2xl font-serif md:text-4xl lg:text-5xl">

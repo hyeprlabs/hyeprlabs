@@ -1,0 +1,111 @@
+---
+title: "Messen, was zählt: Analytics für moderne Web-Apps"
+description: Ein praktischer Leitfaden zum Einrichten sinnvoller Analytics für Ihr Web-Produkt – von Core Web Vitals bis hin zu Konversionstrichtern – ohne in Daten zu ertrinken, die Sie nie nutzen.
+date: "2026-02-10"
+author: Chris Martin
+category: Engineering
+tags: [Analytics, Metriken, Performance, Business, Messung]
+---
+
+Analytics-Dashboards sind leicht mit Zahlen zu füllen. Viel schwieriger ist es, sie mit Zahlen zu füllen, die zu Entscheidungen führen.
+
+Die meisten Web-Produkte haben mehr Daten als sie nutzen können und weniger Einblicke als sie brauchen. Sie wissen, wie viele Benutzer besucht haben. Sie wissen nicht, warum Benutzer gegangen sind. Sie können sehen, welche Seiten beliebt sind. Sie können nicht sehen, wo das Produkt versagt.
+
+Dieser Beitrag handelt davon, ein Analytics-Setup aufzubauen, das die Fragen beantwortet, die für Ihr Produkt wirklich wichtig sind.
+
+## Mit den Fragen beginnen, nicht mit den Tools
+
+Der häufigste Analytics-Fehler ist die Auswahl eines Tools und dann die Herausfindung, was gemessen werden soll. Die richtige Reihenfolge ist umgekehrt: Beginnen Sie mit den Fragen, die Sie beantworten müssen, dann wählen Sie die Tools, die diese beantworten können.
+
+Die Fragen fallen in drei Kategorien:
+
+**Performance-Fragen:** Ist das Produkt schnell? Wo ist es langsam? Wie ist Performance über Geräte und Geografien verteilt?
+
+**Verhaltens-Fragen:** Was tun Benutzer? Wohin gehen sie? Wo hören sie auf?
+
+**Geschäftsfragen:** Erreichen Benutzer ihre Ziele? Kommen sie wieder? Konvertieren sie?
+
+> **Kernaussage:** Definieren Sie Ihre drei wichtigsten Produktfragen, bevor Sie ein Analytics-Tool installieren. Wenn ein Tool nicht hilft, diese Fragen zu beantworten, ist es Komplexität, keine Infrastruktur.
+
+## Performance-Messung
+
+Web-Performance ist die Grundlage der Benutzererfahrung. Ein Produkt, das langsam lädt, vertreibt Benutzer, bevor sie die Chance hatten, irgendetwas anderes zu erleben.
+
+Das von Google standardisierte Messframework – Core Web Vitals – gibt Ihnen drei Zahlen, die stark mit der Benutzererfahrung korrelieren:
+
+| Metrik | Misst | Guter Schwellenwert |
+|--------|-------|---------------------|
+| LCP (Largest Contentful Paint) | Wie schnell der Hauptinhalt lädt | Unter 2,5 s |
+| INP (Interaction to Next Paint) | Wie reaktionsfähig die UI auf Eingaben ist | Unter 100 ms |
+| CLS (Cumulative Layout Shift) | Wie stabil das Layout beim Laden ist | Unter 0,1 |
+
+Diese sind keine abstrakten technischen Metriken. Sie entsprechen konkreten Benutzererfahrungen: Fühlte sich die Seite langsam beim Laden an, träge beim Reagieren oder visuell instabil?
+
+### Real User Monitoring vs. synthetisches Testen
+
+Synthetische Performance-Tests (Lighthouse, WebPageTest) laufen unter kontrollierten Bedingungen mit konsistenter Hardware und Netzwerk. Sie sind nützlich für die CI-Integration und das Erkennen von Regressionen, bevor sie Benutzer erreichen.
+
+Real User Monitoring (RUM) erfasst Performance-Daten von echten Benutzern auf echten Geräten und Netzwerken. Es zeigt den langen Schwanz: die P75- und P95-Erfahrungen, nicht nur den Median.
+
+Verwenden Sie beides. Synthetisches Testen in CI fängt Regressionen vor dem Deployment ab. RUM-Daten zeigen Ihnen, was Ihre Benutzer tatsächlich erleben.
+
+Für einen tieferen Einblick in Performance-Optimierungstechniken sehen Sie [Warum Web-Performance für Ihr Unternehmenswachstum wichtig ist](/blog/why-web-performance-matters).
+
+## Verhaltensanalytics
+
+Verhaltensanalytics beantwortet die Frage: Was tun Benutzer?
+
+### Instrumentierungsprinzipien
+
+Gute Verhaltens-Instrumentierung folgt drei Regeln:
+
+1. **Aktionen verfolgen, nicht Seitenaufrufe.** Seitenaufrufe sagen Ihnen, wo Benutzer waren. Aktions-Tracking sagt Ihnen, was sie getan haben.
+
+2. **Events konsistent benennen.** `user_signed_up`, `subscription_created`, `feature_used` sind bessere Namen als `signup`, `newSub`, `buttonClick`.
+
+3. **Auch das Ausbleiben von Aktionen verfolgen.** Ein Benutzer, der ein Konto erstellt, aber sein Profil nie vervollständigt hat, ist genauso interessant wie ein Benutzer, der konvertiert hat.
+
+### Session Replay
+
+Session-Replay-Tools (PostHog, FullStory, Hotjar) zeichnen anonymisierte Videos von Benutzersitzungen auf. Sie sind unschätzbar wertvoll für das Debuggen von UX-Problemen, die Benutzer nicht artikulieren können.
+
+## Konversions- und Geschäftsmetriken
+
+Verhaltensdaten sagen Ihnen, was Benutzer getan haben. Geschäftsmetriken sagen Ihnen, ob Ihr Produkt funktioniert.
+
+### Ihre Nordstern-Metrik definieren
+
+Eine Nordstern-Metrik ist die einzelne Zahl, die am besten repräsentiert, ob Ihr Produkt Wert liefert. Nicht Umsatz (ein nachlaufender Indikator), nicht Benutzeranzahl (eine Eitelkeitsmetrik), sondern die spezifische Aktion, die bedeutet, dass ein Benutzer das bekommen hat, wofür Ihr Produkt da ist.
+
+Ihre Nordstern-Metrik sollte sein:
+- Direkt mit Benutzerwert verbunden, nicht nur mit Produktinteraktion
+- Mit Ihrer aktuellen Instrumentierung messbar
+- Durch Produktentscheidungen verbesserbar
+
+> **Kernaussage:** Eitelkeitsmetriken fühlen sich gut an, treiben aber keine Entscheidungen. Eine Nordstern-Metrik, die direkt mit Benutzerwert verbunden ist, hält Ihre Analytics-Investition auf das Wesentliche fokussiert.
+
+### Trichteranalyse
+
+Die meisten digitalen Produkte haben Konversionstrichter: eine Abfolge von Schritten, die Benutzer abschließen müssen, um das wertvolle Ergebnis zu erreichen. Kartieren Sie die Schritte in Ihrem Trichter explizit, instrumentieren Sie jeden Schritt und messen Sie den Abfall zwischen jedem Übergang.
+
+## Alerting und Anomalieerkennung
+
+Analytics ohne Alerting ist rückblickend. Sie schauen sich die Daten der letzten Woche an und entdecken etwas, das letzten Dienstag kaputt gegangen ist.
+
+Richten Sie mindestens Alerts ein für:
+- Fehlerquoten-Spitzen (Sentry oder gleichwertig)
+- Bedeutende Drops bei Kernkonversionsmetriken
+- Performance-Metrik-Regressionen jenseits Ihres definierten Budgets
+- Plötzliche Traffic-Anomalien
+
+## Alles zusammenfügen
+
+Ein gutes Analytics-Setup für ein modernes Web-Produkt hat drei Schichten:
+
+1. **Performance-Schicht:** Core Web Vitals (RUM), synthetisches Testen in CI
+2. **Verhaltens-Schicht:** Aktions-Tracking, Trichterinstrumentierung, Session Replay (stichprobenartig)
+3. **Geschäfts-Schicht:** Nordstern-Metrik, Schlüssel-Konversionstrichter, Bindungskurven
+
+Die Teams, die diese Infrastruktur früh aufbauen – bevor die Daten dringend sind – sind diejenigen, die schnelle, sichere Entscheidungen treffen können, wenn die Daten wichtig werden.
+
+Für mehr über die technischen Grundlagen, die Messung ermöglichen, lesen Sie [Vom Prototyp zum Produkt: Eine moderne Launch-Checkliste](/blog/from-prototype-to-product-launch-checklist). Für die Komponentenarchitekturentscheidungen, die die Performance-Messung beeinflussen, sehen Sie [Komponentenarchitektur: UIs, die dem Test der Zeit standhalten](/blog/component-architecture-building-uis-that-last).
