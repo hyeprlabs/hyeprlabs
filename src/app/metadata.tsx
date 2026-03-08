@@ -1,4 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hyeprlabs.com"),
@@ -19,6 +28,25 @@ export const metadata: Metadata = {
     "Custom Software Development",
   ],
   creator: "Hyepr Labs",
+  authors: [{ name: "Hyepr Labs", url: "https://hyeprlabs.com" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://hyeprlabs.com",
+    languages: {
+      "en": "https://hyeprlabs.com/en",
+      "de": "https://hyeprlabs.com/de",
+    },
+  },
   openGraph: {
     type: "website",
     url: "https://hyeprlabs.com",
@@ -26,6 +54,8 @@ export const metadata: Metadata = {
     description:
       "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
     siteName: "Hyepr Labs",
+    locale: "en_US",
+    alternateLocale: ["de_DE"],
     images: [
       {
         url: "/og?title=Think+Fast.+Build+Fast.&description=Premier+digital+product+agency+specializing+in+high%E2%80%91performance+web+apps%2C+Next.js+engineering%2C+AI+integrations%2C+and+UI%2FUX+design.",
@@ -40,6 +70,7 @@ export const metadata: Metadata = {
     title: "Hyepr Labs | Think Fast. Build Fast.",
     description:
       "Hyepr Labs is a premier digital product agency specializing in high-performance web applications, scalable Next.js engineering, AI integrations, and UI/UX design.",
+    site: "@hyeprlabs",
     creator: "@hyeprlabs",
     images: [
       "/og?title=Think+Fast.+Build+Fast.&description=Premier+digital+product+agency+specializing+in+high%E2%80%91performance+web+apps%2C+Next.js+engineering%2C+AI+integrations%2C+and+UI%2FUX+design.",
