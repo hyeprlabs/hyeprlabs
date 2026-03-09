@@ -8,7 +8,7 @@ import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserProfile } from "@clerk/nextjs";
+import { ProfileTabs } from "@/components/profile/profile-tabs";
 import { cn } from "@/lib/utils";
 import { ShieldCheck, Mail, Calendar, Clock } from "lucide-react";
 
@@ -91,14 +91,7 @@ export default async function ProfilePage() {
       {/* Profile overview */}
       <section className="relative border-b border-border">
         <FullWidthDivider position="top" />
-        <div
-          className={cn(
-            "mx-auto max-w-4xl px-4 py-12 md:py-16",
-            "relative",
-            "before:absolute before:-inset-y-14 before:-left-px before:w-px before:bg-border",
-            "after:absolute after:-inset-y-14 after:-right-px after:w-px after:bg-border",
-          )}
-        >
+        <div className="mx-auto max-w-4xl px-4 py-12 md:py-16">
           {/* User card */}
           <div className="relative mb-10 overflow-hidden rounded-lg border border-border bg-linear-to-br from-muted/50 to-background p-6 md:p-8">
             <DecorIcon className="size-4" position="top-left" />
@@ -134,55 +127,54 @@ export default async function ProfilePage() {
           </div>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 md:grid-cols-4 rounded-lg overflow-hidden border border-border">
-            {stats.map(({ icon: Icon, label, value, highlight }) => (
-              <div
-                key={label}
-                className="flex flex-col gap-1.5 bg-background p-4 md:p-5"
-              >
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Icon className="size-3.5 shrink-0" />
-                  <span className="font-mono text-xs uppercase tracking-wider">
-                    {label}
+          <div className="overflow-hidden rounded-lg border border-border">
+            <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 md:grid-cols-4">
+              {stats.map(({ icon: Icon, label, value, highlight }) => (
+                <div
+                  key={label}
+                  className="flex flex-col gap-1.5 bg-background p-4 md:p-5"
+                >
+                  <div className="flex items-center gap-1.5 text-muted-foreground">
+                    <Icon className="size-3.5 shrink-0" aria-hidden="true" />
+                    <span className="font-mono text-xs uppercase tracking-wider">
+                      {label}
+                    </span>
+                  </div>
+                  <span
+                    className={cn(
+                      "font-mono text-sm",
+                      highlight ? "text-foreground" : "text-muted-foreground",
+                    )}
+                  >
+                    {value}
                   </span>
                 </div>
-                <span
-                  className={cn(
-                    "font-mono text-sm",
-                    highlight ? "text-foreground" : "text-muted-foreground",
-                  )}
-                >
-                  {value}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
         <FullWidthDivider position="bottom" />
       </section>
 
-      {/* Account management */}
+      {/* Account settings */}
       <section className="relative border-b border-border">
         <FullWidthDivider position="top" />
         <div className="mx-auto max-w-4xl px-4 py-12 md:py-16">
           <div className="mb-8 text-center">
             <Badge
               variant="outline"
-              className="mb-4 font-mono bg-linear-to-br from-muted to-background"
+              className="mb-4 bg-linear-to-br from-muted to-background font-mono"
             >
-              Account Management
+              Settings
             </Badge>
-            <h2 className="font-serif text-2xl md:text-3xl text-balance">
-              Manage your account
+            <h2 className="text-balance font-serif text-2xl md:text-3xl">
+              Account settings
             </h2>
             <p className="mt-2 font-mono text-sm text-muted-foreground">
-              Update your profile, security settings, and connected accounts.
+              Update your profile and manage your security settings.
             </p>
           </div>
-
-          <div className="flex justify-center">
-            <UserProfile />
-          </div>
+          <ProfileTabs />
         </div>
         <FullWidthDivider position="bottom" />
       </section>
