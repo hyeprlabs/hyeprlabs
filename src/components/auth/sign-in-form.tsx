@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useSignIn } from "@clerk/nextjs";
+import { useSignIn } from "@clerk/nextjs/legacy";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, AlertCircle } from "lucide-react";
