@@ -526,7 +526,11 @@
     },
     "forgotPassword": "Passwort vergessen?",
     "orContinueWith": "Oder weiter mit",
-    "continueWithGoogle": "Mit Google fortfahren"
+    "continueWithGoogle": "Mit Google fortfahren",
+    "toast": {
+      "signInError": "Anmeldung fehlgeschlagen. Bitte überprüfe deine Zugangsdaten.",
+      "googleError": "Google-Anmeldung fehlgeschlagen. Bitte versuche es erneut."
+    }
   },
   "SignUp": {
     "metaTitle": "Konto erstellen",
@@ -554,11 +558,77 @@
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
     },
     "orContinueWith": "Oder weiter mit",
-    "continueWithGoogle": "Mit Google fortfahren"
+    "continueWithGoogle": "Mit Google fortfahren",
+    "toast": {
+      "registerError": "Registrierung fehlgeschlagen. Bitte überprüfe deine Angaben.",
+      "verifyError": "Verifizierung fehlgeschlagen. Bitte überprüfe deinen Code.",
+      "googleError": "Google-Registrierung fehlgeschlagen. Bitte versuche es erneut."
+    }
   },
   "UserDropdown": {
     "openMenu": "Benutzermenü öffnen",
     "viewProfile": "Profil",
     "signOut": "Abmelden"
+  },
+  "Profile": {
+    "metaTitle": "Profil",
+    "metaDescription": "Verwalte dein Hyepr Labs-Konto.",
+    "heading": "Mein Konto",
+    "subheading": "Verwalte dein Profil, Sicherheitseinstellungen und verbundene Konten.",
+    "badge": "Konto",
+    "stats": {
+      "memberSince": "Mitglied seit",
+      "lastSignIn": "Letzte Anmeldung",
+      "twoFactor": "Zwei-Faktor-Auth",
+      "twoFactorEnabled": "Aktiviert",
+      "twoFactorDisabled": "Nicht aktiviert",
+      "connectedAccounts": "Verbundene Konten",
+      "connectedAccountsNone": "Keine",
+      "connectedAccountsCount": "{count, plural, one {# verbunden} other {# verbunden}}"
+    },
+    "tabs": {
+      "profile": "Profil",
+      "security": "Sicherheit"
+    },
+    "sections": {
+      "personalInfo": "Persönliche Informationen",
+      "emailAddresses": "E-Mail-Adressen",
+      "connectedAccounts": "Verbundene Konten",
+      "twoFactor": "Zwei-Faktor-Authentifizierung",
+      "session": "Sitzung"
+    },
+    "fields": {
+      "firstName": "Vorname",
+      "firstNameDesc": "Dein Vorname.",
+      "firstNamePlaceholder": "Vorname",
+      "lastName": "Nachname",
+      "lastNameDesc": "Dein Nachname.",
+      "lastNamePlaceholder": "Nachname",
+      "email": "E-Mail-Adresse",
+      "emailDesc": "Deine primäre E-Mail-Adresse. Im Reiter Sicherheit verwalten.",
+      "username": "Benutzername",
+      "usernameDesc": "Dein einzigartiger Benutzername.",
+      "usernamePlaceholder": "Benutzername",
+      "emailReadOnly": "E-Mail-Adresse (schreibgeschützt)"
+    },
+    "badges": {
+      "primary": "Primär",
+      "twoFactorEnabled": "Aktiviert",
+      "twoFactorDisabled": "Deaktiviert"
+    },
+    "actions": {
+      "saveChanges": "Änderungen speichern",
+      "signOut": "Abmelden",
+      "signOutDesc": "Von deinem Konto auf diesem Gerät abmelden."
+    },
+    "toast": {
+      "saveSuccess": "Profil erfolgreich aktualisiert.",
+      "saveError": "Speichern fehlgeschlagen. Bitte versuche es erneut.",
+      "signOutError": "Abmelden fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "empty": {
+      "noEmails": "Keine E-Mail-Adressen hinterlegt.",
+      "noConnectedAccounts": "Keine verbundenen Konten."
+    }
   }
 }

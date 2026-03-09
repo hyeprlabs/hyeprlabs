@@ -526,7 +526,11 @@
     },
     "forgotPassword": "Forgot password?",
     "orContinueWith": "Or continue with",
-    "continueWithGoogle": "Continue with Google"
+    "continueWithGoogle": "Continue with Google",
+    "toast": {
+      "signInError": "Sign-in failed. Please check your credentials.",
+      "googleError": "Google sign-in failed. Please try again."
+    }
   },
   "SignUp": {
     "metaTitle": "Create Account",
@@ -554,11 +558,77 @@
       "generic": "Something went wrong. Please try again."
     },
     "orContinueWith": "Or continue with",
-    "continueWithGoogle": "Continue with Google"
+    "continueWithGoogle": "Continue with Google",
+    "toast": {
+      "registerError": "Registration failed. Please check your details.",
+      "verifyError": "Verification failed. Please check your code.",
+      "googleError": "Google sign-up failed. Please try again."
+    }
   },
   "UserDropdown": {
     "openMenu": "Open user menu",
     "viewProfile": "Profile",
     "signOut": "Sign out"
+  },
+  "Profile": {
+    "metaTitle": "Profile",
+    "metaDescription": "Manage your Hyepr Labs account.",
+    "heading": "My account",
+    "subheading": "Manage your profile, security settings, and connected accounts.",
+    "badge": "Account",
+    "stats": {
+      "memberSince": "Member since",
+      "lastSignIn": "Last sign-in",
+      "twoFactor": "Two-factor auth",
+      "twoFactorEnabled": "Enabled",
+      "twoFactorDisabled": "Not enabled",
+      "connectedAccounts": "Connected accounts",
+      "connectedAccountsNone": "None",
+      "connectedAccountsCount": "{count, plural, one {# connected} other {# connected}}"
+    },
+    "tabs": {
+      "profile": "Profile",
+      "security": "Security"
+    },
+    "sections": {
+      "personalInfo": "Personal information",
+      "emailAddresses": "Email addresses",
+      "connectedAccounts": "Connected accounts",
+      "twoFactor": "Two-factor authentication",
+      "session": "Session"
+    },
+    "fields": {
+      "firstName": "First name",
+      "firstNameDesc": "Your given name.",
+      "firstNamePlaceholder": "First name",
+      "lastName": "Last name",
+      "lastNameDesc": "Your family name.",
+      "lastNamePlaceholder": "Last name",
+      "email": "Email address",
+      "emailDesc": "Your primary email address. Managed in the Security tab.",
+      "username": "Username",
+      "usernameDesc": "Your unique username.",
+      "usernamePlaceholder": "username",
+      "emailReadOnly": "Email address (read-only)"
+    },
+    "badges": {
+      "primary": "Primary",
+      "twoFactorEnabled": "Enabled",
+      "twoFactorDisabled": "Disabled"
+    },
+    "actions": {
+      "saveChanges": "Save changes",
+      "signOut": "Sign out",
+      "signOutDesc": "Sign out of your account on this device."
+    },
+    "toast": {
+      "saveSuccess": "Profile updated successfully.",
+      "saveError": "Failed to save changes. Please try again.",
+      "signOutError": "Failed to sign out. Please try again."
+    },
+    "empty": {
+      "noEmails": "No email addresses on file.",
+      "noConnectedAccounts": "No connected accounts."
+    }
   }
 }

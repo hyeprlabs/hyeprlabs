@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 import {
   CheckCircle2,
   Loader2,
@@ -17,7 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -65,21 +66,14 @@ function SettingRow({
   htmlFor,
   description,
   control,
-  className,
 }: {
   label: string;
   htmlFor?: string;
   description?: string;
   control: React.ReactNode;
-  className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center",
-        className,
-      )}
-    >
+    <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center">
       <div className="flex-1">
         <label
           htmlFor={htmlFor}
@@ -148,13 +142,11 @@ export function ProfileTabs() {
   const { user, isLoaded } = useUser();
   const { signOut } = useClerk();
   const router = useRouter();
+  const t = useTranslations("Profile");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">(
-    "idle",
-  );
   const initialized = useRef(false);
 
   // Populate form once user data is available
@@ -181,28 +173,28 @@ export function ProfileTabs() {
   async function handleSave() {
     if (!user) return;
     setIsSaving(true);
-    setSaveStatus("idle");
     try {
       await user.update({ firstName: firstName.trim(), lastName: lastName.trim() });
-      setSaveStatus("saved");
-      setTimeout(() => setSaveStatus("idle"), 3000);
+      toast.success(t("toast.saveSuccess"));
     } catch {
-      setSaveStatus("error");
+      toast.error(t("toast.saveError"));
     } finally {
       setIsSaving(false);
     }
   }
 
   async function handleSignOut() {
-    await signOut();
-    router.push("/");
+    try {
+      await signOut();
+      router.push("/");
+    } catch {
+      toast.error(t("toast.signOutError"));
+    }
   }
 
   return (
     <Tabs defaultValue="profile" className="gap-0">
-      {/* ------------------------------------------------------------------ */}
-      {/* Tab navigation — full-width line variant                            */}
-      {/* ------------------------------------------------------------------ */}
+      {/* Tab navigation */}
       <TabsList
         variant="line"
         className="h-11 w-full justify-start gap-0 rounded-none border-b border-border p-0"
@@ -212,78 +204,64 @@ export function ProfileTabs() {
           className="h-full gap-1.5 rounded-none px-4 font-mono text-xs uppercase tracking-wider"
         >
           <User className="size-3.5" />
-          Profile
+          {t("tabs.profile")}
         </TabsTrigger>
         <TabsTrigger
           value="security"
           className="h-full gap-1.5 rounded-none px-4 font-mono text-xs uppercase tracking-wider"
         >
           <Shield className="size-3.5" />
-          Security
+          {t("tabs.security")}
         </TabsTrigger>
       </TabsList>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Profile tab                                                         */}
-      {/* ------------------------------------------------------------------ */}
+      {/* Profile tab */}
       <TabsContent value="profile" className="mt-6 space-y-4">
-        <SectionCard heading="Personal information">
+        <SectionCard heading={t("sections.personalInfo")}>
           <div className="divide-y divide-border">
             <SettingRow
-              label="First name"
+              label={t("fields.firstName")}
               htmlFor="profile-first-name"
-              description="Your given name."
+              description={t("fields.firstNameDesc")}
               control={
                 <Input
                   id="profile-first-name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First name"
+                  placeholder={t("fields.firstNamePlaceholder")}
                   autoComplete="given-name"
                 />
               }
             />
             <SettingRow
-              label="Last name"
+              label={t("fields.lastName")}
               htmlFor="profile-last-name"
-              description="Your family name."
+              description={t("fields.lastNameDesc")}
               control={
                 <Input
                   id="profile-last-name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last name"
+                  placeholder={t("fields.lastNamePlaceholder")}
                   autoComplete="family-name"
                 />
               }
             />
             <SettingRow
-              label="Email address"
-              description="Your primary email address. Managed in Security."
+              label={t("fields.email")}
+              description={t("fields.emailDesc")}
               control={
                 <Input
                   value={primaryEmailAddress}
                   readOnly
                   disabled
-                  aria-label="Primary email address (read-only)"
+                  aria-label={t("fields.emailReadOnly")}
                 />
               }
             />
           </div>
-          {/* Card footer with save action */}
-          <div className="flex items-center justify-end gap-3 border-t border-border bg-muted/20 px-4 py-3">
-            {saveStatus === "saved" && (
-              <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-                <CheckCircle2 className="size-3.5 text-green-500" />
-                Changes saved
-              </span>
-            )}
-            {saveStatus === "error" && (
-              <span className="flex items-center gap-1.5 font-mono text-xs text-destructive">
-                <XCircle className="size-3.5" />
-                Save failed
-              </span>
-            )}
+          {/* Card footer */}
+          <div className="flex items-center justify-end border-t border-border bg-muted/20 px-4 py-3">
             <Button
               size="sm"
               onClick={handleSave}
@@ -291,18 +269,16 @@ export function ProfileTabs() {
               className="bg-linear-to-br from-foreground to-muted-foreground"
             >
               {isSaving && <Loader2 className="animate-spin" />}
-              Save changes
+              {t("actions.saveChanges")}
             </Button>
           </div>
         </SectionCard>
       </TabsContent>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Security tab                                                        */}
-      {/* ------------------------------------------------------------------ */}
+      {/* Security tab */}
       <TabsContent value="security" className="mt-6 space-y-4">
         {/* Email addresses */}
-        <SectionCard heading="Email addresses">
+        <SectionCard heading={t("sections.emailAddresses")}>
           {user.emailAddresses.length > 0 ? (
             <div className="divide-y divide-border">
               {user.emailAddresses.map((email) => (
@@ -324,7 +300,7 @@ export function ProfileTabs() {
                       variant="outline"
                       className="ml-3 shrink-0 bg-linear-to-br from-muted to-background font-mono text-xs"
                     >
-                      Primary
+                      {t("badges.primary")}
                     </Badge>
                   )}
                 </div>
@@ -332,14 +308,14 @@ export function ProfileTabs() {
             </div>
           ) : (
             <p className="px-4 py-4 font-mono text-xs text-muted-foreground">
-              No email addresses on file.
+              {t("empty.noEmails")}
             </p>
           )}
         </SectionCard>
 
         {/* Connected accounts (OAuth) */}
-        {user.externalAccounts.length > 0 && (
-          <SectionCard heading="Connected accounts">
+        <SectionCard heading={t("sections.connectedAccounts")}>
+          {user.externalAccounts.length > 0 ? (
             <div className="divide-y divide-border">
               {user.externalAccounts.map((account) => (
                 <div
@@ -362,17 +338,21 @@ export function ProfileTabs() {
                 </div>
               ))}
             </div>
-          </SectionCard>
-        )}
+          ) : (
+            <p className="px-4 py-4 font-mono text-xs text-muted-foreground">
+              {t("empty.noConnectedAccounts")}
+            </p>
+          )}
+        </SectionCard>
 
         {/* Two-factor authentication */}
-        <SectionCard heading="Two-factor authentication">
+        <SectionCard heading={t("sections.twoFactor")}>
           <DisplayRow
-            label="2FA status"
+            label={t("sections.twoFactor")}
             description={
               user.twoFactorEnabled
-                ? "Your account is protected with two-factor authentication."
-                : "Enable 2FA to add an extra layer of security."
+                ? t("stats.twoFactorEnabled")
+                : t("stats.twoFactorDisabled")
             }
           >
             {user.twoFactorEnabled ? (
@@ -381,7 +361,7 @@ export function ProfileTabs() {
                 className="gap-1.5 bg-linear-to-br from-muted to-background font-mono text-xs"
               >
                 <CheckCircle2 className="size-3 text-green-500" />
-                Enabled
+                {t("badges.twoFactorEnabled")}
               </Badge>
             ) : (
               <Badge
@@ -389,19 +369,21 @@ export function ProfileTabs() {
                 className="gap-1.5 bg-linear-to-br from-muted to-background font-mono text-xs"
               >
                 <XCircle className="size-3 text-muted-foreground" />
-                Disabled
+                {t("badges.twoFactorDisabled")}
               </Badge>
             )}
           </DisplayRow>
         </SectionCard>
 
         {/* Session / sign out */}
-        <SectionCard heading="Session">
+        <SectionCard heading={t("sections.session")}>
           <div className="flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground">Sign out</p>
+              <p className="text-sm font-medium text-foreground">
+                {t("actions.signOut")}
+              </p>
               <p className="mt-0.5 font-mono text-xs text-muted-foreground">
-                Sign out of your account on this device.
+                {t("actions.signOutDesc")}
               </p>
             </div>
             <Button
@@ -411,7 +393,7 @@ export function ProfileTabs() {
               className="shrink-0 gap-2 font-mono text-xs"
             >
               <LogOut className="size-3.5" />
-              Sign out
+              {t("actions.signOut")}
             </Button>
           </div>
         </SectionCard>

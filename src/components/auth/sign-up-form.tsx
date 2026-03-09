@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { useSignUp } from "@clerk/nextjs/legacy";
 import { useTranslations } from "next-intl";
-import { Loader2, AlertCircle, Mail } from "lucide-react";
+import { toast } from "sonner";
+import { Loader2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -25,7 +26,6 @@ export function SignUpForm({ className }: { className?: string }) {
   const [code, setCode] = useState("");
 
   const [step, setStep] = useState<"register" | "verify">("register");
-  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -34,7 +34,6 @@ export function SignUpForm({ className }: { className?: string }) {
     if (!isLoaded) return;
 
     setIsSubmitting(true);
-    setError("");
 
     try {
       await signUp.create({
@@ -53,7 +52,7 @@ export function SignUpForm({ className }: { className?: string }) {
         clerkError?.errors?.[0]?.longMessage ??
         clerkError?.errors?.[0]?.message ??
         t("error.generic");
-      setError(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +63,6 @@ export function SignUpForm({ className }: { className?: string }) {
     if (!isLoaded) return;
 
     setIsSubmitting(true);
-    setError("");
 
     try {
       const result = await signUp.attemptEmailAddressVerification({ code });
@@ -78,7 +76,7 @@ export function SignUpForm({ className }: { className?: string }) {
         clerkError?.errors?.[0]?.longMessage ??
         clerkError?.errors?.[0]?.message ??
         t("error.generic");
-      setError(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -99,7 +97,7 @@ export function SignUpForm({ className }: { className?: string }) {
         clerkError?.errors?.[0]?.longMessage ??
         clerkError?.errors?.[0]?.message ??
         t("error.generic");
-      setError(msg);
+      toast.error(msg);
       setIsGoogleLoading(false);
     }
   }
@@ -121,16 +119,6 @@ export function SignUpForm({ className }: { className?: string }) {
             {t("verifyDescription", { email })}
           </p>
         </div>
-
-        {error && (
-          <div
-            role="alert"
-            className="flex items-start gap-2 rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2.5"
-          >
-            <AlertCircle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
-            <span className="font-mono text-xs leading-relaxed text-destructive">{error}</span>
-          </div>
-        )}
 
         {/* Code input */}
         <div className="grid gap-2">
@@ -166,7 +154,7 @@ export function SignUpForm({ className }: { className?: string }) {
 
         <button
           type="button"
-          onClick={() => { setStep("register"); setError(""); setCode(""); }}
+          onClick={() => { setStep("register"); setCode(""); }}
           className="w-full text-center font-mono text-xs text-muted-foreground underline-offset-4 hover:underline"
         >
           {t("backToRegister")}
@@ -188,16 +176,6 @@ export function SignUpForm({ className }: { className?: string }) {
           {t("description")}
         </p>
       </div>
-
-      {error && (
-        <div
-          role="alert"
-          className="flex items-start gap-2 rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2.5"
-        >
-          <AlertCircle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
-          <span className="font-mono text-xs leading-relaxed text-destructive">{error}</span>
-        </div>
-      )}
 
       {/* Name row */}
       <div className="grid grid-cols-2 gap-3">

@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { useSignIn } from "@clerk/nextjs/legacy";
 import { useTranslations } from "next-intl";
-import { Loader2, AlertCircle } from "lucide-react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -17,7 +18,6 @@ export function SignInForm({ className }: { className?: string }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -26,7 +26,6 @@ export function SignInForm({ className }: { className?: string }) {
     if (!isLoaded) return;
 
     setIsSubmitting(true);
-    setError("");
 
     try {
       const result = await signIn.create({
@@ -43,7 +42,7 @@ export function SignInForm({ className }: { className?: string }) {
         clerkError?.errors?.[0]?.longMessage ??
         clerkError?.errors?.[0]?.message ??
         t("error.generic");
-      setError(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +63,7 @@ export function SignInForm({ className }: { className?: string }) {
         clerkError?.errors?.[0]?.longMessage ??
         clerkError?.errors?.[0]?.message ??
         t("error.generic");
-      setError(msg);
+      toast.error(msg);
       setIsGoogleLoading(false);
     }
   }
@@ -82,17 +81,6 @@ export function SignInForm({ className }: { className?: string }) {
           {t("description")}
         </p>
       </div>
-
-      {/* Error message */}
-      {error && (
-        <div
-          role="alert"
-          className="flex items-start gap-2 rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-destructive"
-        >
-          <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-          <span className="font-mono text-xs leading-relaxed">{error}</span>
-        </div>
-      )}
 
       {/* Email */}
       <div className="grid gap-2">

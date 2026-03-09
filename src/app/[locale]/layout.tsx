@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -71,6 +72,7 @@ export default async function LocaleLayout({
               <NuqsAdapter>
                 {children}
               </NuqsAdapter>
+              <Toaster richColors position="top-right" />
               <Analytics />
             </ThemeProvider>
           </NextIntlClientProvider>
