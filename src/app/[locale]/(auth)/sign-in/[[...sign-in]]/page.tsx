@@ -1,11 +1,35 @@
 import type { Metadata } from "next";
-import { SignIn } from "@clerk/nextjs";
+import { getTranslations } from "next-intl/server";
+import { SignInForm } from "@/components/auth/sign-in-form";
+import { DecorIcon } from "@/components/ui/decor-icon";
 
-export const metadata: Metadata = {
-  title: "Sign In",
-  description: "Sign in to your Hyepr Labs account.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("SignIn");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
-export default function Page() {
-  return <SignIn />;
+export default async function Page() {
+  const t = await getTranslations("SignIn");
+
+  return (
+    <div className="relative overflow-hidden rounded-lg border border-border bg-linear-to-br from-muted/30 to-background p-6 shadow-sm">
+      <DecorIcon className="size-4" position="top-left" />
+      <DecorIcon className="size-4" position="top-right" />
+      <DecorIcon className="size-4" position="bottom-left" />
+      <DecorIcon className="size-4" position="bottom-right" />
+
+      {/* Heading */}
+      <div className="mb-6 text-center">
+        <h1 className="font-serif text-2xl">{t("title")}</h1>
+        <p className="mt-1 font-mono text-xs text-muted-foreground">
+          {t("description")}
+        </p>
+      </div>
+
+      <SignInForm />
+    </div>
+  );
 }

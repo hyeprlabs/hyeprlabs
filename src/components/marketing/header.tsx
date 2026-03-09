@@ -8,7 +8,8 @@ import { ArrowRight } from "lucide-react"
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
+import { UserDropdown } from "@/components/marketing/user-dropdown";
 
 export function Header() {
   const scrolled = useScroll(10);
@@ -56,14 +57,14 @@ export function Header() {
             </Button>
           </Link>
           {isSignedIn ? (
-            <UserButton userProfileUrl="/profile" userProfileMode="navigation" />
+            <UserDropdown />
           ) : (
-            <SignInButton>
+            <Link href="/sign-in">
               <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
                 {t("signIn")}
                 <ArrowRight />
               </Button>
-            </SignInButton>
+            </Link>
           )}
         </div>
         <MobileNav navLinks={navLinks} />

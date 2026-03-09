@@ -508,5 +508,52 @@
     "label": "Switch language",
     "en": "English",
     "de": "German"
+  },
+  "SignIn": {
+    "metaTitle": "Sign In",
+    "metaDescription": "Sign in to your Hyepr Labs account.",
+    "title": "Welcome back",
+    "description": "Sign in to your Hyepr Labs account.",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Your password",
+    "submit": "Sign in",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "error": {
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "SignUp": {
+    "metaTitle": "Create Account",
+    "metaDescription": "Create your Hyepr Labs account.",
+    "title": "Create account",
+    "description": "Join Hyepr Labs today.",
+    "firstName": "First name",
+    "firstNamePlaceholder": "First",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Last",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Create a password",
+    "submit": "Create account",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "verifyTitle": "Check your email",
+    "verifyDescription": "We sent a verification code to {email}.",
+    "verifyCode": "Verification code",
+    "verifyCodePlaceholder": "123456",
+    "verifySubmit": "Verify email",
+    "backToRegister": "Back to registration",
+    "error": {
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "UserDropdown": {
+    "openMenu": "Open user menu",
+    "viewProfile": "Profile",
+    "signOut": "Sign out"
   }
 }

@@ -508,5 +508,52 @@
     "label": "Sprache wechseln",
     "en": "Englisch",
     "de": "Deutsch"
+  },
+  "SignIn": {
+    "metaTitle": "Anmelden",
+    "metaDescription": "Melde dich bei deinem Hyepr Labs Konto an.",
+    "title": "Willkommen zurück",
+    "description": "Melde dich bei deinem Hyepr Labs Konto an.",
+    "email": "E-Mail",
+    "emailPlaceholder": "du@beispiel.de",
+    "password": "Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "submit": "Anmelden",
+    "noAccount": "Noch kein Konto?",
+    "signUp": "Registrieren",
+    "error": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    }
+  },
+  "SignUp": {
+    "metaTitle": "Konto erstellen",
+    "metaDescription": "Erstelle dein Hyepr Labs Konto.",
+    "title": "Konto erstellen",
+    "description": "Heute bei Hyepr Labs beitreten.",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Vorname",
+    "lastName": "Nachname",
+    "lastNamePlaceholder": "Nachname",
+    "email": "E-Mail",
+    "emailPlaceholder": "du@beispiel.de",
+    "password": "Passwort",
+    "passwordPlaceholder": "Passwort erstellen",
+    "submit": "Konto erstellen",
+    "haveAccount": "Bereits ein Konto?",
+    "signIn": "Anmelden",
+    "verifyTitle": "E-Mail überprüfen",
+    "verifyDescription": "Wir haben einen Bestätigungscode an {email} gesendet.",
+    "verifyCode": "Bestätigungscode",
+    "verifyCodePlaceholder": "123456",
+    "verifySubmit": "E-Mail bestätigen",
+    "backToRegister": "Zurück zur Registrierung",
+    "error": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    }
+  },
+  "UserDropdown": {
+    "openMenu": "Benutzermenü öffnen",
+    "viewProfile": "Profil",
+    "signOut": "Abmelden"
   }
 }

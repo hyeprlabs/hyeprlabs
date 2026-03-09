@@ -158,7 +158,6 @@ export default async function ProfilePage() {
 
       {/* Account settings */}
       <section className="relative border-b border-border">
-        <FullWidthDivider position="top" />
         <div className="mx-auto max-w-4xl px-4 py-12 md:py-16">
           <div className="mb-8 text-center">
             <Badge

@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { X, Menu, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
+import { UserDropdown } from "@/components/marketing/user-dropdown";
 
 interface NavLink {
   label: string;
@@ -67,15 +68,15 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
               </Link>
               {isSignedIn ? (
                 <div className="flex items-center justify-center py-2">
-                  <UserButton userProfileUrl="/profile" userProfileMode="navigation" />
+                  <UserDropdown />
                 </div>
               ) : (
-                <SignInButton>
+                <Link href="/sign-in" className="w-full">
                   <Button size="sm" className="w-full bg-linear-to-br from-foreground to-muted-foreground">
                     {tHeader("signIn")}
                     <ArrowRight />
                   </Button>
-                </SignInButton>
+                </Link>
               )}
             </div>
           </div>
