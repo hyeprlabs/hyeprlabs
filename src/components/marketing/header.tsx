@@ -8,10 +8,12 @@ import { ArrowRight } from "lucide-react"
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
 
 export function Header() {
   const scrolled = useScroll(10);
   const t = useTranslations("Header");
+  const { isSignedIn } = useAuth();
 
   const navLinks = [
     { label: t("about"), href: "/about" as const },
@@ -53,18 +55,16 @@ export function Header() {
               {t("contact")}
             </Button>
           </Link>
-          <Link href="/projects">
-            <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
-              {t("projects")}
-              <ArrowRight />
-            </Button>
-          </Link>
-          <Button size="sm" variant="outline" className="hidden">
-            Sign In
-          </Button>
-          <Button size="sm" className="hidden">
-            Get Started
-          </Button>
+          {isSignedIn ? (
+            <UserButton userProfileUrl="/profile" userProfileMode="navigation" />
+          ) : (
+            <SignInButton>
+              <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
+                {t("signIn")}
+                <ArrowRight />
+              </Button>
+            </SignInButton>
+          )}
         </div>
         <MobileNav navLinks={navLinks} />
       </nav>

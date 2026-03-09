@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { X, Menu, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
 
 interface NavLink {
   label: string;
@@ -17,6 +18,7 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
   const [open, setOpen] = React.useState(false);
   const tHeader = useTranslations("Header");
   const tMobileNav = useTranslations("MobileNav");
+  const { isSignedIn } = useAuth();
 
   return (
     <div className="md:hidden">
@@ -63,18 +65,18 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
                   {tHeader("contact")}
                 </Button>
               </Link>
-              <Link href="/projects">
-                <Button size="sm" className="w-full bg-linear-to-br from-foreground to-muted-foreground">
-                  {tHeader("projects")}
-                  <ArrowRight />
-                </Button>
-              </Link>
-              <Button variant="outline" className="w-full hidden">
-                Sign In
-              </Button>
-              <Button className="w-full hidden">
-                Get Started
-              </Button>
+              {isSignedIn ? (
+                <div className="flex items-center justify-center py-2">
+                  <UserButton userProfileUrl="/profile" userProfileMode="navigation" />
+                </div>
+              ) : (
+                <SignInButton>
+                  <Button size="sm" className="w-full bg-linear-to-br from-foreground to-muted-foreground">
+                    {tHeader("signIn")}
+                    <ArrowRight />
+                  </Button>
+                </SignInButton>
+              )}
             </div>
           </div>
         </Portal>
