@@ -523,7 +523,10 @@
     "signUp": "Registrieren",
     "error": {
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
-    }
+    },
+    "forgotPassword": "Passwort vergessen?",
+    "orContinueWith": "Oder weiter mit",
+    "continueWithGoogle": "Mit Google fortfahren"
   },
   "SignUp": {
     "metaTitle": "Konto erstellen",
@@ -549,7 +552,9 @@
     "backToRegister": "Zurück zur Registrierung",
     "error": {
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
-    }
+    },
+    "orContinueWith": "Oder weiter mit",
+    "continueWithGoogle": "Mit Google fortfahren"
   },
   "UserDropdown": {
     "openMenu": "Benutzermenü öffnen",

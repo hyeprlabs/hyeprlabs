@@ -523,7 +523,10 @@
     "signUp": "Sign up",
     "error": {
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "forgotPassword": "Forgot password?",
+    "orContinueWith": "Or continue with",
+    "continueWithGoogle": "Continue with Google"
   },
   "SignUp": {
     "metaTitle": "Create Account",
@@ -549,7 +552,9 @@
     "backToRegister": "Back to registration",
     "error": {
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "orContinueWith": "Or continue with",
+    "continueWithGoogle": "Continue with Google"
   },
   "UserDropdown": {
     "openMenu": "Open user menu",

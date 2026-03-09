@@ -2,17 +2,17 @@
 
 import { useState, type FormEvent } from "react";
 import { useSignUp } from "@clerk/nextjs/legacy";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, AlertCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { GoogleLogo } from "@/components/auth/google-logo";
 
 export function SignUpForm({ className }: { className?: string }) {
   const { signUp, setActive, isLoaded } = useSignUp();
-  const router = useRouter();
   const t = useTranslations("SignUp");
 
   // Step 1 fields
@@ -27,6 +27,7 @@ export function SignUpForm({ className }: { className?: string }) {
   const [step, setStep] = useState<"register" | "verify">("register");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
   async function handleRegister(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -70,7 +71,6 @@ export function SignUpForm({ className }: { className?: string }) {
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        router.push("/profile");
       }
     } catch (err: unknown) {
       const clerkError = err as { errors?: Array<{ longMessage?: string; message?: string }> };
@@ -84,20 +84,40 @@ export function SignUpForm({ className }: { className?: string }) {
     }
   }
 
+  async function handleGoogleSignUp() {
+    if (!isLoaded) return;
+    setIsGoogleLoading(true);
+    try {
+      await signUp.authenticateWithRedirect({
+        strategy: "oauth_google",
+        redirectUrl: "/sso-callback",
+        redirectUrlComplete: "/profile",
+      });
+    } catch (err: unknown) {
+      const clerkError = err as { errors?: Array<{ longMessage?: string; message?: string }> };
+      const msg =
+        clerkError?.errors?.[0]?.longMessage ??
+        clerkError?.errors?.[0]?.message ??
+        t("error.generic");
+      setError(msg);
+      setIsGoogleLoading(false);
+    }
+  }
+
   if (step === "verify") {
     return (
       <form
         onSubmit={handleVerify}
-        className={cn("space-y-4", className)}
+        className={cn("flex flex-col gap-6", className)}
         noValidate
       >
         {/* Icon + heading */}
-        <div className="flex flex-col items-center gap-2 pb-2 text-center">
+        <div className="flex flex-col items-center gap-2 text-center">
           <div className="flex size-10 items-center justify-center rounded-full border border-border bg-muted/50">
             <Mail className="size-5 text-muted-foreground" aria-hidden="true" />
           </div>
-          <p className="font-serif text-lg">{t("verifyTitle")}</p>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h1 className="font-serif text-2xl">{t("verifyTitle")}</h1>
+          <p className="text-balance font-mono text-xs text-muted-foreground">
             {t("verifyDescription", { email })}
           </p>
         </div>
@@ -113,7 +133,7 @@ export function SignUpForm({ className }: { className?: string }) {
         )}
 
         {/* Code input */}
-        <div className="space-y-1.5">
+        <div className="grid gap-2">
           <label
             htmlFor="verify-code"
             className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
@@ -158,9 +178,17 @@ export function SignUpForm({ className }: { className?: string }) {
   return (
     <form
       onSubmit={handleRegister}
-      className={cn("space-y-4", className)}
+      className={cn("flex flex-col gap-6", className)}
       noValidate
     >
+      {/* Heading */}
+      <div className="flex flex-col items-center gap-1 text-center">
+        <h1 className="font-serif text-2xl">{t("title")}</h1>
+        <p className="text-balance font-mono text-xs text-muted-foreground">
+          {t("description")}
+        </p>
+      </div>
+
       {error && (
         <div
           role="alert"
@@ -173,7 +201,7 @@ export function SignUpForm({ className }: { className?: string }) {
 
       {/* Name row */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-1.5">
+        <div className="grid gap-2">
           <label
             htmlFor="sign-up-first-name"
             className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
@@ -188,10 +216,10 @@ export function SignUpForm({ className }: { className?: string }) {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            disabled={isSubmitting}
+            disabled={isSubmitting || isGoogleLoading}
           />
         </div>
-        <div className="space-y-1.5">
+        <div className="grid gap-2">
           <label
             htmlFor="sign-up-last-name"
             className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
@@ -206,13 +234,13 @@ export function SignUpForm({ className }: { className?: string }) {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            disabled={isSubmitting}
+            disabled={isSubmitting || isGoogleLoading}
           />
         </div>
       </div>
 
       {/* Email */}
-      <div className="space-y-1.5">
+      <div className="grid gap-2">
         <label
           htmlFor="sign-up-email"
           className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
@@ -227,12 +255,12 @@ export function SignUpForm({ className }: { className?: string }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          disabled={isSubmitting}
+          disabled={isSubmitting || isGoogleLoading}
         />
       </div>
 
       {/* Password */}
-      <div className="space-y-1.5">
+      <div className="grid gap-2">
         <label
           htmlFor="sign-up-password"
           className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
@@ -247,7 +275,7 @@ export function SignUpForm({ className }: { className?: string }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          disabled={isSubmitting}
+          disabled={isSubmitting || isGoogleLoading}
         />
       </div>
 
@@ -255,10 +283,38 @@ export function SignUpForm({ className }: { className?: string }) {
       <Button
         type="submit"
         className="w-full bg-linear-to-br from-foreground to-muted-foreground"
-        disabled={isSubmitting || !isLoaded}
+        disabled={isSubmitting || isGoogleLoading || !isLoaded}
       >
         {isSubmitting && <Loader2 className="animate-spin" aria-hidden="true" />}
         {t("submit")}
+      </Button>
+
+      {/* OR separator */}
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <Separator />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-background px-2 font-mono text-xs text-muted-foreground">
+            {t("orContinueWith")}
+          </span>
+        </div>
+      </div>
+
+      {/* Google OAuth */}
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full"
+        onClick={handleGoogleSignUp}
+        disabled={isSubmitting || isGoogleLoading || !isLoaded}
+      >
+        {isGoogleLoading ? (
+          <Loader2 className="animate-spin" aria-hidden="true" />
+        ) : (
+          <GoogleLogo className="size-4" />
+        )}
+        {t("continueWithGoogle")}
       </Button>
 
       {/* Footer link */}
