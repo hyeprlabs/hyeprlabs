@@ -1,6 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { unstable_noStore as noStore } from "next/cache";
-import { blog, getSlug } from "@/lib/source";
+import { getBlogByLocale, getSlug } from "@/lib/source";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -14,7 +14,8 @@ const preview = 3;
 export async function BlogCta() {
   noStore();
   const t = await getTranslations("BlogCta");
-  const posts = await blog;
+  const locale = await getLocale();
+  const posts = await getBlogByLocale(locale);
 
   const blogs = posts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -57,7 +58,7 @@ export async function BlogCta() {
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-r -mr-px -mb-px ml-0 mt-0">
             {blogs.map((blog) => (
-              <BlogPreviewCard key={blog.href} {...blog} />
+              <BlogPreviewCard key={blog.href} {...blog} locale={locale} />
             ))}
           </div>
         </div>
@@ -75,6 +76,7 @@ type BlogPreviewCardProps = {
   author: string;
   tags: string[];
   href: string;
+  locale: string;
 };
 
 function BlogPreviewCard({
@@ -85,6 +87,7 @@ function BlogPreviewCard({
   author,
   tags,
   href,
+  locale,
 }: BlogPreviewCardProps) {
   return (
     <Link
@@ -103,7 +106,7 @@ function BlogPreviewCard({
         {title}
       </h3>
       <span className="mb-3 text-muted-foreground text-xs">
-        {formatDate(date)}
+        {formatDate(date, locale)}
       </span>
       <p className="mb-4 line-clamp-3 flex-1 text-muted-foreground text-sm tracking-wide font-mono">
         {description}

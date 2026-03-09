@@ -1,11 +1,12 @@
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
-import { getTranslations } from "next-intl/server";
-import { blog, getSlug } from "@/lib/source";
+import { getTranslations, getLocale } from "next-intl/server";
+import { getBlogByLocale, getSlug } from "@/lib/source";
 import { BlogGrid } from "@/components/marketing/blog/blog-grid";
 
 export async function BlogSection() {
   const t = await getTranslations("BlogSection");
-  const posts = await blog;
+  const locale = await getLocale();
+  const posts = await getBlogByLocale(locale);
 
   const blogs = posts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

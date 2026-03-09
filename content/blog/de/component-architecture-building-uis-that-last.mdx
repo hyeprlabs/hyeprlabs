@@ -1,0 +1,120 @@
+---
+title: "Komponentenarchitektur: UIs, die dem Test der Zeit standhalten"
+description: Die strukturellen Entscheidungen hinter React-Komponentendesign, die bestimmen, ob Ihre Codebasis elegant skaliert oder unter ihrem eigenen Gewicht zusammenbricht.
+date: "2025-12-05"
+author: Sarah Chen
+category: Engineering
+tags: [Architektur, React, Komponenten, Engineering, UI]
+---
+
+Jede React-Anwendung beginnt sauber. Die ersten Dutzend Komponenten sind einfach zu verstehen, einfach zu ändern und einfach zu testen. Dann wächst das Produkt, das Team wächst, und irgendwo um Komponente fünfzig herum beginnt die Architektur, die Sie für unnötig hielten, sehr wichtig zu werden.
+
+Dieser Beitrag handelt davon, die richtigen strukturellen Entscheidungen früh zu treffen – jene, die Komponente fünfzig genauso leicht verständlich machen wie Komponente fünf.
+
+## Die zwei Probleme des Komponentendesigns
+
+Komponentenarchitektur löst zwei verschiedene Probleme, die leicht zu verwechseln sind: **Kopplung** und **Kohäsion**.
+
+**Kopplung** betrifft, wie viel Ihre Komponenten voneinander wissen. Stark gekoppelte Komponenten sind schwer isoliert zu ändern.
+
+**Kohäsion** betrifft, wie gut die Dinge innerhalb einer Komponente zusammengehören. Schwach kohäsive Komponenten tun zu viele Dinge. Sie sind schwer zu benennen, zu testen und wiederzuverwenden.
+
+Gute Komponentenarchitektur maximiert Kohäsion (jede Komponente tut eine Sache gut), während sie Kopplung minimiert (Komponenten interagieren über stabile Schnittstellen, nicht über interne Implementierungsdetails).
+
+## Die Container/Präsentation-Trennung
+
+Das dauerhafteste Muster im React-Komponentendesign ist die Trennung von Präsentation und Verhalten. Präsentationskomponenten empfangen Props und rendern UI. Container-Komponenten handhaben Datenabruf, Zustandsverwaltung und Geschäftslogik.
+
+Diese Trennung hat einen praktischen Vorteil: Präsentationskomponenten sind reine Funktionen ihrer Props, was sie trivial einfach zu testen und in Storybook zu erstellen macht.
+
+### So sieht das in der Praxis aus
+
+Eine Präsentationskomponente:
+
+```tsx
+function UserCard({ name, role, avatarUrl }: UserCardProps) {
+  return (
+    <div className="flex items-center gap-3">
+      <img src={avatarUrl} alt={name} className="size-10 rounded-full" />
+      <div>
+        <p className="font-medium">{name}</p>
+        <p className="text-sm text-muted-foreground">{role}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+Eine Container-Komponente:
+
+```tsx
+async function CurrentUserCard() {
+  const user = await fetchCurrentUser();
+  return <UserCard name={user.name} role={user.role} avatarUrl={user.avatarUrl} />;
+}
+```
+
+Die Präsentationskomponente weiß nicht, wie die Benutzerdaten abgerufen werden. Die Container-Komponente weiß nicht, wie die Benutzerdaten angezeigt werden. Jede kann sich unabhängig ändern.
+
+> **Kernaussage:** Die Container/Präsentation-Trennung betrifft nicht die Ordnerstruktur. Es geht darum, das „Was anzeigen" vom „Wie bekommen" zu trennen. Wenn eine Komponente sowohl Daten abruft als auch JSX rendert, fragen Sie, ob sie das sollte.
+
+## Kompositionsmuster, die skalieren
+
+### Compound Components
+
+Compound Components ermöglichen verwandten Teilen, impliziten Zustand über React Context zu teilen, ohne diesen Zustand der Außenwelt preiszugeben.
+
+Das klassische Beispiel ist eine `Select`-Komponente: `Select.Root`, `Select.Trigger`, `Select.Options` und `Select.Item` teilen alle den „is open"- und den „selected value"-Zustand, aber der Konsument muss nichts davon verwalten.
+
+Dieses Muster ist komplexer zu implementieren als eine einzelne Komponente mit vielen Props, aber es ist weitaus flexibler.
+
+### Render Props und Slot-Muster
+
+Wenn eine Komponente beliebige UI an einem bestimmten Punkt in ihrer Struktur akzeptieren muss, sind Render Props oder Slot-Muster sauberer als das Übergeben von JSX als String oder Prop.
+
+Das Radix UI `Slot`-Primitive (das diese Codebasis verwendet) ist die produktionsreife Version dieses Musters: Es vereint die Komponente des Konsumenten mit der Bibliothekskomponente und ermöglicht vollständige Stilkontrolle ohne Einschränkung des Verhaltens.
+
+### Die polymorphe Komponente
+
+Manchmal möchten Sie eine Komponente, die abhängig vom Kontext verschiedene HTML-Elemente rendert – ein `Button`, der als `<a>` gerendert wird, wenn ein `href` angegeben wird.
+
+Polymorphe Komponenten sollten bewusst und sparsam verwendet werden. Die Flexibilität ist real, aber so ist die Komplexität in den Typdefinitionen.
+
+## Zustandsarchitektur
+
+### Zustand bei Konsumenten platzieren
+
+Zustand sollte so nah wie möglich bei den Komponenten leben, die ihn verwenden. Zustand, der höher lebt als nötig, verursacht unnötige Re-Renders und macht Komponenten schwerer isoliert zu verstehen.
+
+Bevor Sie nach einem globalen Zustandsspeicher greifen, fragen Sie: Könnte dieser Zustand in der Komponente leben, die ihn verwendet?
+
+### Wann globaler Zustand angebracht ist
+
+Globaler Zustand ist geeignet für Daten, die:
+- Über viele weit voneinander entfernte Komponenten im Komponentenbaum geteilt werden
+- Im Vergleich zu den Komponenten, die sie konsumieren, langlebig sind
+- Zu teuer sind, um bei jeder Navigation neu vom Server abgerufen zu werden
+
+Benutzerauthentifizierung, Theme-Präferenzen und komponentenübergreifende Koordination sind die kanonischen Fälle.
+
+> **Kernaussage:** Die meisten React-Zustandsverwaltungsprobleme sind verkleidete Architekturprobleme. Bevor Sie einen globalen Store hinzufügen, fragen Sie, ob eine bessere Komponentenstruktur den Bedarf beseitigen würde.
+
+## Benennung und Abstraktion
+
+Der am meisten unterschätzte Teil der Komponentenarchitektur ist die Benennung. Eine Komponente, die schwer zu benennen ist, ist normalerweise eine Komponente, die zu viele Dinge tut, oder eine Komponente ohne klare konzeptuelle Identität.
+
+Gute Komponentennamen:
+- Beschreiben, was die Komponente **ist** (eine `UserCard`, nicht ein `TopRightUserThing`)
+- Sind konsistent mit dem Design-System-Vokabular
+- Entsprechen dem mentalen Modell Ihres Produktteams, nicht nur Ihres Engineering-Teams
+
+Wenn Designer und Ingenieur beide nach demselben Namen für dasselbe Konzept greifen, haben Sie die Abstraktion richtig getroffen.
+
+## Ihre Architektur testen
+
+Komponentenarchitekturentscheidungen haben langfristige Konsequenzen, die kurzfristig schwer zu erkennen sind. Zwei Tests helfen:
+
+1. **Der Storybook-Test.** Können Sie diese Komponente isoliert mit Props erstellen, ohne den Rest Ihrer Anwendung zu mocken? Wenn nicht, ist sie wahrscheinlich zu stark gekoppelt.
+2. **Der Refactoring-Test.** Wenn Sie ändern müssen, wie Daten für dieses Feature abgerufen werden, wie viele Komponenten müssen sich ändern? Die Antwort sollte eins sein.
+
+Für mehr über die Designschicht, die auf dieser Architektur aufbaut, sehen Sie [Design-Systeme, die skalieren](/blog/building-design-systems-that-scale). Wenn Sie darüber nachdenken, wie KI-Tools Ihren Komponentenworkflow beeinflussen, lesen Sie [Der KI-First-Entwicklungsworkflow](/blog/ai-first-development-workflow).

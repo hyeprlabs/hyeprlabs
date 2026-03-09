@@ -1,4 +1,4 @@
-import { metadata } from "@/app/metadata";
+import { metadata, viewport } from "@/app/metadata";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -26,7 +26,7 @@ const instrumentSerif = Instrument_Serif({
   weight: ["400"],
 });
 
-export { metadata };
+export { metadata, viewport };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
