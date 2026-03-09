@@ -7,9 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
-    <div className="flex min-h-[70vh] items-center justify-center py-20">
-      <SignIn />
-    </div>
-  );
+  return <SignIn />;
 }
