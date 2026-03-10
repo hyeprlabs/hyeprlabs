@@ -619,7 +619,8 @@
     "actions": {
       "saveChanges": "Save changes",
       "signOut": "Sign out",
-      "signOutDesc": "Sign out of your account on this device."
+      "signOutDesc": "Sign out of your account on this device.",
+      "saving": "Saving…"
     },
     "toast": {
       "saveSuccess": "Profile updated successfully.",
@@ -629,6 +630,10 @@
     "empty": {
       "noEmails": "No email addresses on file.",
       "noConnectedAccounts": "No connected accounts."
+    },
+    "twoFactor": {
+      "enabledDesc": "Your account is protected with two-factor authentication.",
+      "disabledDesc": "Two-factor authentication is not enabled."
     }
   }
 }

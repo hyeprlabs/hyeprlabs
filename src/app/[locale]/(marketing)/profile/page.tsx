@@ -29,7 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ProfilePage() {
   const { userId } = await auth();
-  if (!userId) redirect("/sign-in");
+  // Redirect unauthenticated visitors to the homepage — avoids a raw
+  // Next.js redirect to a non-localised sign-in URL that Safari may
+  // treat as a file download.
+  if (!userId) redirect("/");
 
   const user = (await currentUser())!;
   const t = await getTranslations("Profile");
@@ -96,32 +99,42 @@ export default async function ProfilePage() {
   return (
     <>
       {/*
-       * One continuous section — FullWidthDivider only at the very top and
-       * very bottom of the entire block. Internal separators use plain
-       * border-b / gap-px so there is never a doubled border line.
+       * Top spacer — creates breathing room between the site header and the
+       * profile section. A full-bleed FullWidthDivider sits at the very top
+       * (immediately below the header), then padding pushes the next section
+       * far enough down that the eye has room to breathe before hitting the
+       * second divider at the start of the profile block.
+       */}
+      <div className="relative pt-14 md:pt-20">
+        <FullWidthDivider position="top" />
+      </div>
+
+      {/*
+       * One continuous profile section — FullWidthDivider only at the top and
+       * bottom of this block. Internal separators use plain border-b / gap-px
+       * so there is never a doubled border line.
        */}
       <div className="mx-auto mb-12 w-full max-w-5xl md:mb-36">
         <div className="relative">
-          {/* Outer edges */}
           <FullWidthDivider position="top" />
           <DecorIcon className="size-4" position="top-left" />
           <DecorIcon className="size-4" position="top-right" />
 
           {/* ── Identity ── */}
-          <div className="flex flex-col gap-5 border-b border-border px-6 pt-12 pb-8 sm:flex-row sm:items-center sm:gap-6 md:px-8 md:pt-16 md:pb-10">
-            <Avatar className="size-20 shrink-0 self-start sm:self-center">
+          <div className="flex flex-col gap-4 border-b border-border px-6 pt-8 pb-6 sm:flex-row sm:items-center sm:gap-5 md:px-8 md:pt-10">
+            <Avatar className="size-12 shrink-0 self-start sm:self-center">
               <AvatarImage src={user.imageUrl} alt={fullName} />
-              <AvatarFallback className="border bg-transparent font-mono text-lg">
+              <AvatarFallback className="border bg-transparent font-mono text-sm">
                 {initials}
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col gap-2">
-              <h1 className="text-xl font-semibold tracking-tight md:text-2xl">
+            <div className="flex flex-col gap-1.5">
+              <h1 className="text-lg font-semibold tracking-tight md:text-xl">
                 {fullName}
               </h1>
               {primaryEmail && (
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground">
                   {primaryEmail}
                 </p>
               )}
@@ -139,7 +152,7 @@ export default async function ProfilePage() {
           {/*
            * ── Stats grid ──
            * gap-px with bg-border background creates crisp 1-px separators
-           * between cells without any outer border — no doubled lines.
+           * between cells — no doubled lines, no JS breakpoint logic.
            */}
           <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
             {stats.map(({ icon: Icon, label, value, highlight }) => (

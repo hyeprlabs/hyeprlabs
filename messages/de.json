@@ -619,7 +619,8 @@
     "actions": {
       "saveChanges": "Änderungen speichern",
       "signOut": "Abmelden",
-      "signOutDesc": "Von deinem Konto auf diesem Gerät abmelden."
+      "signOutDesc": "Von deinem Konto auf diesem Gerät abmelden.",
+      "saving": "Wird gespeichert…"
     },
     "toast": {
       "saveSuccess": "Profil erfolgreich aktualisiert.",
@@ -629,6 +630,10 @@
     "empty": {
       "noEmails": "Keine E-Mail-Adressen hinterlegt.",
       "noConnectedAccounts": "Keine verbundenen Konten."
+    },
+    "twoFactor": {
+      "enabledDesc": "Dein Konto ist durch Zwei-Faktor-Authentifizierung geschützt.",
+      "disabledDesc": "Zwei-Faktor-Authentifizierung ist nicht aktiviert."
     }
   }
 }

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useClerk, useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import {
@@ -17,7 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // ---------------------------------------------------------------------------
@@ -39,7 +38,7 @@ function providerLabel(provider: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// Shared sub-components
+// Sub-components
 // ---------------------------------------------------------------------------
 
 function SectionCard({
@@ -50,8 +49,8 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-border">
-      <div className="border-b border-border bg-muted/30 px-4 py-3">
+    <div className="overflow-hidden rounded-lg border border-border bg-background">
+      <div className="border-b border-border bg-muted/30 px-4 py-2.5">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           {heading}
         </p>
@@ -61,7 +60,7 @@ function SectionCard({
   );
 }
 
-function SettingRow({
+function FieldRow({
   label,
   htmlFor,
   description,
@@ -73,26 +72,26 @@ function SettingRow({
   control: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center">
-      <div className="flex-1">
+    <div className="grid gap-3 px-4 py-3.5 sm:grid-cols-[1fr_16rem]">
+      <div>
         <label
           htmlFor={htmlFor}
-          className="text-sm font-medium text-foreground"
+          className="text-sm font-medium leading-none text-foreground"
         >
           {label}
         </label>
         {description && (
-          <p className="mt-0.5 font-mono text-xs text-muted-foreground">
+          <p className="mt-1 font-mono text-xs text-muted-foreground">
             {description}
           </p>
         )}
       </div>
-      <div className="sm:w-64">{control}</div>
+      <div>{control}</div>
     </div>
   );
 }
 
-function DisplayRow({
+function InfoRow({
   label,
   description,
   children,
@@ -102,34 +101,16 @@ function DisplayRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex-1">
+    <div className="flex flex-col gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-foreground">{label}</p>
         {description && (
-          <p className="mt-0.5 font-mono text-xs text-muted-foreground">
+          <p className="mt-1 font-mono text-xs text-muted-foreground">
             {description}
           </p>
         )}
       </div>
       <div className="shrink-0">{children}</div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Loading skeleton
-// ---------------------------------------------------------------------------
-
-function ProfileTabsSkeleton() {
-  return (
-    <div className="space-y-4">
-      <div className="h-11 w-full rounded-none border-b border-border">
-        <Skeleton className="h-full w-40 rounded-none" />
-      </div>
-      <div className="space-y-4 py-4">
-        <Skeleton className="h-24 w-full rounded-lg" />
-        <Skeleton className="h-24 w-full rounded-lg" />
-      </div>
     </div>
   );
 }
@@ -141,25 +122,29 @@ function ProfileTabsSkeleton() {
 export function ProfileTabs() {
   const { user, isLoaded } = useUser();
   const { signOut } = useClerk();
-  const router = useRouter();
   const t = useTranslations("Profile");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const initialized = useRef(false);
 
-  // Populate form once user data is available
   useEffect(() => {
     if (isLoaded && user && !initialized.current) {
       setFirstName(user.firstName ?? "");
       setLastName(user.lastName ?? "");
+      setUsername(user.username ?? "");
       initialized.current = true;
     }
   }, [isLoaded, user]);
 
   if (!isLoaded || !user) {
-    return <ProfileTabsSkeleton />;
+    return (
+      <div className="flex min-h-[12rem] items-center justify-center">
+        <Spinner className="size-5 text-muted-foreground" />
+      </div>
+    );
   }
 
   const primaryEmailAddress =
@@ -168,13 +153,23 @@ export function ProfileTabs() {
 
   const isDirty =
     firstName !== (user.firstName ?? "") ||
-    lastName !== (user.lastName ?? "");
+    lastName !== (user.lastName ?? "") ||
+    (user.username !== null && username !== (user.username ?? ""));
 
   async function handleSave() {
     if (!user) return;
     setIsSaving(true);
     try {
-      await user.update({ firstName: firstName.trim(), lastName: lastName.trim() });
+      const updates: Parameters<typeof user.update>[0] = {
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+      };
+      // Pass null to Clerk to clear the username when the field is emptied;
+      // undefined leaves the field unchanged.
+      if (user.username !== null) {
+        updates.username = username.trim() !== "" ? username.trim() : null;
+      }
+      await user.update(updates);
       toast.success(t("toast.saveSuccess"));
     } catch {
       toast.error(t("toast.saveError"));
@@ -185,8 +180,7 @@ export function ProfileTabs() {
 
   async function handleSignOut() {
     try {
-      await signOut();
-      router.push("/");
+      await signOut({ redirectUrl: "/" });
     } catch {
       toast.error(t("toast.signOutError"));
     }
@@ -215,11 +209,11 @@ export function ProfileTabs() {
         </TabsTrigger>
       </TabsList>
 
-      {/* Profile tab */}
-      <TabsContent value="profile" className="mt-6 space-y-4">
+      {/* ── Profile tab ── */}
+      <TabsContent value="profile" className="mt-6 space-y-3">
         <SectionCard heading={t("sections.personalInfo")}>
           <div className="divide-y divide-border">
-            <SettingRow
+            <FieldRow
               label={t("fields.firstName")}
               htmlFor="profile-first-name"
               description={t("fields.firstNameDesc")}
@@ -233,7 +227,7 @@ export function ProfileTabs() {
                 />
               }
             />
-            <SettingRow
+            <FieldRow
               label={t("fields.lastName")}
               htmlFor="profile-last-name"
               description={t("fields.lastNameDesc")}
@@ -247,7 +241,24 @@ export function ProfileTabs() {
                 />
               }
             />
-            <SettingRow
+            {user.username !== null && (
+              <FieldRow
+                label={t("fields.username")}
+                htmlFor="profile-username"
+                description={t("fields.usernameDesc")}
+                control={
+                  <Input
+                    id="profile-username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder={t("fields.usernamePlaceholder")}
+                    autoComplete="username"
+                    className="font-mono"
+                  />
+                }
+              />
+            )}
+            <FieldRow
               label={t("fields.email")}
               description={t("fields.emailDesc")}
               control={
@@ -256,27 +267,34 @@ export function ProfileTabs() {
                   readOnly
                   disabled
                   aria-label={t("fields.emailReadOnly")}
+                  className="font-mono"
                 />
               }
             />
           </div>
-          {/* Card footer */}
+
           <div className="flex items-center justify-end border-t border-border bg-muted/20 px-4 py-3">
             <Button
               size="sm"
               onClick={handleSave}
               disabled={isSaving || !isDirty}
-              className="bg-linear-to-br from-foreground to-muted-foreground"
+              className="min-w-[6.5rem] gap-1.5 bg-linear-to-br from-foreground to-muted-foreground"
             >
-              {isSaving && <Loader2 className="animate-spin" />}
-              {t("actions.saveChanges")}
+              {isSaving ? (
+                <>
+                  <Loader2 className="size-3.5 animate-spin" />
+                  {t("actions.saving")}
+                </>
+              ) : (
+                t("actions.saveChanges")
+              )}
             </Button>
           </div>
         </SectionCard>
       </TabsContent>
 
-      {/* Security tab */}
-      <TabsContent value="security" className="mt-6 space-y-4">
+      {/* ── Security tab ── */}
+      <TabsContent value="security" className="mt-6 space-y-3">
         {/* Email addresses */}
         <SectionCard heading={t("sections.emailAddresses")}>
           {user.emailAddresses.length > 0 ? (
@@ -284,11 +302,11 @@ export function ProfileTabs() {
               {user.emailAddresses.map((email) => (
                 <div
                   key={email.id}
-                  className="flex items-center justify-between px-4 py-3"
+                  className="flex items-center justify-between gap-3 px-4 py-3"
                 >
-                  <div className="flex min-w-0 items-center gap-3">
+                  <div className="flex min-w-0 items-center gap-2.5">
                     <Mail
-                      className="size-4 shrink-0 text-muted-foreground"
+                      className="size-3.5 shrink-0 text-muted-foreground"
                       aria-hidden="true"
                     />
                     <span className="truncate font-mono text-sm">
@@ -298,7 +316,7 @@ export function ProfileTabs() {
                   {email.id === user.primaryEmailAddressId && (
                     <Badge
                       variant="outline"
-                      className="ml-3 shrink-0 bg-linear-to-br from-muted to-background font-mono text-xs"
+                      className="shrink-0 bg-linear-to-br from-muted to-background font-mono text-xs"
                     >
                       {t("badges.primary")}
                     </Badge>
@@ -313,28 +331,23 @@ export function ProfileTabs() {
           )}
         </SectionCard>
 
-        {/* Connected accounts (OAuth) */}
+        {/* Connected social accounts */}
         <SectionCard heading={t("sections.connectedAccounts")}>
           {user.externalAccounts.length > 0 ? (
             <div className="divide-y divide-border">
               {user.externalAccounts.map((account) => (
                 <div
                   key={account.id}
-                  className="flex items-center gap-3 px-4 py-3"
+                  className="flex items-center justify-between gap-3 px-4 py-3"
                 >
-                  <span className="flex-1 font-mono text-sm">
+                  <span className="font-mono text-sm">
                     {providerLabel(account.provider)}
                   </span>
-                  {account.username && (
-                    <span className="truncate font-mono text-xs text-muted-foreground">
-                      @{account.username}
-                    </span>
-                  )}
-                  {account.emailAddress && !account.username && (
-                    <span className="truncate font-mono text-xs text-muted-foreground">
-                      {account.emailAddress}
-                    </span>
-                  )}
+                  <span className="truncate font-mono text-xs text-muted-foreground">
+                    {account.username
+                      ? `@${account.username}`
+                      : account.emailAddress}
+                  </span>
                 </div>
               ))}
             </div>
@@ -347,12 +360,12 @@ export function ProfileTabs() {
 
         {/* Two-factor authentication */}
         <SectionCard heading={t("sections.twoFactor")}>
-          <DisplayRow
+          <InfoRow
             label={t("sections.twoFactor")}
             description={
               user.twoFactorEnabled
-                ? t("stats.twoFactorEnabled")
-                : t("stats.twoFactorDisabled")
+                ? t("twoFactor.enabledDesc")
+                : t("twoFactor.disabledDesc")
             }
           >
             {user.twoFactorEnabled ? (
@@ -366,36 +379,31 @@ export function ProfileTabs() {
             ) : (
               <Badge
                 variant="outline"
-                className="gap-1.5 bg-linear-to-br from-muted to-background font-mono text-xs"
+                className="gap-1.5 bg-linear-to-br from-muted to-background font-mono text-xs text-muted-foreground"
               >
-                <XCircle className="size-3 text-muted-foreground" />
+                <XCircle className="size-3" />
                 {t("badges.twoFactorDisabled")}
               </Badge>
             )}
-          </DisplayRow>
+          </InfoRow>
         </SectionCard>
 
-        {/* Session / sign out */}
+        {/* Sign out */}
         <SectionCard heading={t("sections.session")}>
-          <div className="flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm font-medium text-foreground">
-                {t("actions.signOut")}
-              </p>
-              <p className="mt-0.5 font-mono text-xs text-muted-foreground">
-                {t("actions.signOutDesc")}
-              </p>
-            </div>
+          <InfoRow
+            label={t("actions.signOut")}
+            description={t("actions.signOutDesc")}
+          >
             <Button
               variant="outline"
               size="sm"
               onClick={handleSignOut}
-              className="shrink-0 gap-2 font-mono text-xs"
+              className="shrink-0 gap-1.5 font-mono text-xs"
             >
               <LogOut className="size-3.5" />
               {t("actions.signOut")}
             </Button>
-          </div>
+          </InfoRow>
         </SectionCard>
       </TabsContent>
     </Tabs>
