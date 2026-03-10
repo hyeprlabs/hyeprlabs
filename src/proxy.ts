@@ -6,7 +6,7 @@ const intlMiddleware = createIntlMiddleware(routing);
 
 const isProtectedRoute = createRouteMatcher(["/(.*)/profile(.*)"]);
 
-export const middleware = clerkMiddleware(async (auth, request) => {
+export const proxy = clerkMiddleware(async (auth, request) => {
   if (isProtectedRoute(request)) {
     await auth.protect({ unauthenticatedUrl: new URL("/", request.url).toString() });
   }
