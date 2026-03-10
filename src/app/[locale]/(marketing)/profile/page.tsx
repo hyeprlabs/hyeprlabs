@@ -12,6 +12,13 @@ import { Footer } from "@/components/marketing/footer";
 import { cn } from "@/lib/utils";
 import { ShieldCheck, Mail, Calendar, Clock } from "lucide-react";
 
+type StatItem = {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  highlight?: boolean;
+};
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Profile");
   return {
@@ -59,14 +66,14 @@ export default async function ProfilePage() {
 
   const connectedAccounts = user.externalAccounts.length;
 
-  const stats = [
+  const stats: StatItem[] = [
     {
       icon: Calendar,
       label: t("stats.memberSince"),
       value: memberSince,
     },
     ...(lastSignIn
-      ? [{ icon: Clock, label: t("stats.lastSignIn"), value: lastSignIn, highlight: false }]
+      ? [{ icon: Clock, label: t("stats.lastSignIn"), value: lastSignIn }]
       : []),
     {
       icon: ShieldCheck,
@@ -83,31 +90,33 @@ export default async function ProfilePage() {
         connectedAccounts > 0
           ? t("stats.connectedAccountsCount", { count: connectedAccounts })
           : t("stats.connectedAccountsNone"),
-      highlight: false,
     },
   ];
 
   return (
     <>
-      {/* ── Section 1: User overview ── */}
-      <div className="mx-auto w-full max-w-5xl">
+      {/*
+       * One continuous section — FullWidthDivider only at the very top and
+       * very bottom of the entire block. Internal separators use plain
+       * border-b / gap-px so there is never a doubled border line.
+       */}
+      <div className="mx-auto mb-12 w-full max-w-5xl md:mb-36">
         <div className="relative">
+          {/* Outer edges */}
           <FullWidthDivider position="top" />
           <DecorIcon className="size-4" position="top-left" />
           <DecorIcon className="size-4" position="top-right" />
-          <DecorIcon className="size-4" position="bottom-left" />
-          <DecorIcon className="size-4" position="bottom-right" />
 
-          {/* User identity row */}
-          <div className="flex flex-col gap-4 border-b border-border p-6 sm:flex-row sm:items-center sm:gap-6 md:p-8">
-            <Avatar className="size-16 shrink-0 self-start sm:self-center">
+          {/* ── Identity ── */}
+          <div className="flex flex-col gap-5 border-b border-border px-6 pt-12 pb-8 sm:flex-row sm:items-center sm:gap-6 md:px-8 md:pt-16 md:pb-10">
+            <Avatar className="size-20 shrink-0 self-start sm:self-center">
               <AvatarImage src={user.imageUrl} alt={fullName} />
-              <AvatarFallback className="border bg-transparent font-mono text-base">
+              <AvatarFallback className="border bg-transparent font-mono text-lg">
                 {initials}
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-2">
               <h1 className="text-xl font-semibold tracking-tight md:text-2xl">
                 {fullName}
               </h1>
@@ -127,50 +136,38 @@ export default async function ProfilePage() {
             </div>
           </div>
 
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {stats.map(({ icon: Icon, label, value, highlight }, i) => {
-              const isLastInRow = (i + 1) % 4 === 0 || i === stats.length - 1;
-              const isLastRow = i >= stats.length - (stats.length % 4 || 4);
-              return (
-                <div
-                  key={label}
-                  className={cn(
-                    "flex flex-col gap-1.5 p-4 md:p-5",
-                    !isLastInRow && "border-r border-border",
-                    !isLastRow && "border-b border-border",
-                  )}
-                >
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Icon className="size-3.5 shrink-0" aria-hidden="true" />
-                    <span className="font-mono text-xs uppercase tracking-wider">
-                      {label}
-                    </span>
-                  </div>
-                  <span
-                    className={cn(
-                      "font-mono text-sm",
-                      highlight ? "text-foreground" : "text-muted-foreground",
-                    )}
-                  >
-                    {value}
+          {/*
+           * ── Stats grid ──
+           * gap-px with bg-border background creates crisp 1-px separators
+           * between cells without any outer border — no doubled lines.
+           */}
+          <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
+            {stats.map(({ icon: Icon, label, value, highlight }) => (
+              <div
+                key={label}
+                className="flex flex-col gap-1.5 bg-background p-4 md:p-5"
+              >
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <Icon className="size-3.5 shrink-0" aria-hidden="true" />
+                  <span className="font-mono text-xs uppercase tracking-wider">
+                    {label}
                   </span>
                 </div>
-              );
-            })}
+                <span
+                  className={cn(
+                    "font-mono text-sm",
+                    highlight ? "text-foreground" : "text-muted-foreground",
+                  )}
+                >
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
 
-          <FullWidthDivider position="bottom" />
-        </div>
-      </div>
-
-      {/* ── Section 2: Account settings ── */}
-      <div className="mx-auto mb-12 w-full max-w-5xl md:mb-36">
-        <div className="relative">
-          <FullWidthDivider position="top" />
-
-          <div className="p-6 md:p-8">
-            <div className="mb-6 flex items-center gap-3">
+          {/* ── Account settings ── */}
+          <div className="border-t border-border p-6 md:p-8">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
               <Badge
                 variant="outline"
                 className="bg-linear-to-br from-muted to-background font-mono text-xs"
@@ -184,6 +181,8 @@ export default async function ProfilePage() {
             <ProfileTabs />
           </div>
 
+          <DecorIcon className="size-4" position="bottom-left" />
+          <DecorIcon className="size-4" position="bottom-right" />
           <FullWidthDivider position="bottom" />
         </div>
       </div>
@@ -193,3 +192,4 @@ export default async function ProfilePage() {
     </>
   );
 }
+

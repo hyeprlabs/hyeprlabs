@@ -567,7 +567,7 @@
   },
   "UserDropdown": {
     "openMenu": "Benutzermenü öffnen",
-    "viewProfile": "Profil",
+    "accountSettings": "Kontoeinstellungen",
     "signOut": "Abmelden"
   },
   "Profile": {
@@ -579,12 +579,12 @@
     "stats": {
       "memberSince": "Mitglied seit",
       "lastSignIn": "Letzte Anmeldung",
-      "twoFactor": "Zwei-Faktor-Auth",
+      "twoFactor": "2FA-Status",
       "twoFactorEnabled": "Aktiviert",
       "twoFactorDisabled": "Nicht aktiviert",
-      "connectedAccounts": "Verbundene Konten",
-      "connectedAccountsNone": "Keine",
-      "connectedAccountsCount": "{count, plural, one {# verbunden} other {# verbunden}}"
+      "connectedAccounts": "Verknüpfte Konten",
+      "connectedAccountsNone": "Keine verknüpft",
+      "connectedAccountsCount": "{count, plural, one {# verknüpft} other {# verknüpft}}"
     },
     "tabs": {
       "profile": "Profil",
