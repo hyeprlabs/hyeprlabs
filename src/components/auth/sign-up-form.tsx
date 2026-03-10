@@ -114,7 +114,7 @@ export function SignUpForm({ className }: { className?: string }) {
           <div className="flex size-10 items-center justify-center rounded-full border border-border bg-muted/50">
             <Mail className="size-5 text-muted-foreground" aria-hidden="true" />
           </div>
-          <h1 className="font-serif text-2xl">{t("verifyTitle")}</h1>
+          <h1 className="text-xl font-semibold tracking-tight">{t("verifyTitle")}</h1>
           <p className="text-balance font-mono text-xs text-muted-foreground">
             {t("verifyDescription", { email })}
           </p>
@@ -171,7 +171,7 @@ export function SignUpForm({ className }: { className?: string }) {
     >
       {/* Heading */}
       <div className="flex flex-col items-center gap-1 text-center">
-        <h1 className="font-serif text-2xl">{t("title")}</h1>
+        <h1 className="text-xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="text-balance font-mono text-xs text-muted-foreground">
           {t("description")}
         </p>
