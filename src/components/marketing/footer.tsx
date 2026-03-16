@@ -6,7 +6,6 @@ import {
   GithubIcon,
   InstagramIcon,
   LinkedinIcon,
-  YoutubeIcon,
 } from "lucide-react";
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
 import { getTranslations } from "next-intl/server";
@@ -14,6 +13,13 @@ import { Link } from "@/i18n/navigation";
 
 const currentYear = new Date().getFullYear();
 
+/**
+ * Render the site footer with branding, social links, theme and language controls, and three navigation sections.
+ *
+ * Uses localized strings from the "Footer" translation namespace for labels and link titles.
+ *
+ * @returns The footer JSX element containing branding, social buttons, theme/language switches, resource/company/legal navigation, and copyright text.
+ */
 export async function Footer() {
   const t = await getTranslations("Footer");
 
@@ -64,59 +70,64 @@ export async function Footer() {
                   variant="ghost"
                   className="rounded-full border"
                 >
-                  <a href={item.link} target="_blank">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                  >
                     {item.icon}
                   </a>
                 </Button>
               ))}
             </div>
-			<div className="flex items-center gap-2">
-			  <ThemeSwitcher />
-			  <LanguageSwitcher />
-			</div>
+            <div className="flex items-center gap-2">
+              <ThemeSwitcher />
+              <LanguageSwitcher />
+            </div>
           </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          <nav className="col-span-3 w-full md:col-span-1" aria-label={t("resources")}>
             <span className="text-muted-foreground text-xs">{t("resources")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {resources.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
-                  href={href}
+                  href={href as Parameters<typeof Link>[0]["href"]}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          </nav>
+          <nav className="col-span-3 w-full md:col-span-1" aria-label={t("company")}>
             <span className="text-muted-foreground text-xs">{t("company")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {company.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
-                  href={href}
+                  href={href as Parameters<typeof Link>[0]["href"]}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
-          <div className="col-span-3 w-full md:col-span-1">
+          </nav>
+          <nav className="col-span-3 w-full md:col-span-1" aria-label={t("legal")}>
             <span className="text-muted-foreground text-xs">{t("legal")}</span>
             <div className="mt-2 flex flex-col gap-2">
               {legal.map(({ href, title }) => (
-                <a
+                <Link
                   className="text-sm hover:underline hyphens-auto break-words"
-                  href={href}
+                  href={href as Parameters<typeof Link>[0]["href"]}
                   key={title}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
+          </nav>
         </div>
         <div className="absolute inset-x-0 h-px w-full bg-border" />
         <div className="flex max-w-4xl flex-col justify-between gap-2 py-4">
@@ -131,27 +142,57 @@ export async function Footer() {
 
 const links = [
   {
-    icon: <GithubIcon />,
+    icon: <GithubIcon aria-hidden="true" />,
     link: "https://github.com/hyeprlabs",
+    label: "Hyepr Labs on GitHub",
   },
   {
-    icon: <InstagramIcon />,
+    icon: <InstagramIcon aria-hidden="true" />,
     link: "https://instagram.com/hyeprlabs",
+    label: "Hyepr Labs on Instagram",
   },
   {
-    icon: <LinkedinIcon />,
+    icon: <LinkedinIcon aria-hidden="true" />,
     link: "https://linkedin.com/company/hyeprlabs",
+    label: "Hyepr Labs on LinkedIn",
   },
   {
-    icon: <XIcon />,
+    icon: <XIcon aria-hidden="true" />,
     link: "https://x.com/hyeprlabs",
+    label: "Hyepr Labs on X (Twitter)",
   },
   {
-    icon: <YoutubeIcon />,
+    icon: <TikTokIcon aria-hidden="true" />,
     link: "https://tiktok.com/@hyeprlabs",
+    label: "Hyepr Labs on TikTok",
   },
 ];
 
+/**
+ * Render the TikTok brand icon as an inline SVG.
+ *
+ * @param props - Props forwarded to the root `svg` element (e.g., className, width, height, aria-hidden).
+ * @returns The SVG element representing the TikTok logo. The icon's fill follows `currentColor`.
+ */
+function TikTokIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.07a4.85 4.85 0 0 1-1-.38Z" />
+    </svg>
+  );
+}
+
+/**
+ * Renders the X icon as an inline SVG.
+ *
+ * @param props - Standard SVG attributes forwarded to the root `<svg>` element.
+ * @returns The SVG element for the X icon.
+ */
 function XIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg

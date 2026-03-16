@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blog, getSlug } from "@/lib/source";
+import { getBlogByLocale, getSlug } from "@/lib/source";
 import { formatDate, cn } from "@/lib/utils";
 import { getCategoryBadgeClass } from "@/lib/blog";
 import { CallToAction } from "@/components/marketing/cta";
@@ -17,16 +17,32 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export async function generateStaticParams() {
-  const posts = await blog;
+/**
+ * Generate static route parameters for every blog post in the specified locale.
+ *
+ * @param params - An object containing `locale`, used to load posts for that locale.
+ * @returns An array of parameter objects each with a `slug` property derived from a post's path.
+ */
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const posts = await getBlogByLocale(params.locale);
   return posts.map((post) => ({
     slug: getSlug(post.info.path),
   }));
 }
 
+/**
+ * Create SEO, Open Graph, and Twitter metadata for the blog post identified by the given route params.
+ *
+ * @param params - An object that resolves to the route parameters containing `locale` and `slug`.
+ * @returns A Metadata object for the matched post including title, description, keywords, authors, canonical/alternate URLs, `openGraph` (article data and image), and `twitter` card data; returns an empty object if no post matches the slug.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params;
-  const posts = await blog;
+  const posts = await getBlogByLocale(locale);
   const post = posts.find((p) => getSlug(p.info.path) === slug);
 
   if (!post) return {};
@@ -82,9 +98,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/**
+ * Render a localized blog post page for the given locale and slug.
+ *
+ * Looks up the post for the provided locale and slug, renders header (back link, category/date badge, title,
+ * description, author info, tags), the MDX body, and site chrome (call to action and footer). Triggers a 404
+ * response if no matching post is found.
+ *
+ * @param params - Object containing `slug` and `locale` used to resolve the post content.
+ * @returns The React element for the complete blog post page.
+ */
 export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params;
-  const posts = await blog;
+  const { slug, locale } = await params;
+  const posts = await getBlogByLocale(locale);
   const post = posts.find((p) => getSlug(p.info.path) === slug);
 
   if (!post) notFound();
@@ -122,7 +148,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.category}
             </Badge>
             <span aria-hidden="true">·</span>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
           </div>
 
           <h1 className="max-w-2xl text-2xl font-serif md:text-4xl lg:text-5xl">

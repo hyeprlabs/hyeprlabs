@@ -1,7 +1,7 @@
 "use client"
 
 import { useQueryState, parseAsString } from "nuqs";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Search } from "lucide-react";
 import { cn, formatDate } from "@/lib/utils";
 import { getCategoryTextClass } from "@/lib/blog";
@@ -26,8 +26,20 @@ type Props = {
   categories: string[];
 };
 
+/**
+ * Renders a responsive, filterable grid of blog posts with category tabs and a search input.
+ *
+ * The component reads and updates URL query state for `category` and `q` (search), filters the provided
+ * posts by the selected category and search term (matching title, description, author, category, or tags),
+ * and renders each matching post as a BlogCard using the current locale.
+ *
+ * @param posts - Array of blog post objects to display
+ * @param categories - List of category names to show as filter tabs (an "all" tab is added automatically)
+ * @returns A React element containing the filter controls and the responsive grid of filtered posts
+ */
 export function BlogGrid({ posts, categories }: Props) {
   const t = useTranslations("BlogSection");
+  const locale = useLocale();
   const [category, setCategory] = useQueryState(
     "category",
     parseAsString.withDefault("all"),
@@ -97,7 +109,7 @@ export function BlogGrid({ posts, categories }: Props) {
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-r -mr-px -mb-px ml-0 mt-0">
             {filtered.map((blog) => (
-              <BlogCard {...blog} key={blog.href} />
+              <BlogCard {...blog} locale={locale} key={blog.href} />
             ))}
           </div>
         </div>
@@ -107,6 +119,12 @@ export function BlogGrid({ posts, categories }: Props) {
   );
 }
 
+/**
+ * Render a blog post card as a styled link element.
+ *
+ * @param locale - Locale identifier used to format the post date
+ * @returns A link element containing the blog card UI for the given post
+ */
 function BlogCard({
   title,
   date,
@@ -115,9 +133,10 @@ function BlogCard({
   author,
   tags,
   href,
+  locale,
   className,
   ...props
-}: React.ComponentProps<typeof Link> & BlogPost) {
+}: React.ComponentProps<typeof Link> & BlogPost & { locale: string }) {
   return (
     <Link
       href={href}
@@ -139,7 +158,7 @@ function BlogCard({
         {title}
       </h3>
       <span className="mb-3 text-muted-foreground text-xs">
-        {formatDate(date)}
+        {formatDate(date, locale)}
       </span>
       <p className="mb-4 line-clamp-3 flex-1 text-muted-foreground text-sm tracking-wide font-mono">
         {description}

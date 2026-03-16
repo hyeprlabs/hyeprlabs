@@ -8,6 +8,13 @@ import { HeroImage } from "@/components/marketing/hero-image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
+/**
+ * Render the page's hero section using localized content.
+ *
+ * Renders a centered hero block with a promotional pill link to the blog, a localized title and description, a pair of call-to-action buttons, decorative corner icons and dividers, and the main hero image. Decorative elements are marked aria-hidden to avoid screen-reader noise.
+ *
+ * @returns A React element representing the hero section.
+ */
 export async function HeroSection() {
   const t = await getTranslations("HeroSection");
 
@@ -36,7 +43,7 @@ export async function HeroSection() {
             "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
-          href="/blog/think-fast-build-fast"
+          href="/blog"
         >
           <Badge variant="outline" className="text-xs font-mono">
             {t("badgeLabel")}
