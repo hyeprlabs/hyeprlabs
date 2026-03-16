@@ -1,0 +1,106 @@
+---
+title: "Vom Prototyp zum Produkt: Eine moderne Launch-Checkliste"
+description: Die Entscheidungen und Prozesse, die Teams, die selbstsicher launchen, von Teams unterscheiden, die launchen und hoffen – ein praktischer Pre-Launch-Leitfaden für moderne Web-Produkte.
+date: "2025-11-10"
+author: Mike Allyn
+category: Product
+tags: [Produkt, Launch, Startup, Checkliste, Engineering]
+---
+
+Ein Produkt zu launchen ist eine Übung im kontrollierten Umgang mit Unsicherheit. Sie können Risiken nicht eliminieren, aber Sie können entscheiden, welche Risiken Sie eingehen möchten und welche Sie bereits aufgelöst haben.
+
+Die Teams, die selbstsicher launchen, sind nicht diejenigen, die alles getestet haben – es ist physisch unmöglich, alles zu testen. Es sind jene, die genau wissen, was sie getestet haben, was nicht, und was sie tun würden, wenn etwas schiefgeht.
+
+Das ist die Checkliste, die wir verwenden. Sie ist nicht erschöpfend, aber jeder Punkt hat uns mindestens einmal vor einem echten Problem bewahrt.
+
+## Bevor Sie eine einzige Zeile Code schreiben
+
+### „Fertig" definieren, bevor Sie beginnen
+
+Der häufigste Grund, warum Produkte länger dauern als erwartet, ist, dass der Umfang sich ausweitet, wenn die Arbeit das Abstrakte konkret macht. Etwas, das Sie für ein Kontrollkästchen hielten, wird zu einem Modal, zu einem mehrstufigen Flow, zu einer Abhängigkeit von einem Service, der noch nicht existiert.
+
+Schreiben Sie eine Produktspezifikation, bevor Sie beginnen. Sie muss nicht lang sein. Sie muss antworten: Was tut das, für wen ist es, und was ist explizit außerhalb des Umfangs?
+
+„Außerhalb des Umfangs" ist der wichtigste Abschnitt.
+
+### Ihr Performance-Budget festlegen
+
+Performance ist viel einfacher aufrechtzuerhalten als wiederherzustellen. Bevor Sie zu bauen beginnen, setzen Sie Ziele für Ihre Core Web Vitals: LCP unter 2,5 Sekunden, INP unter 100 ms, CLS unter 0,1. Messen Sie diese während der gesamten Entwicklung, nicht nur kurz vor dem Launch.
+
+> **Kernaussage:** Performance-Regressionen summieren sich. Eine 200-ms-Regression in Woche eins, unbehandelt, wird bis zum Launch eine 1,5-Sekunden-Regression. Setzen Sie früh ein Budget und verteidigen Sie es kontinuierlich.
+
+## Das Produkt bauen
+
+### Komponentenarchitektur zuerst
+
+Bevor Sie Features bauen, bauen Sie Ihr Komponentensystem. Jedes Feature, das Sie hinzufügen, bevor Sie ein konsistentes Komponentenvokabular etabliert haben, schafft Schulden, die sich summieren.
+
+Sehen Sie unseren Leitfaden zu [Design-Systeme, die skalieren](/blog/building-design-systems-that-scale) für die Details dieses Prozesses.
+
+### An den Grenzen testen
+
+Unit-Tests sind wertvoll, aber die Bugs, die Produkte zum Absturz bringen, leben normalerweise an der Grenze zwischen Systemen. Schreiben Sie Integrationstests für jeden kritischen Pfad.
+
+### Fehlerzustände sind Features
+
+Jeder leere Zustand, jede Fehlermeldung, jeder Ladeindikator ist eine Benutzeroberfläche, die Design und Implementierung benötigt. Produkte, die Fehlerzustände als Nachgedanke behandeln, liefern Erfahrungen, die kaputt wirken, selbst wenn der Happy Path perfekt funktioniert.
+
+Entwerfen Sie Fehlerzustände in Figma. Schreiben Sie Text für jede Fehlermeldung. Testen Sie Fehlermodi absichtlich.
+
+## Pre-Launch-Woche
+
+### Das Smoke-Test-Protokoll
+
+Definieren Sie einen Smoke-Test: eine feste Liste kritischer Flows, die Sie manuell vor jedem Deploy durchführen. Er sollte nicht mehr als fünfzehn Minuten dauern. Wenn er länger dauert, wird er nicht konsequent durchgeführt.
+
+Unser Smoke-Test deckt ab:
+1. Neue Benutzerregistrierung und erster Login
+2. Die kernwertliefernde Aktion (die Sache, für die Benutzer gekommen sind)
+3. Abrechnungs- und Abonnementänderungen
+4. Kontolöschung und Datenexport (für DSGVO-Compliance)
+
+### Sicherheitsgrundlagen
+
+Vor dem Launch stellen Sie sicher, dass Sie Folgendes berücksichtigt haben:
+
+- **HTTPS überall.** Keine Ausnahmen, kein gemischter Inhalt.
+- **Umgebungsvariablen-Hygiene.** Keine Geheimnisse im Quellcode, keine Produktionszugangsdaten in Entwicklungsumgebungen.
+- **Abhängigkeits-Audit.** `npm audit` oder `pnpm audit`. Beheben Sie kritische Schwachstellen vor dem Launch.
+- **Authentifizierungsüberprüfung.** Wie werden Sitzungen verwaltet? Was passiert, wenn eine Sitzung abläuft?
+
+### Analytics und Observability
+
+Sie können nicht verbessern, was Sie nicht messen. Vor dem Launch haben Sie Antworten auf: Wie weiß ich, wann etwas kaputt ist? Wie weiß ich, ob Benutzer ihre Ziele erreichen?
+
+Mindestens:
+- Error Tracking (Sentry oder gleichwertig)
+- Real User Monitoring (Vercel Analytics, PostHog oder gleichwertig)
+- Server-seitiges Error-Logging mit Alerting
+
+> **Kernaussage:** Das Ziel von Observability ist nicht, jeden Fehler zu fangen. Es ist, sicher zu sein, dass wenn etwas Bedeutendes kaputt geht, Sie es erfahren, bevor ein Benutzer Sie darüber informieren muss.
+
+## Launch-Tag
+
+### Feature-Flags sind Ihr Sicherheitsnetz
+
+Feature-Flags ermöglichen Ihnen:
+
+- Code in die Produktion zu releasen, ohne Features für Benutzer freizugeben
+- An einen Prozentsatz der Benutzer auszurollen und zu überwachen, bevor Sie auf 100 % gehen
+- Ein Feature sofort zu deaktivieren, wenn etwas schiefgeht, ohne ein Deploy
+
+### Der Rollback-Plan
+
+Bevor Sie launchen, wissen Sie genau, wie Sie zurückrollen würden, wenn der Launch schlecht läuft. Welche Systeme müssen rückgängig gemacht werden? Wie lange wird es dauern? Wer ist on call?
+
+## Post-Launch
+
+### Die ersten 48 Stunden
+
+Die ersten 48 Stunden nach dem Launch sind, wenn sich Ihre Observability-Investition auszahlt. Beobachten Sie Ihre Fehlerquoten, Ihre Konversionsmetriken und Ihre Core Web Vitals. Die meisten ernsthaften Launch-Probleme tauchen innerhalb des ersten Tages auf.
+
+### Den Kreis schließen
+
+Jeder bedeutende Bug, der die Produktion erreicht, ist eine kurze Post-Mortem wert – nicht um Schuld zuzuweisen, sondern um zu verstehen, welche Prozessänderung ihn abgefangen hätte.
+
+Für mehr darüber, wie Web-Performance in die Launch-Bereitschaft einfließt, sehen Sie [Warum Web-Performance für Ihr Unternehmenswachstum wichtig ist](/blog/why-web-performance-matters). Für die Vorbereitung des Design-Systems lesen Sie [Design-Systeme, die skalieren](/blog/building-design-systems-that-scale).

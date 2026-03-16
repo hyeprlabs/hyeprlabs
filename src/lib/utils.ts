@@ -5,9 +5,16 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatDate(input: string): string {
+export function formatDate(input: string, locale = "en"): string {
   const date = new Date(input)
-  return isNaN(date.getTime()) ? input : date.toLocaleDateString("en-US", {
+  if (isNaN(date.getTime())) return input
+  // Map short locale codes to BCP 47 locale codes for reliable formatting
+  const localeMap: Record<string, string> = {
+    en: "en-US",
+    de: "de-DE",
+  }
+  const bcp47 = localeMap[locale] ?? locale
+  return date.toLocaleDateString(bcp47, {
     month: "long",
     day: "numeric",
     year: "numeric",
