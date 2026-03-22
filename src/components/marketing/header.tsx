@@ -49,12 +49,12 @@ export function Header() {
             ))}
           </div>
           <Link href="/contact">
-            <Button size="sm" variant="outline" className="bg-linear-to-br from-muted to-background font-normal">
+            <Button size="sm" variant="outline" className="font-normal">
               {t("contact")}
             </Button>
           </Link>
           <Link href="/projects">
-            <Button size="sm" className="bg-linear-to-br from-foreground to-muted-foreground">
+            <Button size="sm">
               {t("projects")}
               <ArrowRight />
             </Button>

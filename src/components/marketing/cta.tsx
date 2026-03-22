@@ -25,12 +25,12 @@ export async function CallToAction() {
 
       <div className="flex items-center justify-center gap-2">
         <Link href="/contact">
-          <Button variant="outline" className="rounded-full bg-linear-to-br from-muted to-background">
+          <Button variant="outline" className="rounded-full">
             {t("contact")}
           </Button>
         </Link>
         <Link href="/projects">
-          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
+          <Button className="rounded-full">
             {t("projects")}
             <ArrowRight />
           </Button>

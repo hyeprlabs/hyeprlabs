@@ -71,11 +71,11 @@ export async function HeroSection() {
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
           <Button
             variant="outline"
-            className="rounded-full bg-linear-to-br from-muted to-background"
+            className="rounded-full"
           >
             {t("contact")}
           </Button>
-          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
+          <Button className="rounded-full">
             {t("projects")}
             <ArrowRight />
           </Button>

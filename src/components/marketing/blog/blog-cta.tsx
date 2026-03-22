@@ -45,7 +45,7 @@ export async function BlogCta() {
         <Link href="/blog" className="shrink-0">
           <Button
             variant="outline"
-            className="rounded-full bg-linear-to-br from-muted to-background"
+            className="rounded-full"
           >
             {t("viewAll")}
             <ArrowRight />
