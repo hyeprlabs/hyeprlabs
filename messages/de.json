@@ -9,6 +9,12 @@
   "MobileNav": {
     "toggleMenu": "Menü umschalten"
   },
+  "ThemeSwitcher": {
+    "switchTheme": "Zu {theme}-Theme wechseln",
+    "system": "System",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
   "HeroSection": {
     "badgeLabel": "BLOG",
     "badgeText": "Schnell denken. Schnell bauen.",
@@ -28,7 +34,6 @@
     "projects": "Projekte"
   },
   "Footer": {
-    "tagline": "Schnell denken. Schnell bauen.",
     "copyright": "© {year} Hyepr Labs, Alle Rechte vorbehalten",
     "resources": "Ressourcen",
     "company": "Unternehmen",

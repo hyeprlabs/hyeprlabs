@@ -52,7 +52,7 @@ export async function Footer() {
               <HyeprLabsWordmark className="h-5 w-auto" />
             </Link>
             <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
-              {t("tagline")}
+              Think Fast. Build Fast.
             </p>
             <div className="flex gap-2">
               {links.map((item, index) => (
@@ -60,8 +60,8 @@ export async function Footer() {
                   asChild
                   key={`social-${item.link}-${index}`}
                   size="icon-sm"
-                  variant="ghost"
-                  className="rounded-full border"
+                  variant="outline"
+                  className="rounded-full bg-transparent"
                 >
                   <a
                     href={item.link}
