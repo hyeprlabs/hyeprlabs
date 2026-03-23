@@ -26,6 +26,7 @@ export async function Footer() {
 
   const company = [
     { title: t("nav.about"), href: "/about" },
+    { title: t("nav.services"), href: "/services" },
     { title: t("nav.projects"), href: "/projects" },
     { title: t("nav.templates"), href: "/templates" },
     { title: t("nav.brandAssets"), href: "/brand" },

@@ -1,6 +1,7 @@
 {
   "Header": {
     "about": "Über uns",
+    "services": "Leistungen",
     "templates": "Vorlagen",
     "blog": "Blog",
     "contact": "Kontakt",
@@ -17,7 +18,6 @@
   },
   "HeroSection": {
     "badgeLabel": "BLOG",
-    "badgeText": "Schnell denken. Schnell bauen.",
     "title": "Digitale Erlebnisse schaffen, die Wachstum fördern",
     "description": "Wir skalieren Online-Unternehmen schneller durch smartes Design, Entwicklung und strategische Umsetzung.",
     "contact": "Kontakt",
@@ -45,6 +45,7 @@
       "changelog": "Änderungsprotokoll",
       "team": "Team",
       "about": "Über uns",
+      "services": "Leistungen",
       "projects": "Projekte",
       "templates": "Vorlagen",
       "brandAssets": "Marken-Assets",
@@ -52,6 +53,61 @@
       "privacyPolicy": "Datenschutzrichtlinie",
       "termsOfService": "Nutzungsbedingungen"
     }
+  },
+  "ServicesPage": {
+    "badge": "LEISTUNGEN",
+    "title": "Transparente digitale Services fuer wachstumsorientierte Teams",
+    "description": "Von launchbereiten Websites bis zur laufenden Wachstumsbetreuung helfen wir dir, schnell zu liefern und nachhaltig zu skalieren.",
+    "disclaimer": "Die angegebenen Preise sind Basis-Pakete und koennen je nach Komplexitaet, Integrationen und Zeitplan variieren."
+  },
+  "ServicesSection": {
+    "heading": "Unsere Angebote",
+    "subheading": "Waehle ein Website-Paket mit festem Umfang oder ein monatliches Growth-Abonnement fuer kontinuierliche SEO- und Content-Umsetzung.",
+    "popular": "Am beliebtesten",
+    "services": [
+      {
+        "title": "Individuelle Next.js Business-Website",
+        "description": "Eine performante, individuell entwickelte Marketing-Website mit Next.js, optimiert fuer Geschwindigkeit, SEO und Conversion.",
+        "price": "ab 3.900 EUR",
+        "billing": "einmalig",
+        "delivery": "Typische Umsetzungszeit: 2-5 Wochen",
+        "features": [
+          "Individuelles Design-System und responsive UI",
+          "Technisches SEO-Setup und Performance-Optimierung",
+          "CMS-Integration fuer flexible Inhaltsverwaltung",
+          "Analytics-Setup und Launch-Begleitung"
+        ],
+        "cta": "Angebot anfragen"
+      },
+      {
+        "title": "Individuelle WordPress Business-Website",
+        "description": "Eine skalierbare WordPress-Website, auf deine Geschaeftsziele zugeschnitten, mit redaktioneller Flexibilitaet und modernem Look.",
+        "price": "ab 2.400 EUR",
+        "billing": "einmalig",
+        "delivery": "Typische Umsetzungszeit: 2-4 Wochen",
+        "features": [
+          "Individuelle Theme-Umsetzung",
+          "SEO-freundliche Seitenstruktur",
+          "Blog- und Content-Workflow-Setup",
+          "Basis-Konfiguration fuer Sicherheit und Wartung"
+        ],
+        "cta": "Angebot anfragen"
+      },
+      {
+        "title": "Monatliches Growth-Abonnement",
+        "description": "Ein wiederkehrender Service fuer mehr Sichtbarkeit und Pipeline durch konstante SEO-Umsetzung, Blog-Content und iterative Website-Optimierung.",
+        "price": "690 EUR",
+        "billing": "pro Monat",
+        "delivery": "Jederzeit kuendbar nach den ersten 3 Monaten",
+        "features": [
+          "Monatliche SEO-Optimierungs-Roadmap",
+          "2 SEO-orientierte Blogposts pro Monat",
+          "Onpage-Optimierung und interne Verlinkung",
+          "Monatlicher Performance- und Ranking-Report"
+        ],
+        "cta": "Abonnement starten"
+      }
+    ]
   },
   "AboutPage": {
     "badge": "ÜBER UNS",
@@ -159,6 +215,85 @@
     "heading": "Aus dem Blog",
     "subheading": "Einige unserer neuesten Gedanken zu Design, Engineering und Produktentwicklung.",
     "viewAll": "Alle Beiträge ansehen"
+  },
+  "FaqsSection": {
+    "title": "Hauefig gestellte Fragen",
+    "description": "Antworten auf haeufige Fragen dazu, wie Hyepr Labs Websites entwickelt und langfristiges Wachstum unterstuetzt.",
+    "searchPlaceholder": "FAQs durchsuchen...",
+    "emptyTitle": "Keine passenden FAQs fuer deine Suche gefunden.",
+    "clearSearch": "Suche leeren",
+    "contactPrompt": "Du hast nicht gefunden, was du suchst?",
+    "contactLink": "Kontaktiere uns",
+    "categories": {
+      "all": "Alle",
+      "websites": "Websites",
+      "seo": "SEO & Content",
+      "pricing": "Preise",
+      "process": "Ablauf"
+    },
+    "items": [
+      {
+        "id": 1,
+        "category": "websites",
+        "title": "Entwickelt ihr individuelle Websites mit Next.js und WordPress?",
+        "content": "Ja. Wir bieten massgeschneiderte Business-Websites mit Next.js und WordPress an - je nach Ziel, Content-Workflow und Budget."
+      },
+      {
+        "id": 2,
+        "category": "websites",
+        "title": "Wie entscheide ich zwischen Next.js und WordPress?",
+        "content": "Next.js ist ideal fuer hohe Performance, individuelle UX und moderne Webanwendungen. WordPress eignet sich hervorragend fuer redaktionelle Flexibilitaet und schnelle Content-Prozesse. Wir beraten dich passend zu deiner Wachstumsstrategie."
+      },
+      {
+        "id": 3,
+        "category": "seo",
+        "title": "Was ist im monatlichen SEO- und Blog-Abonnement enthalten?",
+        "content": "Unser monatliches Abonnement umfasst laufende SEO-Verbesserungen, keyword-orientierte Blog-Produktion, Onpage-Optimierung, interne Verlinkung und einen monatlichen Performance-Report."
+      },
+      {
+        "id": 4,
+        "category": "seo",
+        "title": "Schreibt und veroeffentlicht ihr auch Blog-Inhalte fuer uns?",
+        "content": "Ja. Wir koennen Blog-Inhalte planen, schreiben, optimieren und veroeffentlichen - abgestimmt auf deine Positionierung und Ziel-Keywords."
+      },
+      {
+        "id": 5,
+        "category": "pricing",
+        "title": "Was kostet ein Website-Projekt typischerweise?",
+        "content": "Typische Einstiegspreise liegen bei ab 3.900 EUR fuer individuelle Next.js-Websites und ab 2.400 EUR fuer individuelle WordPress-Websites. Der finale Preis haengt von Umfang, Integrationen und Zeitplan ab."
+      },
+      {
+        "id": 6,
+        "category": "pricing",
+        "title": "Wie hoch ist der Preis fuer das monatliche Growth-Abonnement?",
+        "content": "Unser Growth-Abonnement startet bei 690 EUR pro Monat und ist fuer kontinuierliche SEO- und Content-Umsetzung ausgelegt."
+      },
+      {
+        "id": 7,
+        "category": "process",
+        "title": "Wie lange dauert ein Website-Projekt?",
+        "content": "Die meisten Projekte werden je nach Komplexitaet, Freigabeprozessen und benoetigten Integrationen innerhalb von 2 bis 5 Wochen umgesetzt."
+      },
+      {
+        "id": 8,
+        "category": "process",
+        "title": "Uebernehmt ihr auch Wartung und spaetere Updates?",
+        "content": "Ja. Nach dem Launch koennen wir die Seite ueber unser monatliches Service-Modell iterativ weiterentwickeln, technisch warten und auf Wachstum optimieren."
+      }
+    ]
+  },
+  "OperationsSection": {
+    "title": "Wo wir operieren",
+    "description": "Unser operativer Schwerpunkt liegt in Muenchen, Deutschland, mit Umsetzung und Zusammenarbeit ueber verteilte Teams und internationale Maerkte hinweg.",
+    "headquartersLabel": "Hauptsitz",
+    "headquarters": "Muenchen, Deutschland",
+    "coordinates": "48.1371 N, 11.5761 E",
+    "regions": [
+      "DACH",
+      "Europa",
+      "Nordamerika",
+      "Remote-first"
+    ]
   },
   "BrandPage": {
     "title": "Marken-Assets",

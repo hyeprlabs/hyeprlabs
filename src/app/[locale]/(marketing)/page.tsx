@@ -1,6 +1,8 @@
 import { HeroSection } from "@/components/marketing/hero";
 import { LogosSection } from "@/components/marketing/logos-section";
 import { BlogCta } from "@/components/marketing/blog/blog-cta";
+import { FaqsSection } from "@/components/marketing/faqs-section";
+import { OperationsSection } from "@/components/marketing/operations-section";
 import { CallToAction } from "@/components/marketing/cta";
 import { Footer } from "@/components/marketing/footer";
 
@@ -10,6 +12,8 @@ export default function Home() {
       <HeroSection />
       <LogosSection />
       <BlogCta />
+      <FaqsSection />
+      <OperationsSection />
       <CallToAction />
       <Footer />
     </>

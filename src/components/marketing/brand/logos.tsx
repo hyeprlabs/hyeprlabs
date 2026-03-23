@@ -34,9 +34,9 @@ export const HyeprLabsMark: React.FC<LogoProps> = ({
   style,
 }) => (
   <svg
-    width={height}
+    width={Math.round((282.843 / 212.132) * height)}
     height={height}
-    viewBox="0 0 200 200"
+    viewBox="0 0 283 213"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
     className={className}

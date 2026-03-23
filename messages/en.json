@@ -1,6 +1,7 @@
 {
   "Header": {
     "about": "About",
+    "services": "Services",
     "templates": "Templates",
     "blog": "Blog",
     "contact": "Contact",
@@ -17,7 +18,6 @@
   },
   "HeroSection": {
     "badgeLabel": "BLOG",
-    "badgeText": "Think Fast. Build Fast.",
     "title": "Building Digital Experiences That Drive Growth",
     "description": "We scale online companies faster through smart design, development and strategic execution.",
     "contact": "Contact",
@@ -45,6 +45,7 @@
       "changelog": "Changelog",
       "team": "Team",
       "about": "About",
+      "services": "Services",
       "projects": "Projects",
       "templates": "Templates",
       "brandAssets": "Brand assets",
@@ -52,6 +53,61 @@
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service"
     }
+  },
+  "ServicesPage": {
+    "badge": "SERVICES",
+    "title": "Transparent Digital Services for Growth-Focused Teams",
+    "description": "From launch-ready websites to ongoing growth support, we help you ship fast and scale with confidence.",
+    "disclaimer": "Prices shown are baseline packages and may vary based on complexity, integrations, and timeline."
+  },
+  "ServicesSection": {
+    "heading": "What We Offer",
+    "subheading": "Choose a fixed-scope website package or a monthly growth subscription for continuous SEO and content execution.",
+    "popular": "Most Popular",
+    "services": [
+      {
+        "title": "Tailored Next.js Business Website",
+        "description": "A high-performance, custom-coded marketing website built with Next.js, optimized for speed, SEO, and conversion.",
+        "price": "from €3,900",
+        "billing": "one-time",
+        "delivery": "Typical delivery: 2-5 weeks",
+        "features": [
+          "Custom design system and responsive UI",
+          "Technical SEO setup and performance optimization",
+          "CMS integration for flexible content updates",
+          "Analytics setup and launch support"
+        ],
+        "cta": "Request Proposal"
+      },
+      {
+        "title": "Tailored WordPress Business Website",
+        "description": "A scalable WordPress website tailored to your business goals, with editorial flexibility and modern visual quality.",
+        "price": "from €2,400",
+        "billing": "one-time",
+        "delivery": "Typical delivery: 2-4 weeks",
+        "features": [
+          "Custom theme implementation",
+          "SEO-friendly page structure",
+          "Blog and content workflow setup",
+          "Security and maintenance baseline configuration"
+        ],
+        "cta": "Request Proposal"
+      },
+      {
+        "title": "Monthly Growth Subscription",
+        "description": "A recurring service to grow visibility and pipeline through consistent SEO execution, blog publishing, and iterative website improvements.",
+        "price": "€690",
+        "billing": "per month",
+        "delivery": "Cancel anytime after the first 3 months",
+        "features": [
+          "Monthly SEO optimization roadmap",
+          "2 SEO-focused blog posts per month",
+          "On-page optimization and internal linking",
+          "Monthly performance and ranking report"
+        ],
+        "cta": "Start Subscription"
+      }
+    ]
   },
   "AboutPage": {
     "badge": "ABOUT",
@@ -159,6 +215,85 @@
     "heading": "From the Blog",
     "subheading": "A few of our latest thoughts on design, engineering, and building products.",
     "viewAll": "View all posts"
+  },
+  "FaqsSection": {
+    "title": "Frequently Asked Questions",
+    "description": "Answers to common questions about how Hyepr Labs builds websites and supports long-term growth.",
+    "searchPlaceholder": "Search FAQs...",
+    "emptyTitle": "No FAQs found matching your search.",
+    "clearSearch": "Clear search",
+    "contactPrompt": "Can't find what you're looking for?",
+    "contactLink": "Contact us",
+    "categories": {
+      "all": "All",
+      "websites": "Websites",
+      "seo": "SEO & Content",
+      "pricing": "Pricing",
+      "process": "Process"
+    },
+    "items": [
+      {
+        "id": 1,
+        "category": "websites",
+        "title": "Do you build custom websites with Next.js and WordPress?",
+        "content": "Yes. We offer tailored business websites in both Next.js and WordPress depending on your goals, content workflow, and budget."
+      },
+      {
+        "id": 2,
+        "category": "websites",
+        "title": "How do I choose between Next.js and WordPress?",
+        "content": "Next.js is ideal for high performance, custom UX, and modern web apps. WordPress is excellent for editorial flexibility and fast content operations. We help you choose based on your growth strategy."
+      },
+      {
+        "id": 3,
+        "category": "seo",
+        "title": "What is included in your monthly SEO and blog subscription?",
+        "content": "Our monthly subscription includes ongoing SEO improvements, keyword-focused blog production, on-page optimization, internal linking, and a monthly performance report."
+      },
+      {
+        "id": 4,
+        "category": "seo",
+        "title": "Do you write and publish blog content for us?",
+        "content": "Yes. We can plan, write, optimize, and publish blog posts aligned with your positioning and target keywords."
+      },
+      {
+        "id": 5,
+        "category": "pricing",
+        "title": "What does a website project typically cost?",
+        "content": "Typical starting points are from EUR 3,900 for tailored Next.js websites and from EUR 2,400 for tailored WordPress websites. Final pricing depends on scope, integrations, and timeline."
+      },
+      {
+        "id": 6,
+        "category": "pricing",
+        "title": "What is the price of the monthly growth subscription?",
+        "content": "Our growth subscription starts at EUR 690 per month and is designed for consistent SEO and content execution."
+      },
+      {
+        "id": 7,
+        "category": "process",
+        "title": "How long does a website project take?",
+        "content": "Most projects are delivered within 2 to 5 weeks depending on complexity, approval cycles, and required integrations."
+      },
+      {
+        "id": 8,
+        "category": "process",
+        "title": "Do you also handle maintenance and future updates?",
+        "content": "Yes. After launch, we can continue with iterative improvements, technical maintenance, and growth-focused optimization through our monthly service model."
+      }
+    ]
+  },
+  "OperationsSection": {
+    "title": "Where We Operate",
+    "description": "Our operations are anchored in Munich, Germany, with delivery and collaboration across distributed teams and international markets.",
+    "headquartersLabel": "Headquarters",
+    "headquarters": "Munich, Germany",
+    "coordinates": "48.1371 N, 11.5761 E",
+    "regions": [
+      "DACH",
+      "Europe",
+      "North America",
+      "Remote-first"
+    ]
   },
   "BrandPage": {
     "title": "Brand assets",

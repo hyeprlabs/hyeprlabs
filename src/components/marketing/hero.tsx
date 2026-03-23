@@ -36,13 +36,13 @@ export async function HeroSection() {
             "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
-          href="/blog"
+          href="/blog/think-fast-build-fast"
         >
           <Badge variant="outline" className="text-xs font-mono">
             {t("badgeLabel")}
           </Badge>
 
-          <span className="text-xs">{t("badgeText")}</span>
+          <span className="text-xs">Think Fast. Build Fast.</span>
           <span className="block h-5 border-l" />
 
           <div className="pr-1">

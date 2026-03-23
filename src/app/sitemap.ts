@@ -15,6 +15,7 @@ const BLOG_SLUGS = [
   "measuring-what-matters-analytics",
   "open-source-ai-catches-up",
   "rise-of-ai-agents",
+  "think-fast-build-fast",
   "why-web-performance-matters",
 ];
 
@@ -36,6 +37,7 @@ const PAGES: PageConfig[] = [
   { path: "/legal/privacy-policy", changeFrequency: "yearly", priority: 0.5 },
   { path: "/legal/terms-of-service", changeFrequency: "yearly", priority: 0.5 },
   { path: "/projects", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/services", changeFrequency: "weekly", priority: 0.9 },
   { path: "/support", changeFrequency: "monthly", priority: 0.7 },
   { path: "/team", changeFrequency: "monthly", priority: 0.8 },
   { path: "/templates", changeFrequency: "weekly", priority: 0.9 },
