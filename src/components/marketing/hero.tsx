@@ -25,7 +25,7 @@ export async function HeroSection() {
               style={{ width: "1080px", height: "1080px", position: "relative" }}
               className="opacity-35"
             >
-              <div className="h-full w-full light:hidden">
+              <div className="hidden h-full w-full dark:block">
                 <Dither
                   waveColor={[0.376, 0.647, 0.98]}
                   disableAnimation={false}
