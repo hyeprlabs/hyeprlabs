@@ -23,6 +23,7 @@
   "menuAccent": "subtle",
   "registries": {
     "@efferd": "https://efferd.com/r/{style}/{name}.json",
-    "@ncdai": "https://chanhdai.com/r/{name}.json"
+    "@ncdai": "https://chanhdai.com/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }
