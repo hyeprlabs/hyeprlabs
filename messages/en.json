@@ -1,4 +1,10 @@
 {
+  "UserDropdown": {
+    "overview": "Overview",
+    "profile": "Profile",
+    "signOut": "Log out"
+  },
+
   "SignInForm": {
     "title": "Sign In to your Account",
     "noAccount": "Don't have an account?",
@@ -17,7 +23,8 @@
     "legalMiddle": "and",
     "legalSuffix": "",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "or": "Or"
   },
   "SignUpForm": {
     "title": "Create an Account",
@@ -37,7 +44,8 @@
     "legalMiddle": "and",
     "legalSuffix": "",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "or": "Or"
   },
   "Header": {
     "about": "About",
@@ -46,7 +54,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "projects": "Projects",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "getStarted": "Get Started"
   },
   "MobileNav": {
     "toggleMenu": "Toggle menu"
@@ -64,6 +73,11 @@
   },
   "Footer": {
     "copyright": "© {year} Hyepr Labs, All rights reserved",
+    "socialGitHub": "Hyepr Labs on GitHub",
+    "socialInstagram": "Hyepr Labs on Instagram",
+    "socialLinkedIn": "Hyepr Labs on LinkedIn",
+    "socialX": "Hyepr Labs on X (Twitter)",
+    "socialTikTok": "Hyepr Labs on TikTok",
     "resources": "Resources",
     "company": "Company",
     "legal": "Legal",
@@ -691,5 +705,93 @@
     "section8": "8. Final Provisions",
     "section8Text1": "The laws of the Federal Republic of Germany shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). The exclusive place of jurisdiction for all disputes arising from or in connection with this contract is our registered office (Berlin), provided the Client is a merchant, a legal entity under public law, or a special fund under public law.",
     "section8Text2": "Should individual provisions of these GTC be or become invalid, the validity of the remaining provisions shall remain unaffected."
+  },
+
+  "AppHero": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening"
+  },
+
+  "DashboardPage": {
+    "badge": "Dashboard",
+    "welcome": "Welcome back",
+    "subtitle": "Here's an overview of your account.",
+    "notSignedIn": "Sign in to access your dashboard",
+    "signIn": "Sign In"
+  },
+  "DashboardOverviewSection": {
+    "heading": "Account overview",
+    "email": "Email",
+    "emailStatus": "Email status",
+    "verified": "Verified",
+    "unverified": "Unverified",
+    "memberSince": "Member since",
+    "lastSignIn": "Last sign in"
+  },
+  "DashboardActionsSection": {
+    "heading": "Quick actions",
+    "editProfile": "Edit profile",
+    "editProfileDesc": "Update your name, avatar, and account details.",
+    "support": "Contact support",
+    "supportDesc": "Reach out to our team for help with your account."
+  },
+
+  "ProfilePage": {
+    "badge": "Profile",
+    "backToDashboard": "Dashboard",
+    "notSignedIn": "Sign in to view your profile",
+    "signIn": "Sign In"
+  },
+  "ProfileAvatarSection": {
+    "heading": "Avatar",
+    "changePhoto": "Change photo",
+    "uploading": "Uploading...",
+    "hint": "JPG, PNG or GIF — max. 10 MB",
+    "successToast": "Avatar updated",
+    "errorToast": "Failed to update avatar"
+  },
+  "ProfileNameSection": {
+    "heading": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "username": "Username",
+    "save": "Save",
+    "saving": "Saving...",
+    "successToast": "Profile updated",
+    "errorToast": "Failed to update profile"
+  },
+  "ProfileEmailsSection": {
+    "heading": "Email addresses",
+    "primary": "Primary",
+    "verified": "Verified",
+    "unverified": "Unverified"
+  },
+  "ProfileConnectedSection": {
+    "heading": "Connected accounts",
+    "connected": "Connected"
+  },
+  "ProfileAccountSection": {
+    "heading": "Account info",
+    "email": "Email",
+    "emailStatus": "Email status",
+    "verified": "Verified",
+    "unverified": "Unverified",
+    "username": "Username",
+    "memberSince": "Member since",
+    "lastSignIn": "Last sign in",
+    "twoFactor": "Two-factor auth",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "ProfileDeleteSection": {
+    "heading": "Danger zone",
+    "title": "Delete account",
+    "description": "Permanently delete your account and all associated data. This action cannot be undone.",
+    "delete": "Delete account",
+    "confirm": "Yes, delete",
+    "cancel": "Cancel",
+    "deleting": "Deleting...",
+    "errorToast": "Failed to delete account"
   }
 }

@@ -70,10 +70,10 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
                 </Button>
               </Link>
               <Button variant="outline" className="w-full hidden">
-                Sign In
+                {tHeader("signIn")}
               </Button>
               <Button className="w-full hidden">
-                Get Started
+                {tHeader("getStarted")}
               </Button>
             </div>
           </div>

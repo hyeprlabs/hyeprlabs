@@ -235,7 +235,7 @@ export function SignInForm({
             <div className="flex items-center gap-3">
               <Separator className="flex-1" />
               <span className="text-sm font-mono text-muted-foreground">
-                OR
+                {t("or")}
               </span>
               <Separator className="flex-1" />
             </div>

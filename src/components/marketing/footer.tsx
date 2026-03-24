@@ -16,6 +16,14 @@ const currentYear = new Date().getFullYear();
 export async function Footer() {
   const t = await getTranslations("Footer");
 
+  const links = [
+    { icon: <GithubIcon aria-hidden="true" />, link: "https://github.com/hyeprlabs", label: t("socialGitHub") },
+    { icon: <InstagramIcon aria-hidden="true" />, link: "https://instagram.com/hyeprlabs", label: t("socialInstagram") },
+    { icon: <LinkedinIcon aria-hidden="true" />, link: "https://linkedin.com/company/hyeprlabs", label: t("socialLinkedIn") },
+    { icon: <XIcon aria-hidden="true" />, link: "https://x.com/hyeprlabs", label: t("socialX") },
+    { icon: <TikTokIcon aria-hidden="true" />, link: "https://tiktok.com/@hyeprlabs", label: t("socialTikTok") },
+  ];
+
   const resources = [
     { title: t("nav.blog"), href: "/blog" },
     { title: t("nav.support"), href: "/support" },
@@ -134,33 +142,6 @@ export async function Footer() {
   );
 }
 
-const links = [
-  {
-    icon: <GithubIcon aria-hidden="true" />,
-    link: "https://github.com/hyeprlabs",
-    label: "Hyepr Labs on GitHub",
-  },
-  {
-    icon: <InstagramIcon aria-hidden="true" />,
-    link: "https://instagram.com/hyeprlabs",
-    label: "Hyepr Labs on Instagram",
-  },
-  {
-    icon: <LinkedinIcon aria-hidden="true" />,
-    link: "https://linkedin.com/company/hyeprlabs",
-    label: "Hyepr Labs on LinkedIn",
-  },
-  {
-    icon: <XIcon aria-hidden="true" />,
-    link: "https://x.com/hyeprlabs",
-    label: "Hyepr Labs on X (Twitter)",
-  },
-  {
-    icon: <TikTokIcon aria-hidden="true" />,
-    link: "https://tiktok.com/@hyeprlabs",
-    label: "Hyepr Labs on TikTok",
-  },
-];
 
 function TikTokIcon(props: React.ComponentProps<"svg">) {
   return (

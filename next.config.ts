@@ -7,11 +7,6 @@ const withMDX = createMDX();
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  experimental: {
-    serverActions: {
-      allowedOrigins: ["localhost:3000"],
-    },
-  },
   compress: true,
   poweredByHeader: false,
   images: {

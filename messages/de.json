@@ -1,4 +1,10 @@
 {
+  "UserDropdown": {
+    "overview": "Übersicht",
+    "profile": "Profil",
+    "signOut": "Abmelden"
+  },
+
   "SignInForm": {
     "title": "Bei deinem Konto anmelden",
     "noAccount": "Noch kein Konto?",
@@ -17,7 +23,8 @@
     "legalMiddle": "und unserer",
     "termsOfService": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
-    "legalSuffix": "zu."
+    "legalSuffix": "zu.",
+    "or": "Oder"
   },
   "SignUpForm": {
     "title": "Konto erstellen",
@@ -37,7 +44,8 @@
     "legalMiddle": "und unserer",
     "termsOfService": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
-    "legalSuffix": "zu."
+    "legalSuffix": "zu.",
+    "or": "Oder"
   },
   "Header": {
     "about": "Über uns",
@@ -46,7 +54,8 @@
     "blog": "Blog",
     "contact": "Kontakt",
     "projects": "Projekte",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "getStarted": "Loslegen"
   },
   "MobileNav": {
     "toggleMenu": "Menü umschalten"
@@ -64,6 +73,11 @@
   },
   "Footer": {
     "copyright": "© {year} Hyepr Labs, Alle Rechte vorbehalten",
+    "socialGitHub": "Hyepr Labs auf GitHub",
+    "socialInstagram": "Hyepr Labs auf Instagram",
+    "socialLinkedIn": "Hyepr Labs auf LinkedIn",
+    "socialX": "Hyepr Labs auf X (Twitter)",
+    "socialTikTok": "Hyepr Labs auf TikTok",
     "resources": "Ressourcen",
     "company": "Unternehmen",
     "legal": "Rechtliches",
@@ -691,5 +705,93 @@
     "section8": "8. Schlussbestimmungen",
     "section8Text1": "Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts (CISG). Ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist unser Firmensitz (Berlin), sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.",
     "section8Text2": "Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt."
+  },
+
+  "AppHero": {
+    "morning": "Guten Morgen",
+    "afternoon": "Guten Tag",
+    "evening": "Guten Abend"
+  },
+
+  "DashboardPage": {
+    "badge": "Dashboard",
+    "welcome": "Willkommen zurück",
+    "subtitle": "Hier ist eine Übersicht deines Kontos.",
+    "notSignedIn": "Meld dich an, um auf dein Dashboard zuzugreifen",
+    "signIn": "Anmelden"
+  },
+  "DashboardOverviewSection": {
+    "heading": "Kontoübersicht",
+    "email": "E-Mail",
+    "emailStatus": "E-Mail-Status",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt",
+    "memberSince": "Mitglied seit",
+    "lastSignIn": "Zuletzt angemeldet"
+  },
+  "DashboardActionsSection": {
+    "heading": "Schnellzugriff",
+    "editProfile": "Profil bearbeiten",
+    "editProfileDesc": "Aktualisiere Name, Avatar und Kontodaten.",
+    "support": "Support kontaktieren",
+    "supportDesc": "Wende dich an unser Team für Hilfe mit deinem Konto."
+  },
+
+  "ProfilePage": {
+    "badge": "Profil",
+    "backToDashboard": "Dashboard",
+    "notSignedIn": "Meld dich an, um dein Profil zu sehen",
+    "signIn": "Anmelden"
+  },
+  "ProfileAvatarSection": {
+    "heading": "Avatar",
+    "changePhoto": "Foto ändern",
+    "uploading": "Wird hochgeladen...",
+    "hint": "JPG, PNG oder GIF — max. 10 MB",
+    "successToast": "Avatar aktualisiert",
+    "errorToast": "Avatar konnte nicht aktualisiert werden"
+  },
+  "ProfileNameSection": {
+    "heading": "Name",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "username": "Benutzername",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "successToast": "Profil aktualisiert",
+    "errorToast": "Profil konnte nicht aktualisiert werden"
+  },
+  "ProfileEmailsSection": {
+    "heading": "E-Mail-Adressen",
+    "primary": "Primär",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt"
+  },
+  "ProfileConnectedSection": {
+    "heading": "Verknüpfte Konten",
+    "connected": "Verbunden"
+  },
+  "ProfileAccountSection": {
+    "heading": "Kontoinformationen",
+    "email": "E-Mail",
+    "emailStatus": "E-Mail-Status",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt",
+    "username": "Benutzername",
+    "memberSince": "Mitglied seit",
+    "lastSignIn": "Zuletzt angemeldet",
+    "twoFactor": "Zwei-Faktor-Auth",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert"
+  },
+  "ProfileDeleteSection": {
+    "heading": "Gefahrenzone",
+    "title": "Konto löschen",
+    "description": "Lösche dein Konto und alle zugehörigen Daten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete": "Konto löschen",
+    "confirm": "Ja, löschen",
+    "cancel": "Abbrechen",
+    "deleting": "Wird gelöscht...",
+    "errorToast": "Konto konnte nicht gelöscht werden"
   }
 }

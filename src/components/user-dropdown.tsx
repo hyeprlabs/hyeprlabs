@@ -15,11 +15,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useClerk, useUser } from "@clerk/nextjs"
+import { useTranslations } from "next-intl"
 import { LayoutDashboard, LogOutIcon, UserIcon } from 'lucide-react'
 
 export function UserDropdown() {
   const { signOut } = useClerk()
   const { isLoaded, user } = useUser()
+  const t = useTranslations("UserDropdown")
 
   const name = user?.fullName || user?.username || ""
   const email = user?.primaryEmailAddress?.emailAddress || ""
@@ -57,22 +59,22 @@ export function UserDropdown() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/overview">
+                <Link href="/app">
                   <LayoutDashboard aria-hidden="true" />
-                  Overview
+                  {t("overview")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/profile">
+                <Link href="/app/profile">
                   <UserIcon aria-hidden="true" />
-                  Profile
+                  {t("profile")}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="destructive" onClick={() => signOut({ redirectUrl: '/' })}>
               <LogOutIcon aria-hidden="true" />
-              Log out
+              {t("signOut")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
