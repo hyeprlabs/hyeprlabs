@@ -8,6 +8,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
+import { Toaster } from "@/components/ui/sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -65,6 +66,7 @@ export default async function LocaleLayout({
             >
               <NuqsAdapter>{children}</NuqsAdapter>
               <Analytics />
+              <Toaster position="bottom-center" />
             </ThemeProvider>
           </NextIntlClientProvider>
         </ClerkProvider>

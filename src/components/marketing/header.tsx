@@ -5,7 +5,7 @@ import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/marketing/mobile-nav";
 import { ArrowRight } from "lucide-react";
-import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
+import { HyeprLabsWordmark } from "@/components/brand/logos";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Show } from "@clerk/nextjs";

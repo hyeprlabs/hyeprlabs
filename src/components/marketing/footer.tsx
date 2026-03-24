@@ -7,7 +7,7 @@ import {
   InstagramIcon,
   LinkedinIcon,
 } from "lucide-react";
-import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
+import { HyeprLabsWordmark } from "@/components/brand/logos";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
