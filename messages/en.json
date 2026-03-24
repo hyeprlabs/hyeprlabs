@@ -5,7 +5,8 @@
     "templates": "Templates",
     "blog": "Blog",
     "contact": "Contact",
-    "projects": "Projects"
+    "projects": "Projects",
+    "signIn": "Sign in"
   },
   "MobileNav": {
     "toggleMenu": "Toggle menu"

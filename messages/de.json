@@ -5,7 +5,8 @@
     "templates": "Vorlagen",
     "blog": "Blog",
     "contact": "Kontakt",
-    "projects": "Projekte"
+    "projects": "Projekte",
+    "signIn": "Anmelden"
   },
   "MobileNav": {
     "toggleMenu": "Menü umschalten"

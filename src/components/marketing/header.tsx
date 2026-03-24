@@ -4,10 +4,12 @@ import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/marketing/mobile-nav";
-import { ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react";
 import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Show } from "@clerk/nextjs";
+import { UserDropdown } from "@/components/user-dropdown";
 
 export function Header() {
   const scrolled = useScroll(10);
@@ -53,18 +55,27 @@ export function Header() {
               {t("contact")}
             </Button>
           </Link>
-          <Link href="/projects">
-            <Button size="sm">
-              {t("projects")}
-              <ArrowRight />
-            </Button>
-          </Link>
-          <Button size="sm" variant="outline" className="hidden">
-            Sign In
-          </Button>
-          <Button size="sm" className="hidden">
-            Get Started
-          </Button>
+          <Show
+            when="signed-in"
+            fallback={
+              <Link href="/sign-in">
+                <Button size="sm">
+                  {t("signIn")}
+                  <ArrowRight />
+                </Button>
+              </Link>
+            }
+          >
+            <>
+              <Link href="/projects">
+                <Button size="sm">
+                  {t("projects")}
+                  <ArrowRight />
+                </Button>
+              </Link>
+              <UserDropdown />
+            </>
+          </Show>
         </div>
         <MobileNav navLinks={navLinks} />
       </nav>
