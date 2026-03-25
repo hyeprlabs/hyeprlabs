@@ -60,7 +60,7 @@ export function SignInForm({
 
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
 
-  const { signIn, errors: clerkErrors } = useSignIn();
+  const { signIn } = useSignIn();
   const router = useRouter();
 
   const togglePasswordVisibility = () =>
@@ -99,26 +99,16 @@ export function SignInForm({
       toast.error(error.message);
       return;
     }
-    if (signIn.status === "complete") {
-      await signIn.finalize({
-        navigate: ({ decorateUrl }) => {
-          const url = decorateUrl(`/${locale}/app`);
-          if (url.startsWith("http")) {
-            window.location.href = url;
-          } else {
-            router.push(url);
-          }
-        },
-      });
-    } else if (
-      signIn.status === "needs_second_factor" ||
-      signIn.status === "needs_client_trust"
-    ) {
-      // MFA or new-device trust required — surface the Clerk global error if present,
-      // otherwise show a generic message so the user isn't left in silence.
-      const msg = clerkErrors?.global?.[0]?.message ?? t("mfaRequired");
-      toast.error(msg);
-    }
+    await signIn.finalize({
+      navigate: ({ decorateUrl }) => {
+        const url = decorateUrl(`/${locale}/app`);
+        if (url.startsWith("http")) {
+          window.location.href = url;
+        } else {
+          router.push(url);
+        }
+      },
+    });
   }
 
   return (

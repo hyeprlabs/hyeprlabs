@@ -56,9 +56,6 @@ export function SignUpForm({
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
-  const [verifying, setVerifying] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [isVerifying, setIsVerifying] = useState(false);
 
   const { signUp } = useSignUp();
   const router = useRouter();
@@ -89,20 +86,6 @@ export function SignUpForm({
     }
   }
 
-  // Finalize the sign-up once status is complete
-  async function finalizeSignUp() {
-    await signUp.finalize({
-      navigate: ({ decorateUrl }) => {
-        const url = decorateUrl(`/${locale}/app`);
-        if (url.startsWith("http")) {
-          window.location.href = url;
-        } else {
-          router.push(url);
-        }
-      },
-    });
-  }
-
   // Sign Up with email/password
   async function handleSignUp(data: z.infer<typeof schema>) {
     const { error } = await signUp.password({
@@ -114,110 +97,17 @@ export function SignUpForm({
       toast.error(error.message);
       return;
     }
-    if (signUp.status === "complete") {
-      await finalizeSignUp();
-    } else if (
-      signUp.status === "missing_requirements" &&
-      signUp.unverifiedFields.includes("email_address")
-    ) {
-      // Email verification required — send the code and show the verification step.
-      const { error: sendError } = await signUp.verifications.sendEmailCode();
-      if (sendError) {
-        toast.error(sendError.message);
-        return;
-      }
-      setVerifying(true);
-    }
-  }
-
-  // Verify the email code the user received
-  async function handleVerifyCode() {
-    setIsVerifying(true);
-    const { error } = await signUp.verifications.verifyEmailCode({
-      code: verificationCode,
+    await signUp.finalize({
+      navigate: ({ decorateUrl }) => {
+        const url = decorateUrl(`/${locale}/app`);
+        if (url.startsWith("http")) {
+          window.location.href = url;
+        } else {
+          router.push(url);
+        }
+      },
     });
-    setIsVerifying(false);
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-    if (signUp.status === "complete") {
-      await finalizeSignUp();
-    }
   }
-
-  // Resend email verification code
-  async function handleResend() {
-    const { error } = await signUp.verifications.sendEmailCode();
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success(t("codeSent"));
-    }
-  }
-
-  // ----- Email verification step -----
-  if (verifying) {
-    return (
-      <div className={cn("flex flex-col gap-6", className)} {...props}>
-        <FieldGroup>
-          <div className="flex flex-col items-center gap-2 text-center">
-            <Link href="/">
-              <HyeprLabsWordmark height={24} />
-              <span className="sr-only">Hyepr Labs</span>
-            </Link>
-            <h1 className="text-xl font-bold">{t("verifyTitle")}</h1>
-            <FieldDescription className="font-mono">
-              {t("verifyDescription")}
-            </FieldDescription>
-          </div>
-          <Field className="gap-1">
-            <FieldLabel htmlFor="code">{t("codeLabel")}</FieldLabel>
-            <Input
-              id="code"
-              type="text"
-              inputMode="numeric"
-              autoComplete="one-time-code"
-              placeholder={t("codePlaceholder")}
-              value={verificationCode}
-              onChange={(e) => setVerificationCode(e.target.value)}
-            />
-          </Field>
-          <Field>
-            <Button
-              type="button"
-              className="cursor-pointer"
-              disabled={isVerifying || !verificationCode}
-              onClick={handleVerifyCode}
-            >
-              {isVerifying && (
-                <LoaderCircle
-                  aria-hidden="true"
-                  className="-ms-1 me-2 animate-spin"
-                  size={16}
-                />
-              )}
-              {t("verifyButton")}
-            </Button>
-          </Field>
-          <Field>
-            <p className="text-center text-sm font-mono text-muted-foreground">
-              {t("noCode")}{" "}
-              <button
-                type="button"
-                onClick={handleResend}
-                className="underline underline-offset-4 hover:text-foreground"
-              >
-                {t("resendCode")}
-              </button>
-            </p>
-          </Field>
-        </FieldGroup>
-      </div>
-    );
-  }
-
-  // ----- Sign up step -----
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form onSubmit={form.handleSubmit(handleSignUp)}>
