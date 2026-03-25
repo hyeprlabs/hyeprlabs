@@ -37,7 +37,7 @@ import { Link } from "@/i18n/navigation";
 
 import { HyeprLabsWordmark } from "@/components/brand/logos";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const schema = z.object({
   email: z.email("Please enter a valid email address."),
@@ -53,13 +53,14 @@ export function SignInForm({
   ...props
 }: React.ComponentProps<"div">) {
   const t = useTranslations("SignInForm");
+  const locale = useLocale();
 
   // Toggle password visibility
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
 
-  const { signIn } = useSignIn();
+  const { signIn, errors: clerkErrors } = useSignIn();
   const router = useRouter();
 
   const togglePasswordVisibility = () =>
@@ -79,8 +80,8 @@ export function SignInForm({
     setIsGitHubLoading(true);
     const { error } = await signIn.sso({
       strategy: "oauth_github",
-      redirectUrl: "/overview?provider=github",
-      redirectCallbackUrl: "/sso-callback",
+      redirectUrl: `/${locale}/app`,
+      redirectCallbackUrl: `/${locale}/sso-callback`,
     });
     if (error) {
       setIsGitHubLoading(false);
@@ -88,7 +89,7 @@ export function SignInForm({
     }
   }
 
-  // Sign In
+  // Sign In with email/password
   async function handleSignIn(data: z.infer<typeof schema>) {
     const { error } = await signIn.password({
       identifier: data.email,
@@ -101,7 +102,7 @@ export function SignInForm({
     if (signIn.status === "complete") {
       await signIn.finalize({
         navigate: ({ decorateUrl }) => {
-          const url = decorateUrl("/overview");
+          const url = decorateUrl(`/${locale}/app`);
           if (url.startsWith("http")) {
             window.location.href = url;
           } else {
@@ -109,6 +110,14 @@ export function SignInForm({
           }
         },
       });
+    } else if (
+      signIn.status === "needs_second_factor" ||
+      signIn.status === "needs_client_trust"
+    ) {
+      // MFA or new-device trust required — surface the Clerk global error if present,
+      // otherwise show a generic message so the user isn't left in silence.
+      const msg = clerkErrors?.global?.[0]?.message ?? t("mfaRequired");
+      toast.error(msg);
     }
   }
 
