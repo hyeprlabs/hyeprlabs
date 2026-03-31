@@ -4,7 +4,10 @@ import { routing } from "@/i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
-const isProtectedRoute = createRouteMatcher(["/app(.*)"]);
+// Routes include a locale prefix (e.g. /en/app, /de/app) because
+// next-intl uses localePrefix: "always" by default.
+const locales = routing.locales.join("|");
+const isProtectedRoute = createRouteMatcher([`/(${locales})/app(.*)`]);
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect();

@@ -37,7 +37,7 @@ import { Link } from "@/i18n/navigation";
 
 import { HyeprLabsWordmark } from "@/components/brand/logos";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const schema = z.object({
   email: z.email("Please enter a valid email address."),
@@ -53,6 +53,7 @@ export function SignInForm({
   ...props
 }: React.ComponentProps<"div">) {
   const t = useTranslations("SignInForm");
+  const locale = useLocale();
 
   // Toggle password visibility
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -79,8 +80,8 @@ export function SignInForm({
     setIsGitHubLoading(true);
     const { error } = await signIn.sso({
       strategy: "oauth_github",
-      redirectUrl: "/overview?provider=github",
-      redirectCallbackUrl: "/sso-callback",
+      redirectUrl: `/${locale}/app`,
+      redirectCallbackUrl: `/${locale}/sso-callback`,
     });
     if (error) {
       setIsGitHubLoading(false);
@@ -88,7 +89,7 @@ export function SignInForm({
     }
   }
 
-  // Sign In
+  // Sign In with email/password
   async function handleSignIn(data: z.infer<typeof schema>) {
     const { error } = await signIn.password({
       identifier: data.email,
@@ -98,18 +99,16 @@ export function SignInForm({
       toast.error(error.message);
       return;
     }
-    if (signIn.status === "complete") {
-      await signIn.finalize({
-        navigate: ({ decorateUrl }) => {
-          const url = decorateUrl("/overview");
-          if (url.startsWith("http")) {
-            window.location.href = url;
-          } else {
-            router.push(url);
-          }
-        },
-      });
-    }
+    await signIn.finalize({
+      navigate: ({ decorateUrl }) => {
+        const url = decorateUrl(`/${locale}/app`);
+        if (url.startsWith("http")) {
+          window.location.href = url;
+        } else {
+          router.push(url);
+        }
+      },
+    });
   }
 
   return (

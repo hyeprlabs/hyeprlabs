@@ -4,7 +4,6 @@
     "profile": "Profile",
     "signOut": "Log out"
   },
-
   "SignInForm": {
     "title": "Sign In to your Account",
     "noAccount": "Don't have an account?",
@@ -24,7 +23,8 @@
     "legalSuffix": "",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
-    "or": "Or"
+    "or": "Or",
+    "mfaRequired": "Multi-factor authentication is required. Please use the standard sign-in flow."
   },
   "SignUpForm": {
     "title": "Create an Account",
@@ -45,7 +45,15 @@
     "legalSuffix": "",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
-    "or": "Or"
+    "or": "Or",
+    "verifyTitle": "Verify your email",
+    "verifyDescription": "We sent a verification code to your email address.",
+    "codeLabel": "Verification code",
+    "codePlaceholder": "000000",
+    "verifyButton": "Verify email",
+    "noCode": "Didn't receive a code?",
+    "resendCode": "Resend",
+    "codeSent": "A new code has been sent to your email."
   },
   "Header": {
     "about": "About",
@@ -97,7 +105,6 @@
       "termsOfService": "Terms of Service"
     }
   },
-
   "HeroSection": {
     "badgeLabel": "BLOG",
     "title": "Building Digital Experiences That Drive Growth",
@@ -199,7 +206,6 @@
       "Remote-first"
     ]
   },
-
   "AboutPage": {
     "badge": "ABOUT",
     "title": "Who are we?",
@@ -617,7 +623,6 @@
       }
     ]
   },
-
   "DataDisclaimer": {
     "title": "Heads up!"
   },
@@ -660,7 +665,7 @@
     "section1sub1Text": "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.",
     "section1sub2": "Data Collection on this Website",
     "section1sub2q1": "Who is responsible for the data collection on this website?",
-    "section1sub2p1": "The data processing on this website is carried out by the website operator. Their contact details can be found in the section \u201CInformation about the responsible party\u201D in this privacy policy.",
+    "section1sub2p1": "The data processing on this website is carried out by the website operator. Their contact details can be found in the section “Information about the responsible party” in this privacy policy.",
     "section1sub2q2": "How do we collect your data?",
     "section1sub2p2": "Some data are collected when you provide it to us. This could, for example, be data you enter into a contact form. Other data are collected automatically by our IT systems when you visit the website. These data are primarily technical data (e.g. the browser and operating system you are using or when you accessed the page).",
     "section2": "2. General Information and Mandatory Information",
@@ -674,13 +679,13 @@
     "section2sub4Text": "In the event of violations of the GDPR, data subjects are entitled to log a complaint with a supervisory authority, in particular in the member state of their habitual residence, their place of work or the place of the alleged violation.",
     "section3": "3. Data Collection on this Website",
     "section3sub1": "Cookies",
-    "section3sub1Text": "Our websites and pages use what the industry refers to as \u201Ccookies.\u201D Cookies are small text files that do not cause any damage to your device. They are either stored temporarily for the duration of a session (session cookies) or permanently (permanent cookies) on your device. Session cookies are automatically deleted after your visit.",
+    "section3sub1Text": "Our websites and pages use what the industry refers to as “cookies.” Cookies are small text files that do not cause any damage to your device. They are either stored temporarily for the duration of a session (session cookies) or permanently (permanent cookies) on your device. Session cookies are automatically deleted after your visit.",
     "section3sub2": "Server Log Files",
     "section3sub2Text": "The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are: browser type and browser version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address. These data are not merged with other data sources.",
     "section3sub3": "Contact Form / Email Contact",
     "section3sub3Text": "If you send us inquiries via the contact form or email, your details from the inquiry form, including the contact details you provided there, will be stored by us for the purpose of processing the inquiry and in the event of follow-up questions. We do not pass on this data without your consent. The processing of this data is based on Art. 6 (1) lit. b GDPR.",
     "section4": "4. SSL/TLS Encryption",
-    "section4Text": "This site uses SSL or TLS encryption for security reasons and for the protection of the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection in your browser's address line when it changes from \u201Chttp://\u201D to \u201Chttps://\u201D and the lock icon is displayed in your browser's address bar. If SSL or TLS encryption is activated, the data you transfer to us cannot be read by third parties.",
+    "section4Text": "This site uses SSL or TLS encryption for security reasons and for the protection of the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection in your browser's address line when it changes from “http://” to “https://” and the lock icon is displayed in your browser's address bar. If SSL or TLS encryption is activated, the data you transfer to us cannot be read by third parties.",
     "contactPhone": "Phone:",
     "contactEmail": "Email:"
   },
@@ -689,7 +694,7 @@
     "title": "Terms of Service",
     "description": "Read our terms carefully to understand your rights, responsibilities, and our operational guidelines.",
     "section1": "1. Scope of Application",
-    "section1Text": "These General Terms and Conditions (GTC) apply to all contracts concluded between Hyepr Labs (hereinafter \u201CProvider\u201D or \u201Cwe\u201D) and our clients (hereinafter \u201CClient\u201D or \u201Cyou\u201D) via our services and products offered at hyeprlabs.com. Deviating conditions of the Client shall not be recognized unless the Provider expressly agrees to their validity in writing.",
+    "section1Text": "These General Terms and Conditions (GTC) apply to all contracts concluded between Hyepr Labs (hereinafter “Provider” or “we”) and our clients (hereinafter “Client” or “you”) via our services and products offered at hyeprlabs.com. Deviating conditions of the Client shall not be recognized unless the Provider expressly agrees to their validity in writing.",
     "section2": "2. Conclusion of Contract",
     "section2Text": "The presentation of services on our website does not represent a legally binding offer, but rather a non-binding online catalog. The contract is concluded when we accept your offer (e.g., your inquiry or order) by email confirmation or by performing the service.",
     "section3": "3. Services and Obligations to Cooperate",
@@ -706,13 +711,11 @@
     "section8Text1": "The laws of the Federal Republic of Germany shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). The exclusive place of jurisdiction for all disputes arising from or in connection with this contract is our registered office (Berlin), provided the Client is a merchant, a legal entity under public law, or a special fund under public law.",
     "section8Text2": "Should individual provisions of these GTC be or become invalid, the validity of the remaining provisions shall remain unaffected."
   },
-
   "AppHero": {
     "morning": "Good morning",
     "afternoon": "Good afternoon",
     "evening": "Good evening"
   },
-
   "DashboardPage": {
     "badge": "Dashboard",
     "welcome": "Welcome back",
@@ -736,7 +739,6 @@
     "support": "Contact support",
     "supportDesc": "Reach out to our team for help with your account."
   },
-
   "ProfilePage": {
     "badge": "Profile",
     "backToDashboard": "Dashboard",
