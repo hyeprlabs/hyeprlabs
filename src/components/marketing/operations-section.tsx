@@ -6,7 +6,7 @@ import createGlobe from "cobe";
 import { useTheme } from "next-themes";
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { FullWidthDivider } from "@/components/ui/full-width-divider";
-import { HyeprLabsMark } from "@/components/marketing/brand/logos";
+import { HyeprLabsMark } from "@/components/brand/logos";
 
 const MUNICH_COORDS: [number, number] = [48.137154, 11.576124];
 

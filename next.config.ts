@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "storage.efferd.com",
       },
+      {
+        // Clerk user avatar CDN
+        protocol: "https",
+        hostname: "img.clerk.com",
+      },
     ],
   },
   async headers() {
