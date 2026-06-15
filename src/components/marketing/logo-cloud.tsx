@@ -91,7 +91,8 @@ function LogoCard({ logo, className, children, ...props }: LogoCardProps) {
       {logo ? (
         <Image
           alt={logo.alt}
-          className="pointer-events-none h-8 w-auto select-none md:h-10 brightness-0 dark:brightness-100"
+          className="pointer-events-none select-none brightness-0 dark:brightness-100"
+          style={{ height: "2.5rem", width: "auto" }}
           height={40}
           src={logo.src}
           width={200}

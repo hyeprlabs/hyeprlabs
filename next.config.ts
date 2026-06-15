@@ -10,11 +10,17 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
+    qualities: [75, 80],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "storage.efferd.com",
+      },
+      {
+        // Clerk user avatar CDN
+        protocol: "https",
+        hostname: "img.clerk.com",
       },
     ],
   },

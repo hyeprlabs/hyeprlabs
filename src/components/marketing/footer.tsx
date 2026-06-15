@@ -7,7 +7,7 @@ import {
   InstagramIcon,
   LinkedinIcon,
 } from "lucide-react";
-import { HyeprLabsWordmark } from "@/components/marketing/brand/logos";
+import { HyeprLabsWordmark } from "@/components/brand/logos";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
@@ -15,6 +15,14 @@ const currentYear = new Date().getFullYear();
 
 export async function Footer() {
   const t = await getTranslations("Footer");
+
+  const links = [
+    { icon: <GithubIcon aria-hidden="true" />, link: "https://github.com/hyeprlabs", label: t("socialGitHub") },
+    { icon: <InstagramIcon aria-hidden="true" />, link: "https://instagram.com/hyeprlabs", label: t("socialInstagram") },
+    { icon: <LinkedinIcon aria-hidden="true" />, link: "https://linkedin.com/company/hyeprlabs", label: t("socialLinkedIn") },
+    { icon: <XIcon aria-hidden="true" />, link: "https://x.com/hyeprlabs", label: t("socialX") },
+    { icon: <TikTokIcon aria-hidden="true" />, link: "https://tiktok.com/@hyeprlabs", label: t("socialTikTok") },
+  ];
 
   const resources = [
     { title: t("nav.blog"), href: "/blog" },
@@ -26,6 +34,7 @@ export async function Footer() {
 
   const company = [
     { title: t("nav.about"), href: "/about" },
+    { title: t("nav.services"), href: "/services" },
     { title: t("nav.projects"), href: "/projects" },
     { title: t("nav.templates"), href: "/templates" },
     { title: t("nav.brandAssets"), href: "/brand" },
@@ -52,7 +61,7 @@ export async function Footer() {
               <HyeprLabsWordmark className="h-5 w-auto" />
             </Link>
             <p className="max-w-sm text-balance text-muted-foreground text-sm font-mono">
-              {t("tagline")}
+              Think Fast. Build Fast.
             </p>
             <div className="flex gap-2">
               {links.map((item, index) => (
@@ -60,8 +69,8 @@ export async function Footer() {
                   asChild
                   key={`social-${item.link}-${index}`}
                   size="icon-sm"
-                  variant="ghost"
-                  className="rounded-full border"
+                  variant="outline"
+                  className="rounded-full bg-transparent"
                 >
                   <a
                     href={item.link}
@@ -133,33 +142,6 @@ export async function Footer() {
   );
 }
 
-const links = [
-  {
-    icon: <GithubIcon aria-hidden="true" />,
-    link: "https://github.com/hyeprlabs",
-    label: "Hyepr Labs on GitHub",
-  },
-  {
-    icon: <InstagramIcon aria-hidden="true" />,
-    link: "https://instagram.com/hyeprlabs",
-    label: "Hyepr Labs on Instagram",
-  },
-  {
-    icon: <LinkedinIcon aria-hidden="true" />,
-    link: "https://linkedin.com/company/hyeprlabs",
-    label: "Hyepr Labs on LinkedIn",
-  },
-  {
-    icon: <XIcon aria-hidden="true" />,
-    link: "https://x.com/hyeprlabs",
-    label: "Hyepr Labs on X (Twitter)",
-  },
-  {
-    icon: <TikTokIcon aria-hidden="true" />,
-    link: "https://tiktok.com/@hyeprlabs",
-    label: "Hyepr Labs on TikTok",
-  },
-];
 
 function TikTokIcon(props: React.ComponentProps<"svg">) {
   return (

@@ -1,17 +1,112 @@
 {
+  "UserDropdown": {
+    "overview": "Übersicht",
+    "profile": "Profil",
+    "signOut": "Abmelden"
+  },
+  "SignInForm": {
+    "title": "Bei deinem Konto anmelden",
+    "noAccount": "Noch kein Konto?",
+    "signUpLink": "Registrieren",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "alan.turing@beispiel.de",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "rememberMe": "Angemeldet bleiben",
+    "forgotPassword": "Passwort vergessen?",
+    "submitButton": "Anmelden",
+    "continueWithGitHub": "Mit GitHub fortfahren",
+    "legalPrefix": "Mit der Anmeldung stimmst du unseren",
+    "legalMiddle": "und unserer",
+    "termsOfService": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "legalSuffix": "zu.",
+    "or": "Oder",
+    "mfaRequired": "Multi-Faktor-Authentifizierung erforderlich. Bitte nutze den Standard-Anmeldevorgang."
+  },
+  "SignUpForm": {
+    "title": "Konto erstellen",
+    "hasAccount": "Bereits ein Konto?",
+    "signInLink": "Anmelden",
+    "nameLabel": "Name",
+    "namePlaceholder": "Dein Name",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "alan.turing@beispiel.de",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "submitButton": "Registrieren",
+    "continueWithGitHub": "Mit GitHub fortfahren",
+    "legalPrefix": "Mit der Registrierung stimmst du unseren",
+    "legalMiddle": "und unserer",
+    "termsOfService": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "legalSuffix": "zu.",
+    "or": "Oder",
+    "verifyTitle": "E-Mail bestätigen",
+    "verifyDescription": "Wir haben einen Bestätigungscode an deine E-Mail-Adresse gesendet.",
+    "codeLabel": "Bestätigungscode",
+    "codePlaceholder": "000000",
+    "verifyButton": "E-Mail bestätigen",
+    "noCode": "Keinen Code erhalten?",
+    "resendCode": "Erneut senden",
+    "codeSent": "Ein neuer Code wurde an deine E-Mail gesendet."
+  },
   "Header": {
     "about": "Über uns",
+    "services": "Leistungen",
     "templates": "Vorlagen",
     "blog": "Blog",
     "contact": "Kontakt",
-    "projects": "Projekte"
+    "projects": "Projekte",
+    "signIn": "Anmelden",
+    "getStarted": "Loslegen"
   },
   "MobileNav": {
     "toggleMenu": "Menü umschalten"
   },
+  "ThemeSwitcher": {
+    "switchTheme": "Zu {theme}-Theme wechseln",
+    "system": "System",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache wechseln",
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+  "Footer": {
+    "copyright": "© {year} Hyepr Labs, Alle Rechte vorbehalten",
+    "socialGitHub": "Hyepr Labs auf GitHub",
+    "socialInstagram": "Hyepr Labs auf Instagram",
+    "socialLinkedIn": "Hyepr Labs auf LinkedIn",
+    "socialX": "Hyepr Labs auf X (Twitter)",
+    "socialTikTok": "Hyepr Labs auf TikTok",
+    "resources": "Ressourcen",
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "nav": {
+      "blog": "Blog",
+      "support": "Support",
+      "contact": "Kontakt",
+      "changelog": "Änderungsprotokoll",
+      "team": "Team",
+      "about": "Über uns",
+      "services": "Leistungen",
+      "projects": "Projekte",
+      "templates": "Vorlagen",
+      "brandAssets": "Marken-Assets",
+      "imprint": "Impressum",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen"
+    }
+  },
   "HeroSection": {
     "badgeLabel": "BLOG",
-    "badgeText": "Schnell denken. Schnell bauen.",
     "title": "Digitale Erlebnisse schaffen, die Wachstum fördern",
     "description": "Wir skalieren Online-Unternehmen schneller durch smartes Design, Entwicklung und strategische Umsetzung.",
     "contact": "Kontakt",
@@ -27,26 +122,89 @@
     "contact": "Kontakt",
     "projects": "Projekte"
   },
-  "Footer": {
-    "tagline": "Schnell denken. Schnell bauen.",
-    "copyright": "© {year} Hyepr Labs, Alle Rechte vorbehalten",
-    "resources": "Ressourcen",
-    "company": "Unternehmen",
-    "legal": "Rechtliches",
-    "nav": {
-      "blog": "Blog",
-      "support": "Support",
-      "contact": "Kontakt",
-      "changelog": "Änderungsprotokoll",
-      "team": "Team",
-      "about": "Über uns",
-      "projects": "Projekte",
-      "templates": "Vorlagen",
-      "brandAssets": "Marken-Assets",
-      "imprint": "Impressum",
-      "privacyPolicy": "Datenschutzrichtlinie",
-      "termsOfService": "Nutzungsbedingungen"
-    }
+  "BlogCta": {
+    "heading": "Aus dem Blog",
+    "subheading": "Einige unserer neuesten Gedanken zu Design, Engineering und Produktentwicklung.",
+    "viewAll": "Alle Beiträge ansehen"
+  },
+  "FaqsSection": {
+    "title": "Häufig gestellte Fragen",
+    "description": "Antworten auf häufige Fragen dazu, wie Hyepr Labs Websites entwickelt und langfristiges Wachstum unterstützt.",
+    "searchPlaceholder": "FAQs durchsuchen...",
+    "emptyTitle": "Keine passenden FAQs für deine Suche gefunden.",
+    "clearSearch": "Suche leeren",
+    "contactPrompt": "Du hast nicht gefunden, was du suchst?",
+    "contactLink": "Kontaktiere uns",
+    "categories": {
+      "all": "Alle",
+      "websites": "Websites",
+      "seo": "SEO & Content",
+      "pricing": "Preise",
+      "process": "Ablauf"
+    },
+    "items": [
+      {
+        "id": 1,
+        "category": "websites",
+        "title": "Entwickelt ihr individuelle Websites mit Next.js und WordPress?",
+        "content": "Ja. Wir bieten maßgeschneiderte Business-Websites mit Next.js und WordPress an – je nach Ziel, Content-Workflow und Budget."
+      },
+      {
+        "id": 2,
+        "category": "websites",
+        "title": "Wie entscheide ich zwischen Next.js und WordPress?",
+        "content": "Next.js ist ideal für hohe Performance, individuelle UX und moderne Webanwendungen. WordPress eignet sich hervorragend für redaktionelle Flexibilität und schnelle Content-Prozesse. Wir beraten dich passend zu deiner Wachstumsstrategie."
+      },
+      {
+        "id": 3,
+        "category": "seo",
+        "title": "Was ist im monatlichen SEO- und Blog-Abonnement enthalten?",
+        "content": "Unser monatliches Abonnement umfasst laufende SEO-Verbesserungen, keyword-orientierte Blog-Produktion, Onpage-Optimierung, interne Verlinkung und einen monatlichen Performance-Report."
+      },
+      {
+        "id": 4,
+        "category": "seo",
+        "title": "Schreibt und veröffentlicht ihr auch Blog-Inhalte für uns?",
+        "content": "Ja. Wir können Blog-Inhalte planen, schreiben, optimieren und veröffentlichen – abgestimmt auf deine Positionierung und Ziel-Keywords."
+      },
+      {
+        "id": 5,
+        "category": "pricing",
+        "title": "Was kostet ein Website-Projekt typischerweise?",
+        "content": "Typische Einstiegspreise liegen bei ab 3.900 € für individuelle Next.js-Websites und ab 2.400 € für individuelle WordPress-Websites. Der finale Preis hängt von Umfang, Integrationen und Zeitplan ab."
+      },
+      {
+        "id": 6,
+        "category": "pricing",
+        "title": "Wie hoch ist der Preis für das monatliche Growth-Abonnement?",
+        "content": "Unser Growth-Abonnement startet bei 690 € pro Monat und ist für kontinuierliche SEO- und Content-Umsetzung ausgelegt."
+      },
+      {
+        "id": 7,
+        "category": "process",
+        "title": "Wie lange dauert ein Website-Projekt?",
+        "content": "Die meisten Projekte werden je nach Komplexität, Freigabeprozessen und benötigten Integrationen innerhalb von 2 bis 5 Wochen umgesetzt."
+      },
+      {
+        "id": 8,
+        "category": "process",
+        "title": "Übernehmt ihr auch Wartung und spätere Updates?",
+        "content": "Ja. Nach dem Launch können wir die Seite über unser monatliches Service-Modell iterativ weiterentwickeln, technisch warten und auf Wachstum optimieren."
+      }
+    ]
+  },
+  "OperationsSection": {
+    "title": "Wo wir tätig sind",
+    "description": "Unser operativer Schwerpunkt liegt in München, Deutschland, mit Umsetzung und Zusammenarbeit über verteilte Teams und internationale Märkte hinweg.",
+    "headquartersLabel": "Hauptsitz",
+    "headquarters": "München, Deutschland",
+    "coordinates": "48.1371 N, 11.5761 E",
+    "regions": [
+      "DACH",
+      "Europa",
+      "Nordamerika",
+      "Remote-first"
+    ]
   },
   "AboutPage": {
     "badge": "ÜBER UNS",
@@ -89,6 +247,8 @@
     "heading": "Neueste Beiträge",
     "subheading": "Entdecken Sie die neuesten Trends und Erkenntnisse aus der Welt des Designs und der Technologie.",
     "by": "von",
+    "all": "Alle",
+    "searchPlaceholder": "Beiträge suchen...",
     "posts": [
       {
         "title": "Die neuen Designprinzipien für moderne Web-Apps",
@@ -146,14 +306,7 @@
         "author": "Olivia Kim",
         "description": "Strategien für eine gesunde Beziehung zu digitalen Werkzeugen, das Setzen von Grenzen und die Sicherstellung, dass Technologie uns dient statt uns zu konsumieren."
       }
-    ],
-    "all": "Alle",
-    "searchPlaceholder": "Beiträge suchen..."
-  },
-  "BlogCta": {
-    "heading": "Aus dem Blog",
-    "subheading": "Einige unserer neuesten Gedanken zu Design, Engineering und Produktentwicklung.",
-    "viewAll": "Alle Beiträge ansehen"
+    ]
   },
   "BrandPage": {
     "title": "Marken-Assets",
@@ -200,7 +353,7 @@
         "date": "5. Februar 2026",
         "project": "Hyepr Labs",
         "title": "Open-Source-Vorlagen & Blog-Bereich",
-        "description": "Unser Open-Source-Vorlagen-Showcase mit produktionsreifen Next.js-Starter-Kits wurde gestartet, zusammen mit einem neu gestalteten Blog-Bereich.",
+        "description": "Unser Open-Source-Vorlagen-Showcase mit produktionsreifen Next.js-Starter-Kits wurde gestartet, zusammen mit einem neu gestalteten Blog-Bereich mit Kategoriefilterung.",
         "changes": [
           "Vorlagen-Showcase mit Funktionslisten, Preisangaben und GitHub-Integration erstellt.",
           "Blog-Bereich mit responsivem 4-Spalten-Grid-Layout neu gestaltet.",
@@ -212,7 +365,7 @@
         "date": "15. Januar 2026",
         "project": "Hyepr Labs",
         "title": "Team-Profile & Projekt-Portfolio",
-        "description": "Einführung umfassender Teammitglieder-Profile mit Social-Media-Integrationen und einem kuratierten Projekt-Portfolio.",
+        "description": "Einführung umfassender Teammitglieder-Profile mit Social-Media-Integrationen und einem kuratierten Projekt-Portfolio, das unsere Design- und Entwicklungsexpertise zeigt.",
         "changes": [
           "Team-Bereich mit Avataren, Rollen, Skills und Social-Links hinzugefügt.",
           "Projektkarten mit Logos, Tags und externen Links erstellt.",
@@ -248,72 +401,6 @@
     "phoneDescription": "Wir sind Mo.–Fr., 8–22 Uhr erreichbar.",
     "findUsOnline": "Finden Sie uns online:"
   },
-  "DataDisclaimer": {
-    "title": "Hinweis!"
-  },
-  "ImprintPage": {
-    "badge": "IMPRESSUM",
-    "title": "Impressum",
-    "description": "Gesetzlich vorgeschriebene Angaben und Pflichtinformationen zu unseren Geschäftstätigkeiten.",
-    "tmgSection": "Angaben gemäß § 5 TMG",
-    "representedBy": "Vertreten durch",
-    "contact": "Kontakt",
-    "contactPhone": "Telefon:",
-    "contactEmail": "E-Mail:",
-    "contactWebsite": "Website:",
-    "commercialRegister": "Handelsregister",
-    "registrationCourt": "Registergericht:",
-    "registrationNumber": "Registernummer:",
-    "vatId": "Umsatzsteuer-ID",
-    "vatText": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-    "contentResponsible": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
-    "euDispute": "EU-Streitschlichtung",
-    "euDisputeText1": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
-    "euDisputeText2": "Unsere E-Mail-Adresse finden Sie oben im Impressum.",
-    "consumerDispute": "Verbraucherstreitbeilegung",
-    "consumerDisputeText": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
-    "liabilityContents": "Haftung für Inhalte",
-    "liabilityContentsText": "Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
-    "copyright": "Urheberrecht",
-    "copyrightText": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
-  },
-  "LegalDisclaimer": {
-    "title": "Rechtlicher Hinweis: Im Aufbau",
-    "description": "Diese Seite befindet sich derzeit im Aufbau und die bereitgestellten Informationen sind noch nicht rechtsverbindlich. Die Inhalte dienen ausschließlich zu Demonstrationszwecken. Wir übernehmen keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität dieser Informationen in dieser Phase. Bitte konsultieren Sie einen Rechtsexperten für offizielle Beratung."
-  },
-  "PrivacyPage": {
-    "badge": "DATENSCHUTZ",
-    "title": "Datenschutzerklärung",
-    "description": "Ihr Datenschutz ist uns wichtig. Erfahren Sie, wie wir Ihre Daten erheben, verwenden und schützen.",
-    "section1": "1. Datenschutz auf einen Blick",
-    "section1sub1": "Allgemeine Hinweise",
-    "section1sub1Text": "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.",
-    "section1sub2": "Datenerfassung auf dieser Website",
-    "section1sub2q1": "Wer ist verantwortlich für die Datenerfassung auf dieser Website?",
-    "section1sub2p1": "Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.",
-    "section1sub2q2": "Wie erfassen wir Ihre Daten?",
-    "section1sub2p2": "Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).",
-    "section2": "2. Allgemeine Hinweise und Pflichtinformationen",
-    "section2sub1": "Datenschutz",
-    "section2sub1Text": "Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.",
-    "section2sub2": "Hinweis zur verantwortlichen Stelle",
-    "section2sub2Intro": "Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:",
-    "section2sub3": "Widerruf Ihrer Einwilligung zur Datenverarbeitung",
-    "section2sub3Text": "Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.",
-    "section2sub4": "Beschwerderecht bei der zuständigen Aufsichtsbehörde",
-    "section2sub4Text": "Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.",
-    "section3": "3. Datenerfassung auf dieser Website",
-    "section3sub1": "Cookies",
-    "section3sub1Text": "Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht.",
-    "section3sub2": "Server-Log-Dateien",
-    "section3sub2Text": "Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.",
-    "section3sub3": "Kontaktformular / E-Mail-Kontakt",
-    "section3sub3Text": "Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.",
-    "section4": "4. SSL- bzw. TLS-Verschlüsselung",
-    "section4Text": "Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.",
-    "contactPhone": "Telefon:",
-    "contactEmail": "E-Mail:"
-  },
   "ProjectsPage": {
     "badge": "PROJEKTE",
     "title": "Unsere ausgewählten Arbeiten",
@@ -324,7 +411,7 @@
     "projects": [
       {
         "title": "E-Commerce-Rebranding",
-        "description": "Eine vollständige Überarbeitung einer veralteten E-Commerce-Plattform, die zu einer 40%igen Steigerung der Konversionsrate führte. Wir implementierten eine Headless-Architektur für maximale Flexibilität.",
+        "description": "Eine vollständige Überarbeitung einer veralteten E-Commerce-Plattform, die zu einer 40-prozentigen Steigerung der Konversionsrate führte. Wir implementierten eine Headless-Architektur für maximale Flexibilität.",
         "tags": [
           "Next.js",
           "Shopify",
@@ -357,6 +444,61 @@
           "Framer Motion",
           "Sanity CMS"
         ]
+      }
+    ]
+  },
+  "ServicesPage": {
+    "badge": "LEISTUNGEN",
+    "title": "Transparente digitale Services für wachstumsorientierte Teams",
+    "description": "Von launchbereiten Websites bis zur laufenden Wachstumsbetreuung helfen wir Ihnen, schnell zu liefern und nachhaltig zu skalieren.",
+    "disclaimer": "Die angegebenen Preise sind Basis-Pakete und können je nach Komplexität, Integrationen und Zeitplan variieren."
+  },
+  "ServicesSection": {
+    "heading": "Unsere Angebote",
+    "subheading": "Wählen Sie ein Website-Paket mit festem Umfang oder ein monatliches Growth-Abonnement für kontinuierliche SEO- und Content-Umsetzung.",
+    "popular": "Am beliebtesten",
+    "services": [
+      {
+        "title": "Individuelle Next.js Business-Website",
+        "description": "Eine performante, individuell entwickelte Marketing-Website mit Next.js, optimiert für Geschwindigkeit, SEO und Conversion.",
+        "price": "ab 3.900 €",
+        "billing": "einmalig",
+        "delivery": "Typische Umsetzungszeit: 2–5 Wochen",
+        "features": [
+          "Individuelles Design-System und responsive UI",
+          "Technisches SEO-Setup und Performance-Optimierung",
+          "CMS-Integration für flexible Inhaltsverwaltung",
+          "Analytics-Setup und Launch-Begleitung"
+        ],
+        "cta": "Angebot anfragen"
+      },
+      {
+        "title": "Individuelle WordPress Business-Website",
+        "description": "Eine skalierbare WordPress-Website, auf Ihre Geschäftsziele zugeschnitten, mit redaktioneller Flexibilität und modernem Look.",
+        "price": "ab 2.400 €",
+        "billing": "einmalig",
+        "delivery": "Typische Umsetzungszeit: 2–4 Wochen",
+        "features": [
+          "Individuelle Theme-Umsetzung",
+          "SEO-freundliche Seitenstruktur",
+          "Blog- und Content-Workflow-Setup",
+          "Basis-Konfiguration für Sicherheit und Wartung"
+        ],
+        "cta": "Angebot anfragen"
+      },
+      {
+        "title": "Monatliches Growth-Abonnement",
+        "description": "Ein wiederkehrender Service für mehr Sichtbarkeit und Pipeline durch konstante SEO-Umsetzung, Blog-Content und iterative Website-Optimierung.",
+        "price": "690 €",
+        "billing": "pro Monat",
+        "delivery": "Jederzeit kündbar nach den ersten 3 Monaten",
+        "features": [
+          "Monatliche SEO-Optimierungs-Roadmap",
+          "2 SEO-orientierte Blogbeiträge pro Monat",
+          "Onpage-Optimierung und interne Verlinkung",
+          "Monatlicher Performance- und Ranking-Report"
+        ],
+        "cta": "Abonnement starten"
       }
     ]
   },
@@ -481,6 +623,72 @@
       }
     ]
   },
+  "DataDisclaimer": {
+    "title": "Hinweis!"
+  },
+  "ImprintPage": {
+    "badge": "IMPRESSUM",
+    "title": "Impressum",
+    "description": "Gesetzlich vorgeschriebene Angaben und Pflichtinformationen zu unseren Geschäftstätigkeiten.",
+    "tmgSection": "Angaben gemäß § 5 TMG",
+    "representedBy": "Vertreten durch",
+    "contact": "Kontakt",
+    "contactPhone": "Telefon:",
+    "contactEmail": "E-Mail:",
+    "contactWebsite": "Website:",
+    "commercialRegister": "Handelsregister",
+    "registrationCourt": "Registergericht:",
+    "registrationNumber": "Registernummer:",
+    "vatId": "Umsatzsteuer-ID",
+    "vatText": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
+    "contentResponsible": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+    "euDispute": "EU-Streitschlichtung",
+    "euDisputeText1": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
+    "euDisputeText2": "Unsere E-Mail-Adresse finden Sie oben im Impressum.",
+    "consumerDispute": "Verbraucherstreitbeilegung",
+    "consumerDisputeText": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+    "liabilityContents": "Haftung für Inhalte",
+    "liabilityContentsText": "Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
+    "copyright": "Urheberrecht",
+    "copyrightText": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
+  },
+  "LegalDisclaimer": {
+    "title": "Rechtlicher Hinweis: Im Aufbau",
+    "description": "Diese Seite befindet sich derzeit im Aufbau und die bereitgestellten Informationen sind noch nicht rechtsverbindlich. Die Inhalte dienen ausschließlich zu Demonstrationszwecken. Wir übernehmen keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität dieser Informationen in dieser Phase. Bitte konsultieren Sie einen Rechtsexperten für offizielle Beratung."
+  },
+  "PrivacyPage": {
+    "badge": "DATENSCHUTZ",
+    "title": "Datenschutzerklärung",
+    "description": "Ihr Datenschutz ist uns wichtig. Erfahren Sie, wie wir Ihre Daten erheben, verwenden und schützen.",
+    "section1": "1. Datenschutz auf einen Blick",
+    "section1sub1": "Allgemeine Hinweise",
+    "section1sub1Text": "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.",
+    "section1sub2": "Datenerfassung auf dieser Website",
+    "section1sub2q1": "Wer ist verantwortlich für die Datenerfassung auf dieser Website?",
+    "section1sub2p1": "Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.",
+    "section1sub2q2": "Wie erfassen wir Ihre Daten?",
+    "section1sub2p2": "Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).",
+    "section2": "2. Allgemeine Hinweise und Pflichtinformationen",
+    "section2sub1": "Datenschutz",
+    "section2sub1Text": "Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.",
+    "section2sub2": "Hinweis zur verantwortlichen Stelle",
+    "section2sub2Intro": "Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:",
+    "section2sub3": "Widerruf Ihrer Einwilligung zur Datenverarbeitung",
+    "section2sub3Text": "Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.",
+    "section2sub4": "Beschwerderecht bei der zuständigen Aufsichtsbehörde",
+    "section2sub4Text": "Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.",
+    "section3": "3. Datenerfassung auf dieser Website",
+    "section3sub1": "Cookies",
+    "section3sub1Text": "Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht.",
+    "section3sub2": "Server-Log-Dateien",
+    "section3sub2Text": "Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.",
+    "section3sub3": "Kontaktformular / E-Mail-Kontakt",
+    "section3sub3Text": "Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.",
+    "section4": "4. SSL- bzw. TLS-Verschlüsselung",
+    "section4Text": "Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.",
+    "contactPhone": "Telefon:",
+    "contactEmail": "E-Mail:"
+  },
   "TermsPage": {
     "badge": "AGB",
     "title": "Nutzungsbedingungen",
@@ -503,9 +711,89 @@
     "section8Text1": "Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts (CISG). Ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist unser Firmensitz (Berlin), sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.",
     "section8Text2": "Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt."
   },
-  "LanguageSwitcher": {
-    "label": "Sprache wechseln",
-    "en": "Englisch",
-    "de": "Deutsch"
+  "AppHero": {
+    "morning": "Guten Morgen",
+    "afternoon": "Guten Tag",
+    "evening": "Guten Abend"
+  },
+  "DashboardPage": {
+    "badge": "Dashboard",
+    "welcome": "Willkommen zurück",
+    "subtitle": "Hier ist eine Übersicht deines Kontos.",
+    "notSignedIn": "Meld dich an, um auf dein Dashboard zuzugreifen",
+    "signIn": "Anmelden"
+  },
+  "DashboardOverviewSection": {
+    "heading": "Kontoübersicht",
+    "email": "E-Mail",
+    "emailStatus": "E-Mail-Status",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt",
+    "memberSince": "Mitglied seit",
+    "lastSignIn": "Zuletzt angemeldet"
+  },
+  "DashboardActionsSection": {
+    "heading": "Schnellzugriff",
+    "editProfile": "Profil bearbeiten",
+    "editProfileDesc": "Aktualisiere Name, Avatar und Kontodaten.",
+    "support": "Support kontaktieren",
+    "supportDesc": "Wende dich an unser Team für Hilfe mit deinem Konto."
+  },
+  "ProfilePage": {
+    "badge": "Profil",
+    "backToDashboard": "Dashboard",
+    "notSignedIn": "Meld dich an, um dein Profil zu sehen",
+    "signIn": "Anmelden"
+  },
+  "ProfileAvatarSection": {
+    "heading": "Avatar",
+    "changePhoto": "Foto ändern",
+    "uploading": "Wird hochgeladen...",
+    "hint": "JPG, PNG oder GIF — max. 10 MB",
+    "successToast": "Avatar aktualisiert",
+    "errorToast": "Avatar konnte nicht aktualisiert werden"
+  },
+  "ProfileNameSection": {
+    "heading": "Name",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "username": "Benutzername",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "successToast": "Profil aktualisiert",
+    "errorToast": "Profil konnte nicht aktualisiert werden"
+  },
+  "ProfileEmailsSection": {
+    "heading": "E-Mail-Adressen",
+    "primary": "Primär",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt"
+  },
+  "ProfileConnectedSection": {
+    "heading": "Verknüpfte Konten",
+    "connected": "Verbunden"
+  },
+  "ProfileAccountSection": {
+    "heading": "Kontoinformationen",
+    "email": "E-Mail",
+    "emailStatus": "E-Mail-Status",
+    "verified": "Bestätigt",
+    "unverified": "Unbestätigt",
+    "username": "Benutzername",
+    "memberSince": "Mitglied seit",
+    "lastSignIn": "Zuletzt angemeldet",
+    "twoFactor": "Zwei-Faktor-Auth",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert"
+  },
+  "ProfileDeleteSection": {
+    "heading": "Gefahrenzone",
+    "title": "Konto löschen",
+    "description": "Lösche dein Konto und alle zugehörigen Daten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete": "Konto löschen",
+    "confirm": "Ja, löschen",
+    "cancel": "Abbrechen",
+    "deleting": "Wird gelöscht...",
+    "errorToast": "Konto konnte nicht gelöscht werden"
   }
 }

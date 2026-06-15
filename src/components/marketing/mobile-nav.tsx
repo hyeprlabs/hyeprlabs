@@ -59,21 +59,21 @@ export function MobileNav({ navLinks }: { navLinks: NavLink[] }) {
             </div>
             <div className="mt-12 flex flex-col gap-2">
               <Link href="/contact">
-                <Button size="sm" variant="outline" className="w-full bg-linear-to-br from-muted to-background font-normal">
+                <Button size="sm" variant="outline" className="w-full font-normal">
                   {tHeader("contact")}
                 </Button>
               </Link>
               <Link href="/projects">
-                <Button size="sm" className="w-full bg-linear-to-br from-foreground to-muted-foreground">
+                <Button size="sm" className="w-full">
                   {tHeader("projects")}
                   <ArrowRight />
                 </Button>
               </Link>
               <Button variant="outline" className="w-full hidden">
-                Sign In
+                {tHeader("signIn")}
               </Button>
               <Button className="w-full hidden">
-                Get Started
+                {tHeader("getStarted")}
               </Button>
             </div>
           </div>

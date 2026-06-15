@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
         <Button
           variant="outline"
           size="sm"
-          className="h-8 rounded-full text-xs text-muted-foreground font-mono gap-2"
+          className="h-8 bg-transparent text-muted-foreground font-normal gap-2"
           aria-label={t("label")}
         >
           <CurrentFlag />

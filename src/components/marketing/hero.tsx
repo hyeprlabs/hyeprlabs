@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { HeroImage } from "@/components/marketing/hero-image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Dither } from "@/components/dither";
 
 export async function HeroSection() {
   const t = await getTranslations("HeroSection");
@@ -19,6 +20,27 @@ export async function HeroSection() {
           aria-hidden="true"
           className="absolute inset-0 -z-1 size-full overflow-hidden"
         >
+          <div className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex">
+            <div
+              style={{ width: "1080px", height: "1080px", position: "relative" }}
+              className="opacity-35"
+            >
+              <div className="hidden h-full w-full dark:block">
+                <Dither
+                  waveColor={[0.376, 0.647, 0.98]}
+                  disableAnimation={false}
+                  enableMouseInteraction
+                  mouseRadius={1.2}
+                  colorNum={5}
+                  pixelSize={1}
+                  waveAmplitude={0.25}
+                  waveFrequency={2.5}
+                  waveSpeed={0.02}
+                />
+              </div>
+            </div>
+          </div>
+
           <div
             className={cn(
               "absolute -inset-x-20 inset-y-0 z-0 rounded-full",
@@ -36,13 +58,13 @@ export async function HeroSection() {
             "group mx-auto flex w-fit items-center gap-3 rounded-full border bg-linear-to-br from-muted to-background p-1 shadow",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out",
           )}
-          href="/blog"
+          href="/blog/think-fast-build-fast"
         >
           <Badge variant="outline" className="text-xs font-mono">
             {t("badgeLabel")}
           </Badge>
 
-          <span className="text-xs">{t("badgeText")}</span>
+          <span className="text-xs">Think Fast. Build Fast.</span>
           <span className="block h-5 border-l" />
 
           <div className="pr-1">
@@ -61,7 +83,7 @@ export async function HeroSection() {
 
         <p
           className={cn(
-            "max-w-lg text-balance text-center text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
+            "max-w-lg text-balance text-center light:text-muted-foreground text-sm tracking-wider sm:text-lg font-mono",
             "fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards delay-200 duration-500 ease-out",
           )}
         >
@@ -69,14 +91,13 @@ export async function HeroSection() {
         </p>
 
         <div className="fade-in slide-in-from-bottom-10 flex w-fit animate-in items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
-          <Button
+          <Button 
             variant="outline"
-            className="rounded-full bg-linear-to-br from-muted to-background"
           >
-            {t("contact")}
-          </Button>
-          <Button className="rounded-full bg-linear-to-br from-foreground to-muted-foreground">
             {t("projects")}
+          </Button>
+          <Button>
+            {t("contact")}
             <ArrowRight />
           </Button>
         </div>

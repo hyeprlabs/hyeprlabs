@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }: Props) {
               variant="outline"
               size="sm"
               asChild
-              className="rounded-full bg-linear-to-br from-muted to-background"
+              className="rounded-full"
             >
               <Link href="/blog">
                 <ArrowLeft />
